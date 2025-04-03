@@ -5,21 +5,26 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float speed;
-    public float rollDist;
-    public float rollTime;
+    //public float speed;
+    //public float rollDist;
+    //public float rollTime;
     public GameObject spriteGO;
+    public GameObject attackPoint;
+    public bool isRolling;
 
     private float hori;
     private float vert;
-    private bool isRolling;
+    
 
-    private Vector2 facing = new Vector2();
+    //private Vector2 facing = new Vector2();
+    public PlayerCombat playerCombat;
 
     void Start()
     {
+       
         isRolling = false;
-        facing = new Vector2(0, -1);
+        StatsManager.Instance.facing = new Vector2(0, -1);
+        attackPoint.transform.localPosition = StatsManager.Instance.facing;
     }
 
     void FixedUpdate()
@@ -31,8 +36,12 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space) && (Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false)
         {
-            Debug.Log("Roll?");
+         //   Debug.Log("Roll?");
             Roll();
+        }
+        if (Input.GetKeyDown(KeyCode.J) && playerCombat.enabled == true)
+        {
+            playerCombat.Attack();
         }
     }
 
@@ -43,25 +52,27 @@ public class PlayerController : MonoBehaviour
        
         if(isRolling == false)
         {
-            rb.velocity = new Vector2(hori, vert) * speed;
+            rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.speed;
             //Debug.Log("h: " + hori);
            // Debug.Log("v: " + vert);
            // Debug.Log("goin: " + hori + " " + vert);
            if (Mathf.Abs(hori) > Mathf.Abs(vert))
             {
                 //Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
-                facing = new Vector2(hori, 0);
+                StatsManager.Instance.facing = new Vector2(hori, 0);
+                attackPoint.transform.localPosition = StatsManager.Instance.facing;
             }
             else if (Mathf.Abs(vert) > Mathf.Abs(hori))
             {
                 //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
-                facing = new Vector2(0, vert);
-                 //Debug.Log("v: " + vert);
-                
+                StatsManager.Instance.facing = new Vector2(0, vert);
+                attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                //Debug.Log("v: " + vert);
+
             }
             //Debug.Log("h: " + hori);
             //Debug.Log("v: " + vert);
-            Debug.Log("facing: " + facing);
+           // Debug.Log("facing: " + StatsManager.Instance.facing);
         }
 
     }
@@ -71,17 +82,17 @@ public class PlayerController : MonoBehaviour
         spriteGO.transform.Rotate(new Vector3(0, 0, 90));
 
         //roll start
-        Debug.Log("Roll Start");
-        float hori = Input.GetAxisRaw("Horizontal");
-        float vert = Input.GetAxisRaw("Vertical");
+       // Debug.Log("Roll Start");
+       // float hori = Input.GetAxisRaw("Horizontal");
+       // float vert = Input.GetAxisRaw("Vertical");
 
         
 
         isRolling = true;
-        rb.velocity = facing * rollDist;
-        Debug.Log("Roll Mid");
+        rb.velocity = StatsManager.Instance.facing * StatsManager.Instance.rollDist;
+       // Debug.Log("Roll Mid");
         StartCoroutine(RollTimer());
-        Debug.Log("Roll End");
+       // Debug.Log("Roll End");
 
     }
 
@@ -89,12 +100,12 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator RollTimer( )
     {
-        Debug.Log("Roll Timer S");
+       // Debug.Log("Roll Timer S");
 
-        yield return new WaitForSeconds(rollTime);
+        yield return new WaitForSeconds(StatsManager.Instance.rollTime);
         rb.velocity = Vector2.zero;
         isRolling = false;
-        Debug.Log("Roll Timer F");
+        //Debug.Log("Roll Timer F");
         //this is only for visualisation of rolling
         spriteGO.transform.eulerAngles = new Vector3(0, 0, 0);
 
