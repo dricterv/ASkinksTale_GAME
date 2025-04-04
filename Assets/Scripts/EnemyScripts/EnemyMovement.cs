@@ -27,6 +27,8 @@ public class EnemyMovement : MonoBehaviour
 
     private bool isKnockedBack;
 
+    public bool isDirectional;
+
 
 
 
@@ -112,14 +114,14 @@ public class EnemyMovement : MonoBehaviour
         float hori = direction.x;
         float vert = direction.y;
 
-        if (Mathf.Abs(hori) > Mathf.Abs(vert))
+        if ((Mathf.Abs(hori) > Mathf.Abs(vert)) && isDirectional == true)
         {
            // Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
             facing = new Vector2(hori, 0).normalized;
             attackPoint.transform.localPosition = facing;
             //Debug.Log(facing);
         }
-        else if (Mathf.Abs(vert) > Mathf.Abs(hori))
+        else if ((Mathf.Abs(vert) > Mathf.Abs(hori))&& isDirectional == true)
         {
             //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
             facing = new Vector2(0, vert).normalized;
@@ -127,6 +129,10 @@ public class EnemyMovement : MonoBehaviour
             //Debug.Log("v: " + vert);
             //Debug.Log(facing);
 
+        }
+        else if (isDirectional == false)
+        {
+            attackPoint.transform.localPosition = direction;
         }
 
     }
