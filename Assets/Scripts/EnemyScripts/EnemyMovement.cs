@@ -28,6 +28,8 @@ public class EnemyMovement : MonoBehaviour
     private bool isKnockedBack;
 
     public bool isDirectional;
+    public bool cardinalMovement;
+    public bool chaser;
 
 
 
@@ -110,7 +112,6 @@ public class EnemyMovement : MonoBehaviour
         
 
         Vector2 direction = (player.position - transform.position).normalized;
-        rb.velocity = direction * speed;
         float hori = direction.x;
         float vert = direction.y;
 
@@ -120,6 +121,14 @@ public class EnemyMovement : MonoBehaviour
             facing = new Vector2(hori, 0).normalized;
             attackPoint.transform.localPosition = facing;
             //Debug.Log(facing);
+            if (cardinalMovement == true)
+            {
+                rb.velocity = facing * speed;
+            }
+            else
+            {
+                rb.velocity = direction * speed;
+            }
         }
         else if ((Mathf.Abs(vert) > Mathf.Abs(hori))&& isDirectional == true)
         {
@@ -128,12 +137,26 @@ public class EnemyMovement : MonoBehaviour
             attackPoint.transform.localPosition = facing;
             //Debug.Log("v: " + vert);
             //Debug.Log(facing);
+            if (cardinalMovement == true)
+            {
+                rb.velocity = facing * speed;
+            }
+            else
+            {
+                rb.velocity = direction * speed;
+            }
+
 
         }
         else if (isDirectional == false)
         {
             attackPoint.transform.localPosition = direction;
+            rb.velocity = direction * speed;
+
         }
+
+
+
 
     }
 

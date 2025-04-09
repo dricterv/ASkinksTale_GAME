@@ -8,6 +8,8 @@ public class StatsManager : MonoBehaviour
     public static StatsManager Instance;
     //public TMP_Text healthText;
     public Vector2 facing = new Vector2();
+    public Vector2 lockFacing = new Vector2();
+    public bool lockFace = false;
 
     [Header("Combat Stats")]
     public int damage;
@@ -18,6 +20,7 @@ public class StatsManager : MonoBehaviour
 
     [Header("Movement Stats")]
     public float speed;
+    public float dragSpeed;
     public float knockBackSpeed;
     public float rollDist;
     public float rollTime;
