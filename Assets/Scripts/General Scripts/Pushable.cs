@@ -32,15 +32,8 @@ public class Pushable : MonoBehaviour
         {
             float hori = Input.GetAxisRaw("Horizontal");
             float vert = Input.GetAxisRaw("Vertical");
-            if(lockX == true && lockY == false)
-            {
-                rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
-            }
-            else if (lockY == true && lockX == false)
-            {
-                rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
-            }
-            else if (lockX == true && lockY == true)
+            
+            if (lockX == true && lockY == true)
             {
                 if (StatsManager.Instance.facing == new Vector2(0, -1) || StatsManager.Instance.facing == new Vector2(0, 1))
                 {
@@ -52,7 +45,15 @@ public class Pushable : MonoBehaviour
                 }
                     
             }
-            
+            else if (lockX == true && lockY == false)
+            {
+                rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
+            }
+            else if (lockY == true && lockX == false)
+            {
+                rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+            }
+
             //playerGO.GetComponent<Rigidbody2D>().velocity
         }
         else

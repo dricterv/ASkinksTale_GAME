@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
     public bool isDirectional;
     public bool cardinalMovement;
     public bool chaser;
-
+    public bool rangedAttacker;
 
 
 
@@ -51,6 +51,7 @@ public class EnemyMovement : MonoBehaviour
         if (enemyState != EnemyState.KnockedBack)
         {
             CheckForPlayer();
+            Debug.Log(enemyState);
             if (attackCoolDownTimer > 0)
             {
                 attackCoolDownTimer -= Time.deltaTime;
@@ -67,10 +68,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        if (attackCoolDownTimer > 0)
-        {
-            attackCoolDownTimer -= Time.deltaTime;
-        }
+       
     }
 
     private void CheckForPlayer()
@@ -84,11 +82,12 @@ public class EnemyMovement : MonoBehaviour
             //checks if player is in attack range and cd is ready
             if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCoolDownTimer <= 0)
             {
+                Vector2 direction = (player.position - transform.position).normalized;
                 attackCoolDownTimer = attackCoolDown;
                 ChangeState(EnemyState.Attacking);
                 //Debug.Log("atack");
                 
-                StartCoroutine(AttackCD(atkTime, waitTime));
+                StartCoroutine(AttackCD(atkTime, waitTime, direction));
             }
 
             else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking)
@@ -224,11 +223,19 @@ public class EnemyMovement : MonoBehaviour
     }
 
     //temp until animations are in
-    IEnumerator AttackCD(float atkTime, float wait)
+    IEnumerator AttackCD(float atkTime, float wait, Vector2 direction)
     {
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(atkTime);
-        enemyCombat.Attack();
+        if (rangedAttacker == false)
+        {
+            enemyCombat.Attack();
+        }
+        else if (rangedAttacker == true)
+        {
+           // enemyCombat.HandleAiming(direction);
+            enemyCombat.Shoot(direction);
+        }
         yield return new WaitForSeconds(wait);
 
 

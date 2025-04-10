@@ -157,7 +157,16 @@ public class PlayerController : MonoBehaviour
                         StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
                         hit.collider.gameObject.GetComponent<Pushable>().StartPush();
                     }
-                    
+                    else if(hit.collider.gameObject.GetComponent<Pushable>().lockY == true)
+                    {
+                        if (StatsManager.Instance.facing == new Vector2(-1, 0) || StatsManager.Instance.facing == new Vector2(1, 0))
+                        {
+                            StatsManager.Instance.lockFace = true;
+                            lockHori = true;
+                            StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
+                            hit.collider.gameObject.GetComponent<Pushable>().StartPush();
+                        }
+                    }
                 }
               
                 else if (hit.collider.gameObject.GetComponent<Pushable>().lockY == true)
