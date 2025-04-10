@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     //public float rollTime;
     public GameObject spriteGO;
     public GameObject attackPoint;
+    public GameObject blockPoint;
+    public Collider2D blockCollider;
     public bool isRolling;
 
     private float hori;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask pushableLayer;
     private RaycastHit2D hit;
     [Header("Other")]
+    public bool blocking;
 
 
     //private Vector2 facing = new Vector2();
@@ -30,11 +33,14 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-       
+        blocking = false;
         isRolling = false;
+        blockCollider.enabled = false;
+
         StatsManager.Instance.facing = new Vector2(0, -1);
         StatsManager.Instance.lockFace = false;
         attackPoint.transform.localPosition = StatsManager.Instance.facing;
+        blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.7f;
     }
 
     void FixedUpdate()
@@ -43,6 +49,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        Block();
         Grab();
         if (Input.GetKeyDown(KeyCode.Space) && (Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false)
         {
@@ -85,14 +92,19 @@ public class PlayerController : MonoBehaviour
                 {
                     StatsManager.Instance.facing = new Vector2(hori, 0);
                     attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                    blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.7f;
+                    blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 }
                 else if (StatsManager.Instance.lockFace == true)
                 {
                     StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
                     attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                    //blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.7f;
+                  
+
                 }
-               // StatsManager.Instance.facing = new Vector2(hori, 0);
-               // attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                // StatsManager.Instance.facing = new Vector2(hori, 0);
+                // attackPoint.transform.localPosition = StatsManager.Instance.facing;
 
             }
             else if (Mathf.Abs(vert) > Mathf.Abs(hori))
@@ -101,11 +113,16 @@ public class PlayerController : MonoBehaviour
                 {
                     StatsManager.Instance.facing = new Vector2(0, vert);
                     attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                    blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.9f;
+                    blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 90);
                 }
                 else if (StatsManager.Instance.lockFace == true)
                 {
                     StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
                     attackPoint.transform.localPosition = StatsManager.Instance.facing;
+
+                   // blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.9f;
+                    
                 }
                 //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
                // StatsManager.Instance.facing = new Vector2(0, vert);
@@ -200,6 +217,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Block()
+    {
+        if ((Input.GetKeyDown(KeyCode.H)))
+        {
+            StatsManager.Instance.blocking = true;
+            StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
+            //if(StatsManager.Instance.lockFacing =)
+           // blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            StatsManager.Instance.lockFace = true;
+            blockCollider.enabled = true;
+        }
+        if ((Input.GetKeyUp(KeyCode.H)))
+        {
+            StatsManager.Instance.blocking = false;
+            StatsManager.Instance.lockFace = false;
+            blockCollider.enabled = false;
+        }
+
+    }
 
 
     IEnumerator RollTimer( )

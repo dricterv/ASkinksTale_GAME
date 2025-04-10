@@ -10,6 +10,7 @@ public class StatsManager : MonoBehaviour
     public Vector2 facing = new Vector2();
     public Vector2 lockFacing = new Vector2();
     public bool lockFace = false;
+    public bool blocking;
 
     [Header("Combat Stats")]
     public int damage;

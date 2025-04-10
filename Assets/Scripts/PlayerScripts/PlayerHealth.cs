@@ -27,8 +27,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
-        if ((playerController.isRolling != true || amount > 0) && timer <= 0)
+        if (((playerController.isRolling == false || amount > 0) && timer <= 0))
         {
+            
             StatsManager.Instance.currentHealth += amount;
             timer = invulnTimer;
            // Debug.Log("Timer");

@@ -102,7 +102,7 @@ MonoBehaviour:
   rb: {fileID: 3154677309069076333}
   direction: {x: 0, y: 0}
   lifeSpan: 2
-  initialTimer: 0.1
+  initialTimer: 0.05
   speed: 10
   damage: 4
   knockBackForce: 0

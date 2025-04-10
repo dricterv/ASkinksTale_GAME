@@ -11,6 +11,7 @@ public class EnemyCombat : MonoBehaviour
     public LayerMask playerLayer;
     public float knockBackForce;
     public float stunTime;
+    private Transform player;
     [Header("Projectile")]
     public Transform launchPoint;
     public GameObject projectilePrefab;
@@ -47,8 +48,19 @@ public class EnemyCombat : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, weaponRadius, playerLayer);
         if (hits.Length > 0)
         {
-            hits[0].GetComponent<PlayerHealth>().ChangeHealth(-damage);
-           // hits[0].GetComponent<Player>().Knockback(transform, knockBackForce, stunTime);
+            
+            player = hits[0].transform;
+            Vector2 direction = (attackPoint.position - transform.position).normalized;
+            if (StatsManager.Instance.blocking == true && (direction == -StatsManager.Instance.lockFacing))
+            {
+                hits[0].GetComponent<PlayerHealth>().ChangeHealth(0);
+            }
+            else
+            {
+                hits[0].GetComponent<PlayerHealth>().ChangeHealth(-damage);
+            }
+            // hits[0].GetComponent<Player>().Knockback(transform, knockBackForce, stunTime);
+            //hits[0].GetComponent<PlayerHealth>().ChangeHealth(-damage);
         }
     }
 

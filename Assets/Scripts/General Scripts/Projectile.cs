@@ -38,8 +38,20 @@ public class Projectile : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((playerLayer.value & (1 << collision.gameObject.layer)) > 0)
+       // if ((playerLayer.value & (1 << collision.gameObject.layer)) > 0)
+        if(collision.gameObject.layer == playerLayer)
         {
+            /*Transform player = collision.transform;
+            Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
+            if (StatsManager.Instance.blocking == true && (direction == -StatsManager.Instance.lockFacing))
+            {
+                collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
+            }
+            */
             collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
             //collision.gameObject.GetComponent<PlayerMovement>().Knockback(transform, knockBackForce, stunTime, knockBackTime);
             rb.velocity = Vector2.zero;
