@@ -6,7 +6,7 @@ using TMPro;
 public class StatsManager : MonoBehaviour
 {
     public static StatsManager Instance;
-    //public TMP_Text healthText;
+    public TMP_Text healthText;
     public Vector2 facing = new Vector2();
     public Vector2 lockFacing = new Vector2();
     public bool lockFace = false;
@@ -48,6 +48,6 @@ public class StatsManager : MonoBehaviour
     public void UpdateMaxHealth(int amount)
     {
         maxHealth += amount;
-        //healthText.text = "HP: " + currentHealth + " / " + maxHealth;
+        healthText.text = "HP: " + currentHealth + " / " + maxHealth;
     }
 }

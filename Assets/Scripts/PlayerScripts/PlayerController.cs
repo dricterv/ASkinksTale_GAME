@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public GameObject spriteGO;
     public GameObject attackPoint;
     public GameObject blockPoint;
+    //public GameObject blockPointParent;
+
     public Collider2D blockCollider;
     public bool isRolling;
 
@@ -92,6 +94,7 @@ public class PlayerController : MonoBehaviour
                 {
                     StatsManager.Instance.facing = new Vector2(hori, 0);
                     attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                    //blockPointParent.transform.position = this.transform.position;
                     blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.7f;
                     blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 }
@@ -99,6 +102,7 @@ public class PlayerController : MonoBehaviour
                 {
                     StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
                     attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                    //blockPointParent.transform.position = this.transform.position;
                     //blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.7f;
                   
 
@@ -113,6 +117,7 @@ public class PlayerController : MonoBehaviour
                 {
                     StatsManager.Instance.facing = new Vector2(0, vert);
                     attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                    //blockPointParent.transform.position = this.transform.position;
                     blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.9f;
                     blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 90);
                 }
@@ -120,8 +125,9 @@ public class PlayerController : MonoBehaviour
                 {
                     StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
                     attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                    //blockPointParent.transform.position = this.transform.position;
 
-                   // blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.9f;
+                    //blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.9f;
                     
                 }
                 //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
@@ -219,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
     public void Block()
     {
-        if ((Input.GetKeyDown(KeyCode.H)))
+        if ((Input.GetKeyDown(KeyCode.K)))
         {
             StatsManager.Instance.blocking = true;
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
@@ -228,7 +234,7 @@ public class PlayerController : MonoBehaviour
             StatsManager.Instance.lockFace = true;
             blockCollider.enabled = true;
         }
-        if ((Input.GetKeyUp(KeyCode.H)))
+        if ((Input.GetKeyUp(KeyCode.K)))
         {
             StatsManager.Instance.blocking = false;
             StatsManager.Instance.lockFace = false;

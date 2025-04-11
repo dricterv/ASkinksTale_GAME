@@ -36,11 +36,17 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D coll)
     {
+        Debug.Log(coll.gameObject.tag);
        // if ((playerLayer.value & (1 << collision.gameObject.layer)) > 0)
-        if(collision.gameObject.layer == playerLayer)
+        /*if(coll.gameObject.tag == "Block")
         {
+            Destroy(gameObject);
+        }*/
+        if(coll.gameObject.tag == "Player")
+        {
+            
             /*Transform player = collision.transform;
             Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
             if (StatsManager.Instance.blocking == true && (direction == -StatsManager.Instance.lockFacing))
@@ -52,7 +58,8 @@ public class Projectile : MonoBehaviour
                 collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
             }
             */
-            collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
+            
+            coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
             //collision.gameObject.GetComponent<PlayerMovement>().Knockback(transform, knockBackForce, stunTime, knockBackTime);
             rb.velocity = Vector2.zero;
             Destroy(gameObject);

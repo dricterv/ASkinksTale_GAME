@@ -1,6 +1,6 @@
 WASD = MOVE
 J = ATTACK
-H = BLOCK
+K = BLOCK
 L = MOVE BROWN BLOCKS
 
 Circle around player is looking direction/attack hitbox

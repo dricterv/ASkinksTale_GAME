@@ -51,7 +51,7 @@ public class EnemyMovement : MonoBehaviour
         if (enemyState != EnemyState.KnockedBack)
         {
             CheckForPlayer();
-            Debug.Log(enemyState);
+           // Debug.Log(enemyState);
             if (attackCoolDownTimer > 0)
             {
                 attackCoolDownTimer -= Time.deltaTime;

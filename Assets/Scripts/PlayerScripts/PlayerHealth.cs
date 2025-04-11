@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
-    //public TMP_Text healthText;
+    public TMP_Text healthText;
     //public Animator healthTextAnim;
     public PlayerController playerController;
     public float invulnTimer;
@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        //healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;
+        healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;
     }
     private void Update()
     {
@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
             
             StatsManager.Instance.currentHealth += amount;
             timer = invulnTimer;
-           // Debug.Log("Timer");
+            Debug.Log("dmg: " + amount);
         }
         else
         {
@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
         }
         
         //healthTextAnim.Play("TextUpdate");
-        //healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;
+        healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;
 
         if (StatsManager.Instance.currentHealth > StatsManager.Instance.maxHealth)
         {
