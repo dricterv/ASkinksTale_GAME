@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
     public void Roll()
     {
         //this is only for visualisation of rolling
-        spriteGO.transform.Rotate(new Vector3(0, 0, 90));
+        //spriteGO.transform.Rotate(new Vector3(0, 0, 90));
 
         //roll start
        // Debug.Log("Roll Start");
@@ -232,13 +232,13 @@ public class PlayerController : MonoBehaviour
             //if(StatsManager.Instance.lockFacing =)
            // blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 0);
             StatsManager.Instance.lockFace = true;
-            blockCollider.enabled = true;
+            //blockCollider.enabled = true;
         }
         if ((Input.GetKeyUp(KeyCode.K)))
         {
             StatsManager.Instance.blocking = false;
             StatsManager.Instance.lockFace = false;
-            blockCollider.enabled = false;
+            //blockCollider.enabled = false;
         }
 
     }
@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour
         isRolling = false;
         //Debug.Log("Roll Timer F");
         //this is only for visualisation of rolling
-        spriteGO.transform.eulerAngles = new Vector3(0, 0, 0);
+        //spriteGO.transform.eulerAngles = new Vector3(0, 0, 0);
 
     }
 }

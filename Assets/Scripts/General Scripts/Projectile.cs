@@ -47,19 +47,40 @@ public class Projectile : MonoBehaviour
         if(coll.gameObject.tag == "Player")
         {
             
-            /*Transform player = collision.transform;
-            Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
-            if (StatsManager.Instance.blocking == true && (direction == -StatsManager.Instance.lockFacing))
+            Transform player = coll.transform;
+            Vector2 direction = (coll.gameObject.transform.position - transform.position).normalized;
+            //Debug.Log(direction);
+            
+            if (StatsManager.Instance.blocking == true)
             {
-                collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
+                if(StatsManager.Instance.lockFacing == new Vector2(1, 0) && direction.x <= -StatsManager.Instance.blockAngle)
+                {
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
+                }
+                else if (StatsManager.Instance.lockFacing == new Vector2(-1, 0) && direction.x >= StatsManager.Instance.blockAngle)
+                {
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
+                }
+                else if (StatsManager.Instance.lockFacing == new Vector2(0, -1) && direction.y >= StatsManager.Instance.blockAngle)
+                {
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
+                }
+                else if (StatsManager.Instance.lockFacing == new Vector2(0, 1) && direction.y <= -StatsManager.Instance.blockAngle)
+                {
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
+                }
+                else
+                {
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
+                }
             }
             else
             {
-                collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
+                coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
             }
-            */
             
-            coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
+            
+            //coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
             //collision.gameObject.GetComponent<PlayerMovement>().Knockback(transform, knockBackForce, stunTime, knockBackTime);
             rb.velocity = Vector2.zero;
             Destroy(gameObject);
