@@ -63,12 +63,12 @@ public class EnemyCombatCharge : MonoBehaviour
                 }
                 else
                 {
-                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-1);
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
                 }
             }
             else
             {
-                coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-1);
+                coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
             }
             
          } 

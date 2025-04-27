@@ -11,6 +11,7 @@ public class EnemyMovementCharger : MonoBehaviour
     private Transform player;
     private float attackCoolDownTimer;
     public Vector2 facing = new Vector2();
+    public Vector2 direction;
     public GameObject attackPoint;
     public float waitTime;
     public float atkTime;
@@ -83,12 +84,12 @@ public class EnemyMovementCharger : MonoBehaviour
             //checks if player is in attack range and cd is ready
             if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCoolDownTimer <= 0)
             {
-                Vector2 direction = (player.position - transform.position).normalized;
+                direction = (player.position - transform.position).normalized;
                 attackCoolDownTimer = attackCoolDown;
                 ChangeState(EnemyState.Attacking);
                 //Debug.Log("atack");
-                
-                StartCoroutine(AttackCD(atkTime, waitTime, direction));
+                //StartCoroutine(AttackWait(atkTime));
+                StartCoroutine(AttackCD(atkTime, waitTime));
             }
 
             else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking)
@@ -223,13 +224,21 @@ public class EnemyMovementCharger : MonoBehaviour
         ChangeState(EnemyState.Idle);
     }
 
+    IEnumerator AttackWait(float atkTime)
+    {
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(atkTime);
+    }
+       
     //temp until animations are in
-    IEnumerator AttackCD(float atkTime, float wait, Vector2 direction)
+    IEnumerator AttackCD(float atkTime,float wait)
     {
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(atkTime);
         if (rangedAttacker == false)
         {
+            direction = (player.position - transform.position).normalized;
+
             Debug.Log("before: " + rb.velocity);
             rb.velocity = direction * chargeSpeed;
             Debug.Log("after: " + rb.velocity);
@@ -262,6 +271,7 @@ public class EnemyMovementCharger : MonoBehaviour
 
 
         ChangeState(EnemyState.Idle);
+        yield return new WaitForSeconds(wait);
     }
 }
 

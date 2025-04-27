@@ -66,8 +66,8 @@ public class EnemyMovement : MonoBehaviour
         {
             CheckForPlayer();
             // Debug.Log(enemyState);
-            Debug.Log("x: " + transform.localPosition.x);
-            Debug.Log("y: " + transform.localPosition.y);
+            // Debug.Log("x: " + transform.localPosition.x);
+            // Debug.Log("y: " + transform.localPosition.y);
 
             //transform.localPosition.y
             if (attackCoolDownTimer > 0)
@@ -159,7 +159,8 @@ public class EnemyMovement : MonoBehaviour
         if (hits.Length > 0)
         {
             player = hits[0].transform;
-
+            //RaycastHit2D hit = Physics2D.Raycast(transform.position,  player.position - transform.position, playerDetectRange);
+            //if(hit.gameObject.tag == "Player")
             //checks if player is in attack range and attack cd is ready
             if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCoolDownTimer <= 0)
             {

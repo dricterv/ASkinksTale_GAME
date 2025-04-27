@@ -63,83 +63,136 @@ public class PlayerController : MonoBehaviour
             playerCombat.Attack();
         }
     }
+    public void Facing()
+    {
+        if (Mathf.Abs(hori) > Mathf.Abs(vert))
+        {
+            //Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
+            if (StatsManager.Instance.lockFace == false)
+            {
+                StatsManager.Instance.facing = new Vector2(hori, 0);
+                attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                //blockPointParent.transform.position = this.transform.position;
+                blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.7f;
+                blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (StatsManager.Instance.lockFace == true)
+            {
+                StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
+                attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                //blockPointParent.transform.position = this.transform.position;
+                //blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.7f;
+
+
+            }
+            // StatsManager.Instance.facing = new Vector2(hori, 0);
+            // attackPoint.transform.localPosition = StatsManager.Instance.facing;
+
+        }
+        else if (Mathf.Abs(vert) > Mathf.Abs(hori))
+        {
+            if (StatsManager.Instance.lockFace == false)
+            {
+                StatsManager.Instance.facing = new Vector2(0, vert);
+                attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                //blockPointParent.transform.position = this.transform.position;
+                blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.9f;
+                blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 90);
+            }
+            else if (StatsManager.Instance.lockFace == true)
+            {
+                StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
+                attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                //blockPointParent.transform.position = this.transform.position;
+
+                //blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.9f;
+
+            }
+            //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
+            // StatsManager.Instance.facing = new Vector2(0, vert);
+            //attackPoint.transform.localPosition = StatsManager.Instance.facing;
+            //Debug.Log("v: " + vert);
+
+        }
+    }
 
     public void Move()
     {
          hori = Input.GetAxisRaw("Horizontal");
          vert = Input.GetAxisRaw("Vertical");
-       
-        if(isRolling == false)
-        {
-            if(lockHori == true)
-            {
-                rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
-            }
-            else if (lockVert == true)
-            {
-                rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
-            }
-            else
-            {
-                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.speed;
-            }
-            //rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.speed;
-            //Debug.Log("h: " + hori);
-           // Debug.Log("v: " + vert);
-           // Debug.Log("goin: " + hori + " " + vert);
-           if (Mathf.Abs(hori) > Mathf.Abs(vert))
-            {
-                //Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
-                if(StatsManager.Instance.lockFace == false)
-                {
-                    StatsManager.Instance.facing = new Vector2(hori, 0);
-                    attackPoint.transform.localPosition = StatsManager.Instance.facing;
-                    //blockPointParent.transform.position = this.transform.position;
-                    blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.7f;
-                    blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 0);
-                }
-                else if (StatsManager.Instance.lockFace == true)
-                {
-                    StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
-                    attackPoint.transform.localPosition = StatsManager.Instance.facing;
-                    //blockPointParent.transform.position = this.transform.position;
-                    //blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.7f;
+         if(isRolling == true)
+         {
+            rb.velocity = StatsManager.Instance.facing * StatsManager.Instance.rollDist;
+         }
+         else if(lockHori == true)
+         {
+             rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+         }
+         else if (lockVert == true)
+         {
+             rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
+         }
+         else
+         {
+             rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.speed;
+         }
+         //rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.speed;
+         //Debug.Log("h: " + hori);
+         // Debug.Log("v: " + vert);
+         // Debug.Log("goin: " + hori + " " + vert);
+         if (Mathf.Abs(hori) > Mathf.Abs(vert))
+         {
+             //Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
+             if(StatsManager.Instance.lockFace == false)
+             {
+                 StatsManager.Instance.facing = new Vector2(hori, 0);
+                 attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                 //blockPointParent.transform.position = this.transform.position;
+                 blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.7f;
+                 blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 0);
+             }
+             else if (StatsManager.Instance.lockFace == true)
+             {
+                 StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
+                 attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                 //blockPointParent.transform.position = this.transform.position;
+                 //blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.7f;
                   
 
-                }
-                // StatsManager.Instance.facing = new Vector2(hori, 0);
-                // attackPoint.transform.localPosition = StatsManager.Instance.facing;
+             }
+             // StatsManager.Instance.facing = new Vector2(hori, 0);
+             // attackPoint.transform.localPosition = StatsManager.Instance.facing;
 
-            }
-            else if (Mathf.Abs(vert) > Mathf.Abs(hori))
-            {
-                if (StatsManager.Instance.lockFace == false)
-                {
-                    StatsManager.Instance.facing = new Vector2(0, vert);
-                    attackPoint.transform.localPosition = StatsManager.Instance.facing;
-                    //blockPointParent.transform.position = this.transform.position;
-                    blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.9f;
-                    blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 90);
-                }
-                else if (StatsManager.Instance.lockFace == true)
-                {
-                    StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
-                    attackPoint.transform.localPosition = StatsManager.Instance.facing;
-                    //blockPointParent.transform.position = this.transform.position;
+         }
+         else if (Mathf.Abs(vert) > Mathf.Abs(hori))
+         {
+             if (StatsManager.Instance.lockFace == false)
+             {
+                 StatsManager.Instance.facing = new Vector2(0, vert);
+                 attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                 //blockPointParent.transform.position = this.transform.position;
+                 blockPoint.transform.localPosition = StatsManager.Instance.facing * 0.9f;
+                 blockPoint.transform.localRotation = Quaternion.Euler(0, 0, 90);
+             }
+             else if (StatsManager.Instance.lockFace == true)
+             {
+                 StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
+                 attackPoint.transform.localPosition = StatsManager.Instance.facing;
+                 //blockPointParent.transform.position = this.transform.position;
 
-                    //blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.9f;
+                 //blockPoint.transform.localPosition = StatsManager.Instance.lockFacing * 0.9f;
                     
-                }
-                //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
-               // StatsManager.Instance.facing = new Vector2(0, vert);
-                //attackPoint.transform.localPosition = StatsManager.Instance.facing;
-                //Debug.Log("v: " + vert);
+             }
+             //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
+             // StatsManager.Instance.facing = new Vector2(0, vert);
+             //attackPoint.transform.localPosition = StatsManager.Instance.facing;
+             //Debug.Log("v: " + vert);
 
-            }
-            //Debug.Log("h: " + hori);
-            //Debug.Log("v: " + vert);
-           // Debug.Log("facing: " + StatsManager.Instance.facing);
-        }
+         }
+         //Debug.Log("h: " + hori);
+         //Debug.Log("v: " + vert);
+         // Debug.Log("facing: " + StatsManager.Instance.facing);
+        
 
     }
     public void Roll()
@@ -155,8 +208,10 @@ public class PlayerController : MonoBehaviour
         
 
         isRolling = true;
-        rb.velocity = StatsManager.Instance.facing * StatsManager.Instance.rollDist;
-       // Debug.Log("Roll Mid");
+        StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
+        StatsManager.Instance.lockFace = true;
+        //rb.velocity = StatsManager.Instance.facing * StatsManager.Instance.rollDist;
+        // Debug.Log("Roll Mid");
         StartCoroutine(RollTimer());
        // Debug.Log("Roll End");
 
@@ -250,7 +305,10 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(StatsManager.Instance.rollTime);
         rb.velocity = Vector2.zero;
+        StatsManager.Instance.lockFace = false;
+
         isRolling = false;
+        //Facing();
         //Debug.Log("Roll Timer F");
         //this is only for visualisation of rolling
         //spriteGO.transform.eulerAngles = new Vector3(0, 0, 0);
