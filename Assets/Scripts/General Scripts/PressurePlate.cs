@@ -13,6 +13,7 @@ public class PressurePlate : MonoBehaviour
     public bool pushableActivated;
     public bool turnOn;
     public bool oneTime;
+    private bool down;
 
 
 
@@ -32,21 +33,23 @@ public class PressurePlate : MonoBehaviour
                 if(toggle.activeSelf == true)
                 {
                     toggle.SetActive(false);
-
+                    down = true;
                 }
                 
             }
-            else if (distance > goDetectRange)
+            else if (distance > goDetectRange && (playerFeet.position.x >= transform.position.x + playerDetectRange || playerFeet.position.x <= transform.position.x - playerDetectRange || playerFeet.position.y >= transform.position.y + playerDetectRange || playerFeet.position.y <= transform.position.y - playerDetectRange))
             {
                 if (toggle.activeSelf == false)
                 {
                     toggle.SetActive(true);
                     Debug.Log("Up");
+                    down = false;
+
                 }
             }
 
         }
-        else if (coll.gameObject.tag == "Player" && playerActivated == true)
+        else if (coll.gameObject.tag == "Player" && playerActivated == true && down == false)
         {
             
 
@@ -72,18 +75,42 @@ public class PressurePlate : MonoBehaviour
                         toggle.SetActive(true);
                     }
                 }
-              
+                else if (oneTime == false)
+                {
+                    Debug.Log("1");
+
+                    if (playerFeet.position.x >= transform.position.x + playerDetectRange || playerFeet.position.x <= transform.position.x - playerDetectRange || playerFeet.position.y >= transform.position.y + playerDetectRange || playerFeet.position.y <= transform.position.y - playerDetectRange)
+                    {
+                        Debug.Log("2");
+
+                        if (toggle.activeSelf == false && turnOn == false)
+                        {
+                            toggle.SetActive(true);
+                            Debug.Log("Up");
+                        }
+                        else if (toggle.activeSelf == true && turnOn == true)
+                        {
+                            toggle.SetActive(true);
+                            Debug.Log("Up");
+                        }
+                    }
+                }
+
             }
-            if(oneTime == false)
+            else if(oneTime == false)
             {
+                Debug.Log("1");
+
                 if (playerFeet.position.x >= transform.position.x + playerDetectRange || playerFeet.position.x <= transform.position.x - playerDetectRange || playerFeet.position.y >= transform.position.y + playerDetectRange || playerFeet.position.y <= transform.position.y - playerDetectRange)
                 {
-                    if (toggle.activeSelf == false && turnOn == true)
+                    Debug.Log("2");
+
+                    if (toggle.activeSelf == false && turnOn == false)
                     {
                         toggle.SetActive(true);
                         Debug.Log("Up");
                     }
-                    else if (toggle.activeSelf == true && turnOn == false)
+                    else if (toggle.activeSelf == true && turnOn == true)
                     {
                         toggle.SetActive(true);
                         Debug.Log("Up");

@@ -43,6 +43,7 @@ public class PlayerCombat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
+            Debug.Log(enemies[0].gameObject.name);
             enemies[0].GetComponent<EnemyHealth>().ChangeHealth(-StatsManager.Instance.damage);
             //enemies[0].GetComponent<EnemyMovement>().Knockback(transform, StatsManager.Instance.knockBackForce, StatsManager.Instance.stunTime, StatsManager.Instance.knockBackTime);
 

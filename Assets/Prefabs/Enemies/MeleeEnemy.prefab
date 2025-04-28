@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5832527962960498680}
   - component: {fileID: 5832527962960498687}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DetectionPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 5832527963691505846}
   m_Layer: 7
   m_Name: MeleeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,7 +286,7 @@ Transform:
   - {fileID: 5832527962263010843}
   - {fileID: 5832527963962681489}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &5832527963691505842
 CapsuleCollider2D:
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facing: {x: 0, y: 0}
   attackPoint: {fileID: 5832527962386773202}
-  waitTime: 1
+  atkWaitTime: 0
   atkTime: 0.2
   attackRange: 2
   attackCoolDown: 2
@@ -351,8 +351,15 @@ MonoBehaviour:
     m_Bits: 64
   isDirectional: 1
   cardinalMovement: 0
-  chaser: 0
+  chaser: 1
   rangedAttacker: 0
+  changeDirMinTime: 1
+  changeDirMaxTime: 2
+  waitDirTime: 1
+  patrolLimitX: 10
+  patrolLimitY: 10
+  patrolSpeed: 2
+  patrolOrigin: {fileID: 0}
 --- !u!114 &5832527963691505847
 MonoBehaviour:
   m_ObjectHideFlags: 0
