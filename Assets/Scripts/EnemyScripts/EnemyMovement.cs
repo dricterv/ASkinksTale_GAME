@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private EnemyState enemyState;
-    // private Animator anim;
+    private Animator anim;
 
     private Rigidbody2D rb;
     private Transform player;
@@ -39,6 +39,9 @@ public class EnemyMovement : MonoBehaviour
     private float waitDirTimer;
     private Vector2[] moveDirections = new Vector2[] { Vector2.right, Vector2.left, Vector2.up, Vector3.down };
     private int currentMoveDirection;
+    public Vector2 patrolLimitMax;
+    public Vector2 patrolLimitMin;
+
     public float patrolLimitX;
     public float patrolLimitY;
     public float patrolSpeed;
@@ -51,7 +54,7 @@ public class EnemyMovement : MonoBehaviour
     {
         enemyCombat = GetComponent<EnemyCombat>();
         rb = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
         facing = new Vector2(0, -1);
         attackPoint.transform.localPosition = StatsManager.Instance.facing;
@@ -75,9 +78,9 @@ public class EnemyMovement : MonoBehaviour
                 attackCoolDownTimer -= Time.deltaTime;
             }
 
-            if (enemyState == EnemyState.Chasing && enemyState != EnemyState.KnockedBack)
+            if (enemyState == EnemyState.Chasing && enemyState != EnemyState.KnockedBack )
             {
-                if (Mathf.Abs(transform.localPosition.x) < (patrolLimitX - 1f) && Mathf.Abs(transform.localPosition.y) < (patrolLimitY - 1f))
+                if (transform.position.x < patrolLimitMax.x && transform.position.x > patrolLimitMin.x && transform.position.y < patrolLimitMax.y && transform.position.y > patrolLimitMin.y)
                 {
                     Chase();
                 }
@@ -98,9 +101,10 @@ public class EnemyMovement : MonoBehaviour
                 {
                     changeDirTimer -= Time.deltaTime;
                     Vector2 direc = moveDirections[currentMoveDirection];
-                    if (Mathf.Abs(this.transform.localPosition.x) >= patrolLimitX || Mathf.Abs(this.transform.localPosition.y) >= patrolLimitY)
+                    if (transform.position.x > patrolLimitMax.x || transform.position.x < patrolLimitMin.x || transform.position.y > patrolLimitMax.y || transform.position.y < patrolLimitMin.y)
                     {
                         changeDirTimer = 0;
+
                        // direc = -moveDirections[currentMoveDirection];
                     }
                     Patrol(direc);
@@ -109,7 +113,7 @@ public class EnemyMovement : MonoBehaviour
                 else if (changeDirTimer <= 0)
                 {
                     //rb.velocity = Vector2D.zero;
-                    if (Mathf.Abs(this.transform.localPosition.x) >= patrolLimitX || Mathf.Abs(this.transform.localPosition.y) >= patrolLimitY)
+                    if (transform.position.x > patrolLimitMax.x || transform.position.x < patrolLimitMin.x || transform.position.y > patrolLimitMax.y || transform.position.y < patrolLimitMin.y)
                     {
                         //changeDirTimer = 0;
                         Vector2 direc = -moveDirections[currentMoveDirection];
@@ -120,6 +124,8 @@ public class EnemyMovement : MonoBehaviour
                     {
                         waitDirTimer -= Time.deltaTime;
                         Patrol(Vector2.zero);
+                        ChangeState(EnemyState.Idle);
+
                     }
                     else if (waitDirTimer <= 0)
                     {
@@ -134,12 +140,7 @@ public class EnemyMovement : MonoBehaviour
 
 
     }
-    private void OnCollisionEnter2D(Collision2D coll)
-    {
-        changeDirTimer = 0;
-
-       // Debug.Log("bump");
-    }
+ 
     private void ChangeDirection()
     {
         int oldMoveDirection = currentMoveDirection;
@@ -164,19 +165,19 @@ public class EnemyMovement : MonoBehaviour
             //checks if player is in attack range and attack cd is ready
             if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCoolDownTimer <= 0)
             {
-                Vector2 direction = (player.position - transform.position).normalized;
+                //Vector2 direction = (player.position - transform.position).normalized;
                 attackCoolDownTimer = attackCoolDown;
                 ChangeState(EnemyState.Attacking);
                 Debug.Log("atack");
 
-                StartCoroutine(AttackCD(atkTime, atkWaitTime, direction));
+                StartCoroutine(AttackCD(atkTime, atkWaitTime));
             }
            /* else if (Mathf.Abs(this.transform.localPosition.x) >= (patrolLimitX - 1f) || Mathf.Abs(this.transform.localPosition.y) >= (patrolLimitY -1f))
             {
                 rb.velocity = Vector2.zero;
 
             }*/
-            else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking && (Mathf.Abs(this.transform.localPosition.x) < patrolLimitX - 1f && Mathf.Abs(this.transform.localPosition.y) < patrolLimitY - 1f))
+            else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking && (transform.position.x < patrolLimitMax.x && transform.position.x > patrolLimitMin.x && transform.position.y < patrolLimitMax.y && transform.position.y > patrolLimitMin.y))
             {
                 ChangeState(EnemyState.Chasing);
                 //Debug.Log("chase");
@@ -195,10 +196,7 @@ public class EnemyMovement : MonoBehaviour
     public void Chase()
     {
 
-        if (Mathf.Abs(transform.localPosition.x) > (patrolLimitX - 1f) || Mathf.Abs(transform.localPosition.y) > (patrolLimitY -1f))
-        {
-            return;
-        }
+       
 
         Vector2 direction = (player.position - transform.position).normalized;
         float hori = direction.x;
@@ -209,6 +207,8 @@ public class EnemyMovement : MonoBehaviour
             // Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
             facing = new Vector2(hori, 0).normalized;
             attackPoint.transform.localPosition = facing;
+            anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
+            anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
             //Debug.Log(facing);
             if (cardinalMovement == true)
             {
@@ -223,6 +223,8 @@ public class EnemyMovement : MonoBehaviour
         {
             //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
             facing = new Vector2(0, vert).normalized;
+            anim.SetFloat("xFacing", facing.x);
+            anim.SetFloat("yFacing", facing.y);
             attackPoint.transform.localPosition = facing;
             //Debug.Log("v: " + vert);
             //Debug.Log(facing);
@@ -269,11 +271,13 @@ public class EnemyMovement : MonoBehaviour
                 rb.velocity = Vector2.zero;
             }
         }
-        if ((Mathf.Abs(hori) > Mathf.Abs(vert)) && isDirectional == true)
+        else if ((Mathf.Abs(hori) > Mathf.Abs(vert)) && isDirectional == true)
         {
             // Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
             facing = new Vector2(hori, 0).normalized;
             attackPoint.transform.localPosition = facing;
+            anim.SetFloat("xFacing", facing.x);
+            anim.SetFloat("yFacing", facing.y);
             //Debug.Log(facing);
             if (cardinalMovement == true)
             {
@@ -289,6 +293,8 @@ public class EnemyMovement : MonoBehaviour
             //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
             facing = new Vector2(0, vert).normalized;
             attackPoint.transform.localPosition = facing;
+            anim.SetFloat("xFacing", facing.x);
+            anim.SetFloat("yFacing", facing.y);
             //Debug.Log("v: " + vert);
             //Debug.Log(facing);
             if (cardinalMovement == true)
@@ -316,39 +322,47 @@ public class EnemyMovement : MonoBehaviour
 
     void ChangeState(EnemyState newState)
     {
-        /*exit current animation
+        //exit current animation
         if (enemyState == EnemyState.Idle)
         {
-            anim.SetBool("IsIdle", false);
+            anim.SetBool("isIdle", false);
         }
         else if (enemyState == EnemyState.Chasing)
         {
-            anim.SetBool("IsChasing", false);
+            anim.SetBool("isChasing", false);
         }
         else if (enemyState == EnemyState.Attacking)
         {
-            anim.SetBool("IsAttacking", false);
+            anim.SetBool("isAttacking", false);
         }
-        */
+        else if (enemyState == EnemyState.Patrolling)
+        {
+            anim.SetBool("isPatrolling", false);
+        }
+
         //update current state
 
         enemyState = newState;
 
-        /*enter current animation
+        //enter current animation
 
         if (enemyState == EnemyState.Idle)
         {
-            anim.SetBool("IsIdle", true);
+            anim.SetBool("isIdle", true);
         }
         else if (enemyState == EnemyState.Chasing)
         {
-            anim.SetBool("IsChasing", true);
+            anim.SetBool("isChasing", true);
         }
         else if (enemyState == EnemyState.Attacking)
         {
-            anim.SetBool("IsAttacking", true);
+            anim.SetBool("isAttacking", true);
         }
-        */
+        else if (enemyState == EnemyState.Patrolling)
+        {
+            anim.SetBool("isPatrolling", true);
+        }
+
     }
 
 
@@ -377,7 +391,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     //temp until animations are in
-    IEnumerator AttackCD(float atkTime, float wait, Vector2 direction)
+    IEnumerator AttackCD(float atkTime, float wait)
     {
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(atkTime);
@@ -387,6 +401,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else if (rangedAttacker == true)
         {
+            Vector2 direction = (player.position - transform.position).normalized;
             float hori = direction.x;
             float vert = direction.y;
             if ((Mathf.Abs(hori) > Mathf.Abs(vert)) && isDirectional == true)

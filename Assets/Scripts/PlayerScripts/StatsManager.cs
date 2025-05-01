@@ -15,6 +15,7 @@ public class StatsManager : MonoBehaviour
     [Header("Combat Stats")]
     public int damage;
     public float weaponRange;
+    public float attackCD;
     public float knockBackForce;
     public float stunTime;
     public float knockBackTime;

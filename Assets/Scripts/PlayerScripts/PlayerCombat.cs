@@ -9,15 +9,19 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemyLayer;
 
     public float weaponRange;
+    
 
 
 
-
-    //public Animator anim;
+    public Animator anim;
 
     public float cooldown = 2;
 
     private float timer;
+    void Start()
+    {
+        //anim = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -52,7 +56,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void FinishAttacking()
     {
-       // anim.SetBool("IsAttacking", false);
+        anim.SetBool("IsAttacking", false);
 
     }
     /*

@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3191301761378838976
 Transform:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ Transform:
   - {fileID: 3191301762107102502}
   - {fileID: 3191301762533350598}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &3191301761378838977
 CapsuleCollider2D:
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facing: {x: 0, y: 0}
   attackPoint: {fileID: 3191301761893502605}
-  waitTime: 1
+  atkWaitTime: 0
   atkTime: 0.5
   attackRange: 6
   attackCoolDown: 2
@@ -221,6 +221,15 @@ MonoBehaviour:
   cardinalMovement: 0
   chaser: 0
   rangedAttacker: 1
+  changeDirMinTime: 0
+  changeDirMaxTime: 0
+  waitDirTime: 0
+  patrolLimitMax: {x: 0, y: 0}
+  patrolLimitMin: {x: 0, y: 0}
+  patrolLimitX: 0
+  patrolLimitY: 0
+  patrolSpeed: 0
+  patrolOrigin: {fileID: 0}
 --- !u!114 &3191301761378838980
 MonoBehaviour:
   m_ObjectHideFlags: 0

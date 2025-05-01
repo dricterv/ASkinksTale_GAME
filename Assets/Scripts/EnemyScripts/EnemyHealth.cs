@@ -6,6 +6,11 @@ public class EnemyHealth : MonoBehaviour
 {
     public int currentHealth;
     public int maxHealth;
+    public Vector2 spawn;
+    public RoomTransition entry;
+    public RoomTransition exit;
+
+
 
     private void Start()
     {
@@ -23,7 +28,10 @@ public class EnemyHealth : MonoBehaviour
         }
         else if (currentHealth <= 0)
         {
+            entry.RemoveEntry(this.gameObject);
+            exit.RemoveExit(this.gameObject);
             Destroy(gameObject);
         }
     }
+
 }
