@@ -12,6 +12,7 @@ public class EnemyCombatCharge : MonoBehaviour
     public float knockBackForce;
     public float stunTime;
     private Transform player;
+    public EnemyMovementCharger enemyMovementCharger;
     [Header("Projectile")]
     public Transform launchPoint;
     public GameObject projectilePrefab;
@@ -39,6 +40,7 @@ public class EnemyCombatCharge : MonoBehaviour
     {
          if (coll.gameObject.tag == "Player")
          {
+            enemyMovementCharger.StopAttack();
             Transform player = coll.transform;
             Vector2 direction = (coll.gameObject.transform.position - transform.position).normalized;
            // Debug.Log(direction);

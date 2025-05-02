@@ -59,7 +59,7 @@ public class EnemyMovementCharger : MonoBehaviour
         anim = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
         facing = new Vector2(0, -1);
-        attackPoint.transform.localPosition = StatsManager.Instance.facing;
+        attackPoint.transform.localPosition = facing;
         changeDirTimer = changeDirMaxTime;
         waitDirTimer = waitDirTime;
     }
@@ -70,7 +70,7 @@ public class EnemyMovementCharger : MonoBehaviour
         if (enemyState != EnemyState.KnockedBack)
         {
             CheckForPlayer();
-            Debug.Log(enemyState);
+            //Debug.Log(enemyState);
             if (attackCoolDownTimer > 0)
             {
                 attackCoolDownTimer -= Time.deltaTime;
@@ -153,7 +153,7 @@ public class EnemyMovementCharger : MonoBehaviour
     private void CheckForPlayer()
     {
         //checks if player is in sight
-        Debug.Log("check");
+        //Debug.Log("check");
         Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, playerDetectRange, playerLayer);
         if (hits.Length > 0)
         {
@@ -414,6 +414,11 @@ public class EnemyMovementCharger : MonoBehaviour
         ChangeState(EnemyState.Idle);
 
     }
+    public void StopAttack()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
 }
 
 

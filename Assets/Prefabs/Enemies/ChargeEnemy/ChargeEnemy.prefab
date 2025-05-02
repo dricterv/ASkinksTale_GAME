@@ -163,6 +163,7 @@ MonoBehaviour:
     m_Bits: 64
   knockBackForce: 0
   stunTime: 0
+  enemyMovementCharger: {fileID: 5540127235213568641}
   launchPoint: {fileID: 0}
   projectilePrefab: {fileID: 0}
   targetPlayer: 0

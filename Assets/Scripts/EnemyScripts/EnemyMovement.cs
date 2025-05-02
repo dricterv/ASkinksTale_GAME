@@ -57,7 +57,7 @@ public class EnemyMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
         facing = new Vector2(0, -1);
-        attackPoint.transform.localPosition = StatsManager.Instance.facing;
+        attackPoint.transform.localPosition = facing;
         changeDirTimer = changeDirMaxTime;
         waitDirTimer = waitDirTime;
     }
@@ -68,7 +68,7 @@ public class EnemyMovement : MonoBehaviour
         if (enemyState != EnemyState.KnockedBack)
         {
             CheckForPlayer();
-            // Debug.Log(enemyState);
+             Debug.Log(enemyState);
             // Debug.Log("x: " + transform.localPosition.x);
             // Debug.Log("y: " + transform.localPosition.y);
 
@@ -201,15 +201,15 @@ public class EnemyMovement : MonoBehaviour
         Vector2 direction = (player.position - transform.position).normalized;
         float hori = direction.x;
         float vert = direction.y;
-
+        Debug.Log(direction);
         if ((Mathf.Abs(hori) > Mathf.Abs(vert)) && isDirectional == true)
         {
             // Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
             facing = new Vector2(hori, 0).normalized;
             attackPoint.transform.localPosition = facing;
-            anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
-            anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
-            //Debug.Log(facing);
+            anim.SetFloat("xFacing", facing.x);
+            anim.SetFloat("yFacing", facing.y);
+            Debug.Log(facing);
             if (cardinalMovement == true)
             {
                 rb.velocity = facing * speed;
@@ -227,7 +227,7 @@ public class EnemyMovement : MonoBehaviour
             anim.SetFloat("yFacing", facing.y);
             attackPoint.transform.localPosition = facing;
             //Debug.Log("v: " + vert);
-            //Debug.Log(facing);
+            Debug.Log(facing);
             if (cardinalMovement == true)
             {
                 rb.velocity = facing * speed;
