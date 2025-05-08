@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7380294193609515778
 BoxCollider2D:
@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.20905781, y: 0.43979824}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a99cb698a5602b46a2ddadefced2dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraChangeMax: {x: -6, y: 10}
-  cameraChangeMin: {x: -4, y: 18}
-  playerChange: {x: 0, y: 3, z: 0}
+  cameraChangeMax: {x: 0, y: 0}
+  cameraChangeMin: {x: 0, y: 0}
+  playerChange: {x: 0, y: 0, z: 0}
+  enemiesEntry: []
+  enemiesExit: []

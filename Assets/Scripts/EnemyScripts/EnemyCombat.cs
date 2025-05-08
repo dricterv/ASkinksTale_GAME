@@ -127,10 +127,10 @@ public class EnemyCombat : MonoBehaviour
         
 
     }
-    public void Shoot(Vector2 direction)
+    public void Shoot(Vector2 direction, Transform t)
     {
 
-        Projectile projectile = Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity).GetComponent<Projectile>();
+        Projectile projectile = Instantiate(projectilePrefab, t.position, Quaternion.identity).GetComponent<Projectile>();
         projectile.direction = direction.normalized;
        // shootTimer = shootCooldown;
     }

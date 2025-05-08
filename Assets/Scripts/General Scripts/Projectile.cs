@@ -14,6 +14,10 @@ public class Projectile : MonoBehaviour
     public float knockBackForce;
     public float stunTime;
     public float knockBackTime;
+    public bool spawner = false;
+    public GameObject preFab;
+    public bool spinning = false;
+    public float spinSpeed;
 
     public LayerMask playerLayer;
 
@@ -28,12 +32,16 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
+        if (spinning == true)
+        {
+           // transform.rotation.z = transform.rotation.z * spinSpeed * Time.deltaTime;
+        }
     }
 
     private void RotateProjectile()
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
     }
 
     public void OnCollisionEnter2D(Collision2D coll)
@@ -87,6 +95,9 @@ public class Projectile : MonoBehaviour
         }
         else if(timer <= 0)
         {
+            
+            Instantiate(preFab, transform.position, new Quaternion(0, 0, 0, 0));
+            
             Destroy(gameObject);
         }
         

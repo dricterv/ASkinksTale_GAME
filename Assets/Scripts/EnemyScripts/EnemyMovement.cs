@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+
+    public enum Direction {Up, Down, Left, Right };
+    public Direction attackDirection;
     private EnemyState enemyState;
     private Animator anim;
+    private bool hasLineOfSight =  false;
 
     private Rigidbody2D rb;
     private Transform player;
@@ -23,6 +27,10 @@ public class EnemyMovement : MonoBehaviour
     public Transform detectionPoint;
     public LayerMask playerLayer;
     private EnemyCombat enemyCombat;
+    public Transform launchPointLeft;
+    public Transform launchPointRight;
+    public Transform launchPointUp;
+    public Transform launchPointDown;
 
 
     private bool isKnockedBack;
@@ -160,28 +168,51 @@ public class EnemyMovement : MonoBehaviour
         if (hits.Length > 0)
         {
             player = hits[0].transform;
-            //RaycastHit2D hit = Physics2D.Raycast(transform.position,  player.position - transform.position, playerDetectRange);
-            //if(hit.gameObject.tag == "Player")
-            //checks if player is in attack range and attack cd is ready
-            if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCoolDownTimer <= 0)
+            RaycastHit2D cast = Physics2D.Raycast(transform.position, player.transform.position - transform.position);
+            if (cast.collider != null)
             {
-                //Vector2 direction = (player.position - transform.position).normalized;
-                attackCoolDownTimer = attackCoolDown;
-                ChangeState(EnemyState.Attacking);
-                Debug.Log("atack");
+                hasLineOfSight = cast.collider.CompareTag("Player");
+                Debug.Log(cast.collider.gameObject.name);
+                if(hasLineOfSight == true)
+                {
+                    Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+                    //RaycastHit2D hit = Physics2D.Raycast(transform.position,  player.position - transform.position, playerDetectRange);
+                    //if(hit.gameObject.tag == "Player")
+                    //checks if player is in attack range and attack cd is ready
+                    if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCoolDownTimer <= 0)
+                    {
+                        //Vector2 direction = (player.position - transform.position).normalized;
+                        attackCoolDownTimer = attackCoolDown;
+                        ChangeState(EnemyState.Attacking);
+                        Debug.Log("atack");
 
-                StartCoroutine(AttackCD(atkTime, atkWaitTime));
+                       // StartCoroutine(AttackCD(atkTime, atkWaitTime));
+                    }
+                    /* else if (Mathf.Abs(this.transform.localPosition.x) >= (patrolLimitX - 1f) || Mathf.Abs(this.transform.localPosition.y) >= (patrolLimitY -1f))
+                     {
+                         rb.velocity = Vector2.zero;
+
+                     }*/
+                    else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking && (transform.position.x < patrolLimitMax.x && transform.position.x > patrolLimitMin.x && transform.position.y < patrolLimitMax.y && transform.position.y > patrolLimitMin.y))
+                    {
+                        ChangeState(EnemyState.Chasing);
+                        //Debug.Log("chase");
+
+                    }
+                }
+                else
+                {
+                    Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.red);
+                    //rb.velocity = Vector2.zero;
+                    // ChangeState(EnemyState.Idle);
+                    ChangeState(EnemyState.Patrolling);
+                }
             }
-           /* else if (Mathf.Abs(this.transform.localPosition.x) >= (patrolLimitX - 1f) || Mathf.Abs(this.transform.localPosition.y) >= (patrolLimitY -1f))
+            else
             {
-                rb.velocity = Vector2.zero;
-
-            }*/
-            else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking && (transform.position.x < patrolLimitMax.x && transform.position.x > patrolLimitMin.x && transform.position.y < patrolLimitMax.y && transform.position.y > patrolLimitMin.y))
-            {
-                ChangeState(EnemyState.Chasing);
-                //Debug.Log("chase");
-
+                //rb.velocity = Vector2.zero;
+                // ChangeState(EnemyState.Idle);
+                ChangeState(EnemyState.Patrolling);
             }
         }
         else
@@ -191,7 +222,16 @@ public class EnemyMovement : MonoBehaviour
             ChangeState(EnemyState.Patrolling);
         }
     }
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag != "Player")
+        {
+             changeDirTimer = 0;
+            
+        }
 
+        // Debug.Log("bump");
+    }
 
     public void Chase()
     {
@@ -408,7 +448,16 @@ public class EnemyMovement : MonoBehaviour
             {
                 // Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
                 facing = new Vector2(hori, 0).normalized;
-                attackPoint.transform.localPosition = facing;
+                if(hori > 0)
+                {
+                    attackPoint.transform.localPosition = launchPointRight.position;
+                }
+                else if(hori < 0 )
+                {
+                    attackPoint.transform.localPosition = launchPointLeft.position;
+
+                }
+
                 //Debug.Log(facing);
 
             }
@@ -416,20 +465,103 @@ public class EnemyMovement : MonoBehaviour
             {
                 //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
                 facing = new Vector2(0, vert).normalized;
-                attackPoint.transform.localPosition = facing;
+                if (vert > 0)
+                {
+                    attackPoint.transform.localPosition = launchPointUp.position;
+                }
+                else if (vert < 0)
+                {
+                    attackPoint.transform.localPosition = launchPointDown.position;
+
+                }
+
                 //Debug.Log("v: " + vert);
                 //Debug.Log(facing);
 
             }
             // enemyCombat.HandleAiming(direction);
-            enemyCombat.Shoot(direction);
+            //enemyCombat.Shoot(direction);
         }
         yield return new WaitForSeconds(wait);
 
 
         ChangeState(EnemyState.Idle);
     }
+    public void MeleeAttack()
+    {
+        rb.velocity = Vector2.zero;
+
+        enemyCombat.Attack();
+    }
+    public void RangedAttack(Direction attackDir)
+    {
+        Transform t = launchPointLeft;
+        rb.velocity = Vector2.zero;
+        Vector2 direction = (player.position - transform.position).normalized;
+        float hori = direction.x;
+        float vert = direction.y;
+        if ((Mathf.Abs(hori) > Mathf.Abs(vert)) && isDirectional == true)
+        {
+            // Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
+            facing = new Vector2(hori, 0).normalized;
+            if(attackDir == Direction.Left)
+            {
+               // t = launchPointLeft;
+            }
+            else if (attackDir == Direction.Right)
+            {
+                //t = launchPointRight;
+            }
+
+            //Debug.Log(facing);
+            //enemyCombat.Shoot(direction, t);
+        }
+        else if ((Mathf.Abs(vert) > Mathf.Abs(hori)) && isDirectional == true)
+        {
+            //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
+            facing = new Vector2(0, vert).normalized;
+
+            if (attackDir == Direction.Up)
+            {
+               // t = launchPointUp;
+            }
+            else if (attackDir == Direction.Down)
+            {
+              //  t = launchPointDown;
+            }
+            //Debug.Log("v: " + vert);
+            //Debug.Log(facing);
+            //enemyCombat.Shoot(direction, t);
+        }
+        if (facing == new Vector2(-1, 0))
+        {
+            t = launchPointLeft;
+
+        }
+        else if (facing == new Vector2(1, 0))
+        {
+            t = launchPointRight;
+        }
+        else if (facing == new Vector2(0, -1))
+        {
+            t = launchPointDown;
+        }
+        else if (facing == new Vector2(0, 1))
+        {
+            t = launchPointUp;
+        }
+        // enemyCombat.HandleAiming(direction);
+        enemyCombat.Shoot(direction, t);
+    }
+
+    public void EndAttack()
+    {
+        ChangeState(EnemyState.Idle);
+    }
+
+
 }
+
 
 
 
@@ -440,4 +572,6 @@ public enum EnemyState
     Attacking,
     KnockedBack,
     Patrolling,
+    AttackingTwo,
+    AttackingThree,
 }

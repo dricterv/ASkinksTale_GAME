@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5832527962960498680}
   - component: {fileID: 5832527962960498687}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DetectionPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5832527962960498685}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 1766381368472457781}
   - component: {fileID: 5674921737315464800}
   m_Layer: 7
-  m_Name: MeleeEnemy
+  m_Name: Numbat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ Transform:
   - {fileID: 5832527962263010843}
   - {fileID: 5832527963962681489}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &5832527963691505842
 CapsuleCollider2D:
@@ -217,8 +217,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: -0.12869525, y: 0}
+  m_Size: {x: 1.2573905, y: 2}
   m_Direction: 0
 --- !u!50 &5832527963691505841
 Rigidbody2D:
@@ -228,7 +228,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5832527963691505845}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -272,8 +272,8 @@ MonoBehaviour:
   changeDirMinTime: 1
   changeDirMaxTime: 2
   waitDirTime: 1
-  patrolLimitMax: {x: 16, y: -16}
-  patrolLimitMin: {x: -5, y: -30}
+  patrolLimitMax: {x: 16.8, y: -15.5}
+  patrolLimitMin: {x: -5.5, y: -30.4}
   patrolLimitX: 10
   patrolLimitY: 10
   patrolSpeed: 2

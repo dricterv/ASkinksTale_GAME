@@ -84,7 +84,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: a73fc451dd2bfd840a321dfd795e9613, type: 2}
+    m_Motion: {fileID: 7400000, guid: e4133da09eeb64642b0d78d4c8010e76, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
@@ -92,7 +92,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: e4133da09eeb64642b0d78d4c8010e76, type: 2}
+    m_Motion: {fileID: 7400000, guid: a73fc451dd2bfd840a321dfd795e9613, type: 2}
     m_Threshold: 0.33333334
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -432,7 +432,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MeleeEnemy
+  m_Name: Numbat
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Blend

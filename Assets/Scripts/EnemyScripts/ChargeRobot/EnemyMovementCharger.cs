@@ -6,6 +6,7 @@ public class EnemyMovementCharger : MonoBehaviour
 {
     private EnemyState enemyState;
     private Animator anim;
+    private bool hasLineOfSight = false;
 
     private Rigidbody2D rb;
     private Transform player;
@@ -158,26 +159,48 @@ public class EnemyMovementCharger : MonoBehaviour
         if (hits.Length > 0)
         {
             player = hits[0].transform;
-
-            //checks if player is in attack range and cd is ready
-            if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCoolDownTimer <= 0 && enemyState != EnemyState.Attacking)
+            RaycastHit2D cast = Physics2D.Raycast(transform.position, player.transform.position - transform.position);
+            if (cast.collider != null)
             {
-                direction = (player.position - transform.position).normalized;
-                attackCoolDownTimer = attackCoolDown;
-                  
-                anim.SetFloat("xFacing", direction.x);
-                ChangeState(EnemyState.Attacking);
-                rb.velocity = Vector2.zero;
-                //Debug.Log("atack");
-                //StartCoroutine(AttackWait(atkTime));
-                //StartCoroutine(AttackCD(atkTime, waitTime));
+                hasLineOfSight = cast.collider.CompareTag("Player");
+                Debug.Log(cast.collider.gameObject.name);
+                if (hasLineOfSight == true)
+                {
+                    Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+
+
+                    //checks if player is in attack range and cd is ready
+                    if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCoolDownTimer <= 0 && enemyState != EnemyState.Attacking)
+                    {
+                        direction = (player.position - transform.position).normalized;
+                        attackCoolDownTimer = attackCoolDown;
+
+                        anim.SetFloat("xFacing", direction.x);
+                        ChangeState(EnemyState.Attacking);
+                        rb.velocity = Vector2.zero;
+                        //Debug.Log("atack");
+                        //StartCoroutine(AttackWait(atkTime));
+                        //StartCoroutine(AttackCD(atkTime, waitTime));
+                    }
+
+                    else if (enemyState != EnemyState.Attacking && (transform.position.x < patrolLimitMax.x && transform.position.x > patrolLimitMin.x && transform.position.y < patrolLimitMax.y && transform.position.y > patrolLimitMin.y))
+                    {
+                        ChangeState(EnemyState.Chasing);
+                        //Debug.Log("chase");
+
+                    }
+                }
+                else
+                {
+                    //rb.velocity = Vector2.zero;
+                    ChangeState(EnemyState.Patrolling);
+                    Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.red);
+                }
             }
-
-            else if (enemyState != EnemyState.Attacking && (transform.position.x < patrolLimitMax.x && transform.position.x > patrolLimitMin.x && transform.position.y < patrolLimitMax.y && transform.position.y > patrolLimitMin.y))
+            else
             {
-                ChangeState(EnemyState.Chasing);
-                //Debug.Log("chase");
-
+                //rb.velocity = Vector2.zero;
+                ChangeState(EnemyState.Patrolling);
             }
         }
         else
