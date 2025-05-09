@@ -59,8 +59,11 @@ public class PlayerController : MonoBehaviour
         {
             
             Block();
-            
-            Grab();
+
+            if(playerState != PlayerState.Rolling && playerState != PlayerState.Blocking)
+            { 
+                Grab(); 
+            }
             if (Input.GetKeyDown(KeyCode.Space) && (Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false && playerState != PlayerState.Grabbing)
             {
                 //   Debug.Log("Roll?");
@@ -70,6 +73,7 @@ public class PlayerController : MonoBehaviour
             {
                 StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
                 StatsManager.Instance.lockFace = true;
+                StatsManager.Instance.blocking = false;
                 ChangeState(PlayerState.Attacking);
                 
             }
@@ -95,15 +99,78 @@ public class PlayerController : MonoBehaviour
          }
          else if(lockHori == true)
          {
-            ChangeState(PlayerState.Grabbing);
-            rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+            if(hori == 0)
+            {
+                ChangeState(PlayerState.Grabbing);
+                anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
+                rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+            }
+            else if (hori > 0)
+            {
+               
+                rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+                anim.SetFloat("xFacing", hori);
+                if(StatsManager.Instance.facing.x == 1)
+                {
+                    ChangeState(PlayerState.Pushing);
+                }
+                else if(StatsManager.Instance.facing.x == -1)
+                {
+                    ChangeState(PlayerState.Pulling);
+                }
+            }
+            else if (hori < 0)
+            {
+                rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+                anim.SetFloat("xFacing", hori);
+                if (StatsManager.Instance.facing.x == -1)
+                {
+                    ChangeState(PlayerState.Pushing);
+                }
+                else if (StatsManager.Instance.facing.x == 1)
+                {
+                    ChangeState(PlayerState.Pulling);
+                }
+            }
+           
             
          }
          else if (lockVert == true)
          {
-            ChangeState(PlayerState.Grabbing);
-            rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
-           
+            if (vert == 0)
+            {
+                ChangeState(PlayerState.Grabbing);
+                anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
+                rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
+            }
+            else if (vert > 0)
+            {
+
+                rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
+                anim.SetFloat("yFacing", vert);
+                if (StatsManager.Instance.facing.y == 1)
+                {
+                    ChangeState(PlayerState.Pushing);
+                }
+                else if (StatsManager.Instance.facing.y == -1)
+                {
+                    ChangeState(PlayerState.Pulling);
+                }
+            }
+            else if (vert < 0)
+            {
+                rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
+                anim.SetFloat("yFacing", vert);
+                if (StatsManager.Instance.facing.y == -1)
+                {
+                    ChangeState(PlayerState.Pushing);
+                }
+                else if (StatsManager.Instance.facing.y == 1)
+                {
+                    ChangeState(PlayerState.Pulling);
+                }
+            }
+
          }
          else if (hori > 0 || vert > 0 || hori < 0 || vert < 0)
          {
@@ -219,6 +286,7 @@ public class PlayerController : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.L)))
         {
+            // instead do if facing(x) xtriggerGO.grab(), return coll of 
             hit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
             if (hit.collider != null)
             {
@@ -280,7 +348,7 @@ public class PlayerController : MonoBehaviour
 
     public void Block()
     {
-        if (Input.GetKeyDown(KeyCode.K) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Attacking)
+        if (Input.GetKeyDown(KeyCode.K) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing)
         {
             StatsManager.Instance.blocking = true;
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
@@ -289,7 +357,7 @@ public class PlayerController : MonoBehaviour
             
 
         }
-        if (Input.GetKey(KeyCode.K) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Attacking)
+        if (Input.GetKey(KeyCode.K) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing )
         {
 
 
@@ -310,23 +378,26 @@ public class PlayerController : MonoBehaviour
     public void EndAttack()
     {
         StatsManager.Instance.lockFace = false;
+        StatsManager.Instance.blocking = false;
+       
         ChangeState(PlayerState.Idle);
     }
 
     IEnumerator RollTimer( )
     {
-       // Debug.Log("Roll Timer S");
-
         yield return new WaitForSeconds(StatsManager.Instance.rollTime);
-        
         StatsManager.Instance.lockFace = false;
-
         isRolling = false;
-        //Facing();
         //Debug.Log("Roll Timer F");
         //this is only for visualisation of rolling
-        //spriteGO.transform.eulerAngles = new Vector3(0, 0, 0);
 
+    }
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if(coll.gameObject.tag == "Pushable")
+        {
+
+        }
     }
   
     public void ChangeState(PlayerState newState)
@@ -355,6 +426,18 @@ public class PlayerController : MonoBehaviour
         else if (playerState == PlayerState.Grabbing)
         {
             anim.SetBool("isGrabbing", false);
+        }
+        else if (playerState == PlayerState.Torching)
+        {
+            anim.SetBool("isTorching", false);
+        }
+        else if (playerState == PlayerState.Pushing)
+        {
+            anim.SetBool("isPushing", false);
+        }
+        else if (playerState == PlayerState.Pulling)
+        {
+            anim.SetBool("isPulling", false);
         }
 
         //update current state
@@ -387,8 +470,21 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isGrabbing", true);
         }
+        else if (playerState == PlayerState.Torching)
+        {
+            anim.SetBool("isTorching", true);
+        }
+        else if (playerState == PlayerState.Pushing)
+        {
+            anim.SetBool("isPushing", true);
+        }
+        else if (playerState == PlayerState.Pulling)
+        {
+            anim.SetBool("isPulling", true);
+        }
 
     }
+    
 }
 public enum PlayerState
 {
@@ -399,4 +495,7 @@ public enum PlayerState
     Blocking,
     Rolling,
     Grabbing,
+    Pushing,
+    Pulling,
+    Torching,
 }

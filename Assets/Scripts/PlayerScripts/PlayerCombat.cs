@@ -64,11 +64,7 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    public void FinishAttacking()
-    {
-        anim.SetBool("IsAttacking", false);
-
-    }
+   
     /*
     private void OnDrawGizmosSelected()
     {

@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveObject : MonoBehaviour
+public class Torch : MonoBehaviour
 {
-    public float grabDist = 1;
-    public LayerMask pushableLayer;
-    private RaycastHit2D hit;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-
+        
     }
 }

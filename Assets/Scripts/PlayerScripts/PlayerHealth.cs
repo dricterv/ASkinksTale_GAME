@@ -10,10 +10,12 @@ public class PlayerHealth : MonoBehaviour
     public PlayerController playerController;
     public float invulnTimer;
     private float timer;
+    public SpriteRenderer playerSpriteRenderer;
 
 
     private void Start()
     {
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
         healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;
     }
     private void Update()
@@ -24,7 +26,15 @@ public class PlayerHealth : MonoBehaviour
            // Debug.Log(timer);
         }
     }
+    IEnumerator DamageColour()
+    {
+        // Debug.Log("Roll Timer S");
+        playerSpriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        playerSpriteRenderer.color = Color.white;
 
+
+    }
     public void ChangeHealth(int amount)
     {
         if (((playerController.isRolling == false || amount > 0) && timer <= 0))
@@ -33,6 +43,10 @@ public class PlayerHealth : MonoBehaviour
             StatsManager.Instance.currentHealth += amount;
             timer = invulnTimer;
             Debug.Log("dmg: " + amount);
+            if(amount < 0)
+            {
+                StartCoroutine(DamageColour());
+            }
         }
         else
         {

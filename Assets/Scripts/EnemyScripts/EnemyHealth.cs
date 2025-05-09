@@ -7,6 +7,8 @@ public class EnemyHealth : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
     public Vector2 spawn;
+    public SpriteRenderer enemySpriteRenderer;
+
     public RoomTransition entry;
     public RoomTransition exit;
 
@@ -15,12 +17,26 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-    }
+        enemySpriteRenderer = GetComponent<SpriteRenderer>();
 
+    }
+    IEnumerator DamageColour()
+    {
+        // Debug.Log("Roll Timer S");
+        enemySpriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        enemySpriteRenderer.color = Color.white;
+
+
+    }
     public void ChangeHealth(int amount)
     {
         currentHealth += amount;
+        if(amount < 0)
+        {
+            StartCoroutine(DamageColour());
 
+        }
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
