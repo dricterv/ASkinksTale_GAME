@@ -69504,6 +69504,22 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1212038632432750812, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615169784046578008, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4637201217703876782, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739799379352469583, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7937786303517704082, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
       propertyPath: healthText
       value: 

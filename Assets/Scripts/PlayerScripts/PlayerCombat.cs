@@ -41,6 +41,10 @@ public class PlayerCombat : MonoBehaviour
             DealDamage();
         }
     }
+    private void OnTriggerEnter(Collider coll) 
+    {
+        coll.GetComponent<EnemyHealth>().ChangeHealth(-StatsManager.Instance.damage);
+    }
     public void DealDamage()
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, StatsManager.Instance.weaponRange, enemyLayer);
