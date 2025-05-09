@@ -28,8 +28,8 @@ public class EnemyHealth : MonoBehaviour
         }
         else if (currentHealth <= 0)
         {
-            entry.RemoveEntry(this.gameObject);
-            exit.RemoveExit(this.gameObject);
+           // entry.RemoveEntry(this.gameObject);
+            //exit.RemoveExit(this.gameObject);
             Destroy(gameObject);
         }
     }

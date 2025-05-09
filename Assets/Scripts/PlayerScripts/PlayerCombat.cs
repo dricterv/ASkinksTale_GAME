@@ -41,9 +41,15 @@ public class PlayerCombat : MonoBehaviour
             DealDamage();
         }
     }
-    private void OnTriggerEnter(Collider coll) 
+    public void OnTriggerEnter2D(Collider2D coll) 
     {
-        coll.GetComponent<EnemyHealth>().ChangeHealth(-StatsManager.Instance.damage);
+        Debug.Log(coll.gameObject.name); 
+
+        if(coll.gameObject.tag == "Enemy")
+        {
+            coll.GetComponent<EnemyHealth>().ChangeHealth(-StatsManager.Instance.damage);
+
+        }
     }
     public void DealDamage()
     {

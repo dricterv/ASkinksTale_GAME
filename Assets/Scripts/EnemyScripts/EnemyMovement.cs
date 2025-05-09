@@ -76,7 +76,7 @@ public class EnemyMovement : MonoBehaviour
         if (enemyState != EnemyState.KnockedBack)
         {
             CheckForPlayer();
-             Debug.Log(enemyState);
+            // Debug.Log(enemyState);
             // Debug.Log("x: " + transform.localPosition.x);
             // Debug.Log("y: " + transform.localPosition.y);
 
@@ -172,7 +172,7 @@ public class EnemyMovement : MonoBehaviour
             if (cast.collider != null)
             {
                 hasLineOfSight = cast.collider.CompareTag("Player");
-                Debug.Log(cast.collider.gameObject.name);
+                //Debug.Log(cast.collider.gameObject.name);
                 if(hasLineOfSight == true)
                 {
                     Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
@@ -184,7 +184,7 @@ public class EnemyMovement : MonoBehaviour
                         //Vector2 direction = (player.position - transform.position).normalized;
                         attackCoolDownTimer = attackCoolDown;
                         ChangeState(EnemyState.Attacking);
-                        Debug.Log("atack");
+                       // Debug.Log("atack");
 
                        // StartCoroutine(AttackCD(atkTime, atkWaitTime));
                     }
@@ -241,7 +241,7 @@ public class EnemyMovement : MonoBehaviour
         Vector2 direction = (player.position - transform.position).normalized;
         float hori = direction.x;
         float vert = direction.y;
-        Debug.Log(direction);
+        //Debug.Log(direction);
         if ((Mathf.Abs(hori) > Mathf.Abs(vert)) && isDirectional == true)
         {
             // Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
@@ -249,7 +249,7 @@ public class EnemyMovement : MonoBehaviour
             attackPoint.transform.localPosition = facing;
             anim.SetFloat("xFacing", facing.x);
             anim.SetFloat("yFacing", facing.y);
-            Debug.Log(facing);
+           // Debug.Log(facing);
             if (cardinalMovement == true)
             {
                 rb.velocity = facing * speed;
@@ -267,7 +267,7 @@ public class EnemyMovement : MonoBehaviour
             anim.SetFloat("yFacing", facing.y);
             attackPoint.transform.localPosition = facing;
             //Debug.Log("v: " + vert);
-            Debug.Log(facing);
+           // Debug.Log(facing);
             if (cardinalMovement == true)
             {
                 rb.velocity = facing * speed;
