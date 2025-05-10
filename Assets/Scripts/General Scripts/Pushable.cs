@@ -12,7 +12,7 @@ public class Pushable : MonoBehaviour
     public GameObject playerGO;
     public Collider2D kinCol;
     public Collider2D dynCol;
-
+    public PlayerController playerController;
 
 
     //StatsManager.Instance.facing
@@ -78,35 +78,59 @@ public class Pushable : MonoBehaviour
         }
     }
 
-    /*
-    private void OnCollisionEnter2D(Collision2D coll)
+    
+    private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Player")
+        Debug.Log("push: " + coll.gameObject.name);
+        if (coll.gameObject.tag == "Grab")
         {
-            
+            playerController.ChangeState(PlayerState.Grabbing);
+
+            //StatsManager.Instance.lockFace = true;
+            // hit.collider.gameObject.GetComponent<Pushable>().StartPush();
+            if (lockX == true)
+            {
+                if (StatsManager.Instance.facing == new Vector2(0, -1) || StatsManager.Instance.facing == new Vector2(0, 1))
+                {
+                    StatsManager.Instance.lockFace = true;
+                    StatsManager.Instance.lockVert = true;
+                    StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
+                    StartPush();
+                }
+                else if (lockY == true)
+                {
+                    if (StatsManager.Instance.facing == new Vector2(-1, 0) || StatsManager.Instance.facing == new Vector2(1, 0))
+                    {
+                        StatsManager.Instance.lockFace = true;
+                        StatsManager.Instance.lockHori = true;
+                        StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
+                        StartPush();
+                    }
+                }
+            }
+
+            else if (lockY == true)
+            {
+                if (StatsManager.Instance.facing == new Vector2(-1, 0) || StatsManager.Instance.facing == new Vector2(1, 0))
+                {
+                    StatsManager.Instance.lockFace = true;
+                    StatsManager.Instance.lockHori = true;
+                    StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
+                    StartPush();
+                }
+
+            }
         }
     } 
 
-    void OnCollisionStay2D(Collision2D coll)
+    
+    
+    void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Player" && (Input.GetKey(KeyCode.L)))
+        if (coll.gameObject.tag == "Grab")
         {
-            rb.velocity = coll.gameObject.transform.position.normalized;
-            Debug.Log("touch");
-            
-        }
-        else
-        {
-            rb.velocity = Vector2.zero;
+            EndPush();
         }
     }
     
-    void OnCollisionExit2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            rb.velocity = Vector2.zero;
-        }
-    }
-    */
 }

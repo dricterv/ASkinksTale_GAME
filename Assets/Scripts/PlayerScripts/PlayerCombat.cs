@@ -43,7 +43,7 @@ public class PlayerCombat : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D coll) 
     {
-        Debug.Log(coll.gameObject.name); 
+        //Debug.Log(coll.gameObject.name); 
 
         if(coll.gameObject.tag == "Enemy")
         {
@@ -63,6 +63,7 @@ public class PlayerCombat : MonoBehaviour
 
         }
     }
+
 
    
     /*

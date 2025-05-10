@@ -11,15 +11,15 @@ public class PlayerController : MonoBehaviour
     //public float rollTime;
     public GameObject spriteGO;
     public GameObject attackPoint;
-    
 
-    
+
+
     public bool isRolling;
 
     private float hori;
     private float vert;
-    private bool lockVert;
-    private bool lockHori;
+    //private bool lockVert;
+    //private bool lockHori;
 
     [Header("Grabbing")]
     public float grabDist = 1;
@@ -29,16 +29,23 @@ public class PlayerController : MonoBehaviour
     public bool blocking;
     private Animator anim;
     private PlayerState playerState;
+    public Collider2D grabLeft;
+    public Collider2D grabRight;
+    public Collider2D grabUp;
+    public Collider2D grabDown;
+    public Transform grabPoints;
+
 
     //private Vector2 facing = new Vector2();
-    
+
 
     void Start()
     {
         anim = GetComponent<Animator>();
         blocking = false;
         isRolling = false;
-       
+        StatsManager.Instance.lockHori = false;
+        StatsManager.Instance.lockVert = false;
 
         StatsManager.Instance.facing = new Vector2(0, -1);
         StatsManager.Instance.lockFace = false;
@@ -51,6 +58,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
             Move();
+        grabPoints.position = transform.position;
     }
     void Update()
     {
@@ -97,20 +105,23 @@ public class PlayerController : MonoBehaviour
          {
             rb.velocity = Vector2.zero;
          }
-         else if(lockHori == true)
+         else if(StatsManager.Instance.lockHori == true)
          {
             if(hori == 0)
             {
                 ChangeState(PlayerState.Grabbing);
                 anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
+                anim.SetFloat("yFacing", 0);
+
                 rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
             }
             else if (hori > 0)
             {
                
                 rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
-                anim.SetFloat("xFacing", hori);
-                if(StatsManager.Instance.facing.x == 1)
+                
+
+                if (StatsManager.Instance.facing.x == 1)
                 {
                     ChangeState(PlayerState.Pushing);
                 }
@@ -122,7 +133,8 @@ public class PlayerController : MonoBehaviour
             else if (hori < 0)
             {
                 rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
-                anim.SetFloat("xFacing", hori);
+                
+
                 if (StatsManager.Instance.facing.x == -1)
                 {
                     ChangeState(PlayerState.Pushing);
@@ -135,19 +147,22 @@ public class PlayerController : MonoBehaviour
            
             
          }
-         else if (lockVert == true)
+         else if (StatsManager.Instance.lockVert == true)
          {
             if (vert == 0)
             {
                 ChangeState(PlayerState.Grabbing);
                 anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
+                anim.SetFloat("xFacing", 0);
+
                 rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
             }
             else if (vert > 0)
             {
 
                 rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
-                anim.SetFloat("yFacing", vert);
+                
+
                 if (StatsManager.Instance.facing.y == 1)
                 {
                     ChangeState(PlayerState.Pushing);
@@ -160,7 +175,8 @@ public class PlayerController : MonoBehaviour
             else if (vert < 0)
             {
                 rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
-                anim.SetFloat("yFacing", vert);
+                
+
                 if (StatsManager.Instance.facing.y == -1)
                 {
                     ChangeState(PlayerState.Pushing);
@@ -221,10 +237,25 @@ public class PlayerController : MonoBehaviour
              {
                  StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
                  attackPoint.transform.localPosition = StatsManager.Instance.facing;
-                anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
-                anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
+                if (StatsManager.Instance.lockVert == true)
+                {
+                    anim.SetFloat("xFacing", 0);
+                    anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
+                }
+                else if (StatsManager.Instance.lockHori == true)
+                {
+                    anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
+                    anim.SetFloat("yFacing", 0);
+                }
+                else
+                {
+                    anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
+                    anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
+                }
+                
+                
 
-             }
+            }
              // StatsManager.Instance.facing = new Vector2(hori, 0);
              // attackPoint.transform.localPosition = StatsManager.Instance.facing;
 
@@ -242,12 +273,25 @@ public class PlayerController : MonoBehaviour
              {
                  StatsManager.Instance.facing = StatsManager.Instance.lockFacing;
                  attackPoint.transform.localPosition = StatsManager.Instance.facing;
-                anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
-                anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
+                if (StatsManager.Instance.lockVert == true)
+                {
+                    anim.SetFloat("xFacing", 0);
+                    anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
+                }
+                else if (StatsManager.Instance.lockHori == true)
+                {
+                    anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
+                    anim.SetFloat("yFacing", 0);
+                }
+                else
+                {
+                    anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
+                    anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
+                }
 
 
 
-             }
+            }
              //Debug.Log(Mathf.Abs(vert) + " : " + (hori - .1f));
              // StatsManager.Instance.facing = new Vector2(0, vert);
              //attackPoint.transform.localPosition = StatsManager.Instance.facing;
@@ -286,8 +330,24 @@ public class PlayerController : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.L)))
         {
+            if(StatsManager.Instance.facing == new Vector2(0, -1))
+            {
+                grabDown.enabled = true;
+            }
+            if (StatsManager.Instance.facing == new Vector2(0, 1))
+            {
+                grabUp.enabled = true;
+            }
+            if (StatsManager.Instance.facing == new Vector2(-1, 0))
+            {
+                grabLeft.enabled = true;
+            }
+            if (StatsManager.Instance.facing == new Vector2(1, 0))
+            {
+                grabRight.enabled = true;
+            }
             // instead do if facing(x) xtriggerGO.grab(), return coll of 
-            hit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
+           /* hit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
             if (hit.collider != null)
             {
                 ChangeState(PlayerState.Grabbing);
@@ -299,7 +359,7 @@ public class PlayerController : MonoBehaviour
                     if(StatsManager.Instance.facing == new Vector2(0, -1) || StatsManager.Instance.facing == new Vector2(0, 1))
                     {
                         StatsManager.Instance.lockFace = true;
-                        lockVert = true;
+                        StatsManager.Instance.lockVert = true;
                         StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
                         hit.collider.gameObject.GetComponent<Pushable>().StartPush();
                     }
@@ -308,7 +368,7 @@ public class PlayerController : MonoBehaviour
                         if (StatsManager.Instance.facing == new Vector2(-1, 0) || StatsManager.Instance.facing == new Vector2(1, 0))
                         {
                             StatsManager.Instance.lockFace = true;
-                            lockHori = true;
+                            StatsManager.Instance.lockHori = true;
                             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
                             hit.collider.gameObject.GetComponent<Pushable>().StartPush();
                         }
@@ -320,7 +380,7 @@ public class PlayerController : MonoBehaviour
                     if (StatsManager.Instance.facing == new Vector2(-1, 0) || StatsManager.Instance.facing == new Vector2(1, 0))
                     {
                         StatsManager.Instance.lockFace = true;
-                        lockHori = true;
+                        StatsManager.Instance.lockHori = true;
                         StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
                         hit.collider.gameObject.GetComponent<Pushable>().StartPush();
                     }
@@ -329,18 +389,21 @@ public class PlayerController : MonoBehaviour
                 }
                
 
-            }
+            }*/
 
         }
         if ((Input.GetKeyUp(KeyCode.L)))
         {
-
-            if (hit.collider != null)
+            grabLeft.enabled = false;
+            grabRight.enabled = false;
+            grabUp.enabled = false;
+            grabDown.enabled = false;
+           /* if (hit.collider != null)
             {
                 hit.collider.gameObject.GetComponent<Pushable>().EndPush();
-            }
-            lockHori= false;
-            lockVert = false;
+            }*/
+            StatsManager.Instance.lockHori = false;
+            StatsManager.Instance.lockVert = false;
             
             StatsManager.Instance.lockFace = false;
         }

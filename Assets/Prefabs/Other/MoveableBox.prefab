@@ -114,7 +114,7 @@ Transform:
   m_Children:
   - {fileID: 7876014565193750381}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7876014565766802483
 SpriteRenderer:
@@ -234,3 +234,4 @@ MonoBehaviour:
   playerGO: {fileID: 0}
   kinCol: {fileID: 7876014565193750383}
   dynCol: {fileID: 7876014565766802482}
+  playerController: {fileID: 0}
