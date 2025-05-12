@@ -82,7 +82,7 @@ public class Pushable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D coll)
     {
         Debug.Log("push: " + coll.gameObject.name);
-        if (coll.gameObject.tag == "Grab")
+        if (coll.gameObject.tag == "Grab" && isPushable == true)
         {
             playerController.ChangeState(PlayerState.Grabbing);
 

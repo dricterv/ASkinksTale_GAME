@@ -11,13 +11,15 @@ public class PlayerController : MonoBehaviour
     //public float rollTime;
     public GameObject spriteGO;
     public GameObject attackPoint;
-
+    public Torch torch;
+    private bool isTorching;
 
 
     public bool isRolling;
 
     private float hori;
     private float vert;
+
     //private bool lockVert;
     //private bool lockHori;
 
@@ -42,11 +44,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        blocking = false;
         isRolling = false;
+        isTorching = false;
         StatsManager.Instance.lockHori = false;
         StatsManager.Instance.lockVert = false;
-
+        torch = GetComponent<Torch>();
         StatsManager.Instance.facing = new Vector2(0, -1);
         StatsManager.Instance.lockFace = false;
         attackPoint.transform.localPosition = StatsManager.Instance.facing;
@@ -70,7 +72,8 @@ public class PlayerController : MonoBehaviour
 
             if(playerState != PlayerState.Rolling && playerState != PlayerState.Blocking)
             { 
-                Grab(); 
+                Grab();
+                UseTorch();
             }
             if (Input.GetKeyDown(KeyCode.Space) && (Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false && playerState != PlayerState.Grabbing)
             {
@@ -195,6 +198,11 @@ public class PlayerController : MonoBehaviour
                 ChangeState(PlayerState.Blocking);
                 rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed;
             }
+            else if (isTorching == true)
+            {
+                ChangeState(PlayerState.Torching);
+                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed;
+            }
             else
             {
                 ChangeState(PlayerState.Walking);
@@ -207,6 +215,11 @@ public class PlayerController : MonoBehaviour
             if (StatsManager.Instance.blocking == true)
             {
                 ChangeState(PlayerState.Blocking);
+                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed;
+            }
+            else if (isTorching == true)
+            {
+                ChangeState(PlayerState.Torching);
                 rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed;
             }
             else
@@ -417,12 +430,14 @@ public class PlayerController : MonoBehaviour
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
             //if(StatsManager.Instance.lockFacing =)
             StatsManager.Instance.lockFace = true;
-            
+            isTorching = false;
+
 
         }
         if (Input.GetKey(KeyCode.K) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing )
         {
 
+            isTorching = false;
 
             StatsManager.Instance.blocking = true;
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
@@ -455,6 +470,37 @@ public class PlayerController : MonoBehaviour
         //this is only for visualisation of rolling
 
     }
+
+    private void UseTorch()
+    {
+       if(Input.GetKeyDown(KeyCode.I) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing)
+       {
+            torch.LightOnFire();
+            isTorching = true;
+            StatsManager.Instance.blocking = false;
+
+            StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
+            StatsManager.Instance.lockFace = true;
+        }
+       if (Input.GetKey(KeyCode.I) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing)
+       {
+            torch.LightOnFire();
+            isTorching = true;
+            StatsManager.Instance.blocking = false;
+
+
+            StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
+            StatsManager.Instance.lockFace = true;
+        }
+       if (Input.GetKeyUp(KeyCode.I))
+       {
+            isTorching = false;
+
+            StatsManager.Instance.lockFace = false;
+
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D coll)
     {
         if(coll.gameObject.tag == "Pushable")
