@@ -193,6 +193,7 @@ public class TermiteQueenCombat : MonoBehaviour
     {
         ChangeState(EnemyState.Idle);
     }
+    /*
     private void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Player")
@@ -231,7 +232,7 @@ public class TermiteQueenCombat : MonoBehaviour
 
         }
 
-    }
+    }*/
 
     public void Shoot()
     {

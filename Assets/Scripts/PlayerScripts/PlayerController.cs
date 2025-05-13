@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     //public float rollTime;
     public GameObject spriteGO;
     public GameObject attackPoint;
-    public Torch torch;
+    private Torch torch;
     private bool isTorching;
 
 
@@ -73,7 +73,11 @@ public class PlayerController : MonoBehaviour
             if(playerState != PlayerState.Rolling && playerState != PlayerState.Blocking)
             { 
                 Grab();
-                UseTorch();
+                if(torch.enabled == true)
+                {
+                    UseTorch();
+
+                }
             }
             if (Input.GetKeyDown(KeyCode.Space) && (Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false && playerState != PlayerState.Grabbing)
             {

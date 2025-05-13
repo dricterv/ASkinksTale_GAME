@@ -44,7 +44,7 @@ public class Torch : MonoBehaviour
             flamePoint = pointRight;
         }
 
-        Debug.Log("Torch");
+        //Debug.Log("Torch");
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(flamePoint.position, torchHeadRange, flamableLayer);
         if (hits.Length > 0)
@@ -56,5 +56,6 @@ public class Torch : MonoBehaviour
             }
         }
     }
+   
 
 }

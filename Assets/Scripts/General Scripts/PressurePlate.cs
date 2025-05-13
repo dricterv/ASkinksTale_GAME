@@ -7,16 +7,23 @@ public class PressurePlate : MonoBehaviour
     public float goDetectRange = 0.3f;
     public float playerDetectRange = 0.5f;
     public Transform playerFeet;
-
+    public SpriteRenderer pressurePlateSpriteRenderer;
+    public Sprite upSprite;
+    public Sprite downSprite;
     public GameObject toggle;
     public bool playerActivated;
     public bool pushableActivated;
     public bool turnOn;
     public bool oneTime;
     private bool down;
+    public NumberCounter counter;
+    public Flamable flame;
+    public bool torchOn;
 
-
-
+    void Start()
+    {
+        pressurePlateSpriteRenderer.sprite = upSprite;
+    }
 
     public void OnTriggerStay2D(Collider2D coll)
     {
@@ -30,8 +37,9 @@ public class PressurePlate : MonoBehaviour
             if (distance <= goDetectRange)
             {
                 Debug.Log("Down");
-                if(toggle.activeSelf == true)
+                if(toggle != null && toggle.activeSelf == true)
                 {
+                    pressurePlateSpriteRenderer.sprite = downSprite;
                     toggle.SetActive(false);
                     down = true;
                 }
@@ -41,6 +49,7 @@ public class PressurePlate : MonoBehaviour
             {
                 if (toggle.activeSelf == false)
                 {
+                    pressurePlateSpriteRenderer.sprite = upSprite;
                     toggle.SetActive(true);
                     Debug.Log("Up");
                     down = false;
@@ -57,22 +66,52 @@ public class PressurePlate : MonoBehaviour
             {
                 if(playerFeet.position.y <= transform.position.y + playerDetectRange && playerFeet.position.y >= transform.position.y - playerDetectRange)
                 {
-                    if (toggle.activeSelf == true && turnOn == false)
+                    if (turnOn == false)
                     {
-                        toggle.SetActive(false);
+                        if (counter != null)
+                        {
+                            counter.AddToCount(1);
+                            Debug.Log("counter up");
+                        }
+                        if (toggle != null && toggle.activeSelf == true)
+                        {
+                            toggle.SetActive(false);
+                        }
+                        if (flame != null && torchOn == true)
+                        {
+                            flame.SetOnFire();
+                        }
                         Debug.Log("Down");
-                        Debug.Log("Player: " + playerFeet.position);
-                        Debug.Log("this: " + transform.position);
-                        Debug.Log("posx: " + playerFeet.position.x + " < " + (transform.position.x + playerDetectRange));
-                        Debug.Log("negx: " + playerFeet.position.x + " > " + (transform.position.x - playerDetectRange));
-                        Debug.Log("posy: " + playerFeet.position.y + " < " + (transform.position.y + playerDetectRange));
-                        Debug.Log("negy: " + playerFeet.position.y + " > " + (transform.position.y - playerDetectRange));
+                        pressurePlateSpriteRenderer.sprite = downSprite;
+                        down = true;
+                      //  Debug.Log("Player: " + playerFeet.position);
+                       // Debug.Log("this: " + transform.position);
+                       // Debug.Log("posx: " + playerFeet.position.x + " < " + (transform.position.x + playerDetectRange));
+                       // Debug.Log("negx: " + playerFeet.position.x + " > " + (transform.position.x - playerDetectRange));
+                       // Debug.Log("posy: " + playerFeet.position.y + " < " + (transform.position.y + playerDetectRange));
+                       // Debug.Log("negy: " + playerFeet.position.y + " > " + (transform.position.y - playerDetectRange));
 
 
                     }
-                    else if (toggle.activeSelf == false && turnOn == true)
+                    else if (turnOn == true)
                     {
-                        toggle.SetActive(true);
+                        if(counter != null)
+                        {
+                            counter.AddToCount(1);
+
+                        }
+                        if(toggle != null && toggle.activeSelf == false)
+                        {
+                            toggle.SetActive(true);
+                        }
+                        if (flame != null && torchOn == true)
+                        {
+                            flame.SetOnFire();
+                        }
+                        down = true;
+
+
+                        pressurePlateSpriteRenderer.sprite = downSprite;
                     }
                 }
                 else if (oneTime == false)
@@ -83,14 +122,41 @@ public class PressurePlate : MonoBehaviour
                     {
                         Debug.Log("2");
 
-                        if (toggle.activeSelf == false && turnOn == false)
+                        if (turnOn == false)
                         {
-                            toggle.SetActive(true);
+                            pressurePlateSpriteRenderer.sprite = upSprite;
+                            if (toggle != null && toggle.activeSelf == false )
+                            {
+                                toggle.SetActive(true);
+                            }
+                            if (counter != null)
+                            {
+                                counter.AddToCount(-1);
+
+                            }
+                            if (flame != null && torchOn == true)
+                            {
+                                flame.FireOff();
+                            }
+
                             Debug.Log("Up");
                         }
-                        else if (toggle.activeSelf == true && turnOn == true)
+                        else if (turnOn == true)
                         {
-                            toggle.SetActive(true);
+                            pressurePlateSpriteRenderer.sprite = upSprite;
+                            if (toggle != null && toggle.activeSelf == true)
+                            {
+                                toggle.SetActive(true);
+                            }
+                            if (counter != null)
+                            {
+                                counter.AddToCount(-1);
+
+                            }
+                            if (flame != null && torchOn == true)
+                            {
+                                flame.FireOff();
+                            }
                             Debug.Log("Up");
                         }
                     }
@@ -105,15 +171,38 @@ public class PressurePlate : MonoBehaviour
                 {
                     Debug.Log("2");
 
-                    if (toggle.activeSelf == false && turnOn == false)
+                    if (turnOn == false)
                     {
-                        toggle.SetActive(true);
-                        Debug.Log("Up");
+                        if (toggle != null && toggle.activeSelf == false)
+                        {
+                            toggle.SetActive(true);
+                        }
+                        if (counter != null)
+                        {
+                            counter.AddToCount(-1);
+
+                        }
+                        if (flame != null && torchOn == true)
+                        {
+                            flame.FireOff();
+                        }
                     }
-                    else if (toggle.activeSelf == true && turnOn == true)
+                    else if (turnOn == true)
                     {
-                        toggle.SetActive(true);
-                        Debug.Log("Up");
+                        pressurePlateSpriteRenderer.sprite = upSprite;
+                        if (toggle != null && toggle.activeSelf == true)
+                        {
+                            toggle.SetActive(true);
+                        }
+                        if (counter != null)
+                        {
+                            counter.AddToCount(-1);
+
+                        }
+                        if (flame != null && torchOn == true)
+                        {
+                            flame.FireOff();
+                        }
                     }
                 }
             }
