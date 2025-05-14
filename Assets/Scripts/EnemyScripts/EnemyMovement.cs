@@ -68,6 +68,7 @@ public class EnemyMovement : MonoBehaviour
         attackPoint.transform.localPosition = facing;
         changeDirTimer = changeDirMaxTime;
         waitDirTimer = waitDirTime;
+        ChangeDirection();
     }
     
     // Update is called once per frameif (isKnockedBack == false)
@@ -88,7 +89,7 @@ public class EnemyMovement : MonoBehaviour
 
             if (enemyState == EnemyState.Chasing && enemyState != EnemyState.KnockedBack )
             {
-                if (transform.position.x < patrolLimitMax.x && transform.position.x > patrolLimitMin.x && transform.position.y < patrolLimitMax.y && transform.position.y > patrolLimitMin.y)
+                if (transform.localPosition.x < patrolLimitMax.x && transform.localPosition.x > patrolLimitMin.x && transform.localPosition.y < patrolLimitMax.y && transform.localPosition.y > patrolLimitMin.y)
                 {
                     Chase();
                 }
@@ -109,7 +110,7 @@ public class EnemyMovement : MonoBehaviour
                 {
                     changeDirTimer -= Time.deltaTime;
                     Vector2 direc = moveDirections[currentMoveDirection];
-                    if (transform.position.x > patrolLimitMax.x || transform.position.x < patrolLimitMin.x || transform.position.y > patrolLimitMax.y || transform.position.y < patrolLimitMin.y)
+                    if (transform.localPosition.x > patrolLimitMax.x || transform.localPosition.x < patrolLimitMin.x || transform.localPosition.y > patrolLimitMax.y || transform.localPosition.y < patrolLimitMin.y)
                     {
                         changeDirTimer = 0;
 
@@ -121,7 +122,7 @@ public class EnemyMovement : MonoBehaviour
                 else if (changeDirTimer <= 0)
                 {
                     //rb.velocity = Vector2D.zero;
-                    if (transform.position.x > patrolLimitMax.x || transform.position.x < patrolLimitMin.x || transform.position.y > patrolLimitMax.y || transform.position.y < patrolLimitMin.y)
+                    if (transform.localPosition.x > patrolLimitMax.x || transform.localPosition.x < patrolLimitMin.x || transform.localPosition.y > patrolLimitMax.y || transform.localPosition.y < patrolLimitMin.y)
                     {
                         //changeDirTimer = 0;
                         Vector2 direc = -moveDirections[currentMoveDirection];
@@ -193,7 +194,7 @@ public class EnemyMovement : MonoBehaviour
                          rb.velocity = Vector2.zero;
 
                      }*/
-                    else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking && (transform.position.x < patrolLimitMax.x && transform.position.x > patrolLimitMin.x && transform.position.y < patrolLimitMax.y && transform.position.y > patrolLimitMin.y))
+                    else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking && (transform.localPosition.x < patrolLimitMax.x && transform.localPosition.x > patrolLimitMin.x && transform.localPosition.y < patrolLimitMax.y && transform.localPosition.y > patrolLimitMin.y))
                     {
                         ChangeState(EnemyState.Chasing);
                         //Debug.Log("chase");
@@ -379,6 +380,10 @@ public class EnemyMovement : MonoBehaviour
         {
             anim.SetBool("isPatrolling", false);
         }
+        else if (enemyState == EnemyState.KnockedBack)
+        {
+            anim.SetBool("isKnockedBack", false);
+        }
 
         //update current state
 
@@ -402,21 +407,25 @@ public class EnemyMovement : MonoBehaviour
         {
             anim.SetBool("isPatrolling", true);
         }
+        else if (enemyState == EnemyState.KnockedBack)
+        {
+            anim.SetBool("isKnockedBack", true);
+        }
 
     }
 
 
 
-    public void Knockback(Transform player, float knockBackDist, float stunTime, float knockBackTime)
+    public void Knockback(float stunTime, float knockBackTime)
     {
 
         ChangeState(EnemyState.KnockedBack);
         // Debug.Log(transform.position - enemy.position);
-        Vector2 direction = (transform.position - player.position).normalized;
+        //Vector2 direction = (transform.position - player.position).normalized;
         //Debug.Log(knockBackDist);
         // Debug.Log(direction);
         //rb.AddForce(direction * knockBackDist, ForceMode2D.Impulse);
-        rb.velocity = direction * knockBackDist;
+        rb.velocity = Vector2.zero;
         // Debug.Log(rb.velocity);
         StartCoroutine(KnockbackCounter(stunTime, knockBackTime));
 

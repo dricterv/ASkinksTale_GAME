@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
 
     public RoomTransition entry;
     public RoomTransition exit;
-
+    public NumberCounter counter;
 
 
     private void Start()
@@ -44,8 +44,19 @@ public class EnemyHealth : MonoBehaviour
         }
         else if (currentHealth <= 0)
         {
-           // entry.RemoveEntry(this.gameObject);
-            //exit.RemoveExit(this.gameObject);
+            if (counter != null)
+            {
+                counter.AddToCount(1);
+                Debug.Log("counter up");
+            }
+            if (entry != null)
+            {
+             entry.RemoveEntry(this.gameObject);
+            }
+            if (exit != null)
+            {
+                exit.RemoveExit(this.gameObject);
+            }
             Destroy(gameObject);
         }
     }

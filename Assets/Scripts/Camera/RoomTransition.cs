@@ -27,14 +27,14 @@ public class RoomTransition : MonoBehaviour
     {
         if(coll.CompareTag("Player"))
         {
-            cam.minPosition += cameraChangeMin;
-            cam.maxPosition += cameraChangeMax;
+            cam.minPosition = cameraChangeMin;
+            cam.maxPosition = cameraChangeMax;
             coll.transform.position += playerChange;
             foreach (GameObject gameObject in enemiesEntry)
             {
                 gameObject.SetActive(true);
                 gameObject.GetComponent<EnemyHealth>().ChangeHealth(100);
-                gameObject.transform.position = gameObject.GetComponent<EnemyHealth>().spawn;
+                gameObject.transform.localPosition = gameObject.GetComponent<EnemyHealth>().spawn;
             }
             foreach (GameObject gameObject in enemiesExit)
             {

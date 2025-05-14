@@ -11,10 +11,13 @@ public class Flamable : MonoBehaviour
     private bool colourToggle;
     private float timer;
     //private float timerMax = 1f;
-    private Color originalColor;
+    public Color originalColor;
+    public Color goalColor;
     public Collider2D kinCol;
     public Collider2D dynCol;
     public NumberCounter counter;
+    public Flamable flame;
+    public bool torchOn;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,7 @@ public class Flamable : MonoBehaviour
        // anim = GetComponent<Animator>();
         if (isOnFire == true)
         {
-            colourToggle = true;
+            //colourToggle = true;
            // anim.SetBool("isOnFire", true);
         }
         else
@@ -41,7 +44,7 @@ public class Flamable : MonoBehaviour
     {
         if(isOnFire == true && colourToggle == false)
         {
-            flamableSpriteRenderer.color = Color.red;
+            flamableSpriteRenderer.color = goalColor;
             colourToggle = true;
         }
         else if (isOnFire == false && colourToggle == true)
@@ -63,11 +66,16 @@ public class Flamable : MonoBehaviour
     }
     public void SetOnFire()
     {
-        isOnFire = true;
-        if(counter != null)
+        if (counter != null && isOnFire == false)
         {
             counter.AddToCount(1);
 
+        }
+        isOnFire = true;
+        
+        if (flame != null && torchOn == true)
+        {
+            flame.SetOnFire();
         }
         //anim.SetBool("isOnFire", true);
         Debug.Log("OnFire");

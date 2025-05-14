@@ -31,7 +31,11 @@ public class Projectile : MonoBehaviour
     }
     void Update()
     {
-        timer -= Time.deltaTime;
+        if(timer > 0)
+        {
+            timer -= Time.deltaTime;
+
+        }
         if (spinning == true)
         {
            // transform.rotation.z = transform.rotation.z * spinSpeed * Time.deltaTime;
@@ -95,11 +99,14 @@ public class Projectile : MonoBehaviour
         }
         else if(timer <= 0)
         {
-            
-            Instantiate(preFab, transform.position, new Quaternion(0, 0, 0, 0));
+
+            if (preFab != null)
+            {
+                Instantiate(preFab, transform.position, new Quaternion(0, 0, 0, 0)); 
+            }
             
             Destroy(gameObject);
         }
-        
+        //Destroy(gameObject);
     }
 }

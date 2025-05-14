@@ -48,7 +48,26 @@ public class PlayerCombat : MonoBehaviour
         if(coll.gameObject.tag == "Enemy")
         {
             coll.GetComponent<EnemyHealth>().ChangeHealth(-StatsManager.Instance.damage);
+            if(coll.GetComponent<EnemyMovement>() != null)
+            {
+                coll.GetComponent<EnemyMovement>().Knockback(StatsManager.Instance.stunTime, StatsManager.Instance.knockBackTime);
 
+            }
+            else if (coll.GetComponent<LarvaeMovement>() != null)
+            {
+                coll.GetComponent<LarvaeMovement>().Knockback(StatsManager.Instance.stunTime, StatsManager.Instance.knockBackTime);
+              
+            }
+            else if (coll.GetComponent<EnemyMovementChemical>() != null)
+            {
+                coll.GetComponent<EnemyMovementChemical>().Knockback(StatsManager.Instance.stunTime, StatsManager.Instance.knockBackTime);
+
+            }
+            else if (coll.GetComponent<EnemyMovementCharger>() != null)
+            {
+                coll.GetComponent<EnemyMovementCharger>().Knockback(StatsManager.Instance.stunTime, StatsManager.Instance.knockBackTime);
+
+            }
         }
     }
     public void DealDamage()

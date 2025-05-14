@@ -102,7 +102,7 @@ MonoBehaviour:
   rb: {fileID: 3154677309069076333}
   direction: {x: 0, y: 0}
   lifeSpan: 2
-  initialTimer: 0.05
+  initialTimer: 0
   speed: 10
   damage: 4
   knockBackForce: 0
@@ -123,7 +123,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3213713789893948792}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5399506396695309743
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -1806546460609900229, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: playerDetectRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 49.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095204, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095204, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: currentHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095205, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095207, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_Name
+      value: LarvaeDungeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095207, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 151731208627094829, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}

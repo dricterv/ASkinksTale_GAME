@@ -63,7 +63,8 @@ public class EnemyMovementChemical : MonoBehaviour
         anim.SetFloat("yFace", facing.y);
         ChangeState(EnemyState.Idle);
         facing = new Vector2(0, -1);
-       
+        ChangeDirection();
+
 
         //attackPoint.transform.localPosition = StatsManager.Instance.facing;
 
@@ -108,7 +109,7 @@ public class EnemyMovementChemical : MonoBehaviour
                     ChangeState(EnemyState.Patrolling);
                     changeDirTimer -= Time.deltaTime;
                     Vector2 direc = moveDirections[currentMoveDirection];
-                    if (transform.position.x > patrolLimitMax.x || transform.position.x < patrolLimitMin.x || transform.position.y > patrolLimitMax.y || transform.position.y < patrolLimitMin.y)
+                    if (transform.localPosition.x > patrolLimitMax.x || transform.localPosition.x < patrolLimitMin.x || transform.localPosition.y > patrolLimitMax.y || transform.localPosition.y < patrolLimitMin.y)
                     {
                         changeDirTimer = 0;
 
@@ -120,7 +121,7 @@ public class EnemyMovementChemical : MonoBehaviour
                 else if (changeDirTimer <= 0)
                 {
                     //rb.velocity = Vector2D.zero;
-                    if (transform.position.x > patrolLimitMax.x || transform.position.x < patrolLimitMin.x || transform.position.y > patrolLimitMax.y || transform.position.y < patrolLimitMin.y)
+                    if (transform.localPosition.x > patrolLimitMax.x || transform.localPosition.x < patrolLimitMin.x || transform.localPosition.y > patrolLimitMax.y || transform.localPosition.y < patrolLimitMin.y)
                     {
                         //changeDirTimer = 0;
                         Vector2 direc = -moveDirections[currentMoveDirection];
@@ -370,6 +371,10 @@ public class EnemyMovementChemical : MonoBehaviour
         {
             anim.SetBool("isMoving", false);
         }
+        else if (enemyState == EnemyState.KnockedBack)
+        {
+            anim.SetBool("isKnockedBack", false);
+        }
 
         //update current state
 
@@ -393,21 +398,25 @@ public class EnemyMovementChemical : MonoBehaviour
         {
             anim.SetBool("isMoving", true);
         }
+        else if (enemyState == EnemyState.KnockedBack)
+        {
+            anim.SetBool("isKnockedBack", true);
+        }
 
     }
 
 
 
-    public void Knockback(Transform player, float knockBackDist, float stunTime, float knockBackTime)
+    public void Knockback(float stunTime, float knockBackTime)
     {
 
         ChangeState(EnemyState.KnockedBack);
         // Debug.Log(transform.position - enemy.position);
-        Vector2 direction = (transform.position - player.position).normalized;
+        //Vector2 direction = (transform.position - player.position).normalized;
         //Debug.Log(knockBackDist);
         // Debug.Log(direction);
         //rb.AddForce(direction * knockBackDist, ForceMode2D.Impulse);
-        rb.velocity = direction * knockBackDist;
+        rb.velocity = Vector2.zero;
         // Debug.Log(rb.velocity);
         StartCoroutine(KnockbackCounter(stunTime, knockBackTime));
 

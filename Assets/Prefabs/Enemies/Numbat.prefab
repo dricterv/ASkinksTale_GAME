@@ -195,14 +195,14 @@ Transform:
   m_GameObject: {fileID: 5832527963691505845}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.3, y: -7.54, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5832527962960498680}
   - {fileID: 5832527962263010843}
   - {fileID: 5832527963962681489}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &5832527963691505842
 CapsuleCollider2D:
@@ -253,18 +253,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ac60776d599294b860c33b63c7327d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDirection: 0
   facing: {x: 0, y: 0}
   attackPoint: {fileID: 5832527962386773202}
   atkWaitTime: 0
   atkTime: 0.2
-  attackRange: 2
+  attackRange: 3
   attackCoolDown: 2
   speed: 4
-  playerDetectRange: 5
+  playerDetectRange: 6.5
   detectionPoint: {fileID: 5832527962960498680}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  launchPointLeft: {fileID: 0}
+  launchPointRight: {fileID: 0}
+  launchPointUp: {fileID: 0}
+  launchPointDown: {fileID: 0}
   isDirectional: 1
   cardinalMovement: 0
   chaser: 1
@@ -290,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341d79a311d911a4c82356e17ae8c5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
+  damage: 2
   attackPoint: {fileID: 5832527962263010843}
   weaponRadius: 1
   playerLayer:
@@ -317,8 +322,10 @@ MonoBehaviour:
   currentHealth: 2
   maxHealth: 3
   spawn: {x: 5, y: -22}
+  enemySpriteRenderer: {fileID: 5674921737315464800}
   entry: {fileID: 0}
   exit: {fileID: 0}
+  counter: {fileID: 0}
 --- !u!95 &1766381368472457781
 Animator:
   serializedVersion: 4

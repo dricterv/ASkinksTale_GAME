@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
         }
         
         //healthTextAnim.Play("TextUpdate");
-        healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;
+        //healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;
 
         if (StatsManager.Instance.currentHealth > StatsManager.Instance.maxHealth)
         {
@@ -64,7 +64,7 @@ public class PlayerHealth : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
+        healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;
 
     }
 }

@@ -34,23 +34,47 @@ public class PressurePlate : MonoBehaviour
             float distance = Vector2.Distance(transform.position, coll.transform.position);
             Debug.Log("D: " + distance);
             
-            if (distance <= goDetectRange)
+            if (distance <= goDetectRange )
             {
                 Debug.Log("Down");
-                if(toggle != null && toggle.activeSelf == true)
+                if(down == false)
                 {
                     pressurePlateSpriteRenderer.sprite = downSprite;
-                    toggle.SetActive(false);
+                    if (counter != null)
+                    {
+                        counter.AddToCount(1);
+                        Debug.Log("counter up");
+                    }
+                    if (toggle != null && toggle.activeSelf == true)
+                    {
+                        toggle.SetActive(false);
+                    }
+                    if (flame != null && torchOn == true)
+                    {
+                        flame.SetOnFire();
+                    }
                     down = true;
                 }
                 
             }
             else if (distance > goDetectRange && (playerFeet.position.x >= transform.position.x + playerDetectRange || playerFeet.position.x <= transform.position.x - playerDetectRange || playerFeet.position.y >= transform.position.y + playerDetectRange || playerFeet.position.y <= transform.position.y - playerDetectRange))
             {
-                if (toggle.activeSelf == false)
+                if (down == true)
                 {
                     pressurePlateSpriteRenderer.sprite = upSprite;
-                    toggle.SetActive(true);
+                    if (toggle != null && toggle.activeSelf == false)
+                    {
+                        toggle.SetActive(true);
+                    }
+                    if (counter != null)
+                    {
+                        counter.AddToCount(-1);
+
+                    }
+                    if (flame != null && torchOn == true)
+                    {
+                        flame.FireOff();
+                    }
                     Debug.Log("Up");
                     down = false;
 
@@ -58,13 +82,13 @@ public class PressurePlate : MonoBehaviour
             }
 
         }
-        else if (coll.gameObject.tag == "Player" && playerActivated == true && down == false)
+        else if (coll.gameObject.tag == "Player" && playerActivated == true)
         {
             
 
             if ((playerFeet.position.x <= transform.position.x + playerDetectRange && playerFeet.position.x >= transform.position.x - playerDetectRange))
             {
-                if(playerFeet.position.y <= transform.position.y + playerDetectRange && playerFeet.position.y >= transform.position.y - playerDetectRange)
+                if(playerFeet.position.y <= transform.position.y + playerDetectRange && playerFeet.position.y >= transform.position.y - playerDetectRange && down == false)
                 {
                     if (turnOn == false)
                     {
@@ -122,7 +146,7 @@ public class PressurePlate : MonoBehaviour
                     {
                         Debug.Log("2");
 
-                        if (turnOn == false)
+                        if (turnOn == false && down == true)
                         {
                             pressurePlateSpriteRenderer.sprite = upSprite;
                             if (toggle != null && toggle.activeSelf == false )
@@ -138,13 +162,13 @@ public class PressurePlate : MonoBehaviour
                             {
                                 flame.FireOff();
                             }
-
+                            down = false;
                             Debug.Log("Up");
                         }
-                        else if (turnOn == true)
+                        else if (turnOn == true && down == true)
                         {
                             pressurePlateSpriteRenderer.sprite = upSprite;
-                            if (toggle != null && toggle.activeSelf == true)
+                            if (toggle != null && toggle.activeSelf == false)
                             {
                                 toggle.SetActive(true);
                             }
@@ -158,6 +182,7 @@ public class PressurePlate : MonoBehaviour
                                 flame.FireOff();
                             }
                             Debug.Log("Up");
+                            down = false;
                         }
                     }
                 }
@@ -171,7 +196,7 @@ public class PressurePlate : MonoBehaviour
                 {
                     Debug.Log("2");
 
-                    if (turnOn == false)
+                    if (turnOn == false && down == true)
                     {
                         if (toggle != null && toggle.activeSelf == false)
                         {
@@ -186,8 +211,10 @@ public class PressurePlate : MonoBehaviour
                         {
                             flame.FireOff();
                         }
+                        down = false;
+
                     }
-                    else if (turnOn == true)
+                    else if (turnOn == true && down == true)
                     {
                         pressurePlateSpriteRenderer.sprite = upSprite;
                         if (toggle != null && toggle.activeSelf == true)
@@ -203,6 +230,8 @@ public class PressurePlate : MonoBehaviour
                         {
                             flame.FireOff();
                         }
+                        down = false;
+
                     }
                 }
             }

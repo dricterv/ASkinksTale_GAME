@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 814725764999467088}
   m_Layer: 0
   m_Name: ChemicalEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ Transform:
   - {fileID: 1221706258337262651}
   - {fileID: 3221640706539602238}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &300249894288142039
 CapsuleCollider2D:
@@ -155,6 +155,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 3
   maxHealth: 3
+  spawn: {x: 0, y: 0}
+  enemySpriteRenderer: {fileID: 8036282221558018645}
+  entry: {fileID: 0}
+  exit: {fileID: 0}
+  counter: {fileID: 0}
 --- !u!114 &300249894288142032
 MonoBehaviour:
   m_ObjectHideFlags: 0
