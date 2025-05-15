@@ -7,7 +7,14 @@ public class TermiteQueenCombat : MonoBehaviour
     private EnemyState enemyState;
     private Animator anim;
     private bool starting = false;
-
+    // public enum Direction { Down, Left, Right };
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    };
     public int damage;
     public float playerDetectRange = 20;
     public Transform detectionPoint;
@@ -24,6 +31,13 @@ public class TermiteQueenCombat : MonoBehaviour
     public Transform launchPointLeft;
     public Transform launchPointRight;
     public Transform launchPointDown;
+    public MeleeDamage meleeDown;
+    public MeleeDamage meleeLeft;
+    public MeleeDamage meleeRight;
+
+
+
+
 
 
 
@@ -254,4 +268,37 @@ public class TermiteQueenCombat : MonoBehaviour
         projectile.direction = direction.normalized;
         // shootTimer = shootCooldown;
     }
+
+    public void SlashAnimation(Direction direction)
+    {
+        if(direction == Direction.Down)
+        {
+            meleeDown.SlashAniStart();
+        }
+        else if (direction == Direction.Left)
+        {
+            meleeLeft.SlashAniStart();
+        }
+        else if (direction == Direction.Right)
+        {
+            meleeRight.SlashAniStart();
+        }
+    }
+    public void SlashAnimationEnd(Direction direction)
+    {
+        if (direction == Direction.Down)
+        {
+            meleeDown.SlashAniEnd();
+        }
+        else if (direction == Direction.Left)
+        {
+            meleeLeft.SlashAniEnd();
+        }
+        else if (direction == Direction.Right)
+        {
+            meleeRight.SlashAniEnd();
+        }
+    }
+
+
 }

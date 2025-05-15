@@ -50,6 +50,10 @@ public class AcidFloor : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        if(coll.gameObject.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

@@ -18,6 +18,7 @@ public class Projectile : MonoBehaviour
     public GameObject preFab;
     public bool spinning = false;
     public float spinSpeed;
+    public Transform spawnPoint;
 
     public LayerMask playerLayer;
 
@@ -102,7 +103,8 @@ public class Projectile : MonoBehaviour
 
             if (preFab != null)
             {
-                Instantiate(preFab, transform.position, new Quaternion(0, 0, 0, 0)); 
+                
+                Instantiate(preFab, spawnPoint.position, new Quaternion(0, 0, 0, 0)); 
             }
             
             Destroy(gameObject);

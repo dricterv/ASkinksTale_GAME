@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject spriteGO;
     public GameObject attackPoint;
     private Torch torch;
-    private bool isTorching;
+    //private bool isTorching;
 
 
     public bool isRolling;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         isRolling = false;
-        isTorching = false;
+        //isTorching = false;
         StatsManager.Instance.lockHori = false;
         StatsManager.Instance.lockVert = false;
         torch = GetComponent<Torch>();
@@ -65,15 +65,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Debug.Log(playerState);
-        if(playerState != PlayerState.Attacking)
+        if(playerState != PlayerState.Attacking && playerState != PlayerState.Torching)
         {
             
             Block();
 
-            if(playerState != PlayerState.Rolling && playerState != PlayerState.Blocking)
+            if(playerState != PlayerState.Rolling && playerState != PlayerState.Blocking )
             { 
                 Grab();
-                if(torch.enabled == true)
+                if(torch.enabled == true && playerState != PlayerState.Grabbing)
                 {
                     UseTorch();
 
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = StatsManager.Instance.facing * StatsManager.Instance.rollDist;
            
          }
-         else if(playerState == PlayerState.Attacking)
+         else if(playerState == PlayerState.Attacking || playerState == PlayerState.Torching)
          {
             rb.velocity = Vector2.zero;
          }
@@ -202,11 +202,6 @@ public class PlayerController : MonoBehaviour
                 ChangeState(PlayerState.Blocking);
                 rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed;
             }
-            else if (isTorching == true)
-            {
-                ChangeState(PlayerState.Torching);
-                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed;
-            }
             else
             {
                 ChangeState(PlayerState.Walking);
@@ -219,11 +214,6 @@ public class PlayerController : MonoBehaviour
             if (StatsManager.Instance.blocking == true)
             {
                 ChangeState(PlayerState.Blocking);
-                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed;
-            }
-            else if (isTorching == true)
-            {
-                ChangeState(PlayerState.Torching);
                 rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed;
             }
             else
@@ -434,14 +424,14 @@ public class PlayerController : MonoBehaviour
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
             //if(StatsManager.Instance.lockFacing =)
             StatsManager.Instance.lockFace = true;
-            isTorching = false;
+            
 
 
         }
         if (Input.GetKey(KeyCode.K) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing )
         {
 
-            isTorching = false;
+           
 
             StatsManager.Instance.blocking = true;
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
@@ -461,7 +451,7 @@ public class PlayerController : MonoBehaviour
     {
         StatsManager.Instance.lockFace = false;
         StatsManager.Instance.blocking = false;
-       
+        
         ChangeState(PlayerState.Idle);
     }
 
@@ -479,32 +469,19 @@ public class PlayerController : MonoBehaviour
     {
        if(Input.GetKeyDown(KeyCode.I) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing)
        {
-            torch.LightOnFire();
-            isTorching = true;
-            StatsManager.Instance.blocking = false;
-
+        
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
             StatsManager.Instance.lockFace = true;
-        }
-       if (Input.GetKey(KeyCode.I) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing)
-       {
-            torch.LightOnFire();
-            isTorching = true;
+
             StatsManager.Instance.blocking = false;
-
-
-            StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
-            StatsManager.Instance.lockFace = true;
+            ChangeState(PlayerState.Torching);
         }
-       if (Input.GetKeyUp(KeyCode.I))
-       {
-            isTorching = false;
-
-            StatsManager.Instance.lockFace = false;
-
-        }
+ 
     }
-
+    public void LightTorch()
+    {
+        torch.LightOnFire();
+    }
     void OnCollisionEnter2D(Collision2D coll)
     {
         if(coll.gameObject.tag == "Pushable")

@@ -101,15 +101,15 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  isDirectional: 0
+  isDirectional: 1
   cardinalMovement: 0
   chaser: 1
   rangedAttacker: 0
   changeDirMinTime: 1
   changeDirMaxTime: 2
   waitDirTime: 1
-  patrolLimitMax: {x: 6, y: 25}
-  patrolLimitMin: {x: -16, y: 10}
+  patrolLimitMax: {x: 22.9, y: 165.4}
+  patrolLimitMin: {x: 2.3, y: 151.5}
   patrolLimitX: 0
   patrolLimitY: 0
   patrolSpeed: 2

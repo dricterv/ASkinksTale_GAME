@@ -37,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void ChangeHealth(int amount)
     {
-        if (((playerController.isRolling == false || amount > 0) && timer <= 0))
+        if (((playerController.isRolling == false || amount < 0) && timer <= 0))
         {
             
             StatsManager.Instance.currentHealth += amount;
@@ -50,7 +50,11 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            //Debug.Log("inv");
+            if(amount > 0)
+            {
+                StatsManager.Instance.currentHealth += amount;
+            }
+            
         }
         
         //healthTextAnim.Play("TextUpdate");
@@ -59,11 +63,13 @@ public class PlayerHealth : MonoBehaviour
         if (StatsManager.Instance.currentHealth > StatsManager.Instance.maxHealth)
         {
             StatsManager.Instance.currentHealth = StatsManager.Instance.maxHealth;
+
         }
         else if (StatsManager.Instance.currentHealth <= 0)
         {
             gameObject.SetActive(false);
         }
+
         healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;
 
     }

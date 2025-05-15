@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class MeleeDamage : MonoBehaviour
 {
-    public enum Direction { Down, Left, Right };
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    };
     public Direction attackDirection;
-
+    public SpriteRenderer sprite;
     public TermiteQueenCombat terQueCombat;
+    public Animator ani;
 
+    void Start()
+    {
+        ani = GetComponent<Animator>();
+        ani.SetBool("isSlashing", false);
+        ani.SetBool("isIdle", true);
+    }
 
     public void OnTriggerEnter2D(Collider2D coll)
     {
@@ -46,4 +59,28 @@ public class MeleeDamage : MonoBehaviour
 
         }
     }
+
+    public void SlashAniStart()
+    {
+        
+        
+            ani.SetBool("isIdle", false);
+            ani.SetBool("isSlashing", true);
+        
+       
+           
+        
+    }  
+    public void SlashAniEnd()
+    {
+
+       
+        
+            ani.SetBool("isSlashing", false);
+            ani.SetBool("isIdle", true);
+        
+        
+        
+    }
 }
+
