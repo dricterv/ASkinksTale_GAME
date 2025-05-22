@@ -40,7 +40,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208432867183949845}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -58,11 +58,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.139755, y: 0.31074786}
-      - {x: -1.1499, y: -0.3533437}
-      - {x: -1.1294988, y: -1.1139482}
-      - {x: -0.82894427, y: -1.120673}
-      - {x: -0.8389412, y: 0.31540966}
+    - - {x: -1.093493, y: -0.1888814}
+      - {x: -1.1036379, y: -0.31633422}
+      - {x: -1.1017416, y: -0.5125426}
+      - {x: -0.90296334, y: -0.5285194}
+      - {x: -0.8852031, y: -0.18421984}
   m_UseDelaunayMesh: 0
 --- !u!114 &5622493551181471055
 MonoBehaviour:
@@ -154,7 +154,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4802885688189718832}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -172,11 +172,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.74212563, y: 0.5268254}
-      - {x: -0.6755512, y: 0.5141132}
-      - {x: -0.6926534, y: 0.1537329}
-      - {x: 0.13233253, y: 0.16653132}
-      - {x: 0.7394341, y: 0.14296573}
+    - - {x: 0.117186725, y: 0.37210226}
+      - {x: -0.008478045, y: 0.38038325}
+      - {x: -0.0045865774, y: 0.262879}
+      - {x: 0.10932341, y: 0.27007174}
+      - {x: 0.11449522, y: 0.32300705}
   m_UseDelaunayMesh: 0
 --- !u!114 &5111914005322522861
 MonoBehaviour:
@@ -235,7 +235,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5179916346135703995}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -253,11 +253,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.4019673, y: 0.30238676}
-      - {x: -2.404263, y: -0.30827686}
-      - {x: -2.409143, y: -1.1205467}
-      - {x: -2.1262403, y: -1.1198194}
-      - {x: -2.1732225, y: 0.3035385}
+    - - {x: -2.3270495, y: -0.27365756}
+      - {x: -2.3487484, y: -0.3822963}
+      - {x: -2.3628807, y: -0.53764594}
+      - {x: -2.1539977, y: -0.54617095}
+      - {x: -2.174121, y: -0.24385029}
   m_UseDelaunayMesh: 0
 --- !u!114 &1988378664961980995
 MonoBehaviour:
@@ -316,7 +316,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5566712092001268778}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -334,11 +334,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.08855334, y: -0.40568495}
-      - {x: -0.6645521, y: -0.42219445}
-      - {x: -0.68275166, y: -0.65368307}
-      - {x: 0.72559404, y: -0.68192506}
-      - {x: 0.72598827, y: -0.430718}
+    - - {x: 0.07930097, y: -0.48895645}
+      - {x: -0.10940832, y: -0.4777088}
+      - {x: -0.099850714, y: -0.65368307}
+      - {x: 0.15194553, y: -0.6541679}
+      - {x: 0.16159207, y: -0.4862321}
   m_UseDelaunayMesh: 0
 --- !u!114 &1698716958224453339
 MonoBehaviour:

@@ -13,8 +13,7 @@ public class Flamable : MonoBehaviour
     //private float timerMax = 1f;
     public Color originalColor;
     public Color goalColor;
-    public Collider2D kinCol;
-    public Collider2D dynCol;
+    
     public NumberCounter counter;
     public Flamable flame;
     public bool torchOn;
@@ -22,7 +21,7 @@ public class Flamable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Physics2D.IgnoreCollision(kinCol, dynCol);
+        
         originalColor = flamableSpriteRenderer.color;
        // anim = GetComponent<Animator>();
         if (isOnFire == true)
@@ -89,10 +88,10 @@ public class Flamable : MonoBehaviour
     void OnCollisionEnter2D(Collision2D coll)
     {
         Debug.Log(coll.gameObject.name);
-        if (coll.gameObject.transform.parent.tag == "Flamable" && coll.gameObject.GetComponentInParent<Flamable>().isFlamable == true && coll.gameObject.GetComponentInParent<Flamable>().isOnFire == false && isOnFire == true)
+        if (coll.gameObject.tag == "Flamable" && coll.gameObject.GetComponent<Flamable>().isFlamable == true && coll.gameObject.GetComponent<Flamable>().isOnFire == false && isOnFire == true)
         {
             Debug.Log("lighting");
-            coll.gameObject.GetComponentInParent<Flamable>().SetOnFire();
+            coll.gameObject.GetComponent<Flamable>().SetOnFire();
         }
     }
 

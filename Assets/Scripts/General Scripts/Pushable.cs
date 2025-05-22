@@ -10,8 +10,9 @@ public class Pushable : MonoBehaviour
     public bool lockX;
     public bool lockY;
     public GameObject playerGO;
-    public Collider2D kinCol;
-    public Collider2D dynCol;
+    public Rigidbody2D playerRB;
+
+    
     public PlayerController playerController;
 
 
@@ -22,7 +23,9 @@ public class Pushable : MonoBehaviour
         pushed = false;
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.zero;
-        Physics2D.IgnoreCollision(kinCol, dynCol);
+        
+        
+
     }
 
     // Update is called once per frame
@@ -37,21 +40,27 @@ public class Pushable : MonoBehaviour
             {
                 if (StatsManager.Instance.facing == new Vector2(0, -1) || StatsManager.Instance.facing == new Vector2(0, 1))
                 {
-                    rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
+                   // rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
+                    rb.velocity = playerRB.velocity;
                 }
                 else if (StatsManager.Instance.facing == new Vector2(-1, 0) || StatsManager.Instance.facing == new Vector2(1, 0))
                 {
-                    rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+                    //rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+                    rb.velocity = playerRB.velocity;
+
                 }
-                    
+
             }
             else if (lockX == true && lockY == false)
             {
-                rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
+               // rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
+                rb.velocity = playerRB.velocity;
+
             }
             else if (lockY == true && lockX == false)
             {
-                rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+                // rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+                rb.velocity = playerRB.velocity;
             }
 
             //playerGO.GetComponent<Rigidbody2D>().velocity
@@ -60,13 +69,17 @@ public class Pushable : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+
     }
 
     public void StartPush()
     {
         if(isPushable == true)
         {
-            pushed = true;       
+            playerController.ChangeState(PlayerState.Grabbing);
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            pushed = true;
+            
         }
     }
     public void EndPush()
@@ -75,16 +88,21 @@ public class Pushable : MonoBehaviour
         {
             pushed = false;
             rb.velocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Kinematic;
         }
     }
 
     
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        Debug.Log("push: " + coll.gameObject.name);
+       // Debug.Log("push: " + coll.gameObject.name);
+       // Debug.Log("push: " + coll.gameObject.tag);
+       // Debug.Log("push: " + rb.bodyType);
+
         if (coll.gameObject.tag == "Grab" && isPushable == true)
         {
-            playerController.ChangeState(PlayerState.Grabbing);
+            
+            
 
             //StatsManager.Instance.lockFace = true;
             // hit.collider.gameObject.GetComponent<Pushable>().StartPush();
