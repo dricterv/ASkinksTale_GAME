@@ -155,6 +155,9 @@ MonoBehaviour:
   goalColor: {r: 1, g: 0, b: 0, a: 1}
   counter: {fileID: 0}
   flame: {fileID: 0}
+  flameLayer:
+    serializedVersion: 2
+    m_Bits: 512
   torchOn: 0
 --- !u!114 &4170242245812170788
 MonoBehaviour:
@@ -174,6 +177,10 @@ MonoBehaviour:
   lockY: 1
   playerGO: {fileID: 0}
   playerRB: {fileID: 0}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  flame: {fileID: 7671290117820804867}
   playerController: {fileID: 0}
 --- !u!61 &4119543517460921055
 BoxCollider2D:

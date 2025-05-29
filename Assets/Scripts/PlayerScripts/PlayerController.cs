@@ -16,10 +16,13 @@ public class PlayerController : MonoBehaviour
 
 
     public bool isRolling;
+    
+   
+
 
     private float hori;
     private float vert;
-
+    private int moveDir;
     //private bool lockVert;
     //private bool lockHori;
 
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        StatsManager.Instance.canGrabMove = true;
         anim = GetComponent<Animator>();
         isRolling = false;
         //isTorching = false;
@@ -54,6 +58,8 @@ public class PlayerController : MonoBehaviour
         attackPoint.transform.localPosition = StatsManager.Instance.facing;
         anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
         anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
+
+        StatsManager.Instance.isMoving = false;
 
     }
 
@@ -186,6 +192,7 @@ public class PlayerController : MonoBehaviour
              //Debug.Log("v: " + vert);
 
          }
+        
         //Debug.Log("h: " + hori);
         //Debug.Log("v: " + vert);
         // Debug.Log("facing: " + StatsManager.Instance.facing);
@@ -200,19 +207,33 @@ public class PlayerController : MonoBehaviour
         }
         else if (StatsManager.Instance.lockHori == true)
         {
-            if (hori == 0)
+            
+           
+            if (hori == 0 && StatsManager.Instance.isMoving == false)
             {
                 ChangeState(PlayerState.Grabbing);
                 anim.SetFloat("xFacing", StatsManager.Instance.facing.x);
                 anim.SetFloat("yFacing", 0);
-
                 rb.velocity = Vector2.zero;
+                moveDir = 0;
             }
-            else if (hori > 0)
+            else if (hori > 0 && StatsManager.Instance.isMoving == false)
             {
 
-                rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
 
+                //rb.MovePosition(transform.position + new Vector3(hori, 0, 0) * StatsManager.Instance.dragSpeed * Time.fixedDeltaTime);
+                //rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
+                if(StatsManager.Instance.canGrabMove == true)
+                {
+                    moveDir = 1;
+                }
+                else
+                {
+                    moveDir = 0;
+                    rb.velocity = Vector2.zero;
+                }
+                StartCoroutine(GrabMoveTimer());
+                //rb.velocity = Vector3.Lerp(transform.position, new Vector3(hori, 0, 0), 100);
 
                 if (StatsManager.Instance.facing.x == 1)
                 {
@@ -223,10 +244,20 @@ public class PlayerController : MonoBehaviour
                     ChangeState(PlayerState.Pulling);
                 }
             }
-            else if (hori < 0)
+            else if (hori < 0 && StatsManager.Instance.isMoving == false)
             {
-                rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
-
+                //rb.velocity = new Vector2(moveDirl, 0) * StatsManager.Instance.dragSpeed;
+                //rb.MovePosition(transform.position + new Vector3(hori, 0, 0) * StatsManager.Instance.dragSpeed * Time.fixedDeltaTime);
+                if (StatsManager.Instance.canGrabMove == true)
+                {
+                    moveDir = -1;
+                }
+                else
+                {
+                    moveDir = 0;
+                    rb.velocity = Vector2.zero;
+                }
+                StartCoroutine(GrabMoveTimer());
 
                 if (StatsManager.Instance.facing.x == -1)
                 {
@@ -238,23 +269,32 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            rb.velocity = new Vector2(moveDir, 0) * StatsManager.Instance.dragSpeed * Time.fixedDeltaTime;
 
         }
         else if (StatsManager.Instance.lockVert == true)
         {
-            if (vert == 0)
+            if (vert == 0 && StatsManager.Instance.isMoving == false)
             {
                 ChangeState(PlayerState.Grabbing);
                 anim.SetFloat("yFacing", StatsManager.Instance.facing.y);
                 anim.SetFloat("xFacing", 0);
-
+                moveDir = 0;
                 rb.velocity = Vector2.zero;
             }
-            else if (vert > 0)
+            else if (vert > 0 && StatsManager.Instance.isMoving == false)
             {
 
-                rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
-
+                if (StatsManager.Instance.canGrabMove == true)
+                {
+                    moveDir = 1;
+                }
+                else
+                {
+                    moveDir = 0;
+                    rb.velocity = Vector2.zero;
+                }
+                StartCoroutine(GrabMoveTimer());
 
                 if (StatsManager.Instance.facing.y == 1)
                 {
@@ -265,10 +305,18 @@ public class PlayerController : MonoBehaviour
                     ChangeState(PlayerState.Pulling);
                 }
             }
-            else if (vert < 0)
+            else if (vert < 0 && StatsManager.Instance.isMoving == false)
             {
-                rb.velocity = new Vector2(0, vert) * StatsManager.Instance.dragSpeed;
-
+                if (StatsManager.Instance.canGrabMove == true)
+                {
+                    moveDir = -1;
+                }
+                else
+                {
+                    moveDir = 0;
+                    rb.velocity = Vector2.zero;
+                }
+                StartCoroutine(GrabMoveTimer());
 
                 if (StatsManager.Instance.facing.y == -1)
                 {
@@ -279,6 +327,7 @@ public class PlayerController : MonoBehaviour
                     ChangeState(PlayerState.Pulling);
                 }
             }
+            rb.velocity = new Vector2(0, moveDir) * StatsManager.Instance.dragSpeed * Time.fixedDeltaTime;
 
         }
         else if (hori > 0 || vert > 0 || hori < 0 || vert < 0)
@@ -401,22 +450,25 @@ public class PlayerController : MonoBehaviour
             }*/
 
         }
-        if ((Input.GetKeyUp(KeyCode.L)))
+        if ((Input.GetKey(KeyCode.L) == false) && StatsManager.Instance.isMoving == false && (StatsManager.Instance.lockHori == true || StatsManager.Instance.lockVert == true))
         {
-            grabLeft.enabled = false;
-            grabRight.enabled = false;
-            grabUp.enabled = false;
-            grabDown.enabled = false;
-           /* if (hit.collider != null)
-            {
-                hit.collider.gameObject.GetComponent<Pushable>().EndPush();
-            }*/
-            StatsManager.Instance.lockHori = false;
-            StatsManager.Instance.lockVert = false;
             
-            StatsManager.Instance.lockFace = false;
-            Facing();
+            
+                grabLeft.enabled = false;
+                grabRight.enabled = false;
+                grabUp.enabled = false;
+                grabDown.enabled = false;
+                /* if (hit.collider != null)
+                 {
+                     hit.collider.gameObject.GetComponent<Pushable>().EndPush();
+                 }*/
+                StatsManager.Instance.lockHori = false;
+                StatsManager.Instance.lockVert = false;
 
+                StatsManager.Instance.lockFace = false;
+                Facing();
+            
+            
         }
     }
     public void Facing()
@@ -521,6 +573,16 @@ public class PlayerController : MonoBehaviour
         //this is only for visualisation of rolling
 
     }
+    
+    IEnumerator GrabMoveTimer()
+    {
+        StatsManager.Instance.isMoving = true;
+        yield return new WaitForSeconds(1f);
+        StatsManager.Instance.isMoving = false;
+       
+
+    }
+    
 
     private void UseTorch()
     {

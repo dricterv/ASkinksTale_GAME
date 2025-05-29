@@ -11,8 +11,8 @@ public class Pushable : MonoBehaviour
     public bool lockY;
     public GameObject playerGO;
     public Rigidbody2D playerRB;
-
-    
+    public LayerMask wallLayer;
+    public Flamable flame;
     public PlayerController playerController;
 
 
@@ -28,6 +28,10 @@ public class Pushable : MonoBehaviour
 
     }
 
+    void Update()
+    {
+
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -35,7 +39,91 @@ public class Pushable : MonoBehaviour
         {
             float hori = Input.GetAxisRaw("Horizontal");
             float vert = Input.GetAxisRaw("Vertical");
+
+            if (flame != null)
+            {
+                flame.CheckForTorch();
+            }
+            //Debug.Log(StatsManager.Instance.facing);
+            // Debug.Log(-StatsManager.Instance.facing);
+            //Debug.Log(hori + " : " + vert);
+                RaycastHit2D hit1 = Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0f, StatsManager.Instance.facing, 2f, wallLayer);
+            //Debug.DrawRay(transform.position, StatsManager.Instance.facing * 2f, Color.red);
+
+            if (hit1 == true)
+            {
+                Debug.Log(hit1.collider.gameObject.name + " : a");
+                Debug.Log(StatsManager.Instance.facing);
+                Debug.Log(hori + " h:v " + vert);
+
+                if (StatsManager.Instance.facing == new Vector2(hori, 0))
+                {
+                    Debug.Log(" : 1h1");
+                    StatsManager.Instance.canGrabMove = false;
+                    Debug.Log(" : 1h2");
+                }
+
+                else if (StatsManager.Instance.facing == new Vector2(0, vert))
+                {
+                    Debug.Log(" : 1v1");
+                    StatsManager.Instance.canGrabMove = false;
+                    Debug.Log(" : 1v2");
+                }
+
+                else
+                {
+                    Debug.Log(" : 1a1");
+                    StatsManager.Instance.canGrabMove = true;
+                    Debug.Log(" : 1a2");
+                }
+                Debug.Log(StatsManager.Instance.canGrabMove);
+            }
+            else
+            {
+                StatsManager.Instance.canGrabMove = true;
+
+            }
+
+            RaycastHit2D hit2 = Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0f, StatsManager.Instance.facing, 2f, wallLayer);
+            Debug.DrawRay(transform.position, -StatsManager.Instance.facing * 4f,Color.blue);
+
+            if (hit2 == true)
+            {
+                Debug.Log(hit2.collider.gameObject.name + " : b");
+
+                if (-StatsManager.Instance.facing == new Vector2(hori, 0))
+                {
+                    Debug.Log(" : 2h1");
+                    StatsManager.Instance.canGrabMove = false;
+                    Debug.Log(" : 2h2");
+                }
+                    
+                else if (-StatsManager.Instance.facing == new Vector2(0, vert))
+                {
+                    Debug.Log(" : 2v1");
+                    StatsManager.Instance.canGrabMove = false;
+                    Debug.Log(" : 2v2");
+                }
+                    
+                else
+                {
+                    Debug.Log(" : 2a1");
+                    StatsManager.Instance.canGrabMove = true;
+                    Debug.Log(" : 2a2");
+                }
+
+            }
+            else if(hit1 == false)
+            {
+                    StatsManager.Instance.canGrabMove = true;
+
+            }
             
+
+            if (StatsManager.Instance.lockHori == false && StatsManager.Instance.lockVert == false)
+            {
+                EndPush();
+            }
             if (lockX == true && lockY == true)
             {
                 if (StatsManager.Instance.facing == new Vector2(0, -1) || StatsManager.Instance.facing == new Vector2(0, 1))
@@ -62,7 +150,7 @@ public class Pushable : MonoBehaviour
                 // rb.velocity = new Vector2(hori, 0) * StatsManager.Instance.dragSpeed;
                 rb.velocity = playerRB.velocity;
             }
-
+           
             //playerGO.GetComponent<Rigidbody2D>().velocity
         }
         else
@@ -147,7 +235,7 @@ public class Pushable : MonoBehaviour
     {
         if (coll.gameObject.tag == "Grab")
         {
-            EndPush();
+           // EndPush();
         }
     }
     

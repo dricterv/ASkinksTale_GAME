@@ -152,6 +152,7 @@ MonoBehaviour:
   lockY: 1
   playerGO: {fileID: 0}
   playerRB: {fileID: 0}
-  kinCol: {fileID: 0}
-  dynCol: {fileID: 7876014565766802482}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 8
   playerController: {fileID: 0}

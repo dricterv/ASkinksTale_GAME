@@ -12,8 +12,10 @@ public class StatsManager : MonoBehaviour
     public bool lockFace = false;
     public bool lockHori;
     public bool lockVert;
+    public bool canGrabMove;
+    public bool isMoving;
     public bool blocking;
-
+    public GameObject grabbedGO;
     [Header("Combat Stats")]
     public int damage;
     public float weaponRange;

@@ -16,6 +16,7 @@ public class Flamable : MonoBehaviour
     
     public NumberCounter counter;
     public Flamable flame;
+    public LayerMask flameLayer;
     public bool torchOn;
 
     // Start is called before the first frame update
@@ -85,13 +86,24 @@ public class Flamable : MonoBehaviour
         //anim.SetBool("isOnFire", true);
         //Debug.Log("OffFire");
     }
-    void OnCollisionEnter2D(Collision2D coll)
+    /*void OnCollisionEnter2D(Collision2D coll)
     {
         Debug.Log(coll.gameObject.name);
         if (coll.gameObject.tag == "Flamable" && coll.gameObject.GetComponent<Flamable>().isFlamable == true && coll.gameObject.GetComponent<Flamable>().isOnFire == false && isOnFire == true)
         {
             Debug.Log("lighting");
             coll.gameObject.GetComponent<Flamable>().SetOnFire();
+        }
+    }*/
+    public void CheckForTorch()
+    {
+        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, StatsManager.Instance.facing, 2f, flameLayer);
+        Debug.DrawRay(transform.position, StatsManager.Instance.facing * 2f, Color.white);
+
+        if (hit1 == true && hit1.collider.gameObject.GetComponent<Flamable>().isFlamable == true && hit1.collider.gameObject.GetComponent<Flamable>().isOnFire == false && isOnFire == true)
+        {
+            Debug.Log("lighting");
+            hit1.collider.gameObject.gameObject.GetComponent<Flamable>().SetOnFire();
         }
     }
 

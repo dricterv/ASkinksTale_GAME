@@ -8,11 +8,13 @@ TagManager:
   - Enemy
   - Grab
   - Acid
+  - Wall
+  - Flamable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Wall
   - Water
   - UI
   - Player
