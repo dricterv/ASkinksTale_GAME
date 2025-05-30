@@ -437,7 +437,6 @@ MonoBehaviour:
   rb: {fileID: 3881892658908343142}
   spriteGO: {fileID: 0}
   attackPoint: {fileID: 6627027439664170143}
-  torch: {fileID: 0}
   isRolling: 0
   grabDist: 1
   pushableLayer:
@@ -483,7 +482,7 @@ MonoBehaviour:
   torchHeadRange: 0.1
   flamableLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   pointLeft: {fileID: 7012497955962696353}
   pointRight: {fileID: 1606897751921621109}
   pointUp: {fileID: 8217984563842187616}

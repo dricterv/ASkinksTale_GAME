@@ -12,6 +12,7 @@ public class Pushable : MonoBehaviour
     public GameObject playerGO;
     public Rigidbody2D playerRB;
     public LayerMask wallLayer;
+    public LayerMask pushableLayer;
     public Flamable flame;
     public PlayerController playerController;
 
@@ -47,15 +48,39 @@ public class Pushable : MonoBehaviour
             //Debug.Log(StatsManager.Instance.facing);
             // Debug.Log(-StatsManager.Instance.facing);
             //Debug.Log(hori + " : " + vert);
-                RaycastHit2D hit1 = Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0f, StatsManager.Instance.facing, 2f, wallLayer);
-            //Debug.DrawRay(transform.position, StatsManager.Instance.facing * 2f, Color.red);
 
+            RaycastHit2D hit1 = Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0f, StatsManager.Instance.facing, 2f, wallLayer);
+            RaycastHit2D hit2 = Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0f, -StatsManager.Instance.facing, 4f, wallLayer);
+            RaycastHit2D hit3 = Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0f, StatsManager.Instance.facing, 2f, pushableLayer);
+            RaycastHit2D hit4 = Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0f, -StatsManager.Instance.facing, 4f, pushableLayer);
+           
+           if (hit1 == true)
+           {
+                RaycastHit1(hit1, hit2, hit3, hit4, hori, vert);
+           }
+           else if(hit2 == true)
+           {
+                RaycastHit2( hit2, hit3, hit4, hori, vert);
+           }
+           else if(hit3 == true)
+           {
+                RaycastHit3(hit3, hit4, hori, vert);
+           }
+           else if(hit4 == true)
+           {
+                RaycastHit4(hit4, hori, vert);
+           }
+           else
+           {
+                StatsManager.Instance.canGrabMove = true;
+           }
+            /*
             if (hit1 == true)
             {
                 Debug.Log(hit1.collider.gameObject.name + " : a");
                 Debug.Log(StatsManager.Instance.facing);
                 Debug.Log(hori + " h:v " + vert);
-
+            
                 if (StatsManager.Instance.facing == new Vector2(hori, 0))
                 {
                     Debug.Log(" : 1h1");
@@ -69,29 +94,11 @@ public class Pushable : MonoBehaviour
                     StatsManager.Instance.canGrabMove = false;
                     Debug.Log(" : 1v2");
                 }
-
-                else
+                
+                else if(hit2 == true)
                 {
-                    Debug.Log(" : 1a1");
-                    StatsManager.Instance.canGrabMove = true;
-                    Debug.Log(" : 1a2");
-                }
-                Debug.Log(StatsManager.Instance.canGrabMove);
-            }
-            else
-            {
-                StatsManager.Instance.canGrabMove = true;
-
-            }
-
-            RaycastHit2D hit2 = Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0f, StatsManager.Instance.facing, 2f, wallLayer);
-            Debug.DrawRay(transform.position, -StatsManager.Instance.facing * 4f,Color.blue);
-
-            if (hit2 == true)
-            {
-                Debug.Log(hit2.collider.gameObject.name + " : b");
-
-                if (-StatsManager.Instance.facing == new Vector2(hori, 0))
+                
+                 if (-StatsManager.Instance.facing == new Vector2(hori, 0))
                 {
                     Debug.Log(" : 2h1");
                     StatsManager.Instance.canGrabMove = false;
@@ -110,15 +117,51 @@ public class Pushable : MonoBehaviour
                     Debug.Log(" : 2a1");
                     StatsManager.Instance.canGrabMove = true;
                     Debug.Log(" : 2a2");
+                }   
+                
+
                 }
+                else
+                {
+                    Debug.Log(" : 1a1");
+                    StatsManager.Instance.canGrabMove = true;
+                    Debug.Log(" : 1a2");
+                }
+                Debug.Log(StatsManager.Instance.canGrabMove);
+            }
+            else if(hit2 == true)
+            {
+                
+                    if (-StatsManager.Instance.facing == new Vector2(hori, 0))
+                    {
+                         Debug.Log(" : 2h1");
+                         StatsManager.Instance.canGrabMove = false;
+                         Debug.Log(" : 2h2");
+                    }
+                    
+                     else if (-StatsManager.Instance.facing == new Vector2(0, vert))
+                    {
+                          Debug.Log(" : 2v1");
+                          StatsManager.Instance.canGrabMove = false;
+                          Debug.Log(" : 2v2");
+                    }
+                    
+                    else
+                    {
+                         Debug.Log(" : 2a1");
+                         StatsManager.Instance.canGrabMove = true;
+                         Debug.Log(" : 2a2");
+                    }   
+                
 
             }
-            else if(hit1 == false)
+            else
             {
-                    StatsManager.Instance.canGrabMove = true;
-
+                StatsManager.Instance.canGrabMove = true;
+                Debug.Log(" : 3a2");
             }
             
+            */
 
             if (StatsManager.Instance.lockHori == false && StatsManager.Instance.lockVert == false)
             {
@@ -229,7 +272,126 @@ public class Pushable : MonoBehaviour
         }
     } 
 
-    
+    public void RaycastHit1(RaycastHit2D hit1, RaycastHit2D hit2, RaycastHit2D hit3,RaycastHit2D hit4, float hori, float vert)
+    {
+        
+        
+        Debug.Log(hit1.collider.gameObject.name + " : a");
+        Debug.Log(StatsManager.Instance.facing);
+        Debug.Log(hori + " h:v " + vert);
+            
+        if (StatsManager.Instance.facing == new Vector2(hori, 0))
+        {
+            Debug.Log(" : 1h1");
+            StatsManager.Instance.canGrabMove = false;
+            Debug.Log(" : 1h2");
+        }
+
+        else if (StatsManager.Instance.facing == new Vector2(0, vert))
+        {
+            Debug.Log(" : 1v1");
+            StatsManager.Instance.canGrabMove = false;
+            Debug.Log(" : 1v2");
+        }
+        else if (hit2 == true)
+        {
+            RaycastHit2(hit2, hit3, hit4, hori, vert);
+        }
+        else if (hit3 == true)
+        {
+            RaycastHit3(hit3, hit4, hori, vert);
+        }
+        else if (hit4 == true)
+        {
+            RaycastHit4( hit4, hori, vert);
+        }
+        else
+        {
+            Debug.Log(" : 2a1");
+            StatsManager.Instance.canGrabMove = true;
+            Debug.Log(" : 2a2");
+        }
+        
+    }
+    public void RaycastHit2(RaycastHit2D hit2, RaycastHit2D hit3,RaycastHit2D hit4, float hori, float vert)
+    {
+        if (-StatsManager.Instance.facing == new Vector2(hori, 0))
+        {
+            Debug.Log(" : 1h1");
+            StatsManager.Instance.canGrabMove = false;
+            Debug.Log(" : 1h2");
+        }
+
+        else if (-StatsManager.Instance.facing == new Vector2(0, vert))
+        {
+            Debug.Log(" : 1v1");
+            StatsManager.Instance.canGrabMove = false;
+            Debug.Log(" : 1v2");
+        }
+        else if (hit3 == true)
+        {
+            RaycastHit3(hit3, hit4, hori, vert);
+        }
+        else if (hit4 == true)
+        {
+            RaycastHit4( hit4, hori, vert);
+        }
+        else
+        {
+            Debug.Log(" : 2a1");
+            StatsManager.Instance.canGrabMove = true;
+            Debug.Log(" : 2a2");
+        }
+    }
+    public void RaycastHit3(RaycastHit2D hit3,RaycastHit2D hit4, float hori, float vert)
+    {
+        if (StatsManager.Instance.facing == new Vector2(hori, 0))
+        {
+            Debug.Log(" : 1h1");
+            StatsManager.Instance.canGrabMove = false;
+            Debug.Log(" : 1h2");
+        }
+
+        else if (StatsManager.Instance.facing == new Vector2(0, vert))
+        {
+            Debug.Log(" : 1v1");
+            StatsManager.Instance.canGrabMove = false;
+            Debug.Log(" : 1v2");
+        }
+
+        else if (hit4 == true)
+        {
+            RaycastHit4( hit4, hori, vert);
+        }
+        else
+        {
+            Debug.Log(" : 2a1");
+            StatsManager.Instance.canGrabMove = true;
+            Debug.Log(" : 2a2");
+        }
+    }
+    public void RaycastHit4(RaycastHit2D hit4, float hori, float vert)
+    {
+        if (-StatsManager.Instance.facing == new Vector2(hori, 0))
+        {
+            Debug.Log(" : 1h1");
+            StatsManager.Instance.canGrabMove = false;
+            Debug.Log(" : 1h2");
+        }
+
+        else if (-StatsManager.Instance.facing == new Vector2(0, vert))
+        {
+            Debug.Log(" : 1v1");
+            StatsManager.Instance.canGrabMove = false;
+            Debug.Log(" : 1v2");
+        }
+        else
+        {
+            Debug.Log(" : 2a1");
+            StatsManager.Instance.canGrabMove = true;
+            Debug.Log(" : 2a2");
+        }
+    }
     
     void OnTriggerExit2D(Collider2D coll)
     {

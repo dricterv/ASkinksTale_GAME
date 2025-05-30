@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7671290117820804867}
   - component: {fileID: 4170242245812170788}
   - component: {fileID: 4119543517460921055}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FloorTorch
   m_TagString: Flamable
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ MonoBehaviour:
   flame: {fileID: 0}
   flameLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   torchOn: 0
 --- !u!114 &4170242245812170788
 MonoBehaviour:
@@ -179,7 +179,10 @@ MonoBehaviour:
   playerRB: {fileID: 0}
   wallLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
+  pushableLayer:
+    serializedVersion: 2
+    m_Bits: 256
   flame: {fileID: 7671290117820804867}
   playerController: {fileID: 0}
 --- !u!61 &4119543517460921055

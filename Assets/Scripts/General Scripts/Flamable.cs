@@ -97,10 +97,10 @@ public class Flamable : MonoBehaviour
     }*/
     public void CheckForTorch()
     {
-        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, StatsManager.Instance.facing, 2f, flameLayer);
-        Debug.DrawRay(transform.position, StatsManager.Instance.facing * 2f, Color.white);
+        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, StatsManager.Instance.facing, 1.5f, flameLayer);
+        Debug.DrawRay(transform.position, StatsManager.Instance.facing * 1.5f, Color.white);
 
-        if (hit1 == true && hit1.collider.gameObject.GetComponent<Flamable>().isFlamable == true && hit1.collider.gameObject.GetComponent<Flamable>().isOnFire == false && isOnFire == true)
+        if (hit1 == true && hit1.collider.gameObject.tag == "Flamable" && hit1.collider.gameObject.GetComponent<Flamable>().isFlamable == true && hit1.collider.gameObject.GetComponent<Flamable>().isOnFire == false && isOnFire == true)
         {
             Debug.Log("lighting");
             hit1.collider.gameObject.gameObject.GetComponent<Flamable>().SetOnFire();

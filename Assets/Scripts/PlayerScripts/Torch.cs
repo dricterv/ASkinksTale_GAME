@@ -50,7 +50,7 @@ public class Torch : MonoBehaviour
         if (hits.Length > 0)
         {
             flamableObject = hits[0].transform;
-            if(flamableObject.gameObject.GetComponent<Flamable>().isFlamable == true && flamableObject.gameObject.GetComponent<Flamable>().isOnFire == false)
+            if(flamableObject.gameObject.tag == "Flamable" && flamableObject.gameObject.GetComponent<Flamable>().isFlamable == true && flamableObject.gameObject.GetComponent<Flamable>().isOnFire == false)
             {
                 flamableObject.gameObject.GetComponent<Flamable>().SetOnFire();
             }
