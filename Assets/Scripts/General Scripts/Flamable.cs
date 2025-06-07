@@ -24,17 +24,17 @@ public class Flamable : MonoBehaviour
     {
         
         originalColor = flamableSpriteRenderer.color;
-       // anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         if (isOnFire == true)
         {
             //colourToggle = true;
-           // anim.SetBool("isOnFire", true);
+            anim.SetBool("isOnFire", true);
         }
         else
         {
-            colourToggle = false;
+            //colourToggle = false;
 
-            // anim.SetBool("isOnFire", false);
+            anim.SetBool("isOnFire", false);
         }
 
     }
@@ -42,27 +42,8 @@ public class Flamable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isOnFire == true && colourToggle == false)
-        {
-            flamableSpriteRenderer.color = goalColor;
-            colourToggle = true;
-        }
-        else if (isOnFire == false && colourToggle == true)
-        {
-            colourToggle = false;
-
-            flamableSpriteRenderer.color = originalColor;
-        }
-        /*
-        if (isOnFire == true && timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
-        if(timer <= 0)
-        {
-            timer = timerMax;
-            FireOff();
-        }*/
+        
+      
     }
     public void SetOnFire()
     {
@@ -72,7 +53,7 @@ public class Flamable : MonoBehaviour
 
         }
         isOnFire = true;
-        
+        anim.SetBool("isOnFire", true);
         if (flame != null && torchOn == true)
         {
             flame.SetOnFire();
@@ -83,6 +64,7 @@ public class Flamable : MonoBehaviour
     public void FireOff()
     {
         isOnFire = false;
+        anim.SetBool("isOnFire", false);
         //anim.SetBool("isOnFire", true);
         //Debug.Log("OffFire");
     }

@@ -335,7 +335,7 @@ public class PlayerController : MonoBehaviour
             if (StatsManager.Instance.blocking == true)
             {
                 ChangeState(PlayerState.Blocking);
-                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed;
+                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed * Time.fixedDeltaTime;
             }
             else
             {
@@ -349,7 +349,7 @@ public class PlayerController : MonoBehaviour
             if (StatsManager.Instance.blocking == true)
             {
                 ChangeState(PlayerState.Blocking);
-                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed;
+                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed * Time.fixedDeltaTime;
             }
             else
             {
