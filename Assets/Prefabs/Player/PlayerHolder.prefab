@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6976249573204983720}
   - component: {fileID: 5916721581610211304}
-  - component: {fileID: 5622493551181471055}
   m_Layer: 2
   m_Name: GrabLeft
   m_TagString: Grab
@@ -64,23 +63,6 @@ PolygonCollider2D:
       - {x: -0.90775794, y: -0.24084544}
       - {x: -0.9047468, y: -0.20702028}
   m_UseDelaunayMesh: 0
---- !u!114 &5622493551181471055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208432867183949845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba1dce5a292ac848a94d8323fec6a25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabDist: 1
-  pushableLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  playerController: {fileID: 3803795103004682064}
 --- !u!1 &3488450851358806149
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3630783934807507285}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +94,7 @@ Transform:
   - {fileID: 6548627380629723337}
   - {fileID: 2315120693544987864}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4802885688189718832
 GameObject:
@@ -124,7 +106,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2465554869895281628}
   - component: {fileID: 3076197654369640320}
-  - component: {fileID: 5111914005322522861}
   m_Layer: 2
   m_Name: GrabDown
   m_TagString: Grab
@@ -178,23 +159,6 @@ PolygonCollider2D:
       - {x: 0.044858366, y: 0.27244067}
       - {x: 0.051865995, y: 0.35423034}
   m_UseDelaunayMesh: 0
---- !u!114 &5111914005322522861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4802885688189718832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba1dce5a292ac848a94d8323fec6a25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabDist: 1
-  pushableLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  playerController: {fileID: 3803795103004682064}
 --- !u!1 &5179916346135703995
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +169,6 @@ GameObject:
   m_Component:
   - component: {fileID: 556568708814291735}
   - component: {fileID: 7267022898207794779}
-  - component: {fileID: 1988378664961980995}
   m_Layer: 2
   m_Name: GrabRight
   m_TagString: Grab
@@ -259,23 +222,6 @@ PolygonCollider2D:
       - {x: -2.256348, y: -0.24295592}
       - {x: -2.2568994, y: -0.20950657}
   m_UseDelaunayMesh: 0
---- !u!114 &1988378664961980995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5179916346135703995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba1dce5a292ac848a94d8323fec6a25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabDist: 1
-  pushableLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  playerController: {fileID: 3803795103004682064}
 --- !u!1 &5566712092001268778
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +232,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3514844446816918559}
   - component: {fileID: 3437704775699674559}
-  - component: {fileID: 1698716958224453339}
   m_Layer: 2
   m_Name: GrabUp
   m_TagString: Grab
@@ -340,23 +285,6 @@ PolygonCollider2D:
       - {x: 0.04554671, y: -0.64419246}
       - {x: 0.05186826, y: -0.5793298}
   m_UseDelaunayMesh: 0
---- !u!114 &1698716958224453339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5566712092001268778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba1dce5a292ac848a94d8323fec6a25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabDist: 1
-  pushableLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  playerController: {fileID: 3803795103004682064}
 --- !u!1 &8577705651373260927
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2315120693544987864}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GrabHB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,17 +563,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
---- !u!114 &3803795103004682064 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3881892658908343140, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
-  m_PrefabInstance: {fileID: 78403633545956404}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c08bcb5029a0f7948a94605c3dfb1760, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6548627380629723337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6627027440072889597, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
