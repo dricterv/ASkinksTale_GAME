@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(playerState);
         //Debug.Log(StatsManager.Instance.facing);
-
+        /*
         if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching)
         {
             
@@ -100,11 +100,76 @@ public class PlayerController : MonoBehaviour
                 ChangeState(PlayerState.Attacking);
                 
             }
+        }*/
+        
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            switch (StatsManager.Instance.equippedItemOne)
+            {
+                case EquippedItem.BaseFork:
+
+                    Attack();
+                    Debug.Log("fork");
+                    break;
+
+                case EquippedItem.BaseShield:
+
+                    Block(KeyCode.J);
+
+                    break;
+
+                case EquippedItem.MatchStick:
+
+                    UseTorch();
+                    Debug.Log("torch");
+
+                    break;
+
+
+            }
+
+            
         }
         
-       
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            switch (StatsManager.Instance.equippedItemTwo)
+            {
+                case EquippedItem.BaseFork:
+
+                    Attack();
+
+                    Debug.Log("fork");
+                    break;
+
+                case EquippedItem.BaseShield:
+
+                    Block(KeyCode.K);
+
+                    break;
+
+                case EquippedItem.MatchStick:
+
+                    UseTorch();
+                    Debug.Log("torch");
+
+                    break;
+
+
+            }
+        }
+        /*
+        if(Input.GetKeyDown(KeyCode.Space)
+        {   
+            grab
+            interact
+            dodge
+        }
+    
+        */
+
     }
-   
+
 
     public void Move()
     {
@@ -522,8 +587,9 @@ public class PlayerController : MonoBehaviour
        
     }
 
-    public void Block()
+    public void Block(KeyCode keyCode)
     {
+        /*
         if (Input.GetKeyDown(KeyCode.K) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing)
         {
             StatsManager.Instance.blocking = true;
@@ -533,8 +599,8 @@ public class PlayerController : MonoBehaviour
             
 
 
-        }
-        if (Input.GetKey(KeyCode.K) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing )
+        } */
+        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing )
         {
 
            
@@ -545,7 +611,7 @@ public class PlayerController : MonoBehaviour
 
 
         }
-        if (Input.GetKeyUp(KeyCode.K))
+        if (Input.GetKeyUp(keyCode))
         {
             StatsManager.Instance.blocking = false;
             StatsManager.Instance.lockFace = false;
@@ -553,6 +619,17 @@ public class PlayerController : MonoBehaviour
 
         }
 
+    }
+    public void Attack()
+    {
+        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching)
+        {
+            StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
+            StatsManager.Instance.lockFace = true;
+            StatsManager.Instance.blocking = false;
+            ChangeState(PlayerState.Attacking);
+
+        }
     }
     public void EndAttack()
     {
@@ -586,7 +663,7 @@ public class PlayerController : MonoBehaviour
 
     private void UseTorch()
     {
-       if(Input.GetKeyDown(KeyCode.I) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing)
+       if(playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Attacking)
        {
         
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
