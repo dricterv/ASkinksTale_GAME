@@ -114,15 +114,8 @@ public class PlayerController : MonoBehaviour
 
                 case EquippedItem.BaseShield:
 
-                    Block(KeyCode.J);
-                    if (Input.GetKey(KeyCode.J) != true)
-                    {
-                        StatsManager.Instance.blocking = false;
-                        StatsManager.Instance.lockFace = false;
-                        Facing();
-
-                    }
-
+                    Block();
+                   
                     break;
 
                 case EquippedItem.MatchStick:
@@ -151,14 +144,8 @@ public class PlayerController : MonoBehaviour
 
                 case EquippedItem.BaseShield:
 
-                    Block(KeyCode.K);
-                    if (Input.GetKey(KeyCode.K) != true)
-                    {
-                        StatsManager.Instance.blocking = false;
-                        StatsManager.Instance.lockFace = false;
-                        Facing();
-
-                    }
+                    Block();
+                   
                     break;
 
                 case EquippedItem.MatchStick:
@@ -192,7 +179,7 @@ public class PlayerController : MonoBehaviour
             if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching)
             {
                 hit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
-                if(hit.collider != null)
+                if(hit.collider != null && playerState != PlayerState.Blocking)
                 {
                     Grab();
 
@@ -645,7 +632,7 @@ public class PlayerController : MonoBehaviour
        
     }
 
-    public void Block(KeyCode keyCode)
+    public void Block()
     {
         /*
         if (Input.GetKeyDown(KeyCode.K) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing)
@@ -669,13 +656,7 @@ public class PlayerController : MonoBehaviour
 
 
         }
-        if (Input.GetKeyUp(keyCode))
-        {
-            StatsManager.Instance.blocking = false;
-            StatsManager.Instance.lockFace = false;
-            Facing();
-
-        }
+       
 
     }
     public void Attack()
