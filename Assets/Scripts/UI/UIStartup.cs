@@ -4,16 +4,31 @@ using UnityEngine;
 
 public class UIStartup : MonoBehaviour
 {
-    public GameObject canvas;
+    public GameObject liveCanvas;
+    public GameObject pauseCanvas;
     // Start is called before the first frame update
     void Start()
     {
-        canvas.SetActive(true);
+        liveCanvas.SetActive(true);
+        pauseCanvas.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            if(liveCanvas.activeSelf == true)
+            {
+                liveCanvas.SetActive(false);
+                pauseCanvas.SetActive(true);
+            }
+            else if(pauseCanvas.activeSelf == true)
+            {
+                liveCanvas.SetActive(true);
+                pauseCanvas.SetActive(false);
+            }
+        }
     }
 }

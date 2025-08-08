@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-            Move();
+        Move();
         grabPoints.position = transform.position;
     }
     void Update()
@@ -115,6 +115,13 @@ public class PlayerController : MonoBehaviour
                 case EquippedItem.BaseShield:
 
                     Block(KeyCode.J);
+                    if (Input.GetKey(KeyCode.J) != true)
+                    {
+                        StatsManager.Instance.blocking = false;
+                        StatsManager.Instance.lockFace = false;
+                        Facing();
+
+                    }
 
                     break;
 
@@ -131,7 +138,7 @@ public class PlayerController : MonoBehaviour
             
         }
         
-        if(Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKey(KeyCode.K))
         {
             switch (StatsManager.Instance.equippedItemTwo)
             {
@@ -145,7 +152,13 @@ public class PlayerController : MonoBehaviour
                 case EquippedItem.BaseShield:
 
                     Block(KeyCode.K);
+                    if (Input.GetKey(KeyCode.K) != true)
+                    {
+                        StatsManager.Instance.blocking = false;
+                        StatsManager.Instance.lockFace = false;
+                        Facing();
 
+                    }
                     break;
 
                 case EquippedItem.MatchStick:
@@ -158,15 +171,60 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-        /*
-        if(Input.GetKeyDown(KeyCode.Space)
+        if (Input.GetKey(KeyCode.J) != true && playerState == PlayerState.Blocking && StatsManager.Instance.equippedItemOne == EquippedItem.BaseShield)
+                    {
+                        StatsManager.Instance.blocking = false;
+                        StatsManager.Instance.lockFace = false;
+                        Facing();
+
+                    }
+        if (Input.GetKey(KeyCode.K) != true && playerState == PlayerState.Blocking && StatsManager.Instance.equippedItemTwo == EquippedItem.BaseShield)
+                    {
+                        StatsManager.Instance.blocking = false;
+                        StatsManager.Instance.lockFace = false;
+                        Facing();
+
+                    }
+        
+        
+        if(Input.GetKeyDown(KeyCode.Space))
         {   
-            grab
-            interact
-            dodge
+            if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching)
+            {
+                hit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
+                if(hit.collider != null)
+                {
+                    Grab();
+
+                }
+
+                else if((Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false && playerState != PlayerState.Grabbing)
+                {
+                    Roll();
+                }
+            }
         }
-    
-        */
+        if((Input.GetKey(KeyCode.Space) == false) && StatsManager.Instance.isMoving == false && (StatsManager.Instance.lockHori == true || StatsManager.Instance.lockVert == true) && (playerState == PlayerState.Grabbing || playerState == PlayerState.Pushing || playerState == PlayerState.Pushing))
+        {
+            
+        
+            
+            
+            grabLeft.enabled = false;
+            grabRight.enabled = false;
+            grabUp.enabled = false;
+            grabDown.enabled = false;
+                /* if (hit.collider != null)
+                 {
+                     hit.collider.gameObject.GetComponent<Pushable>().EndPush();
+                 }*/
+            StatsManager.Instance.lockHori = false;
+            StatsManager.Instance.lockVert = false;
+
+            StatsManager.Instance.lockFace = false;
+            Facing();
+        }
+        
 
     }
 
@@ -451,7 +509,7 @@ public class PlayerController : MonoBehaviour
 
     public void Grab()
     {
-        if ((Input.GetKeyDown(KeyCode.L)))
+        if ((Input.GetKeyDown(KeyCode.Space)))
         {
             if(StatsManager.Instance.facing == new Vector2(0, -1))
             {
@@ -515,7 +573,7 @@ public class PlayerController : MonoBehaviour
             }*/
 
         }
-        if ((Input.GetKey(KeyCode.L) == false) && StatsManager.Instance.isMoving == false && (StatsManager.Instance.lockHori == true || StatsManager.Instance.lockVert == true))
+        if ((Input.GetKey(KeyCode.Space) == false) && StatsManager.Instance.isMoving == false && (StatsManager.Instance.lockHori == true || StatsManager.Instance.lockVert == true))
         {
             
             
@@ -663,7 +721,7 @@ public class PlayerController : MonoBehaviour
 
     private void UseTorch()
     {
-       if(playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Attacking)
+       if(playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Attacking && playerState != PlayerState.Torching)
        {
         
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
