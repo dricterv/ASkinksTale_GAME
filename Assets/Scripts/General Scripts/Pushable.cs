@@ -6,6 +6,7 @@ public class Pushable : MonoBehaviour
 {
     public bool isPushable;
     private Rigidbody2D rb;
+    public float grabDistSize = 1;
     public bool pushed;
     public bool lockX;
     public bool lockY;
@@ -154,6 +155,16 @@ public class Pushable : MonoBehaviour
             {
                 if (StatsManager.Instance.facing == new Vector2(0, -1) || StatsManager.Instance.facing == new Vector2(0, 1))
                 {
+                    if(StatsManager.Instance.facing == new Vector2(0, -1))
+                    {
+                        playerGO.transform.position = this.transform.position - new Vector3(StatsManager.Instance.facing.x * (2.05f * grabDistSize), StatsManager.Instance.facing.y * (2.05f * grabDistSize), playerGO.transform.position.z);
+                        
+                    }
+                    if(StatsManager.Instance.facing == new Vector2(0, 1))
+                    {
+                        playerGO.transform.position = this.transform.position - new Vector3(StatsManager.Instance.facing.x * (1.4f * grabDistSize), StatsManager.Instance.facing.y * (1.4f * grabDistSize), playerGO.transform.position.z);
+
+                    }
                     StatsManager.Instance.lockFace = true;
                     StatsManager.Instance.lockVert = true;
                     StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
@@ -163,6 +174,7 @@ public class Pushable : MonoBehaviour
                 {
                     if (StatsManager.Instance.facing == new Vector2(-1, 0) || StatsManager.Instance.facing == new Vector2(1, 0))
                     {
+                        playerGO.transform.position = this.transform.position - new Vector3(StatsManager.Instance.facing.x * (1.7f * grabDistSize), StatsManager.Instance.facing.y * (1.7f * grabDistSize), playerGO.transform.position.z);
                         StatsManager.Instance.lockFace = true;
                         StatsManager.Instance.lockHori = true;
                         StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
@@ -175,6 +187,7 @@ public class Pushable : MonoBehaviour
             {
                 if (StatsManager.Instance.facing == new Vector2(-1, 0) || StatsManager.Instance.facing == new Vector2(1, 0))
                 {
+                    playerGO.transform.position = this.transform.position - new Vector3(StatsManager.Instance.facing.x * (1.7f * grabDistSize), StatsManager.Instance.facing.y * (1.7f * grabDistSize), playerGO.transform.position.z);
                     StatsManager.Instance.lockFace = true;
                     StatsManager.Instance.lockHori = true;
                     StatsManager.Instance.lockFacing = StatsManager.Instance.facing;

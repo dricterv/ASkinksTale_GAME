@@ -21,11 +21,13 @@ public class UIManager : MonoBehaviour
         {
             if(liveCanvas.activeSelf == true)
             {
+                Time.timeScale = 0;
                 liveCanvas.SetActive(false);
                 pauseCanvas.SetActive(true);
             }
             else if(pauseCanvas.activeSelf == true)
             {
+                Time.timeScale = 1;
                 liveCanvas.SetActive(true);
                 pauseCanvas.SetActive(false);
             }

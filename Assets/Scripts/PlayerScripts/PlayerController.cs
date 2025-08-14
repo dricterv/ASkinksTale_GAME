@@ -29,7 +29,11 @@ public class PlayerController : MonoBehaviour
     [Header("Grabbing")]
     public float grabDist = 1;
     public LayerMask pushableLayer;
-    private RaycastHit2D hit;
+    private RaycastHit2D grabHit;
+    [Header("Interacting")]
+    public float interactDist = 1;
+    public LayerMask interactableLayer;
+    private RaycastHit2D interactHit;
     [Header("Other")]
     public bool blocking;
     private Animator anim;
@@ -178,8 +182,15 @@ public class PlayerController : MonoBehaviour
         {   
             if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching)
             {
-                hit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
-                if(hit.collider != null && playerState != PlayerState.Blocking)
+                interactHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, interactDist, interactableLayer);
+                grabHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
+
+                if(interactHit.collider != null && playerState != PlayerState.Blocking)
+                {
+                    Interact(interactHit.collider.gameObject);
+                }
+
+                else if (grabHit.collider != null && playerState != PlayerState.Blocking)
                 {
                     Grab();
 
@@ -493,7 +504,10 @@ public class PlayerController : MonoBehaviour
        // Debug.Log("Roll End");
 
     }
-
+    public void Interact(GameObject interactGO)
+    {
+        interactGO.GetComponent<Interactable>().Interact();
+    }
     public void Grab()
     {
         if ((Input.GetKeyDown(KeyCode.Space)))
