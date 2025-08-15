@@ -88,6 +88,7 @@ public class StatsManager : MonoBehaviour
 
 public enum EquippedItem
 {
+    EmptyItem,
     BaseFork,
     BaseShield,
     MatchStick,

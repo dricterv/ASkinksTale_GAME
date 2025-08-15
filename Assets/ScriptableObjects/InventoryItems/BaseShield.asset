@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BaseShield
   m_EditorClassIdentifier: 
   itemName: Shield
-  thisItem: 1
+  thisItem: 2
   itemDescription: Drinking Buddy
   itemImage: {fileID: 21300000, guid: 0dbfadaddf8093c43adee4e8fb621c82, type: 3}
   numberHeld: 1
