@@ -8,6 +8,7 @@ public class ToolObtain : MonoBehaviour
     public string scriptName;
     public ItemText itemText;
     public InventoryItem item;
+    public int slot;
     public InventoryManager inventoryManager;
     public void OnTriggerEnter2D(Collider2D coll)
     {
@@ -17,7 +18,7 @@ public class ToolObtain : MonoBehaviour
             if(player != null)
             {
                 (coll.gameObject.GetComponent(scriptName) as MonoBehaviour).enabled = true;
-                inventoryManager.AddInventoryItem(item);
+                inventoryManager.AddInventoryItem(item, slot);
             }
             
             Destroy(this.gameObject);

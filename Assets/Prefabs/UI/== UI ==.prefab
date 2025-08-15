@@ -2061,6 +2061,8 @@ MonoBehaviour:
   nameText: {fileID: 914073852226464668}
   useButtonOne: {fileID: 914073852071830462}
   useButtonTwo: {fileID: 914073851843725907}
+  eventSystem: {fileID: 914073850959878563}
+  selectedButton: {fileID: 914073852071830460}
   currentItem: {fileID: 0}
 --- !u!1 &914073852763715503
 GameObject:
@@ -2312,7 +2314,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7867984053913630190}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 914073852763715501}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ToggleInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7620552077767422382
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,20 +17,25 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            if(liveCanvas.activeSelf == true)
-            {
-                Time.timeScale = 0;
-                liveCanvas.SetActive(false);
-                pauseCanvas.SetActive(true);
-            }
-            else if(pauseCanvas.activeSelf == true)
-            {
-                Time.timeScale = 1;
-                liveCanvas.SetActive(true);
-                pauseCanvas.SetActive(false);
-            }
+            ToggleInventory();
+        }
+    }
+
+    public void ToggleInventory()
+    {
+        if (liveCanvas.activeSelf == true)
+        {
+            Time.timeScale = 0;
+            liveCanvas.SetActive(false);
+            pauseCanvas.SetActive(true);
+        }
+        else if (pauseCanvas.activeSelf == true)
+        {
+            Time.timeScale = 1;
+            liveCanvas.SetActive(true);
+            pauseCanvas.SetActive(false);
         }
     }
 }

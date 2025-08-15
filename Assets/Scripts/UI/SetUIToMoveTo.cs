@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class SetUIToMoveTo : MonoBehaviour
 {
-    [SerializeField] private EventSystem eventSystem;
-    [SerializeField]private Selectable elementToSelect;
+    public EventSystem eventSystem;
+    public Selectable elementToSelect;
     // Start is called before the first frame update
     
 

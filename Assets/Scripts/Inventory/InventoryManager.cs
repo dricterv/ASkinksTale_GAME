@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -14,6 +16,9 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private GameObject useButtonOne;
     [SerializeField] private GameObject useButtonTwo;
+    [SerializeField] private EventSystem eventSystem;
+    [SerializeField] private Selectable selectedButton;
+
     public InventoryItem currentItem;
 
     public void SetTextAndButton(string description, string name, bool isButtonActive)
@@ -32,9 +37,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddInventoryItem(InventoryItem item)
+    public void AddInventoryItem(InventoryItem item, int slot)
     {
-        playerInventory.myInventory.Add(item);
+        
         GameObject temp = Instantiate(blankInventorySlot, inventoryPanel.transform.position, Quaternion.identity);
         temp.transform.SetParent(inventoryPanel.transform);
         temp.transform.localScale = new Vector3(1, 1, 1);
@@ -46,14 +51,25 @@ public class InventoryManager : MonoBehaviour
     {
         if(playerInventory)
         {
-            for(int i = 0; i < playerInventory.myInventory.Count; i ++)
+            for (int i = 0; i < playerInventory.myInventory.Count; i++)
             {
                 GameObject temp = Instantiate(blankInventorySlot, inventoryPanel.transform.position, Quaternion.identity);
                 temp.transform.SetParent(inventoryPanel.transform);
-                temp.transform.localScale = new Vector3(1,1,1);
+                temp.transform.localScale = new Vector3(1, 1, 1);
 
                 InventorySlot newSlot = temp.GetComponent<InventorySlot>();
                 newSlot.Setup(playerInventory.myInventory[i], this);
+                if (newSlot.thisItem.isUsable && newSlot.thisItem.thisItem != EquippedItem.EmptyItem)
+                {
+                    Debug.Log("selected");
+                    newSlot.GetComponent<SetUIToMoveTo>().eventSystem = eventSystem;
+                    newSlot.GetComponent<SetUIToMoveTo>().elementToSelect = selectedButton;
+                }
+                else
+                {
+                     newSlot.GetComponent<SetUIToMoveTo>().eventSystem = eventSystem;
+                    newSlot.GetComponent<SetUIToMoveTo>().elementToSelect = newSlot.GetComponent<Button>();
+                }
 
             }
         }
@@ -67,13 +83,14 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-   public void SetupDescriptionNameAndButtons(string newDescriptionString, string newNameString, bool isButtonUsable, InventoryItem newItem)
+    public void SetupDescriptionNameAndButtons(string newDescriptionString, string newNameString, bool isButtonUsable, InventoryItem newItem)
     {
         currentItem = newItem;
         nameText.text = newNameString;
         descriptionText.text = newDescriptionString;
         useButtonOne.SetActive(isButtonUsable);
         useButtonTwo.SetActive(isButtonUsable);
+       
     }
 
     public void EquipOneButtonPress()
