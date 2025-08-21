@@ -59,6 +59,10 @@ public class InventoryManager : MonoBehaviour
 
                 InventorySlot newSlot = temp.GetComponent<InventorySlot>();
                 newSlot.Setup(playerInventory.myInventory[i], this);
+                if(i == 0)
+                {
+                    EventSystem.current.SetSelectedGameObject(newSlot.gameObject);
+                }
                 if (newSlot.thisItem.isUsable && newSlot.thisItem.thisItem != EquippedItem.EmptyItem)
                 {
                     Debug.Log("selected");
@@ -72,6 +76,7 @@ public class InventoryManager : MonoBehaviour
                 }
 
             }
+            
         }
     }
 

@@ -187,16 +187,23 @@ public class PlayerController : MonoBehaviour
 
                 if(interactHit.collider != null && playerState != PlayerState.Blocking)
                 {
-                    Interact(interactHit.collider.gameObject);
+                    if (DialogueManager.Instance.isDialogueActive)
+                    {
+                        DialogueManager.Instance.AdvanceDialogue();
+                    }
+                    else
+                    {
+                        DialogueManager.Instance.StartDialogue(interactHit.collider.GetComponent<Dialogue>().dialogueSO);
+                    }
                 }
 
-                else if (grabHit.collider != null && playerState != PlayerState.Blocking)
+                else if (grabHit.collider != null && playerState != PlayerState.Blocking && DialogueManager.Instance.isDialogueActive != true)
                 {
                     Grab();
 
                 }
 
-                else if((Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false && playerState != PlayerState.Grabbing)
+                else if((Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false && playerState != PlayerState.Grabbing && DialogueManager.Instance.isDialogueActive != true)
                 {
                     Roll();
                 }
@@ -232,8 +239,12 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(StatsManager.Instance.blocking);
          hori = Input.GetAxisRaw("Horizontal");
          vert = Input.GetAxisRaw("Vertical");
-        
 
+        if (DialogueManager.Instance.isDialogueActive == true)
+        {
+            hori = 0;
+            vert = 0;
+        }
         //rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.speed;
         //Debug.Log("h: " + hori);
         // Debug.Log("v: " + vert);
@@ -317,6 +328,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("h: " + hori);
         //Debug.Log("v: " + vert);
         // Debug.Log("facing: " + StatsManager.Instance.facing);
+        
         if (isRolling == true)
         {
             rb.velocity = StatsManager.Instance.facing * StatsManager.Instance.rollDist;
@@ -675,7 +687,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Attack()
     {
-        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching)
+        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching && playerState != PlayerState.Attacking)
         {
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
             StatsManager.Instance.lockFace = true;

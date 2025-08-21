@@ -333,6 +333,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3437704775699674559}
     - target: {fileID: 3881892658908343140, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
+      propertyPath: grabDist
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881892658908343140, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
       propertyPath: grabDown
       value: 
       objectReference: {fileID: 3076197654369640320}
@@ -348,6 +352,14 @@ PrefabInstance:
       propertyPath: grabPoints
       value: 
       objectReference: {fileID: 2315120693544987864}
+    - target: {fileID: 3881892658908343140, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
+      propertyPath: interactDist
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881892658908343140, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
+      propertyPath: interactableLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 6504478479868982211, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
       value: -0.068748474
