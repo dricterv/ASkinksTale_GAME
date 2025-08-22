@@ -18,7 +18,7 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
     text: I got a snake in my hat.
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
-    text: w.
+    text: ...
   options:
   - optionText: '?'
     nextDialogue: {fileID: 11400000, guid: d7329292275634b44b9c659d69f42307, type: 2}

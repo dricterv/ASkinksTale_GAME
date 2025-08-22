@@ -66,9 +66,25 @@ public class DialogueManager : MonoBehaviour
         {
             portrait.sprite = line.speaker.portrait;
         }
-        actorName.text = line.speaker.actorName;
 
-        dialogueText.text = line.text;
+        if (line.speaker.actorName == null)
+        {
+            actorName.text = "Missing Name";
+        }
+        else
+        {
+            actorName.text = line.speaker.actorName;
+        }
+
+        if (line.text == null)
+        {
+            dialogueText.text = "Error: Missing Dialogue";
+        }
+        else
+        {
+            dialogueText.text = line.text;
+        }
+
 
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;

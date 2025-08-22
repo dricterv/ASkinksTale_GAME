@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
             }
         }*/
         
-        if(Input.GetKeyDown(KeyCode.J))
+        if(Input.GetButtonDown("Item1"))
         {
             switch (StatsManager.Instance.equippedItemOne)
             {
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
             
         }
         
-        if(Input.GetKey(KeyCode.K))
+        if(Input.GetButtonDown("Item2"))
         {
             switch (StatsManager.Instance.equippedItemTwo)
             {
@@ -162,14 +162,14 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-        if (Input.GetKey(KeyCode.J) != true && playerState == PlayerState.Blocking && StatsManager.Instance.equippedItemOne == EquippedItem.BaseShield)
+        if (Input.GetButton("Item1") != true && playerState == PlayerState.Blocking && StatsManager.Instance.equippedItemOne == EquippedItem.BaseShield)
                     {
                         StatsManager.Instance.blocking = false;
                         StatsManager.Instance.lockFace = false;
                         Facing();
 
                     }
-        if (Input.GetKey(KeyCode.K) != true && playerState == PlayerState.Blocking && StatsManager.Instance.equippedItemTwo == EquippedItem.BaseShield)
+        if (Input.GetButton("Item2") != true && playerState == PlayerState.Blocking && StatsManager.Instance.equippedItemTwo == EquippedItem.BaseShield)
                     {
                         StatsManager.Instance.blocking = false;
                         StatsManager.Instance.lockFace = false;
@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour
                     }
         
         
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetButtonDown("Global"))
         {   
             if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching)
             {
@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        if((Input.GetKey(KeyCode.Space) == false) && StatsManager.Instance.isMoving == false && (StatsManager.Instance.lockHori == true || StatsManager.Instance.lockVert == true) && (playerState == PlayerState.Grabbing || playerState == PlayerState.Pushing || playerState == PlayerState.Pushing))
+        if((Input.GetButton("Global") == false) && StatsManager.Instance.isMoving == false && (StatsManager.Instance.lockHori == true || StatsManager.Instance.lockVert == true) && (playerState == PlayerState.Grabbing || playerState == PlayerState.Pushing || playerState == PlayerState.Pushing))
         {
             
         
@@ -522,7 +522,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Grab()
     {
-        if ((Input.GetKeyDown(KeyCode.Space)))
+        if (Input.GetButtonDown("Global"))
         {
             if(StatsManager.Instance.facing == new Vector2(0, -1))
             {
@@ -586,7 +586,7 @@ public class PlayerController : MonoBehaviour
             }*/
 
         }
-        if ((Input.GetKey(KeyCode.Space) == false) && StatsManager.Instance.isMoving == false && (StatsManager.Instance.lockHori == true || StatsManager.Instance.lockVert == true))
+        if ((Input.GetButton("Global") == false) && StatsManager.Instance.isMoving == false && (StatsManager.Instance.lockHori == true || StatsManager.Instance.lockVert == true))
         {
             
             
