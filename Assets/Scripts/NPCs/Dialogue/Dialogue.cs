@@ -7,7 +7,9 @@ public class Dialogue : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     public Animator interactAnim;
-    public DialogueSO dialogueSO;
+
+    public List<DialogueSO> conversations;
+    public DialogueSO currentConversation;
 
 
     private void Awake()
@@ -38,15 +40,19 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
+       
+    }
+
+    public void CheckForNewConversation()
+    {
+        for(int i = 0; i < conversations.Count; i++)
         {
-            if(DialogueManager.Instance.isDialogueActive)
+            //can reverse for loop if wanting to skip to latest unlocked dialogue // for(int i = conversations.Count -1; i >= 0; i--)
+            var convo = conversations[i];
+            if(convo != null && convo.IsConditionMet())
             {
-                DialogueManager.Instance.AdvanceDialogue();
-            }
-            else
-            {
-                DialogueManager.Instance.StartDialogue(dialogueSO);
+                conversations.RemoveAt(i);
+                currentConversation = convo;
             }
         }
     }

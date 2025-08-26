@@ -7,6 +7,49 @@ public class DialogueSO : ScriptableObject
     public DialogueLine[] lines;
     public DialogueOption[] options;
 
+    [Header("Conditional Requirements (Optional)")]
+
+    public ActorSO[] requiredNPCs;
+
+    public LocationSO[] requiredLocations;
+
+    public InventoryItem[] requiredItems;
+
+    public bool IsConditionMet()
+    {
+        if(requiredNPCs.Length > 0)
+        {
+            foreach (var npc in requiredNPCs)
+            {
+                if(!DialogueHistoryTracker.Instance.HasSpokenWith(npc))
+                {
+                    return false;
+                }
+            }
+        }
+        if (requiredLocations.Length > 0)
+        {
+            foreach (var location in requiredLocations)
+            {
+                if (!LocationHistoryTracker.Instance.HasVisited(location))
+                {
+                    return false;
+                }
+            }
+        }
+        if (requiredItems.Length > 0)
+        {
+            foreach (var item in requiredItems)
+            {
+                if (!InventoryManager.Instance.HasItem(item))
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }
 
 [System.Serializable]

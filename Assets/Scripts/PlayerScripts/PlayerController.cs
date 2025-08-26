@@ -187,13 +187,16 @@ public class PlayerController : MonoBehaviour
 
                 if(interactHit.collider != null && playerState != PlayerState.Blocking)
                 {
-                    if (DialogueManager.Instance.isDialogueActive)
+                    if (DialogueManager.Instance.isDialogueActive == true && DialogueManager.Instance.isButtonActive == false)
                     {
                         DialogueManager.Instance.AdvanceDialogue();
+                        Debug.Log("input 1");
                     }
-                    else
+                    else if(DialogueManager.Instance.isDialogueActive == false && DialogueManager.Instance.isButtonActive == false)
                     {
-                        DialogueManager.Instance.StartDialogue(interactHit.collider.GetComponent<Dialogue>().dialogueSO);
+                        interactHit.collider.GetComponent<Dialogue>().CheckForNewConversation();
+                        DialogueManager.Instance.StartDialogue(interactHit.collider.GetComponent<Dialogue>().currentConversation);
+                        Debug.Log("input 2");
                     }
                 }
 

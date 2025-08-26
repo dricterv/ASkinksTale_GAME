@@ -14,11 +14,19 @@ public class ToolObtain : MonoBehaviour
     {
         if(coll.gameObject.tag == "Player")
         {
-            itemText.DisplayText();
+            if(itemText != null)
+                itemText.DisplayText();
+
             if(player != null)
             {
-                (coll.gameObject.GetComponent(scriptName) as MonoBehaviour).enabled = true;
-                inventoryManager.AddInventoryItem(item, slot);
+                if (scriptName != "")
+                {
+                    (coll.gameObject.GetComponent(scriptName) as MonoBehaviour).enabled = true;
+                }
+                if (item != null)
+                {
+                    InventoryManager.Instance.AddInventoryItem(item, slot);
+                }
             }
             
             Destroy(this.gameObject);

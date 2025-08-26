@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
-    text: haha its cause im a snake.
+    text: If you talk to the gecko after talking to me or go to the top right corner
+      of this room, the gecko will same something new!
+  - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
+    text: If you talk to the gecko after talking to me or go to the top right corner
+      of this room, the gecko will say something new!
   - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
     text: ~>8===---~~~
   options: []
+  requiredNPCs: []
+  requiredLocations: []
+  requiredItems: []

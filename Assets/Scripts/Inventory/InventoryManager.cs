@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance;
     [Header("Inventory Info")]
     public PlayerInventory playerInventory;
     [SerializeField] private GameObject blankInventorySlot;
@@ -21,6 +22,18 @@ public class InventoryManager : MonoBehaviour
 
     public InventoryItem currentItem;
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     public void SetTextAndButton(string description, string name, bool isButtonActive)
     {
         descriptionText.text = description;
@@ -45,6 +58,7 @@ public class InventoryManager : MonoBehaviour
         temp.transform.localScale = new Vector3(1, 1, 1);
 
         InventorySlot newSlot = temp.GetComponent<InventorySlot>();
+        playerInventory.myInventory.Add(item);
         newSlot.Setup(item, this);
     }
     void MakeInventorySlots()
@@ -65,7 +79,7 @@ public class InventoryManager : MonoBehaviour
                 }
                 if (newSlot.thisItem.isUsable && newSlot.thisItem.thisItem != EquippedItem.EmptyItem)
                 {
-                    Debug.Log("selected");
+                    //Debug.Log("selected");
                     newSlot.GetComponent<SetUIToMoveTo>().eventSystem = eventSystem;
                     newSlot.GetComponent<SetUIToMoveTo>().elementToSelect = selectedButton;
                 }
@@ -111,5 +125,24 @@ public class InventoryManager : MonoBehaviour
         {
             currentItem.EquipTwo();
         }
+    }
+
+
+    public bool HasItem(InventoryItem itemSO)
+    {
+        foreach(var slot in playerInventory.myInventory)
+        {
+            Debug.Log("loop");
+
+            if (slot == itemSO && slot.numberHeld > 0)
+            {
+                Debug.Log("w");
+                return true;
+
+            }
+            
+        }
+        //if(playerInventory.myInventory.Contains(itemSO) &&)
+        return false;
     }
 }

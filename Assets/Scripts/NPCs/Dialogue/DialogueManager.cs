@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     public Button[] choiceButtons;
 
     public bool isDialogueActive;
+    public bool isButtonActive;
 
     private DialogueSO currentDialogue;
     private int dialogueIndex;
@@ -30,6 +31,8 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        isDialogueActive = false;
+        isButtonActive = false;
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
@@ -41,10 +44,14 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartDialogue(DialogueSO dialogueSO)
     {
+
         currentDialogue = dialogueSO;
         dialogueIndex = 0;
-        isDialogueActive = true;
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
         ShowDialogue();
+        isDialogueActive = true;
     }
     public void AdvanceDialogue()
     {
@@ -62,6 +69,9 @@ public class DialogueManager : MonoBehaviour
     private void ShowDialogue()
     {
         DialogueLine line = currentDialogue.lines[dialogueIndex];
+        Debug.Log(dialogueIndex);
+        DialogueHistoryTracker.Instance.RecordNpc(line.speaker);
+
         if(portrait != null)
         {
             portrait.sprite = line.speaker.portrait;
@@ -85,17 +95,13 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = line.text;
         }
 
-
-        canvasGroup.alpha = 1;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
-
         dialogueIndex++;
     }
 
     private void ShowChoices()
     {
         ClearChoices();
+        isButtonActive = true;
         if (currentDialogue.options.Length > 0)
         {
             for(int i = 0; i < currentDialogue.options.Length; i++)
@@ -103,7 +109,7 @@ public class DialogueManager : MonoBehaviour
                 var option = currentDialogue.options[i];
                 choiceButtons[i].GetComponentInChildren<TMP_Text>().text = option.optionText;
                 choiceButtons[i].gameObject.SetActive(true);
-
+                
                 choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue));
 
             }
@@ -131,6 +137,8 @@ public class DialogueManager : MonoBehaviour
         else
         {
             ClearChoices();
+            isButtonActive = false;
+
             StartDialogue(dialogueSO);
 
         }
@@ -142,6 +150,8 @@ public class DialogueManager : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
         dialogueIndex = 0;
         ClearChoices();
+        isButtonActive = false;
+
         isDialogueActive = false;
     }
 

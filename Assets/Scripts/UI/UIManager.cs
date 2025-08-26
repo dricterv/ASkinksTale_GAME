@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject liveCanvas;
-    public GameObject pauseCanvas;
+    
+    public CanvasGroup liveCanvas;
+    public CanvasGroup pauseCanvas;
     // Start is called before the first frame update
     void Start()
     {
-        liveCanvas.SetActive(true);
-        pauseCanvas.SetActive(false);
+        liveCanvas.alpha = 1;
+        liveCanvas.interactable = false;
+        liveCanvas.blocksRaycasts = false;
+
+        pauseCanvas.alpha = 0;
+        pauseCanvas.interactable = false;
+        pauseCanvas.blocksRaycasts = false;
 
     }
 
@@ -25,17 +31,25 @@ public class UIManager : MonoBehaviour
 
     public void ToggleInventory()
     {
-        if (liveCanvas.activeSelf == true)
+        if (liveCanvas.alpha == 1)
         {
             Time.timeScale = 0;
-            liveCanvas.SetActive(false);
-            pauseCanvas.SetActive(true);
+            pauseCanvas.alpha = 1;
+            pauseCanvas.interactable = true;
+            pauseCanvas.blocksRaycasts = true;
+            liveCanvas.alpha = 0;
+            liveCanvas.interactable = false;
+            liveCanvas.blocksRaycasts = false;
         }
-        else if (pauseCanvas.activeSelf == true)
+        else if (liveCanvas.alpha == 0)
         {
             Time.timeScale = 1;
-            liveCanvas.SetActive(true);
-            pauseCanvas.SetActive(false);
+            pauseCanvas.alpha = 0;
+            pauseCanvas.interactable = false;
+            pauseCanvas.blocksRaycasts = false;
+            liveCanvas.alpha = 1;
+            liveCanvas.interactable = false;
+            liveCanvas.blocksRaycasts = false;
         }
     }
 }
