@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour
                         DialogueManager.Instance.AdvanceDialogue();
                         Debug.Log("input 1");
                     }
-                    else if(DialogueManager.Instance.isDialogueActive == false && DialogueManager.Instance.isButtonActive == false)
+                    else if(DialogueManager.Instance.isDialogueActive == false && DialogueManager.Instance.isButtonActive == false && DialogueManager.Instance.CanStartDialogue())
                     {
                         interactHit.collider.GetComponent<Dialogue>().CheckForNewConversation();
                         DialogueManager.Instance.StartDialogue(interactHit.collider.GetComponent<Dialogue>().currentConversation);
@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour
          hori = Input.GetAxisRaw("Horizontal");
          vert = Input.GetAxisRaw("Vertical");
 
-        if (DialogueManager.Instance.isDialogueActive == true)
+        if (DialogueManager.Instance != null && DialogueManager.Instance.isDialogueActive == true)
         {
             hori = 0;
             vert = 0;

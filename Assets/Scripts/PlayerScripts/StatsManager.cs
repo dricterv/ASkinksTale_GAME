@@ -92,6 +92,7 @@ public enum EquippedItem
     BaseFork,
     BaseShield,
     MatchStick,
-
+    SpearThrower,
+    Blob,
 
 }

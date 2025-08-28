@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+
 
 public class UIManager : MonoBehaviour
 {
     
     public CanvasGroup liveCanvas;
     public CanvasGroup pauseCanvas;
+    public GameObject inventoryStartButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +45,7 @@ public class UIManager : MonoBehaviour
             liveCanvas.alpha = 0;
             liveCanvas.interactable = false;
             liveCanvas.blocksRaycasts = false;
+            EventSystem.current.SetSelectedGameObject(inventoryStartButton);
         }
         else if (liveCanvas.alpha == 0)
         {

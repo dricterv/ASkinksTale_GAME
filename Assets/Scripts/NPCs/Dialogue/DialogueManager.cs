@@ -21,6 +21,9 @@ public class DialogueManager : MonoBehaviour
     private DialogueSO currentDialogue;
     private int dialogueIndex;
 
+    private float lastDialogueEndTime;
+    private float dialogueCooldown = .1f;
+
     private void Awake()
     {
         if(Instance == null)
@@ -42,6 +45,10 @@ public class DialogueManager : MonoBehaviour
             button.gameObject.SetActive(false);
         }
     }
+    public bool CanStartDialogue()
+    {
+        return Time.unscaledTime - lastDialogueEndTime >= dialogueCooldown;
+    }
     public void StartDialogue(DialogueSO dialogueSO)
     {
 
@@ -55,7 +62,9 @@ public class DialogueManager : MonoBehaviour
     }
     public void AdvanceDialogue()
     {
-        if(dialogueIndex < currentDialogue.lines.Length)
+        if (Time.unscaledTime - lastDialogueEndTime < dialogueCooldown)
+            return;
+        if (dialogueIndex < currentDialogue.lines.Length)
         {
             ShowDialogue();
         }
@@ -64,7 +73,6 @@ public class DialogueManager : MonoBehaviour
             ShowChoices();
             
         }
-        
     }
     private void ShowDialogue()
     {
@@ -94,6 +102,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text = line.text;
         }
+        lastDialogueEndTime = Time.unscaledTime;
 
         dialogueIndex++;
     }
@@ -125,7 +134,8 @@ public class DialogueManager : MonoBehaviour
             choiceButtons[0].onClick.AddListener(EndDialogue);
             */
         }
-        
+        lastDialogueEndTime = Time.unscaledTime;
+
     }
 
     private void ChooseOption(DialogueSO dialogueSO)
@@ -151,6 +161,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIndex = 0;
         ClearChoices();
         isButtonActive = false;
+        lastDialogueEndTime = Time.unscaledTime;
 
         isDialogueActive = false;
     }

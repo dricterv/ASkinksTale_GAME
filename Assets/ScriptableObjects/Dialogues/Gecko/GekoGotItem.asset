@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: {fileID: 11400000, guid: b0b79fd00a237ae498d3a9afd03519b3, type: 2}
-    text: ://
+    text: :// (obtained the green blob above)
   options: []
   requiredNPCs: []
   requiredLocations: []
   requiredItems:
-  - {fileID: 11400000, guid: 245eef4581a080a499d2e3b2786fda4d, type: 2}
+  - {fileID: 11400000, guid: 16883896b69cae840b8ef597d213a6d4, type: 2}
+  removeAfterPlay: 1
+  removeTheseOnPlay: []

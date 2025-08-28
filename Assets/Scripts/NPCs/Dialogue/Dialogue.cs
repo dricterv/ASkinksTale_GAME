@@ -51,8 +51,23 @@ public class Dialogue : MonoBehaviour
             var convo = conversations[i];
             if(convo != null && convo.IsConditionMet())
             {
-                conversations.RemoveAt(i);
                 currentConversation = convo;
+
+                //remove if onetime
+                if(convo.removeAfterPlay)
+                {
+                    conversations.RemoveAt(i);
+                }
+                //remove quest dialogue
+                if (convo.removeTheseOnPlay != null && convo.removeTheseOnPlay.Count > 0)
+                {
+                    foreach (var toRemove in convo.removeTheseOnPlay)
+                    {
+                        conversations.Remove(toRemove);
+                    }
+                }
+                
+                break;
             }
         }
     }

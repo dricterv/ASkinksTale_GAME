@@ -15,8 +15,8 @@ MonoBehaviour:
   itemName: 
   thisItem: 0
   itemDescription: 
-  itemImage: {fileID: 0}
-  numberHeld: 0
+  itemImage: {fileID: 366803229, guid: d6c05002c9c974c42ac849a3b9374c31, type: 3}
+  numberHeld: -10
   isUsable: 0
   isUnique: 0
   thisEventOne:

@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4888633149774386789
 SpriteRenderer:
@@ -101,6 +101,9 @@ MonoBehaviour:
   player: {fileID: 0}
   scriptName: Torch
   itemText: {fileID: 0}
+  item: {fileID: 11400000, guid: a2734b9cd5d21d44c95db4eecaee03f4, type: 2}
+  slot: 3
+  inventoryManager: {fileID: 0}
 --- !u!60 &4888633149774386791
 PolygonCollider2D:
   m_ObjectHideFlags: 0
