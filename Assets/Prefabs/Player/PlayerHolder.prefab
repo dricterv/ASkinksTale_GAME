@@ -94,7 +94,7 @@ Transform:
   - {fileID: 6548627380629723337}
   - {fileID: 2315120693544987864}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4802885688189718832
 GameObject:
@@ -356,6 +356,10 @@ PrefabInstance:
       propertyPath: interactDist
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3881892658908343140, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 5906800403740078240, guid: bfc3ddcd1d5ad974c8be768f6e88723e, type: 3}
     - target: {fileID: 3881892658908343140, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
       propertyPath: interactableLayer.m_Bits
       value: 1024

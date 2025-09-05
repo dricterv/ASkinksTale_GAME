@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public GameObject spriteGO;
     public GameObject attackPoint;
     private Torch torch;
+    public GameObject projectilePrefab;
+
     //private bool isTorching;
 
 
@@ -129,6 +131,13 @@ public class PlayerController : MonoBehaviour
 
                     break;
 
+                case EquippedItem.SpearThrower:
+
+                    StartShoot();
+                    //Debug.Log("Shoot");
+
+                    break;
+
 
             }
 
@@ -159,6 +168,13 @@ public class PlayerController : MonoBehaviour
 
                     break;
 
+                case EquippedItem.SpearThrower:
+
+                    StartShoot();
+                    Debug.Log("Shoot");
+
+                    break;
+
 
             }
         }
@@ -180,7 +196,7 @@ public class PlayerController : MonoBehaviour
         
         if(Input.GetButtonDown("Global"))
         {   
-            if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching)
+            if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching && playerState != PlayerState.Shooting)
             {
                 interactHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, interactDist, interactableLayer);
                 grabHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
@@ -337,7 +353,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = StatsManager.Instance.facing * StatsManager.Instance.rollDist;
 
         }
-        else if (playerState == PlayerState.Attacking || playerState == PlayerState.Torching)
+        else if (playerState == PlayerState.Attacking || playerState == PlayerState.Torching || playerState == PlayerState.Shooting)
         {
             rb.velocity = Vector2.zero;
         }
@@ -690,7 +706,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Attack()
     {
-        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching && playerState != PlayerState.Attacking)
+        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching && playerState != PlayerState.Attacking && playerState != PlayerState.Shooting)
         {
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
             StatsManager.Instance.lockFace = true;
@@ -706,6 +722,7 @@ public class PlayerController : MonoBehaviour
         Facing();
         ChangeState(PlayerState.Idle);
     }
+
 
     IEnumerator RollTimer( )
     {
@@ -731,7 +748,7 @@ public class PlayerController : MonoBehaviour
 
     private void UseTorch()
     {
-       if(playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Attacking && playerState != PlayerState.Torching)
+       if(playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Attacking && playerState != PlayerState.Torching && playerState != PlayerState.Shooting)
        {
         
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
@@ -753,7 +770,32 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-  
+    public void StartShoot()
+    {
+        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching && playerState != PlayerState.Attacking && playerState != PlayerState.Shooting)
+        {
+            StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
+            StatsManager.Instance.lockFace = true;
+            StatsManager.Instance.blocking = false;
+            ChangeState(PlayerState.Shooting);
+
+        }
+    }
+    public void EndShoot()
+    {
+        StatsManager.Instance.lockFace = false;
+        StatsManager.Instance.blocking = false;
+        Facing();
+        ChangeState(PlayerState.Idle);
+    }
+    public void Shoot()
+    {
+        Debug.Log("w");
+        Projectile projectile = Instantiate(projectilePrefab, attackPoint.transform.position, Quaternion.identity).GetComponent<Projectile>();
+        projectile.direction = StatsManager.Instance.facing.normalized;
+        // shootTimer = shootCooldown;
+    }
+
     public void ChangeState(PlayerState newState)
     {
         //exit current animation
@@ -792,6 +834,10 @@ public class PlayerController : MonoBehaviour
         else if (playerState == PlayerState.Pulling)
         {
             anim.SetBool("isPulling", false);
+        }
+        else if (playerState == PlayerState.Shooting)
+        {
+            anim.SetBool("isShooting", false);
         }
 
         //update current state
@@ -836,6 +882,10 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isPulling", true);
         }
+        else if (playerState == PlayerState.Shooting)
+        {
+            anim.SetBool("isShooting", true);
+        }
 
     }
     
@@ -852,4 +902,5 @@ public enum PlayerState
     Pushing,
     Pulling,
     Torching,
+    Shooting,
 }

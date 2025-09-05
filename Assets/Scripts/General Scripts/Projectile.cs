@@ -19,6 +19,9 @@ public class Projectile : MonoBehaviour
     public bool spinning = false;
     public float spinSpeed;
     public Transform spawnPoint;
+    public bool playerOwned = false;
+    public int turnAngle = 90;
+
 
     public LayerMask playerLayer;
 
@@ -46,7 +49,7 @@ public class Projectile : MonoBehaviour
     private void RotateProjectile()
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + turnAngle));
     }
 
     public void OnCollisionEnter2D(Collision2D coll)
@@ -57,7 +60,7 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }*/
-        if(coll.gameObject.tag == "Player")
+        if(coll.gameObject.tag == "Player" && playerOwned == false)
         {
             
             Transform player = coll.transform;
@@ -98,6 +101,10 @@ public class Projectile : MonoBehaviour
             rb.velocity = Vector2.zero;
             Destroy(gameObject);
         }
+        else if (coll.gameObject.tag == "Enemy" && playerOwned == true)
+        {
+            coll.gameObject.GetComponent<EnemyHealth>().ChangeHealth(-damage);
+        }
         else if(timer <= 0)
         {
 
@@ -106,8 +113,14 @@ public class Projectile : MonoBehaviour
                 
                 Instantiate(preFab, spawnPoint.position, new Quaternion(0, 0, 0, 0)); 
             }
-            
-            Destroy(gameObject);
+            if(coll.gameObject.tag == "Player" && playerOwned == true)
+            {
+                return;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
         //Destroy(gameObject);
     }

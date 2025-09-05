@@ -70,7 +70,7 @@ public class LarvaeMovement : MonoBehaviour
         if (enemyState != EnemyState.KnockedBack)
         {
             CheckForPlayer();
-             Debug.Log(enemyState);
+            // Debug.Log(enemyState);
             // Debug.Log("x: " + transform.localPosition.x);
             // Debug.Log("y: " + transform.localPosition.y);
 

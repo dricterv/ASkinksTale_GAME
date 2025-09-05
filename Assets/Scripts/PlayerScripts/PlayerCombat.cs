@@ -47,7 +47,11 @@ public class PlayerCombat : MonoBehaviour
 
         if(coll.gameObject.tag == "Enemy")
         {
-            coll.GetComponent<EnemyHealth>().ChangeHealth(-StatsManager.Instance.damage);
+            Debug.Log("hit");
+            if(coll.GetComponent<EnemyHealth>().currentHealth > 0)
+            {
+                coll.GetComponent<EnemyHealth>().ChangeHealth(-StatsManager.Instance.damage);
+            }
             if(coll.GetComponent<EnemyMovement>() != null)
             {
                 coll.GetComponent<EnemyMovement>().Knockback(StatsManager.Instance.stunTime, StatsManager.Instance.knockBackTime);
@@ -73,7 +77,7 @@ public class PlayerCombat : MonoBehaviour
     public void DealDamage()
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, StatsManager.Instance.weaponRange, enemyLayer);
-
+        Debug.Log("hit");
         if (enemies.Length > 0)
         {
             Debug.Log(enemies[0].gameObject.name);
