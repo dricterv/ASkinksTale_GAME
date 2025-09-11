@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8669248935802306697}
   m_Layer: 7
   m_Name: ChargeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,8 +141,10 @@ MonoBehaviour:
   currentHealth: 2
   maxHealth: 2
   spawn: {x: 0, y: 0}
+  enemySpriteRenderer: {fileID: 0}
   entry: {fileID: 0}
   exit: {fileID: 0}
+  counter: {fileID: 0}
 --- !u!114 &-6820924084318085504
 MonoBehaviour:
   m_ObjectHideFlags: 0

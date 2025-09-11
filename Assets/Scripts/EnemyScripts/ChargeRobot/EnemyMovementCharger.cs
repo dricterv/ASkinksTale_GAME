@@ -164,7 +164,7 @@ public class EnemyMovementCharger : MonoBehaviour
             if (cast.collider != null)
             {
                 hasLineOfSight = cast.collider.CompareTag("Player");
-                Debug.Log(cast.collider.gameObject.name);
+                //Debug.Log(cast.collider.gameObject.name);
                 if (hasLineOfSight == true)
                 {
                     Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
