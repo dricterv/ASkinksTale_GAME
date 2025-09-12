@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -20,6 +21,8 @@ public class Projectile : MonoBehaviour
     public float spinSpeed;
     public Transform spawnPoint;
     public bool playerOwned = false;
+    public bool isExplosive = false;
+    public float explosionRadius;
     public int turnAngle = 90;
 
 
@@ -31,18 +34,18 @@ public class Projectile : MonoBehaviour
         rb.velocity = direction * speed;
         RotateProjectile();
         Destroy(gameObject, lifeSpan);
-        
+
     }
     void Update()
     {
-        if(timer > 0)
+        if (timer > 0)
         {
             timer -= Time.deltaTime;
 
         }
         if (spinning == true)
         {
-           // transform.rotation.z = transform.rotation.z * spinSpeed * Time.deltaTime;
+            // transform.rotation.z = transform.rotation.z * spinSpeed * Time.deltaTime;
         }
     }
 
@@ -55,21 +58,21 @@ public class Projectile : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D coll)
     {
         Debug.Log(coll.gameObject.tag);
-       // if ((playerLayer.value & (1 << collision.gameObject.layer)) > 0)
+        // if ((playerLayer.value & (1 << collision.gameObject.layer)) > 0)
         /*if(coll.gameObject.tag == "Block")
         {
             Destroy(gameObject);
         }*/
-        if(coll.gameObject.tag == "Player" && playerOwned == false)
+        if (coll.gameObject.tag == "Player" && playerOwned == false)
         {
-            
+
             Transform player = coll.transform;
             Vector2 direction = (coll.gameObject.transform.position - transform.position).normalized;
             //Debug.Log(direction);
-            
+
             if (StatsManager.Instance.blocking == true)
             {
-                if(StatsManager.Instance.lockFacing == new Vector2(1, 0) && direction.x <= -StatsManager.Instance.blockAngle)
+                if (StatsManager.Instance.lockFacing == new Vector2(1, 0) && direction.x <= -StatsManager.Instance.blockAngle)
                 {
                     coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
                 }
@@ -94,8 +97,8 @@ public class Projectile : MonoBehaviour
             {
                 coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
             }
-            
-            
+
+
             //coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
             //collision.gameObject.GetComponent<PlayerMovement>().Knockback(transform, knockBackForce, stunTime, knockBackTime);
             rb.velocity = Vector2.zero;
@@ -105,15 +108,15 @@ public class Projectile : MonoBehaviour
         {
             coll.gameObject.GetComponent<EnemyHealth>().ChangeHealth(-damage);
         }
-        else if(timer <= 0)
+        else if (timer <= 0)
         {
 
             if (preFab != null)
             {
-                
-                Instantiate(preFab, spawnPoint.position, new Quaternion(0, 0, 0, 0)); 
+
+                Instantiate(preFab, spawnPoint.position, new Quaternion(0, 0, 0, 0));
             }
-            if(coll.gameObject.tag == "Player" && playerOwned == true)
+            if (coll.gameObject.tag == "Player" && playerOwned == true)
             {
                 return;
             }
@@ -123,5 +126,17 @@ public class Projectile : MonoBehaviour
             }
         }
         //Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (isExplosive == true)
+        {
+            Collider2D coll = Physics2D.OverlapCircle(this.transform.position, explosionRadius, playerLayer);
+            if (coll != null)
+            {
+                coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage); 
+            }
+        }    
     }
 }

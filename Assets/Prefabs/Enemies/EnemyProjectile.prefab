@@ -112,6 +112,11 @@ MonoBehaviour:
   preFab: {fileID: 0}
   spinning: 0
   spinSpeed: 0
+  spawnPoint: {fileID: 0}
+  playerOwned: 0
+  isExplosive: 0
+  explosionRadius: 5
+  turnAngle: 90
   playerLayer:
     serializedVersion: 2
     m_Bits: 64

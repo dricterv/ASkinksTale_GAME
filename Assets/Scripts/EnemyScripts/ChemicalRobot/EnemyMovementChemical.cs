@@ -207,7 +207,7 @@ public class EnemyMovementChemical : MonoBehaviour
                 Vector2 direction = transform.position.normalized;
                 attackCoolDownTimer = attackCoolDown;
                 ChangeState(EnemyState.Attacking);
-                Debug.Log("atack");
+               // Debug.Log("atack");
 
                 StartCoroutine(AttackCD(atkTime, atkWaitTime, direction));
         }

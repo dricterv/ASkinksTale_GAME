@@ -9,15 +9,18 @@ public class EnemyHealth : MonoBehaviour
     public Vector2 spawn;
     public SpriteRenderer enemySpriteRenderer;
 
-    public RoomTransition entry;
-    public RoomTransition exit;
+    public List<RoomTransition> entry = new List<RoomTransition>();
+
+    public List<RoomTransition> exit = new List<RoomTransition>();
     public NumberCounter counter;
+    public bool destroyOnDeath = false;
 
 
     private void Start()
     {
         currentHealth = maxHealth;
         enemySpriteRenderer = GetComponent<SpriteRenderer>();
+        enemySpriteRenderer.color = Color.white;
 
     }
     IEnumerator DamageColour()
@@ -47,17 +50,38 @@ public class EnemyHealth : MonoBehaviour
             if (counter != null)
             {
                 counter.AddToCount(1);
-                Debug.Log("counter up");
+                //Debug.Log("counter up");
             }
-            if (entry != null)
+            if (entry.Count > 0)
             {
-             entry.RemoveEntry(this.gameObject);
+                //Debug.Log("en Count");
+                for (int i = 0; i < entry.Count; i++)
+                {
+                    if (entry[i].enemiesEntry.Contains(this.gameObject))
+                    {
+                        entry[i].RemoveEntry(this.gameObject);
+                    }
+                }
             }
-            if (exit != null)
+            if (exit.Count > 0)
             {
-                exit.RemoveExit(this.gameObject);
+                //Debug.Log("ex Count");
+                for (int i = 0; i < exit.Count; i++)
+                {
+                    if (exit[i].enemiesExit.Contains(this.gameObject))
+                    {
+                        exit[i].RemoveExit(this.gameObject);
+                    }
+                }
             }
-            Destroy(gameObject);
+            if (destroyOnDeath == true)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 

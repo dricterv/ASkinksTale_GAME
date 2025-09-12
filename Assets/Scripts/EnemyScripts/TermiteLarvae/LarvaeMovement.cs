@@ -235,7 +235,7 @@ public class LarvaeMovement : MonoBehaviour
             attackPoint.transform.localPosition = facing;
             anim.SetFloat("xFacing", facing.x);
             anim.SetFloat("yFacing", facing.y);
-            Debug.Log(facing);
+            //Debug.Log(facing);
             if (cardinalMovement == true)
             {
                 rb.velocity = facing * speed;
