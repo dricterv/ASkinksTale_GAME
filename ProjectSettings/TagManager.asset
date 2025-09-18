@@ -10,6 +10,7 @@ TagManager:
   - Acid
   - Wall
   - Flamable
+  - PlayerFeet
   layers:
   - Default
   - TransparentFX

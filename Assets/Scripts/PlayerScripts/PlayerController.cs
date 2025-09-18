@@ -203,26 +203,26 @@ public class PlayerController : MonoBehaviour
 
                 if(interactHit.collider != null && playerState != PlayerState.Blocking)
                 {
-                    if (DialogueManager.Instance.isDialogueActive == true && DialogueManager.Instance.isButtonActive == false)
+                    if (GameManager.Instance.DialogueManager.isDialogueActive == true && GameManager.Instance.DialogueManager.isButtonActive == false)
                     {
-                        DialogueManager.Instance.AdvanceDialogue();
+                        GameManager.Instance.DialogueManager.AdvanceDialogue();
                         Debug.Log("input 1");
                     }
-                    else if(DialogueManager.Instance.isDialogueActive == false && DialogueManager.Instance.isButtonActive == false && DialogueManager.Instance.CanStartDialogue())
+                    else if(GameManager.Instance.DialogueManager.isDialogueActive == false && GameManager.Instance.DialogueManager.isButtonActive == false && GameManager.Instance.DialogueManager.CanStartDialogue())
                     {
                         interactHit.collider.GetComponent<Dialogue>().CheckForNewConversation();
-                        DialogueManager.Instance.StartDialogue(interactHit.collider.GetComponent<Dialogue>().currentConversation);
+                        GameManager.Instance.DialogueManager.StartDialogue(interactHit.collider.GetComponent<Dialogue>().currentConversation);
                         Debug.Log("input 2");
                     }
                 }
 
-                else if (grabHit.collider != null && playerState != PlayerState.Blocking && DialogueManager.Instance.isDialogueActive != true)
+                else if (grabHit.collider != null && playerState != PlayerState.Blocking && GameManager.Instance.DialogueManager.isDialogueActive != true)
                 {
                     Grab();
 
                 }
 
-                else if((Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false && playerState != PlayerState.Grabbing && DialogueManager.Instance.isDialogueActive != true)
+                else if((Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false && playerState != PlayerState.Grabbing && GameManager.Instance.DialogueManager.isDialogueActive != true)
                 {
                     Roll();
                 }
@@ -259,7 +259,7 @@ public class PlayerController : MonoBehaviour
          hori = Input.GetAxisRaw("Horizontal");
          vert = Input.GetAxisRaw("Vertical");
 
-        if (DialogueManager.Instance != null && DialogueManager.Instance.isDialogueActive == true)
+        if (GameManager.Instance.DialogueManager != null && GameManager.Instance.DialogueManager.isDialogueActive == true)
         {
             hori = 0;
             vert = 0;

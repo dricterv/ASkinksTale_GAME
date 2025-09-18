@@ -23,6 +23,7 @@ public class PressurePlate : MonoBehaviour
     void Start()
     {
         pressurePlateSpriteRenderer.sprite = upSprite;
+        playerFeet = GameObject.FindWithTag("PlayerFeet").transform;
     }
 
     public void OnTriggerStay2D(Collider2D coll)

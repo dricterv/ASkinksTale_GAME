@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager Instance;
     [Header("UI References")]
     public Image portrait;
     public TMP_Text actorName;
@@ -26,14 +25,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+       
         isDialogueActive = false;
         isButtonActive = false;
         canvasGroup.alpha = 0;
@@ -78,7 +70,7 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueLine line = currentDialogue.lines[dialogueIndex];
         Debug.Log(dialogueIndex);
-        DialogueHistoryTracker.Instance.RecordNpc(line.speaker);
+        GameManager.Instance.DialogueHistoryTracker.RecordNpc(line.speaker);
 
         if(portrait != null)
         {
