@@ -10,6 +10,14 @@ public class ToolObtain : MonoBehaviour
     public InventoryItem item;
     public int slot;
     public InventoryManager inventoryManager;
+
+
+
+    private void Start() 
+    {
+        inventoryManager = InventoryManager.Instance;  
+        player = GameManager.Instance.player;  
+    }
     public void OnTriggerEnter2D(Collider2D coll)
     {
         if(coll.gameObject.tag == "Player")

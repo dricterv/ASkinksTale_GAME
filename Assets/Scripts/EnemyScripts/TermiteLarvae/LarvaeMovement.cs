@@ -166,10 +166,10 @@ public class LarvaeMovement : MonoBehaviour
             if (cast.collider != null)
             {
                 hasLineOfSight = cast.collider.CompareTag("Player");
-                Debug.Log(cast.collider.gameObject.name);
+                //Debug.Log(cast.collider.gameObject.name);
                 if(hasLineOfSight == true)
                 {
-                    Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+                    //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
                     //RaycastHit2D hit = Physics2D.Raycast(transform.position,  player.position - transform.position, playerDetectRange);
                     //if(hit.gameObject.tag == "Player")
                     //checks if player is in attack range and attack cd is ready
@@ -188,7 +188,7 @@ public class LarvaeMovement : MonoBehaviour
                 }
                 else
                 {
-                    Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.red);
+                    //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.red);
                     //rb.velocity = Vector2.zero;
                     // ChangeState(EnemyState.Idle);
                     ChangeState(EnemyState.Patrolling);
@@ -227,7 +227,7 @@ public class LarvaeMovement : MonoBehaviour
         Vector2 direction = (player.position - transform.position).normalized;
         float hori = direction.x;
         float vert = direction.y;
-        Debug.Log(direction);
+        //Debug.Log(direction);
         if ((Mathf.Abs(hori) > Mathf.Abs(vert)) && isDirectional == true)
         {
             // Debug.Log(Mathf.Abs(hori) + " : " + (vert - .1f));
@@ -253,7 +253,7 @@ public class LarvaeMovement : MonoBehaviour
             anim.SetFloat("yFacing", facing.y);
             attackPoint.transform.localPosition = facing;
             //Debug.Log("v: " + vert);
-            Debug.Log(facing);
+            //Debug.Log(facing);
             if (cardinalMovement == true)
             {
                 rb.velocity = facing * speed;

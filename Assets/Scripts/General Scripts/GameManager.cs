@@ -30,6 +30,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update() 
+    {
+        if(Input.GetButton("Quit"))
+        {
+            Application.Quit();
+        }
+    }
+
     private void MarkPersistentObjects()
     {
         foreach(GameObject obj in persistentObjects)

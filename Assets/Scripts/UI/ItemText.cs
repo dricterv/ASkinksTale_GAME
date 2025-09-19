@@ -20,7 +20,11 @@ public class ItemText : MonoBehaviour
 
     public void DisplayText()
     {
-        StartCoroutine(ActivateText());
+        if(text != null)
+        {
+            StartCoroutine(ActivateText());
+
+        }
     }
     IEnumerator ActivateText()
     {

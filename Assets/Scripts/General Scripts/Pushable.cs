@@ -25,8 +25,9 @@ public class Pushable : MonoBehaviour
         pushed = false;
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.zero;
-        
-        
+        playerGO = GameManager.Instance.player;
+        playerRB = playerGO.GetComponent<Rigidbody2D>();
+        playerController = playerGO.GetComponent<PlayerController>();
 
     }
 
