@@ -343,6 +343,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 3630783934807507285}
     m_Modifications:
     - target: {fileID: 3881892658908343140, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
+      propertyPath: quill
+      value: 
+      objectReference: {fileID: 11400000, guid: 336aab3993368c24e95916037cdcb96f, type: 2}
+    - target: {fileID: 3881892658908343140, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
       propertyPath: grabUp
       value: 
       objectReference: {fileID: 3437704775699674559}
@@ -362,6 +366,10 @@ PrefabInstance:
       propertyPath: grabPoints
       value: 
       objectReference: {fileID: 2315120693544987864}
+    - target: {fileID: 3881892658908343143, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6627027440072889595, guid: 6232d05aee270724dad9d3831a9e072d, type: 3}
       propertyPath: m_Name
       value: Player

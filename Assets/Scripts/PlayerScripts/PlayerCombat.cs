@@ -47,7 +47,7 @@ public class PlayerCombat : MonoBehaviour
 
         if(coll.gameObject.tag == "Enemy")
         {
-            Debug.Log("hit");
+            //Debug.Log("hit");
             if(coll.GetComponent<EnemyHealth>().currentHealth > 0)
             {
                 coll.GetComponent<EnemyHealth>().ChangeHealth(-StatsManager.Instance.damage);

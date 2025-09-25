@@ -25,3 +25,4 @@ MonoBehaviour:
   thisEventTwo:
     m_PersistentCalls:
       m_Calls: []
+  slot: 1

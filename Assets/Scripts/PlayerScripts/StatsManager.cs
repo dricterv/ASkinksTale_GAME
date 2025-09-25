@@ -70,8 +70,8 @@ public class StatsManager : MonoBehaviour
             equippedItemTwo = equippedItemOne;
         }
         equippedItemOne = newItem;
-        Debug.Log("Equiped Item 1: " + equippedItemOne);
-        Debug.Log("Equiped Item 2: " + equippedItemTwo);
+       // Debug.Log("Equiped Item 1: " + equippedItemOne);
+       // Debug.Log("Equiped Item 2: " + equippedItemTwo);
     }
     public void UpdateEquipedItemTwo(EquippedItem newItem)
     {
@@ -80,8 +80,8 @@ public class StatsManager : MonoBehaviour
             equippedItemOne = equippedItemTwo;
         }
         equippedItemTwo = newItem;
-        Debug.Log("Equiped Item 1: " + equippedItemOne);
-        Debug.Log("Equiped Item 2: " + equippedItemTwo);
+        //Debug.Log("Equiped Item 1: " + equippedItemOne);
+       // Debug.Log("Equiped Item 2: " + equippedItemTwo);
 
     }
 }
@@ -94,5 +94,8 @@ public enum EquippedItem
     MatchStick,
     SpearThrower,
     Blob,
+    PeaFlower,
+    Antidote,
+    Quill,
 
 }

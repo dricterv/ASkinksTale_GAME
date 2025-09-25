@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fbcf4db2575ba46b70dcadfbf0c59d, type: 3}
+  m_Name: PeaFlowerTake
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: {fileID: 11400000, guid: f2672f8c828ae764e926d25bb0d7d8d5, type: 2}
+    text: It is a pea flower.
+    logInteraction: 0
+  options:
+  - optionText: '*take a couple of  flowers*'
+    nextDialogue: {fileID: 11400000, guid: bf183dc18099572459630eb1ef9fda6c, type: 2}
+  requiredNPCs:
+  - {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
+  requiredLocations: []
+  requiredItems: []
+  removeItems: []
+  giveItems: {fileID: 0}
+  removeAfterPlay: 1
+  removeTheseOnPlay: []

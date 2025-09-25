@@ -12,6 +12,9 @@ public class SceneChanger : MonoBehaviour
     private Transform player;
     public Vector2 maxPosition;
     public Vector2 minPosition;
+    public InventoryItem emptyItem;
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,8 +38,35 @@ public class SceneChanger : MonoBehaviour
         GameManager.Instance.mainCamera.maxPosition = maxPosition;
         GameManager.Instance.mainCamera.minPosition = minPosition;
         player.position = newPlayerPosition;
+        GameManager.Instance.uiManager.LiveUIOn();
+        if (player.gameObject.activeSelf == false)
+        {
+            GameManager.Instance.player.SetActive(true);
+        }
         SceneManager.LoadScene(sceneToLoad);
-
+        
     }
 
+    public void StartGame()
+    {
+        player = GameManager.Instance.player.transform;
+        fadeAnim = GameManager.Instance.fadeAnim;
+        GameManager.Instance.player.GetComponent<PlayerHealth>().ChangeHealth(100);
+        InventoryManager.Instance.AddInventoryItem(emptyItem, 3);
+        InventoryManager.Instance.AddInventoryItem(emptyItem, 2);
+        InventoryManager.Instance.AddInventoryItem(emptyItem, 4);
+        InventoryManager.Instance.AddInventoryItem(emptyItem, 5);
+        InventoryManager.Instance.AddInventoryItem(emptyItem, 6);
+        InventoryManager.Instance.AddInventoryItem(emptyItem, 7);
+
+
+        //GameManager.Instance.uiManager.LiveUIOn();
+
+        StartCoroutine(DelayFade());
+    }
+
+    public void QuitButton()
+    {
+        GameManager.Instance.QuitGame();
+    }
 }

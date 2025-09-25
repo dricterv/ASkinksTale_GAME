@@ -158,6 +158,7 @@ public class LarvaeMovement : MonoBehaviour
     private void CheckForPlayer()
     {
         //checks if player is in sight
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, playerDetectRange, playerLayer);
         if (hits.Length > 0)
         {
@@ -412,7 +413,11 @@ public class LarvaeMovement : MonoBehaviour
         //rb.AddForce(direction * knockBackDist, ForceMode2D.Impulse);
         rb.velocity = Vector2.zero;
         // Debug.Log(rb.velocity);
-        StartCoroutine(KnockbackCounter(stunTime, knockBackTime));
+        if(gameObject.activeSelf)
+        {
+            StartCoroutine(KnockbackCounter(stunTime, knockBackTime));
+
+        }
 
     }
 

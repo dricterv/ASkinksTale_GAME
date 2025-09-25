@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject attackPoint;
     private Torch torch;
     public GameObject projectilePrefab;
+    public InventoryItem quill;
 
     //private bool isTorching;
 
@@ -71,42 +72,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        
         Move();
         grabPoints.position = transform.position;
     }
     void Update()
     {
-        //Debug.Log(playerState);
-        //Debug.Log(StatsManager.Instance.facing);
-        /*
-        if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching)
-        {
-            
-            Block();
-
-            if(playerState != PlayerState.Rolling && playerState != PlayerState.Blocking )
-            { 
-                Grab();
-                if(torch.enabled == true && playerState != PlayerState.Grabbing)
-                {
-                    UseTorch();
-
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.Space) && (Mathf.Abs(hori) > 0 || Mathf.Abs(vert) > 0) && isRolling == false && playerState != PlayerState.Grabbing)
-            {
-                //   Debug.Log("Roll?");
-                Roll();
-            }
-            if (Input.GetKeyDown(KeyCode.J) && playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing)
-            {
-                StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
-                StatsManager.Instance.lockFace = true;
-                StatsManager.Instance.blocking = false;
-                ChangeState(PlayerState.Attacking);
-                
-            }
-        }*/
+        
         
         if(Input.GetButtonDown("Item1"))
         {
@@ -115,7 +87,7 @@ public class PlayerController : MonoBehaviour
                 case EquippedItem.BaseFork:
 
                     Attack();
-                    Debug.Log("fork");
+                    //Debug.Log("fork");
                     break;
 
                 case EquippedItem.BaseShield:
@@ -127,13 +99,16 @@ public class PlayerController : MonoBehaviour
                 case EquippedItem.MatchStick:
 
                     UseTorch();
-                    Debug.Log("torch");
+                    //Debug.Log("torch");
 
                     break;
 
                 case EquippedItem.SpearThrower:
 
-                    StartShoot();
+                    if(InventoryManager.Instance.inventory[6].thisItem == quill)
+                    {
+                        StartShoot();
+                    }
                     //Debug.Log("Shoot");
 
                     break;

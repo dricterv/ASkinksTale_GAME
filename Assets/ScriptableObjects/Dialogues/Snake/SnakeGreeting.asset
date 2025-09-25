@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
-    text: Hewwo World.
-  - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
-    text: I got a snake in my hat.
-  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
-    text: ...
-  options:
-  - optionText: '?'
-    nextDialogue: {fileID: 11400000, guid: d7329292275634b44b9c659d69f42307, type: 2}
-  - optionText: '*Leave*'
-    nextDialogue: {fileID: 11400000, guid: f6df4dc3f99e23a47903b5f5d12e987d, type: 2}
+    text: I heard you can get through the electric fences if you break the boxes
+      connected to them.
+    logInteraction: 0
+  options: []
+  requiredNPCs: []
+  requiredLocations: []
+  requiredItems: []
+  removeItems: []
+  giveItems: {fileID: 0}
+  removeAfterPlay: 0
+  removeTheseOnPlay: []

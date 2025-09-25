@@ -15,6 +15,10 @@ public class DialogueSO : ScriptableObject
 
     public InventoryItem[] requiredItems;
 
+    public InventoryItem[] removeItems;
+    public InventoryItem giveItems;
+
+
     [Header("Control Flags")]
     public bool removeAfterPlay;
     public List<DialogueSO> removeTheseOnPlay;
@@ -62,6 +66,7 @@ public class DialogueLine
 {
     public ActorSO speaker;
     [TextArea(3, 5)] public string text;
+    public bool logInteraction = false;
 }
 [System.Serializable]
 public class DialogueOption

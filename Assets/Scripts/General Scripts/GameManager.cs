@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+
+
 
 public class GameManager : MonoBehaviour
 {
@@ -11,9 +15,12 @@ public class GameManager : MonoBehaviour
     public Animator fadeAnim;
     public CameraMovement mainCamera;
     public GameObject player;
+    public UIManager uiManager;
     public DialogueManager DialogueManager;
     public DialogueHistoryTracker DialogueHistoryTracker;
     public LocationHistoryTracker LocationHistoryTracker;
+    public EventSystem eventSystem;
+
 
     private void Awake()
     {
@@ -28,14 +35,29 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             MarkPersistentObjects();
         }
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+
     }
+   
 
     private void Update() 
     {
-        if(Input.GetButton("Quit"))
+        if(Input.GetKeyDown(KeyCode.Escape) && DialogueManager.isDialogueActive == false && DialogueManager.isButtonActive == false)
         {
-            Application.Quit();
+            uiManager.MainMenuOn();
+            SceneManager.LoadScene("MainMenu");
+            //QuitGame();
         }
+        if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1) || Input.GetKey(KeyCode.Mouse2))
+        {
+            GameObject buttonGO = EventSystem.current.currentSelectedGameObject;
+            EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+        }
+
+
+     
+
     }
 
     private void MarkPersistentObjects()
@@ -56,5 +78,11 @@ public class GameManager : MonoBehaviour
             Destroy(obj);
         }
         Destroy(gameObject);
+    }
+
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

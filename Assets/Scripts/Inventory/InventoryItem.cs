@@ -15,16 +15,18 @@ public class InventoryItem : ScriptableObject
     public bool isUnique;
     public UnityEvent thisEventOne;
     public UnityEvent thisEventTwo;
+    public int slot;
+
 
     public void EquipOne()
     {
-        Debug.Log("Equiping item");
+        //Debug.Log("Equiping item");
         //thisEventOne.Invoke();
         StatsManager.Instance.UpdateEquipedItemOne(thisItem);
     }
     public void EquipTwo()
     {
-        Debug.Log("Equiping item");
+       // Debug.Log("Equiping item");
         //thisEventTwo.Invoke();
         StatsManager.Instance.UpdateEquipedItemTwo(thisItem);
 

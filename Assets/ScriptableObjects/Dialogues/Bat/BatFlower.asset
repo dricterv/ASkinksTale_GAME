@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fbcf4db2575ba46b70dcadfbf0c59d, type: 3}
+  m_Name: BatFlower
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
+    text: You have the flower?
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
+    text: .........
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
+    text: Here you go!
+    logInteraction: 0
+  options:
+  - optionText: '*take antidote*'
+    nextDialogue: {fileID: 11400000, guid: 4e66955ec446d2144956502c8cef642d, type: 2}
+  requiredNPCs: []
+  requiredLocations: []
+  requiredItems:
+  - {fileID: 11400000, guid: 51304a70e9eece647ba111b42fa67cef, type: 2}
+  removeItems: []
+  giveItems: {fileID: 0}
+  removeAfterPlay: 0
+  removeTheseOnPlay: []

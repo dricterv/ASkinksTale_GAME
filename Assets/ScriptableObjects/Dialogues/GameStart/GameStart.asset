@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fbcf4db2575ba46b70dcadfbf0c59d, type: 3}
+  m_Name: GameStart
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: Welcome to A Skinks Tale!
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: Use WASD to move, and space to dodge roll and interact with things.
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: 'You can hit J to use your first equiped item and K for the second, and
+      you can open your inventory with I. '
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: You can go back to the main menu with Escape. (warning this resets any
+      progress)
+  options:
+  - optionText: Understood!
+    nextDialogue: {fileID: 11400000, guid: 8b14625f547918840a7c78c0d855f9b5, type: 2}
+  requiredNPCs: []
+  requiredLocations: []
+  requiredItems: []
+  removeItems: []
+  giveItems: []
+  removeAfterPlay: 0
+  removeTheseOnPlay: []

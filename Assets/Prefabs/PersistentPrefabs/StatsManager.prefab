@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2720628312720322521
 MonoBehaviour:
@@ -68,5 +68,5 @@ MonoBehaviour:
   knockBackSpeed: 0
   rollDist: 10
   rollTime: 0.5
-  currentHealth: 24
-  maxHealth: 24
+  currentHealth: 40
+  maxHealth: 40

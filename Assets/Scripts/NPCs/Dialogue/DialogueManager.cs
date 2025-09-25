@@ -43,12 +43,16 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartDialogue(DialogueSO dialogueSO)
     {
+        if(dialogueSO == null)
+        {
+            return;
+        }
 
         currentDialogue = dialogueSO;
         dialogueIndex = 0;
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
+        
         ShowDialogue();
         isDialogueActive = true;
     }
@@ -68,35 +72,42 @@ public class DialogueManager : MonoBehaviour
     }
     private void ShowDialogue()
     {
-        DialogueLine line = currentDialogue.lines[dialogueIndex];
-        Debug.Log(dialogueIndex);
-        GameManager.Instance.DialogueHistoryTracker.RecordNpc(line.speaker);
+        if(currentDialogue.lines.Length > 0)
+        {
+            DialogueLine line = currentDialogue.lines[dialogueIndex];
+            Debug.Log(dialogueIndex);
+            if (line.logInteraction == true)
+            {
+                GameManager.Instance.DialogueHistoryTracker.RecordNpc(line.speaker);
+            }
 
-        if(portrait != null)
-        {
-            portrait.sprite = line.speaker.portrait;
-        }
+            if (portrait != null)
+            {
+                portrait.sprite = line.speaker.portrait;
+            }
 
-        if (line.speaker.actorName == null)
-        {
-            actorName.text = "Missing Name";
-        }
-        else
-        {
-            actorName.text = line.speaker.actorName;
-        }
+            if (line.speaker.actorName == null)
+            {
+                actorName.text = "Missing Name";
+            }
+            else
+            {
+                actorName.text = line.speaker.actorName;
+            }
 
-        if (line.text == null)
-        {
-            dialogueText.text = "Error: Missing Dialogue";
-        }
-        else
-        {
-            dialogueText.text = line.text;
-        }
-        lastDialogueEndTime = Time.unscaledTime;
+            if (line.text == null)
+            {
+                dialogueText.text = "Error: Missing Dialogue";
+            }
+            else
+            {
+                dialogueText.text = line.text;
+            }
+            lastDialogueEndTime = Time.unscaledTime;
 
-        dialogueIndex++;
+            dialogueIndex++;
+        }
+        
     }
 
     private void ShowChoices()
@@ -138,6 +149,10 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            if(dialogueSO.giveItems != null)
+            {
+                InventoryManager.Instance.AddInventoryItem(dialogueSO.giveItems, dialogueSO.giveItems.slot );
+            }
             ClearChoices();
             isButtonActive = false;
 

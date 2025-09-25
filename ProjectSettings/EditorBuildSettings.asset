@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/WheatBeltOverworld.unity
-    guid: 55a20f480d489424d801514154cf2e10
+    path: Assets/Scenes/MainMenu.unity
+    guid: 1c81c52f3c66a3340a1abd845c362e90
+  - enabled: 1
+    path: Assets/Scenes/Town.unity
+    guid: a505b6b94f97a3f45bbdf23d243df810
   - enabled: 1
     path: Assets/Scenes/WheatFieldDungeon.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/WheatBeltOverworld.unity
+    guid: 55a20f480d489424d801514154cf2e10
   m_configObjects: {}

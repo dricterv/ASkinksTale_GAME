@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fbcf4db2575ba46b70dcadfbf0c59d, type: 3}
+  m_Name: NumbatCured
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+    text: grrrr
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+    text: .........
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+    text: .....
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+    text: '?'
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+    text: '!'
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+    text: Thank you!
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+    text: Whatever you gave me worked, my head is killing me!
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+    text: I'll make my way back to town after I rest a bit.
+    logInteraction: 1
+  options:
+  - optionText: Give Antidote
+    nextDialogue: {fileID: 0}
+  requiredNPCs: []
+  requiredLocations: []
+  requiredItems: []
+  removeItems: []
+  giveItems: {fileID: 0}
+  removeAfterPlay: 0
+  removeTheseOnPlay:
+  - {fileID: 11400000, guid: 480d6162aad773f4687aeeab6131f7ba, type: 2}

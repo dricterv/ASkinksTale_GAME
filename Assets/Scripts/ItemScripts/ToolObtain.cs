@@ -33,7 +33,7 @@ public class ToolObtain : MonoBehaviour
                 }
                 if (item != null)
                 {
-                    InventoryManager.Instance.AddInventoryItem(item, slot);
+                    InventoryManager.Instance.AddInventoryItem(item, item.slot);
                 }
             }
             
