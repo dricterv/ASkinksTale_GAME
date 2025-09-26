@@ -14,13 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
-    text: (tell info about partner)
+    text: H....hi...
     logInteraction: 0
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
-    text: partner is locked up south
+    text: I'm the town cook....
     logInteraction: 0
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
-    text: flower for the antidote is to the north but blocked by robots
+    text: Sorry, I'm feeling down right now, my partner went hunting for termites
+      and got infected.
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
+    text: And they have now locked themself away out of town to avoid infecting us...
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
+    text: There is a flower that can be made into an antidote but the path is currently
+      blocked by some weird robots.
     logInteraction: 0
   options:
   - optionText: I can help!

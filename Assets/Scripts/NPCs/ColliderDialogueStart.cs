@@ -7,10 +7,12 @@ public class ColliderDialogueStart : MonoBehaviour
   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameManager.Instance.DialogueManager.StartDialogue(GetComponent<Dialogue>().currentConversation);
+        if(collision.tag == "Player")
+            GameManager.Instance.DialogueManager.StartDialogue(GetComponent<Dialogue>().currentConversation);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if(collision.tag == "Player")
+            Destroy(gameObject);
     }
 }

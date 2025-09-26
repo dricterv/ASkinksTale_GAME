@@ -58,6 +58,7 @@ public class SceneChanger : MonoBehaviour
         InventoryManager.Instance.AddInventoryItem(emptyItem, 5);
         InventoryManager.Instance.AddInventoryItem(emptyItem, 6);
         InventoryManager.Instance.AddInventoryItem(emptyItem, 7);
+        InventoryManager.Instance.MainMenuEquip();
 
 
         //GameManager.Instance.uiManager.LiveUIOn();

@@ -145,8 +145,10 @@ public class PlayerController : MonoBehaviour
 
                 case EquippedItem.SpearThrower:
 
-                    StartShoot();
-                    Debug.Log("Shoot");
+                    if(InventoryManager.Instance.inventory[6].thisItem == quill)
+                    {
+                        StartShoot();
+                    }
 
                     break;
 

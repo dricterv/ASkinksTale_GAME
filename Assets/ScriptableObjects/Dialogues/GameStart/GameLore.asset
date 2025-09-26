@@ -14,7 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
-    text: 'There is a '
+    text: 'In the nearby wheat fields there is a pipe carry pesticide that is leaking
+      into the local environment. '
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: The pipe is located under a termite mound inside a old tree stump to the
+      west.
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: Your goal is to reach this pipe and turn it off.
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: Good luck!
+    logInteraction: 0
   options: []
   requiredNPCs: []
   requiredLocations: []

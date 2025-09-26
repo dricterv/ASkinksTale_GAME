@@ -22,6 +22,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Selectable selectedButton;
 
     public InventoryItem currentItem;
+    [SerializeField] private InventoryItem startItem1;
+    [SerializeField] private InventoryItem startItem2;
 
     private void Awake()
     {
@@ -150,11 +152,16 @@ public class InventoryManager : MonoBehaviour
             currentItem.EquipTwo();
         }
     }
+    public void MainMenuEquip()
+    {
+        startItem1.EquipOne();
+        startItem2.EquipTwo();
+    }
 
 
     public bool HasItem(InventoryItem itemSO)
     {
-        foreach(var slot in inventory)
+        foreach (var slot in inventory)
         {
             Debug.Log("loop");
 
@@ -164,7 +171,7 @@ public class InventoryManager : MonoBehaviour
                 return true;
 
             }
-            
+
         }
         //if(playerInventory.myInventory.Contains(itemSO) &&)
         return false;

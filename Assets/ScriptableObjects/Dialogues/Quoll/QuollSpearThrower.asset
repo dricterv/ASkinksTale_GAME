@@ -31,12 +31,14 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
     text: Maybe the echidna can give you some quills?
     logInteraction: 0
-  options: []
+  options:
+  - optionText: '*take*'
+    nextDialogue: {fileID: 11400000, guid: 639c0445a92dcdb4faef35ea2aeab30f, type: 2}
   requiredNPCs: []
   requiredLocations:
   - {fileID: 11400000, guid: 71987967c3abf2c479bf895db0adbfe2, type: 2}
   requiredItems: []
   removeItems: []
-  giveItems: {fileID: 11400000, guid: 4a185e64edb38844b8b53958b8194786, type: 2}
+  giveItems: {fileID: 0}
   removeAfterPlay: 1
   removeTheseOnPlay: []

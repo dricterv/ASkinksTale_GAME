@@ -14,10 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
-    text: Thank you!
+    text: Really?
     logInteraction: 0
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
-    text: Once you get the flower take it to the bat to make an antidote.
+    text: Thank you!
+    logInteraction: 1
+  - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
+    text: The path to the flower is north of the town.
+    logInteraction: 1
+  - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
+    text: Once you get the flower can you take it to the bat to make an antidote?
     logInteraction: 1
   options: []
   requiredNPCs: []
