@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject inventoryStartButton;
     public GameObject startButton;
-   
+    public bool inventoryOpen;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +44,8 @@ public class UIManager : MonoBehaviour
             mainMenuCanvas.blocksRaycasts = false;
             EventSystem.current.SetSelectedGameObject(inventoryStartButton);
         }
-        
 
+        inventoryOpen = false;
         pauseCanvas.alpha = 0;
         pauseCanvas.interactable = false;
         pauseCanvas.blocksRaycasts = false;
@@ -63,8 +63,9 @@ public class UIManager : MonoBehaviour
 
     public void ToggleInventory()
     {
-        if (liveCanvas.alpha == 1)
+        if (liveCanvas.alpha == 1 && GameManager.Instance.DialogueManager.isDialogueActive == false)
         {
+            inventoryOpen = true;
             Time.timeScale = 0;
             pauseCanvas.alpha = 1;
             pauseCanvas.interactable = true;
@@ -83,6 +84,7 @@ public class UIManager : MonoBehaviour
             liveCanvas.alpha = 1;
             liveCanvas.interactable = false;
             liveCanvas.blocksRaycasts = false;
+            inventoryOpen = false;
         }
     }
 
@@ -95,6 +97,8 @@ public class UIManager : MonoBehaviour
         mainMenuCanvas.interactable = false;
         mainMenuCanvas.blocksRaycasts = false;
         Time.timeScale = 1;
+        inventoryOpen = false;
+
         EventSystem.current.SetSelectedGameObject(inventoryStartButton);
     }
 
@@ -109,6 +113,8 @@ public class UIManager : MonoBehaviour
         pauseCanvas.alpha = 0;
         pauseCanvas.interactable = false;
         pauseCanvas.blocksRaycasts = false;
+        inventoryOpen = false;
+
         EventSystem.current.SetSelectedGameObject(startButton);
         //Time.timeScale = 0;
         GameManager.Instance.player.SetActive(false);

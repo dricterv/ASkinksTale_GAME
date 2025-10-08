@@ -77,6 +77,7 @@ public class EnemyHealth : MonoBehaviour
             if (destroyOnDeath == true)
             {
                 Destroy(gameObject);
+                //gameObject.GetComponent<Animator>().Play("Dead");
             }
             else
             {

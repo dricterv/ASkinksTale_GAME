@@ -26,7 +26,11 @@ public class Dialogue : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
-        anim.Play("Idle");
+        if(anim != null)
+        {
+            anim.Play("Idle");
+
+        }
         if(interactAnim != null)
             interactAnim.Play("Open");
     }

@@ -70,3 +70,12 @@ MonoBehaviour:
   rollTime: 0.5
   currentHealth: 40
   maxHealth: 40
+  flagList:
+  - key: eGate1
+    value: 0
+  - key: eGate2
+    value: 0
+  - key: eGate3
+    value: 0
+  - key: gameStart
+    value: 0

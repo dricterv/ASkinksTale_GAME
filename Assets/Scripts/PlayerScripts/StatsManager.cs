@@ -5,6 +5,7 @@ using TMPro;
 
 public class StatsManager : MonoBehaviour
 {
+    [Header("Test")]
     public static StatsManager Instance;
     public EquippedItem equippedItemOne;
     public EquippedItem equippedItemTwo;
@@ -39,6 +40,13 @@ public class StatsManager : MonoBehaviour
     public int maxHealth;
 
 
+    [Header("SceneFlags")]
+    public List<FlagDictionary> flagList = new List<FlagDictionary>();
+
+    public Dictionary<string, bool> flags = new Dictionary<string, bool>();
+
+
+
 
     private void Awake()
     {
@@ -49,6 +57,11 @@ public class StatsManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+
+        foreach (FlagDictionary entry in flagList)
+        {
+            flags.Add(entry.key, entry.value);
         }
     }
 
@@ -84,6 +97,13 @@ public class StatsManager : MonoBehaviour
        // Debug.Log("Equiped Item 2: " + equippedItemTwo);
 
     }
+}
+
+[System.Serializable]
+public class FlagDictionary
+{
+    public string key;
+    public bool value;
 }
 
 public enum EquippedItem

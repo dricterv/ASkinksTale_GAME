@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         
         
-        if(Input.GetButtonDown("Item1"))
+        if(Input.GetButtonDown("Item1") && GameManager.Instance.uiManager.inventoryOpen == false)
         {
             switch (StatsManager.Instance.equippedItemOne)
             {
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
             
         }
         
-        if(Input.GetButtonDown("Item2"))
+        if(Input.GetButtonDown("Item2") && GameManager.Instance.uiManager.inventoryOpen == false)
         {
             switch (StatsManager.Instance.equippedItemTwo)
             {
@@ -173,12 +173,15 @@ public class PlayerController : MonoBehaviour
         
         if(Input.GetButtonDown("Global"))
         {   
-            if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching && playerState != PlayerState.Shooting)
+            if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching && playerState != PlayerState.Shooting && GameManager.Instance.uiManager.inventoryOpen == false)
             {
-                interactHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, interactDist, interactableLayer);
+                Collider2D interactHit = Physics2D.OverlapBox(this.transform.position, new Vector2(2,2), 0, interactableLayer);//Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, interactDist, interactableLayer);
                 grabHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
+                if(interactHit != null)
+                Debug.Log(interactHit.gameObject.name);
 
-                if(interactHit.collider != null && playerState != PlayerState.Blocking)
+                Debug.Log("w");
+                if (interactHit != null && playerState != PlayerState.Blocking && playerState != PlayerState.Rolling)
                 {
                     if (GameManager.Instance.DialogueManager.isDialogueActive == true && GameManager.Instance.DialogueManager.isButtonActive == false)
                     {
@@ -187,8 +190,8 @@ public class PlayerController : MonoBehaviour
                     }
                     else if(GameManager.Instance.DialogueManager.isDialogueActive == false && GameManager.Instance.DialogueManager.isButtonActive == false && GameManager.Instance.DialogueManager.CanStartDialogue())
                     {
-                        interactHit.collider.GetComponent<Dialogue>().CheckForNewConversation();
-                        GameManager.Instance.DialogueManager.StartDialogue(interactHit.collider.GetComponent<Dialogue>().currentConversation);
+                        interactHit.GetComponent<Dialogue>().CheckForNewConversation();
+                        GameManager.Instance.DialogueManager.StartDialogue(interactHit.GetComponent<Dialogue>().currentConversation);
                         Debug.Log("input 2");
                     }
                 }

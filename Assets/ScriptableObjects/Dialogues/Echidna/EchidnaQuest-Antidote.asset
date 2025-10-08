@@ -15,8 +15,11 @@ MonoBehaviour:
   lines:
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: You have the antidote!
+    logInteraction: 0
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
-    text: Please take it to my partner, they are in a fenced off area down south!
+    text: Please take it to my partner, they are in a fenced off area to the south
+      east!
+    logInteraction: 0
   options: []
   requiredNPCs: []
   requiredLocations: []

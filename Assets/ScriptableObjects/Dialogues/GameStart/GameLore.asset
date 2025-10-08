@@ -19,7 +19,7 @@ MonoBehaviour:
     logInteraction: 0
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
     text: The pipe is located under a termite mound inside a old tree stump to the
-      west.
+      East.
     logInteraction: 0
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
     text: Your goal is to reach this pipe and turn it off.
