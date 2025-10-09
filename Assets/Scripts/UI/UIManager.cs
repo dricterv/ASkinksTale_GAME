@@ -11,10 +11,15 @@ public class UIManager : MonoBehaviour
 {
     
     public CanvasGroup liveCanvas;
-    public CanvasGroup pauseCanvas;
+    public CanvasGroup inventoryCanvas;
     public CanvasGroup mainMenuCanvas;
+    public CanvasGroup pauseCanvas;
+    public CanvasGroup journalCanvas;
+
 
     public GameObject inventoryStartButton;
+    public GameObject pauseMenuStartButton;
+    public GameObject jounalStartButton;
     public GameObject startButton;
     public bool inventoryOpen;
 
@@ -46,10 +51,15 @@ public class UIManager : MonoBehaviour
         }
 
         inventoryOpen = false;
+        inventoryCanvas.alpha = 0;
+        inventoryCanvas.interactable = false;
+        inventoryCanvas.blocksRaycasts = false;
         pauseCanvas.alpha = 0;
         pauseCanvas.interactable = false;
         pauseCanvas.blocksRaycasts = false;
-
+        journalCanvas.alpha = 0;
+        journalCanvas.interactable = false;
+        journalCanvas.blocksRaycasts = false;
     }
 
     // Update is called once per frame
@@ -67,9 +77,9 @@ public class UIManager : MonoBehaviour
         {
             inventoryOpen = true;
             Time.timeScale = 0;
-            pauseCanvas.alpha = 1;
-            pauseCanvas.interactable = true;
-            pauseCanvas.blocksRaycasts = true;
+            inventoryCanvas.alpha = 1;
+            inventoryCanvas.interactable = true;
+            inventoryCanvas.blocksRaycasts = true;
             liveCanvas.alpha = 0;
             liveCanvas.interactable = false;
             liveCanvas.blocksRaycasts = false;
@@ -78,9 +88,9 @@ public class UIManager : MonoBehaviour
         else if (liveCanvas.alpha == 0)
         {
             Time.timeScale = 1;
-            pauseCanvas.alpha = 0;
-            pauseCanvas.interactable = false;
-            pauseCanvas.blocksRaycasts = false;
+            inventoryCanvas.alpha = 0;
+            inventoryCanvas.interactable = false;
+            inventoryCanvas.blocksRaycasts = false;
             liveCanvas.alpha = 1;
             liveCanvas.interactable = false;
             liveCanvas.blocksRaycasts = false;
@@ -110,9 +120,9 @@ public class UIManager : MonoBehaviour
         liveCanvas.alpha = 0;
         liveCanvas.interactable = false;
         liveCanvas.blocksRaycasts = false;
-        pauseCanvas.alpha = 0;
-        pauseCanvas.interactable = false;
-        pauseCanvas.blocksRaycasts = false;
+        inventoryCanvas.alpha = 0;
+        inventoryCanvas.interactable = false;
+        inventoryCanvas.blocksRaycasts = false;
         inventoryOpen = false;
 
         EventSystem.current.SetSelectedGameObject(startButton);
@@ -123,5 +133,43 @@ public class UIManager : MonoBehaviour
     public void SetEventSystemGO(GameObject go)
     {
         EventSystem.current.SetSelectedGameObject(go);
+    }
+
+    public void OpenPauseMenu()
+    {
+        inventoryCanvas.alpha = 0;
+        inventoryCanvas.interactable = false;
+        inventoryCanvas.blocksRaycasts = false;
+        pauseCanvas.alpha = 1;
+        pauseCanvas.interactable = true;
+        pauseCanvas.blocksRaycasts = true;
+        journalCanvas.alpha = 0;
+        journalCanvas.interactable = false;
+        journalCanvas.blocksRaycasts = false;
+        
+    }
+    public void OpenInventoryMenu()
+    {
+        inventoryCanvas.alpha = 1;
+        inventoryCanvas.interactable = true;
+        inventoryCanvas.blocksRaycasts = true;
+        pauseCanvas.alpha = 0;
+        pauseCanvas.interactable = false;
+        pauseCanvas.blocksRaycasts = false;
+        journalCanvas.alpha = 0;
+        journalCanvas.interactable = false;
+        journalCanvas.blocksRaycasts = false;
+    }
+     public void OpenJournalMenu()
+    {
+        inventoryCanvas.alpha = 0;
+        inventoryCanvas.interactable = false;
+        inventoryCanvas.blocksRaycasts = false;
+        pauseCanvas.alpha = 0;
+        pauseCanvas.interactable = false;
+        pauseCanvas.blocksRaycasts = false;
+        journalCanvas.alpha = 1;
+        journalCanvas.interactable = true;
+        journalCanvas.blocksRaycasts = true;
     }
 }

@@ -43,12 +43,12 @@ public class GameManager : MonoBehaviour
 
     private void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && DialogueManager.isDialogueActive == false && DialogueManager.isButtonActive == false)
+       /* if(Input.GetKeyDown(KeyCode.Escape) && DialogueManager.isDialogueActive == false && DialogueManager.isButtonActive == false)
         {
             uiManager.MainMenuOn();
             SceneManager.LoadScene("MainMenu");
             //QuitGame();
-        }
+        }*/
         if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1) || Input.GetKey(KeyCode.Mouse2))
         {
             GameObject buttonGO = EventSystem.current.currentSelectedGameObject;
