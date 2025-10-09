@@ -70,4 +70,8 @@ public class SceneChanger : MonoBehaviour
     {
         GameManager.Instance.QuitGame();
     }
+    public void MainMenuButton()
+    {
+        GameManager.Instance.MainMenuLoad();
+    }
 }

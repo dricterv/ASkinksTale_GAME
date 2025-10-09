@@ -95,6 +95,13 @@ public class UIManager : MonoBehaviour
             liveCanvas.interactable = false;
             liveCanvas.blocksRaycasts = false;
             inventoryOpen = false;
+            pauseCanvas.alpha = 0;
+            pauseCanvas.interactable = false;
+            pauseCanvas.blocksRaycasts = false;
+            journalCanvas.alpha = 0;
+            journalCanvas.interactable = false;
+            journalCanvas.blocksRaycasts = false;
+            
         }
     }
 
@@ -124,6 +131,12 @@ public class UIManager : MonoBehaviour
         inventoryCanvas.interactable = false;
         inventoryCanvas.blocksRaycasts = false;
         inventoryOpen = false;
+        pauseCanvas.alpha = 0;
+        pauseCanvas.interactable = false;
+        pauseCanvas.blocksRaycasts = false;
+        journalCanvas.alpha = 0;
+        journalCanvas.interactable = false;
+        journalCanvas.blocksRaycasts = false;
 
         EventSystem.current.SetSelectedGameObject(startButton);
         //Time.timeScale = 0;

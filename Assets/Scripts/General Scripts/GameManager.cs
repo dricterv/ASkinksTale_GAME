@@ -85,4 +85,10 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void MainMenuLoad()
+    {
+        uiManager.MainMenuOn();
+        SceneManager.LoadScene("MainMenu");
+    }
 }
