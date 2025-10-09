@@ -20,7 +20,7 @@ public class NumberCounter : MonoBehaviour
     void Start()
     {
         count = 0;
-        if(boolString != "")
+        if(boolString != "" && boolString != null)
         {
             bool open = StatsManager.Instance.flags[boolString];
             if(open == true)
