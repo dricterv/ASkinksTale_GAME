@@ -137,6 +137,7 @@ public class UIManager : MonoBehaviour
         journalCanvas.alpha = 0;
         journalCanvas.interactable = false;
         journalCanvas.blocksRaycasts = false;
+        Time.timeScale = 1;
 
         EventSystem.current.SetSelectedGameObject(startButton);
         //Time.timeScale = 0;

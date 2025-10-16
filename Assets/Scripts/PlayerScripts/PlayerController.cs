@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
                 if(interactHit != null)
                 Debug.Log(interactHit.gameObject.name);
 
-                Debug.Log("w");
+                //Debug.Log("w");
                 if (interactHit != null && playerState != PlayerState.Blocking && playerState != PlayerState.Rolling)
                 {
                     if (GameManager.Instance.DialogueManager.isDialogueActive == true && GameManager.Instance.DialogueManager.isButtonActive == false)

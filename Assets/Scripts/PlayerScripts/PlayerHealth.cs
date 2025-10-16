@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static event Action OnPlayerDamaged;
     public TMP_Text healthText;
     //public Animator healthTextAnim;
     public PlayerController playerController;
@@ -43,7 +45,8 @@ public class PlayerHealth : MonoBehaviour
             StatsManager.Instance.currentHealth += amount;
             timer = invulnTimer;
             Debug.Log("dmg: " + amount);
-            if(amount < 0)
+            OnPlayerDamaged?.Invoke();
+            if (amount < 0)
             {
                 StartCoroutine(DamageColour());
             }

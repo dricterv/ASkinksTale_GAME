@@ -27,8 +27,10 @@ MonoBehaviour:
     text: And they have now locked themself away out of town to avoid infecting us...
     logInteraction: 0
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
-    text: There is a flower that can be made into an antidote but the path is currently
-      blocked by some weird robots.
+    text: There is a flower that can be made into an antidote...
+    logInteraction: 0
+  - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
+    text: ...but the path is currently blocked by some weird robots.
     logInteraction: 0
   options:
   - optionText: I can help!
