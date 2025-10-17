@@ -16,11 +16,12 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: f2672f8c828ae764e926d25bb0d7d8d5, type: 2}
     text: It is a pea flower.
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options:
   - optionText: '*take*'
     nextDialogue: {fileID: 11400000, guid: bf183dc18099572459630eb1ef9fda6c, type: 2}
-  requiredNPCs:
-  - {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
+  requiredNPCs: []
   requiredLocations: []
   requiredItems: []
   removeItems: []

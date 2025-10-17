@@ -186,13 +186,13 @@ public class PlayerController : MonoBehaviour
                     if (GameManager.Instance.DialogueManager.isDialogueActive == true && GameManager.Instance.DialogueManager.isButtonActive == false)
                     {
                         GameManager.Instance.DialogueManager.AdvanceDialogue();
-                        Debug.Log("input 1");
+                        //Debug.Log("input 1");
                     }
                     else if(GameManager.Instance.DialogueManager.isDialogueActive == false && GameManager.Instance.DialogueManager.isButtonActive == false && GameManager.Instance.DialogueManager.CanStartDialogue())
                     {
                         interactHit.GetComponent<Dialogue>().CheckForNewConversation();
-                        GameManager.Instance.DialogueManager.StartDialogue(interactHit.GetComponent<Dialogue>().currentConversation);
-                        Debug.Log("input 2");
+                        GameManager.Instance.DialogueManager.StartDialogue(interactHit.GetComponent<Dialogue>().currentConversation, interactHit.GetComponent<Dialogue>());
+                        //Debug.Log("input 2");
                     }
                 }
 

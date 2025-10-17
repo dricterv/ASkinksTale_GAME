@@ -14,6 +14,8 @@ public class EnemyHealth : MonoBehaviour
     public List<RoomTransition> exit = new List<RoomTransition>();
     public NumberCounter counter;
     public bool destroyOnDeath = false;
+    public bool deathAnim = false;
+    private Animator anim;
 
 
     private void Start()
@@ -21,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
         enemySpriteRenderer = GetComponent<SpriteRenderer>();
         enemySpriteRenderer.color = Color.white;
+        anim = GetComponent<Animator>();
 
     }
     IEnumerator DamageColour()
@@ -78,6 +81,13 @@ public class EnemyHealth : MonoBehaviour
             {
                 Destroy(gameObject);
                 //gameObject.GetComponent<Animator>().Play("Dead");
+            }
+            else if (deathAnim == true)
+            {
+                if (anim != null)
+                {
+                    anim.Play("Death");
+                }
             }
             else
             {

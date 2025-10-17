@@ -6,6 +6,7 @@ public class DialogueSO : ScriptableObject
 {
     public DialogueLine[] lines;
     public DialogueOption[] options;
+  
 
     [Header("Conditional Requirements (Optional)")]
 
@@ -17,6 +18,8 @@ public class DialogueSO : ScriptableObject
 
     public InventoryItem[] removeItems;
     public InventoryItem giveItems;
+    public string currentAnimName;
+    
 
 
     [Header("Control Flags")]
@@ -67,6 +70,9 @@ public class DialogueLine
     public ActorSO speaker;
     [TextArea(3, 5)] public string text;
     public bool logInteraction = false;
+    public bool changeAnim = false;
+    public string animName;
+    
 }
 [System.Serializable]
 public class DialogueOption

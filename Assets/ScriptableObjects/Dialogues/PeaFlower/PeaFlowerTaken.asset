@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74fbcf4db2575ba46b70dcadfbf0c59d, type: 3}
   m_Name: PeaFlowerTaken
   m_EditorClassIdentifier: 
-  lines: []
+  lines:
+  - speaker: {fileID: 11400000, guid: e745f2ae7d8d7bf449e34820cf3c59ce, type: 2}
+    text: You take a couple of flowers.
+    logInteraction: 0
+    changeAnim: 1
+    animName: FlowerTaken
   options: []
   requiredNPCs: []
   requiredLocations: []

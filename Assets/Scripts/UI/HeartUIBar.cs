@@ -24,7 +24,7 @@ public class HeartUIBar : MonoBehaviour
     public void DrawHearts()
     {
         ClearHearts();
-        float maxHealthRemainder = StatsManager.Instance.maxHealth % 4;
+        float maxHealthRemainder = StatsManager.Instance.maxHealth % 2;
         int heartsToMake = (int)(StatsManager.Instance.maxHealth / 4 + maxHealthRemainder);
         for(int i = 0; i < heartsToMake; i++)
         {

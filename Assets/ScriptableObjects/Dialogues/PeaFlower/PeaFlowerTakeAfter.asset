@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: PeaFlowerTakeAfter
   m_EditorClassIdentifier: 
   lines:
-  - speaker: {fileID: 11400000, guid: f2672f8c828ae764e926d25bb0d7d8d5, type: 2}
+  - speaker: {fileID: 11400000, guid: e745f2ae7d8d7bf449e34820cf3c59ce, type: 2}
     text: It is a pea flower, missing a couple of flowers.
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs: []
   requiredLocations: []
@@ -23,5 +25,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 51304a70e9eece647ba111b42fa67cef, type: 2}
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: FlowerTaken
   removeAfterPlay: 0
   removeTheseOnPlay: []

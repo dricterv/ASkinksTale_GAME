@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     public bool isButtonActive;
 
     private DialogueSO currentDialogue;
+    private Dialogue currentNpc;
     private int dialogueIndex;
 
     private float lastDialogueEndTime;
@@ -41,13 +42,13 @@ public class DialogueManager : MonoBehaviour
     {
         return Time.unscaledTime - lastDialogueEndTime >= dialogueCooldown;
     }
-    public void StartDialogue(DialogueSO dialogueSO)
+    public void StartDialogue(DialogueSO dialogueSO, Dialogue npcDialogue)
     {
         if(dialogueSO == null)
         {
             return;
         }
-
+        currentNpc = npcDialogue;
         currentDialogue = dialogueSO;
         dialogueIndex = 0;
         canvasGroup.alpha = 1;
@@ -103,6 +104,10 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueText.text = line.text;
             }
+            if (line.changeAnim == true)
+            {
+                currentNpc.anim.Play(line.animName);
+            }
             lastDialogueEndTime = Time.unscaledTime;
 
             dialogueIndex++;
@@ -156,7 +161,7 @@ public class DialogueManager : MonoBehaviour
             ClearChoices();
             isButtonActive = false;
 
-            StartDialogue(dialogueSO);
+            StartDialogue(dialogueSO, currentNpc);
 
         }
     }
