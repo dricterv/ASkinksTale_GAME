@@ -16,29 +16,43 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: H....hi...
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: I'm the town cook....
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: Sorry, I'm feeling down right now, my partner went hunting for termites
       and got infected.
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: And they have now locked themself away out of town to avoid infecting us...
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: There is a flower that can be made into an antidote...
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: ...but the path is currently blocked by some weird robots.
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options:
   - optionText: I can help!
     nextDialogue: {fileID: 11400000, guid: 791bbe43fad87e544ada84031369693d, type: 2}
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay: []

@@ -15,10 +15,18 @@ MonoBehaviour:
   lines:
   - speaker: {fileID: 11400000, guid: b0b79fd00a237ae498d3a9afd03519b3, type: 2}
     text: :// (obtained the green blob above)
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
+  questToGive: {fileID: 0}
   requiredNPCs: []
   requiredLocations: []
   requiredItems:
   - {fileID: 11400000, guid: 16883896b69cae840b8ef597d213a6d4, type: 2}
+  requiredFlags: []
+  removeItems: []
+  giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 1
   removeTheseOnPlay: []

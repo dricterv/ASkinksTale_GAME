@@ -16,11 +16,15 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
     text: Hiya! I'm the town blacksmith and handyquoll!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay: []

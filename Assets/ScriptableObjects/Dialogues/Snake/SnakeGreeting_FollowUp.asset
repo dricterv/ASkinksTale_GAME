@@ -16,11 +16,21 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
     text: If you talk to the gecko after talking to me or go to the top right corner
       of this room, the gecko will same something new!
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
     text: ~>8===---~~~
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredFlags: []
+  removeItems: []
+  giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay: []

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public DialogueManager DialogueManager;
     public DialogueHistoryTracker DialogueHistoryTracker;
     public LocationHistoryTracker LocationHistoryTracker;
+    public QuestManager questManager;
     public EventSystem eventSystem;
 
 

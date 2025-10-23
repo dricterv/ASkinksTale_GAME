@@ -16,11 +16,15 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: Good luck!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 11400000, guid: 336aab3993368c24e95916037cdcb96f, type: 2}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay: []

@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         
         if(Input.GetButtonDown("Item1") && GameManager.Instance.uiManager.inventoryOpen == false)
         {
-            switch (StatsManager.Instance.equippedItemOne)
+            switch (StatsManager.Instance.equippedItemOne.thisItem)
             {
                 case EquippedItem.BaseFork:
 
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
         
         if(Input.GetButtonDown("Item2") && GameManager.Instance.uiManager.inventoryOpen == false)
         {
-            switch (StatsManager.Instance.equippedItemTwo)
+            switch (StatsManager.Instance.equippedItemTwo.thisItem)
             {
                 case EquippedItem.BaseFork:
 
@@ -155,14 +155,14 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-        if (Input.GetButton("Item1") != true && playerState == PlayerState.Blocking && StatsManager.Instance.equippedItemOne == EquippedItem.BaseShield)
+        if (Input.GetButton("Item1") != true && playerState == PlayerState.Blocking && StatsManager.Instance.equippedItemOne.thisItem == EquippedItem.BaseShield)
                     {
                         StatsManager.Instance.blocking = false;
                         StatsManager.Instance.lockFace = false;
                         Facing();
 
                     }
-        if (Input.GetButton("Item2") != true && playerState == PlayerState.Blocking && StatsManager.Instance.equippedItemTwo == EquippedItem.BaseShield)
+        if (Input.GetButton("Item2") != true && playerState == PlayerState.Blocking && StatsManager.Instance.equippedItemTwo.thisItem == EquippedItem.BaseShield)
                     {
                         StatsManager.Instance.blocking = false;
                         StatsManager.Instance.lockFace = false;

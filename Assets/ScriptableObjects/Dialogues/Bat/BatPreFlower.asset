@@ -16,21 +16,31 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
     text: Hello, I'm the town apothecary.
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
     text: You need me to make a potion?
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
     text: Sure!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
     text: Just come back once you have the flower!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs:
   - {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
   requiredLocations: []
   requiredItems: []
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay: []

@@ -7,8 +7,8 @@ public class StatsManager : MonoBehaviour
 {
     [Header("Test")]
     public static StatsManager Instance;
-    public EquippedItem equippedItemOne;
-    public EquippedItem equippedItemTwo;
+    public InventoryItem equippedItemOne;
+    public InventoryItem equippedItemTwo;
     public TMP_Text healthText;
     public Vector2 facing = new Vector2();
     public Vector2 lockFacing = new Vector2();
@@ -69,6 +69,17 @@ public class StatsManager : MonoBehaviour
     {
 
     }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            foreach (FlagDictionary entry in flagList)
+            {
+                flags[entry.key] = entry.value;
+            
+            }
+        }
+    }
 
     public void UpdateMaxHealth(int amount)
     {
@@ -76,25 +87,32 @@ public class StatsManager : MonoBehaviour
         healthText.text = "HP: " + currentHealth + " / " + maxHealth;
     }
 
-    public void UpdateEquipedItemOne(EquippedItem newItem)
+    public void UpdateEquipedItemOne(InventoryItem newItem)
     {
         if(newItem == equippedItemTwo)
         {
             equippedItemTwo = equippedItemOne;
+            GameManager.Instance.uiManager.item2.sprite = equippedItemTwo.itemImage;
+
         }
         equippedItemOne = newItem;
-       // Debug.Log("Equiped Item 1: " + equippedItemOne);
-       // Debug.Log("Equiped Item 2: " + equippedItemTwo);
+        GameManager.Instance.uiManager.item1.sprite = equippedItemOne.itemImage;
+
+        // Debug.Log("Equiped Item 1: " + equippedItemOne);
+        // Debug.Log("Equiped Item 2: " + equippedItemTwo);
     }
-    public void UpdateEquipedItemTwo(EquippedItem newItem)
+    public void UpdateEquipedItemTwo(InventoryItem newItem)
     {
         if (newItem == equippedItemOne)
         {
             equippedItemOne = equippedItemTwo;
+            GameManager.Instance.uiManager.item1.sprite = equippedItemOne.itemImage;
         }
         equippedItemTwo = newItem;
+        GameManager.Instance.uiManager.item2.sprite = newItem.itemImage;
+
         //Debug.Log("Equiped Item 1: " + equippedItemOne);
-       // Debug.Log("Equiped Item 2: " + equippedItemTwo);
+        // Debug.Log("Equiped Item 2: " + equippedItemTwo);
 
     }
 }

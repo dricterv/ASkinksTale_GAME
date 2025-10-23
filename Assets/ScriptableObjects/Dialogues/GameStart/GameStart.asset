@@ -15,21 +15,35 @@ MonoBehaviour:
   lines:
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
     text: Welcome to A Skinks Tale!
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
     text: Use WASD to move, and space to dodge roll and interact with things.
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
     text: 'You can hit J to use your first equiped item and K for the second, and
       you can open your inventory with I. '
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
     text: You can go back to the main menu with Escape. (warning this resets any
       progress)
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
   options:
   - optionText: Understood!
     nextDialogue: {fileID: 11400000, guid: 8b14625f547918840a7c78c0d855f9b5, type: 2}
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredFlags: []
   removeItems: []
-  giveItems: []
+  giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay: []

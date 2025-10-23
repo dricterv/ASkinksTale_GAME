@@ -16,6 +16,8 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: Once again, Thank you!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs:
   - {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
@@ -23,7 +25,9 @@ MonoBehaviour:
   requiredItems:
   - {fileID: 11400000, guid: 6a70f87501343624d925b8e1b6496854, type: 2}
   - {fileID: 11400000, guid: 336aab3993368c24e95916037cdcb96f, type: 2}
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay: []

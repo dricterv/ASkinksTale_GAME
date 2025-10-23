@@ -16,13 +16,17 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: Once you get the flower take it to the bat to make an antidote.
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs:
   - {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
   requiredLocations: []
   requiredItems: []
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay:
   - {fileID: 11400000, guid: f8d8c956e54e3664a9a9906d6b1ea480, type: 2}

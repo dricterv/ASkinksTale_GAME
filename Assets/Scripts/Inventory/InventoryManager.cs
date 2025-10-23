@@ -163,7 +163,7 @@ public class InventoryManager : MonoBehaviour
     {
         foreach (var slot in inventory)
         {
-            Debug.Log("loop");
+           // Debug.Log("loop");
 
             if (slot.thisItem == itemSO && slot.thisItem.numberHeld > 0)
             {
@@ -175,5 +175,19 @@ public class InventoryManager : MonoBehaviour
         }
         //if(playerInventory.myInventory.Contains(itemSO) &&)
         return false;
+    }
+
+    public int GetItemQuantity(InventoryItem itemSO)
+    {
+        int total = 0;
+        foreach( var slot in inventory)
+        {
+            if (slot.thisItem == itemSO )
+            {
+                total += slot.thisItem.numberHeld;
+                Debug.Log("wa");
+            }
+        }
+        return total;
     }
 }

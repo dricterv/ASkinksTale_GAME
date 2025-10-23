@@ -16,14 +16,18 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
     text: Good luck with the spear thrower!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs: []
   requiredLocations: []
   requiredItems:
   - {fileID: 11400000, guid: 4a185e64edb38844b8b53958b8194786, type: 2}
   - {fileID: 11400000, guid: 336aab3993368c24e95916037cdcb96f, type: 2}
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay:
   - {fileID: 11400000, guid: 3865140b98f159549b79707f2b30df73, type: 2}

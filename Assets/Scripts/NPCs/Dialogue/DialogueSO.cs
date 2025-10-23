@@ -6,8 +6,8 @@ public class DialogueSO : ScriptableObject
 {
     public DialogueLine[] lines;
     public DialogueOption[] options;
-  
 
+    public QuestSO questToGive;
     [Header("Conditional Requirements (Optional)")]
 
     public ActorSO[] requiredNPCs;
@@ -15,6 +15,7 @@ public class DialogueSO : ScriptableObject
     public LocationSO[] requiredLocations;
 
     public InventoryItem[] requiredItems;
+    public string[] requiredFlags;
 
     public InventoryItem[] removeItems;
     public InventoryItem giveItems;
@@ -59,7 +60,19 @@ public class DialogueSO : ScriptableObject
                 }
             }
         }
-
+        if (requiredFlags.Length > 0)
+        {
+            foreach (var flag in requiredFlags)
+            {
+                //Debug.Log("flag");
+                if (StatsManager.Instance.flags[flag] == false)
+                {
+                    //Debug.Log("flag2");
+                    return false;
+                }
+            }
+        }
+        //Debug.Log("flag3");
         return true;
     }
 }

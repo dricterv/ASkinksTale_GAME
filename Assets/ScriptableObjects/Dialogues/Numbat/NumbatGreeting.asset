@@ -16,11 +16,15 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
     text: grrrr
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay: []

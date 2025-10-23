@@ -16,33 +16,51 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
     text: grrrr
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
     text: .........
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
     text: .....
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
     text: '?'
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
     text: '!'
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
     text: Thank you!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
     text: Whatever you gave me worked, my head is killing me!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
     text: I'll make my way back to town after I rest a bit.
     logInteraction: 1
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay:
   - {fileID: 11400000, guid: 480d6162aad773f4687aeeab6131f7ba, type: 2}

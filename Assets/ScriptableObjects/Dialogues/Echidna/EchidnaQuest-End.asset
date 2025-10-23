@@ -16,9 +16,13 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: Thank you for saving my partner!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: Here take some of my quills.
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options:
   - optionText: '*take*'
     nextDialogue: {fileID: 11400000, guid: 2f763fcbb27bd094ea48df67edd129c8, type: 2}
@@ -27,8 +31,10 @@ MonoBehaviour:
   requiredLocations: []
   requiredItems:
   - {fileID: 11400000, guid: 6a70f87501343624d925b8e1b6496854, type: 2}
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 1
   removeTheseOnPlay:
   - {fileID: 11400000, guid: 8d0f3442c8dcf3e4598f2d4b67078421, type: 2}

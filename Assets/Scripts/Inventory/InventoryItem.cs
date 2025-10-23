@@ -22,13 +22,13 @@ public class InventoryItem : ScriptableObject
     {
         //Debug.Log("Equiping item");
         //thisEventOne.Invoke();
-        StatsManager.Instance.UpdateEquipedItemOne(thisItem);
+        StatsManager.Instance.UpdateEquipedItemOne(this);
     }
     public void EquipTwo()
     {
        // Debug.Log("Equiping item");
         //thisEventTwo.Invoke();
-        StatsManager.Instance.UpdateEquipedItemTwo(thisItem);
+        StatsManager.Instance.UpdateEquipedItemTwo(this);
 
     }
 }

@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenuStartButton;
     public GameObject jounalStartButton;
     public GameObject startButton;
+    public Image item1;
+    public Image item2;
     public bool inventoryOpen;
 
     // Start is called before the first frame update

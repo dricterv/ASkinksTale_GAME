@@ -15,10 +15,17 @@ MonoBehaviour:
   lines:
   - speaker: {fileID: 11400000, guid: b0b79fd00a237ae498d3a9afd03519b3, type: 2}
     text: ': ) (Went to top right corner of this room)'
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs: []
-  requiredLocations:
-  - {fileID: 11400000, guid: 3284347d6c82a754188446101ff46bb4, type: 2}
+  requiredLocations: []
   requiredItems: []
-  removeAfterPlay: 1
+  requiredFlags:
+  - eGate1
+  removeItems: []
+  giveItems: {fileID: 0}
+  currentAnimName: 
+  removeAfterPlay: 0
   removeTheseOnPlay: []

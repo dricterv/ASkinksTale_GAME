@@ -16,21 +16,33 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
     text: Hiya! I'm the town blacksmith and handyquoll!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
     text: You need a tool to break something at a distance?
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
     text: 'Sure! '
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
     text: I can...... make you a spear thrower!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
     text: You will have to find something to throw by yourself....
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
     text: Maybe the echidna can give you some quills?
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options:
   - optionText: '*take*'
     nextDialogue: {fileID: 11400000, guid: 639c0445a92dcdb4faef35ea2aeab30f, type: 2}
@@ -38,7 +50,9 @@ MonoBehaviour:
   requiredLocations:
   - {fileID: 11400000, guid: 71987967c3abf2c479bf895db0adbfe2, type: 2}
   requiredItems: []
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 1
   removeTheseOnPlay: []

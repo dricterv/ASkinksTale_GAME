@@ -16,17 +16,23 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: You have the antidote!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: Please take it to my partner, they are in a fenced off area to the south
       east!
     logInteraction: 0
+    changeAnim: 0
+    animName: 
   options: []
   requiredNPCs: []
   requiredLocations: []
   requiredItems:
   - {fileID: 11400000, guid: 6a70f87501343624d925b8e1b6496854, type: 2}
+  requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
+  currentAnimName: 
   removeAfterPlay: 0
   removeTheseOnPlay:
   - {fileID: 11400000, guid: 5a53ba9b573c8d04482bc8902473a09f, type: 2}

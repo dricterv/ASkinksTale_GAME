@@ -76,7 +76,7 @@ public class DialogueManager : MonoBehaviour
         if(currentDialogue.lines.Length > 0)
         {
             DialogueLine line = currentDialogue.lines[dialogueIndex];
-            Debug.Log(dialogueIndex);
+            //Debug.Log(dialogueIndex);
             if (line.logInteraction == true)
             {
                 GameManager.Instance.DialogueHistoryTracker.RecordNpc(line.speaker);
@@ -157,6 +157,12 @@ public class DialogueManager : MonoBehaviour
             if(dialogueSO.giveItems != null)
             {
                 InventoryManager.Instance.AddInventoryItem(dialogueSO.giveItems, dialogueSO.giveItems.slot );
+            }
+            if(currentDialogue.questToGive != null)
+            {
+                Debug.Log("quest sent");
+                QuestEvents.OnQuestOfferRequested?.Invoke(currentDialogue.questToGive);
+                Debug.Log("quest given");
             }
             ClearChoices();
             isButtonActive = false;

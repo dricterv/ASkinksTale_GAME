@@ -25,7 +25,7 @@ public class Dialogue : MonoBehaviour
     }
     private void Start()
     {
-         CheckForNewConversation();
+        StartCheckForConvo();
     }
     private void OnEnable()
     {
@@ -92,5 +92,32 @@ public class Dialogue : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void StartCheckForConvo()
+    {
+         for(int i = 0; i<conversations.Count; i++)
+        {
+                //can reverse for loop if wanting to skip to latest unlocked dialogue // for(int i = conversations.Count -1; i >= 0; i--)
+                var convo = conversations[i];
+            
+                if (convo != null && convo.IsConditionMet())
+                {
+                    currentConversation = convo;
+                    if (anim != null)
+                    {
+                        if (currentConversation.currentAnimName != "")
+                        {
+                            anim.Play(currentConversation.currentAnimName);
+                        }
+                        else
+                        {
+                                anim.Play("Idle");
+                        }
+                    }
+
+                    break;
+                }
+         }
     }
 }
