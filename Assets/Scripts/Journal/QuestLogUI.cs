@@ -14,7 +14,9 @@ public class QuestLogUI : MonoBehaviour
     [SerializeField] private QuestObjectiveSlot[] objectiveSlots;
 
     [SerializeField] private QuestLogSlot[] questSlots;
-   private QuestSO questSO;
+
+    
+    private QuestSO questSO;
 
     private void OnEnable()
     {
@@ -22,28 +24,35 @@ public class QuestLogUI : MonoBehaviour
     }
     private void OnDisable()
     {
-        QuestEvents.OnQuestOfferRequested += AddQuest;
+        QuestEvents.OnQuestOfferRequested -= AddQuest;
     }
+    
 
     public void HandleQuestClicked(QuestSO questSO)
     {
         this.questSO = questSO;
+        GameManager.Instance.uiManager.OpenQuestDetailsMenu();
         questNameText.text = questSO.questName;
         questDescriptionText.text = questSO.questDescirption;
 
         DisplayObjective();
 
-        foreach(var objective in questSO.objectives)
+        foreach (var objective in questSO.objectives)
         {
             Debug.Log($"Objective: {objective.description} => {questManager.GetProgressText(questSO, objective)}");
         }
     }
 
+   
+
     public void AddQuest(QuestSO questSO)
     {
         Debug.Log("quest Received");
+        Debug.Log("name: " + this.gameObject.name);
         questManager.AcceptQuest(questSO);
+        Debug.Log("quest a");
         RefreshQuestList();
+        Debug.Log("quest w");
     }
     public void RefreshQuestList()
     {

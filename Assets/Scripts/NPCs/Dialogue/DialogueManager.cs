@@ -48,12 +48,13 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
+        
         currentNpc = npcDialogue;
         currentDialogue = dialogueSO;
         dialogueIndex = 0;
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
-        
+       
         ShowDialogue();
         isDialogueActive = true;
     }
@@ -127,7 +128,7 @@ public class DialogueManager : MonoBehaviour
                 choiceButtons[i].GetComponentInChildren<TMP_Text>().text = option.optionText;
                 choiceButtons[i].gameObject.SetActive(true);
                 
-                choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue));
+                choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue, option.questToGive));
 
             }
             EventSystem.current.SetSelectedGameObject(choiceButtons[0].gameObject);
@@ -146,7 +147,7 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    private void ChooseOption(DialogueSO dialogueSO)
+    private void ChooseOption(DialogueSO dialogueSO, QuestSO questSO)
     {
         if(dialogueSO == null)
         {
@@ -158,17 +159,21 @@ public class DialogueManager : MonoBehaviour
             {
                 InventoryManager.Instance.AddInventoryItem(dialogueSO.giveItems, dialogueSO.giveItems.slot );
             }
-            if(currentDialogue.questToGive != null)
+            if (questSO != null)
             {
                 Debug.Log("quest sent");
-                QuestEvents.OnQuestOfferRequested?.Invoke(currentDialogue.questToGive);
+                
+                QuestEvents.OnQuestOfferRequested?.Invoke(questSO);
                 Debug.Log("quest given");
+           
             }
+            
             ClearChoices();
             isButtonActive = false;
 
             StartDialogue(dialogueSO, currentNpc);
-
+            
+            
         }
     }
     private void EndDialogue()

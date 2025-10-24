@@ -11,17 +11,7 @@ public class QuestLogSlot : MonoBehaviour
     public QuestSO currentQuest;
     public QuestLogUI questLogUI;
 
-    private void OnValidate()
-    {
-        if(currentQuest != null)
-        {
-            SetQuest(currentQuest);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
-    }
+    
 
     public void SetQuest(QuestSO questSO)
     {

@@ -22,31 +22,28 @@ public class QuestManager : MonoBehaviour
     }
     public void UpdateObjectiveProgress(QuestSO questSO, QuestObjective objective)
     {
-        if (!questProgress.ContainsKey(questSO))
+         
+        var progressDictionary = questProgress[questSO];
+        int newAmount = 0;
+        if(objective.targetItem != null)
         {
-            questProgress[questSO] = new Dictionary<QuestObjective, int>();
+            //Debug.Log("item required");
+            newAmount = InventoryManager.Instance.GetItemQuantity(objective.targetItem);
         }
-            var progressDictionary = questProgress[questSO];
-            int newAmount = 0;
-            if(objective.targetItem != null)
-            {
-                Debug.Log("item required");
-                newAmount = InventoryManager.Instance.GetItemQuantity(objective.targetItem);
-            }
-            else if(objective.targetLocation != null && GameManager.Instance.LocationHistoryTracker.HasVisited(objective.targetLocation))
-            {
-                newAmount = objective.requiredAmount;
-            }
-            else if (objective.targetNPC != null && GameManager.Instance.DialogueHistoryTracker.HasSpokenWith(objective.targetNPC))
-            {
-                newAmount = objective.requiredAmount;
-            }
-            else if (objective.targetFlag != "" && StatsManager.Instance.flags[objective.targetFlag])
-            {
-                newAmount = objective.requiredAmount;
-            }
+        else if(objective.targetLocation != null && GameManager.Instance.LocationHistoryTracker.HasVisited(objective.targetLocation))
+        {
+            newAmount = objective.requiredAmount;
+        }
+        else if (objective.targetNPC != null && GameManager.Instance.DialogueHistoryTracker.HasSpokenWith(objective.targetNPC))
+        {
+            newAmount = objective.requiredAmount;
+        }
+        else if (objective.targetFlag != "" && StatsManager.Instance.flags[objective.targetFlag])
+        {
+            newAmount = objective.requiredAmount;
+        }
 
-            progressDictionary[objective] = newAmount;
+        progressDictionary[objective] = newAmount;
         
     }
 

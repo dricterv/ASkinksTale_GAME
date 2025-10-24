@@ -20,8 +20,9 @@ MonoBehaviour:
     animName: 
   options:
   - optionText: I Accept
-    nextDialogue: {fileID: 11400000, guid: d639f2c49cf390444aca970818780291, type: 2}
-  questToGive: {fileID: 11400000, guid: 36e7552be9d2863429a6e53430882c92, type: 2}
+    nextDialogue: {fileID: 11400000, guid: e205344c6c91b3341963db704c2c79ac, type: 2}
+    questToGive: {fileID: 11400000, guid: 36e7552be9d2863429a6e53430882c92, type: 2}
+  questToGive: {fileID: 0}
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []

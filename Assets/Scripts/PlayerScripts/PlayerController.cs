@@ -177,8 +177,8 @@ public class PlayerController : MonoBehaviour
             {
                 Collider2D interactHit = Physics2D.OverlapBox(this.transform.position, new Vector2(2,2), 0, interactableLayer);//Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, interactDist, interactableLayer);
                 grabHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
-                if(interactHit != null)
-                Debug.Log(interactHit.gameObject.name);
+                /*if(interactHit != null)
+                    Debug.Log(interactHit.gameObject.name);*/
 
                 //Debug.Log("w");
                 if (interactHit != null && playerState != PlayerState.Blocking && playerState != PlayerState.Rolling)

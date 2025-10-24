@@ -92,4 +92,5 @@ public class DialogueOption
 {
     public string optionText;
     public DialogueSO nextDialogue;
+    public QuestSO questToGive;
 }

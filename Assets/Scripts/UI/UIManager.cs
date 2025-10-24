@@ -9,12 +9,13 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    
+
     public CanvasGroup liveCanvas;
     public CanvasGroup inventoryCanvas;
     public CanvasGroup mainMenuCanvas;
     public CanvasGroup pauseCanvas;
     public CanvasGroup journalCanvas;
+    public CanvasGroup questDetailsCanvas;
 
 
     public GameObject inventoryStartButton;
@@ -103,7 +104,10 @@ public class UIManager : MonoBehaviour
             journalCanvas.alpha = 0;
             journalCanvas.interactable = false;
             journalCanvas.blocksRaycasts = false;
-            
+            questDetailsCanvas.alpha = 0;
+            questDetailsCanvas.interactable = false;
+            questDetailsCanvas.blocksRaycasts = false;
+
         }
     }
 
@@ -162,7 +166,7 @@ public class UIManager : MonoBehaviour
         journalCanvas.alpha = 0;
         journalCanvas.interactable = false;
         journalCanvas.blocksRaycasts = false;
-        
+
     }
     public void OpenInventoryMenu()
     {
@@ -176,7 +180,7 @@ public class UIManager : MonoBehaviour
         journalCanvas.interactable = false;
         journalCanvas.blocksRaycasts = false;
     }
-     public void OpenJournalMenu()
+    public void OpenJournalMenu()
     {
         inventoryCanvas.alpha = 0;
         inventoryCanvas.interactable = false;
@@ -187,5 +191,10 @@ public class UIManager : MonoBehaviour
         journalCanvas.alpha = 1;
         journalCanvas.interactable = true;
         journalCanvas.blocksRaycasts = true;
+    }
+
+    public void OpenQuestDetailsMenu()
+    {
+        questDetailsCanvas.alpha = 1;
     }
 }

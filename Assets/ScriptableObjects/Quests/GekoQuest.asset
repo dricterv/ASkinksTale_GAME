@@ -15,7 +15,11 @@ MonoBehaviour:
   questName: GekoQuest
   questDescirption: ': D'
   objectives:
-  - description: :o
+  - description: Get PeaFlower
     target: {fileID: 11400000, guid: 51304a70e9eece647ba111b42fa67cef, type: 2}
+    targetFlag: 
+    requiredAmount: 1
+  - description: Get .... the blob...
+    target: {fileID: 11400000, guid: 16883896b69cae840b8ef597d213a6d4, type: 2}
     targetFlag: 
     requiredAmount: 1
