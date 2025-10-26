@@ -24,6 +24,7 @@ MonoBehaviour:
   requiredItems:
   - {fileID: 11400000, guid: 4a185e64edb38844b8b53958b8194786, type: 2}
   - {fileID: 11400000, guid: 336aab3993368c24e95916037cdcb96f, type: 2}
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}

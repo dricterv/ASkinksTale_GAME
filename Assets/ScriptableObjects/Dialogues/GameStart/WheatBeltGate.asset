@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fbcf4db2575ba46b70dcadfbf0c59d, type: 3}
+  m_Name: WheatBeltGate
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: The gate it locked tight.
+    logInteraction: 1
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: The box to the north, in the pile of rocks,  is suspicious.
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: A weapon with more range might reach it.
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  options:
+  - optionText: '*Leave*'
+    nextDialogue: {fileID: 11400000, guid: 76dd27a5dcf0bf24da28239226cd22d3, type: 2}
+    questToGive: {fileID: 11400000, guid: 948c63703a4da4244a5243b3a5de915c, type: 2}
+    questToEnd: {fileID: 11400000, guid: 50ee8f69ce6c0884bacc2486db3b2909, type: 2}
+  requiredNPCs: []
+  requiredLocations: []
+  requiredItems: []
+  requiredQuests: []
+  requiredFlags: []
+  removeItems: []
+  giveItems: {fileID: 0}
+  currentAnimName: 
+  removeAfterPlay: 1
+  removeTheseOnPlay: []

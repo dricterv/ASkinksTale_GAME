@@ -22,9 +22,11 @@ MonoBehaviour:
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 11400000, guid: 51304a70e9eece647ba111b42fa67cef, type: 2}
   currentAnimName: 
   removeAfterPlay: 0
-  removeTheseOnPlay: []
+  removeTheseOnPlay:
+  - {fileID: 11400000, guid: 7a2967d7f6c24de4fb6554dfabf20c39, type: 2}

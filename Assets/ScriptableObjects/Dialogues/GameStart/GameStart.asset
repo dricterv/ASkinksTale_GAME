@@ -38,12 +38,15 @@ MonoBehaviour:
   options:
   - optionText: Understood!
     nextDialogue: {fileID: 11400000, guid: 8b14625f547918840a7c78c0d855f9b5, type: 2}
+    questToGive: {fileID: 11400000, guid: 50ee8f69ce6c0884bacc2486db3b2909, type: 2}
+    questToEnd: {fileID: 0}
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
   currentAnimName: 
-  removeAfterPlay: 0
+  removeAfterPlay: 1
   removeTheseOnPlay: []

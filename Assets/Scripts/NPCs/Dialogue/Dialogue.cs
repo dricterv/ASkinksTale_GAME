@@ -78,7 +78,9 @@ public class Dialogue : MonoBehaviour
 
                 if (convo.removeAfterPlay)
                 {
+                    Debug.Log("Remve convo");
                     conversations.RemoveAt(i);
+                    currentConversation = null;
                 }
                 //remove quest dialogue
                 if (convo.removeTheseOnPlay != null && convo.removeTheseOnPlay.Count > 0)

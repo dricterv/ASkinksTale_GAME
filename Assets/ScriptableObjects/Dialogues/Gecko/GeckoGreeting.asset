@@ -19,10 +19,10 @@ MonoBehaviour:
     changeAnim: 0
     animName: 
   options: []
-  questToGive: {fileID: 0}
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}

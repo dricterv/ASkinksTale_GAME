@@ -39,6 +39,7 @@ MonoBehaviour:
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}

@@ -72,6 +72,23 @@ public class UIManager : MonoBehaviour
         {
             ToggleInventory();
         }
+        if (Input.GetButtonDown("Menu") && mainMenuCanvas.alpha != 1)
+        {
+            if(liveCanvas.alpha == 1 && GameManager.Instance.DialogueManager.isDialogueActive == false)
+            {
+                OpenPauseMenu();
+                inventoryOpen = true;
+                Time.timeScale = 0;
+                liveCanvas.alpha = 0;
+                liveCanvas.interactable = false;
+                liveCanvas.blocksRaycasts = false;
+                EventSystem.current.SetSelectedGameObject(pauseMenuStartButton);
+            }
+            else if(liveCanvas.alpha == 0)
+            {
+                LiveUIOn();
+            }
+        }
     }
 
     public void ToggleInventory()
@@ -119,6 +136,18 @@ public class UIManager : MonoBehaviour
         mainMenuCanvas.alpha = 0;
         mainMenuCanvas.interactable = false;
         mainMenuCanvas.blocksRaycasts = false;
+        inventoryCanvas.alpha = 0;
+        inventoryCanvas.interactable = false;
+        inventoryCanvas.blocksRaycasts = false;
+        pauseCanvas.alpha = 0;
+        pauseCanvas.interactable = false;
+        pauseCanvas.blocksRaycasts = false;
+        journalCanvas.alpha = 0;
+        journalCanvas.interactable = false;
+        journalCanvas.blocksRaycasts = false;
+        questDetailsCanvas.alpha = 0;
+        questDetailsCanvas.interactable = false;
+        questDetailsCanvas.blocksRaycasts = false;
         Time.timeScale = 1;
         inventoryOpen = false;
 

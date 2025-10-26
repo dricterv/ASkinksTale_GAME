@@ -47,9 +47,12 @@ MonoBehaviour:
   options:
   - optionText: I can help!
     nextDialogue: {fileID: 11400000, guid: 791bbe43fad87e544ada84031369693d, type: 2}
+    questToGive: {fileID: 11400000, guid: 62733e390bf846e40b93b3e20fe03a37, type: 2}
+    questToEnd: {fileID: 0}
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}

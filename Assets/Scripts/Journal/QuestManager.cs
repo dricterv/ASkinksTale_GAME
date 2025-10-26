@@ -20,6 +20,31 @@ public class QuestManager : MonoBehaviour
             UpdateObjectiveProgress(questSO, objective);
         }
     }
+
+    public bool IsQuestComplete(QuestSO questSO)
+    {
+        if (!questProgress.TryGetValue(questSO, out var progressDict))
+            return false;
+        foreach(var objective in questSO.objectives)
+        {
+            UpdateObjectiveProgress(questSO, objective);
+        }
+        foreach (var objective in questSO.objectives)
+        {
+            if(progressDict[objective] < objective.requiredAmount)
+            {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+    
+    public void FinishQuest(QuestSO questSO)
+    {
+        questProgress.Remove(questSO);
+    }
     public void UpdateObjectiveProgress(QuestSO questSO, QuestObjective objective)
     {
          
@@ -52,12 +77,12 @@ public class QuestManager : MonoBehaviour
         int currentAmount = GetCurrentAmount(questSO, objective);
         if (currentAmount >= objective.requiredAmount)
         {
-            return "Complete";
+            return  $"{currentAmount}/{objective.requiredAmount}"; ;
         }
         else if (objective.targetItem != null)
             return $"{currentAmount}/{objective.requiredAmount}";
         else
-            return "in progress";
+            return $"{currentAmount}/{objective.requiredAmount}";
     }
 
     public int GetCurrentAmount(QuestSO questSO, QuestObjective objective)
@@ -73,5 +98,11 @@ public class QuestManager : MonoBehaviour
         }
         return 0;
 
+    }
+
+    public bool CurrentlyHaveQuest(QuestSO questSO)
+    {
+       return questProgress.ContainsKey(questSO);
+       
     }
 }

@@ -23,10 +23,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
   requiredLocations: []
   requiredItems: []
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
   currentAnimName: 
   removeAfterPlay: 0
-  removeTheseOnPlay:
-  - {fileID: 11400000, guid: f8d8c956e54e3664a9a9906d6b1ea480, type: 2}
+  removeTheseOnPlay: []

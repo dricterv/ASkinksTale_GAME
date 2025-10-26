@@ -22,6 +22,7 @@ MonoBehaviour:
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredQuests: []
   requiredFlags:
   - eGate1
   removeItems: []

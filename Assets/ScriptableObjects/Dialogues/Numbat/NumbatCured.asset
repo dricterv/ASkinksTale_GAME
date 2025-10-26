@@ -50,13 +50,14 @@ MonoBehaviour:
     animName: 
   - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
     text: I'll make my way back to town after I rest a bit.
-    logInteraction: 1
+    logInteraction: 0
     changeAnim: 0
     animName: 
   options: []
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}

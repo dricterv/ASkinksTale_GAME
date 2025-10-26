@@ -126,10 +126,22 @@ public class DialogueManager : MonoBehaviour
             {
                 var option = currentDialogue.options[i];
                 choiceButtons[i].GetComponentInChildren<TMP_Text>().text = option.optionText;
-                choiceButtons[i].gameObject.SetActive(true);
+                if(option.questToEnd != null)
+                {
+                    if(GameManager.Instance.questManager.IsQuestComplete(option.questToEnd) == true)
+                    {
+                        choiceButtons[i].gameObject.SetActive(true);
+                        choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue, option.questToGive, option.questToEnd));
+                    }
+                    
+                }
+                else
+                {
+                    choiceButtons[i].gameObject.SetActive(true);
+                    choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue, option.questToGive, option.questToEnd));
+                }
                 
-                choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue, option.questToGive));
-
+              
             }
             EventSystem.current.SetSelectedGameObject(choiceButtons[0].gameObject);
         }
@@ -147,7 +159,7 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    private void ChooseOption(DialogueSO dialogueSO, QuestSO questSO)
+    private void ChooseOption(DialogueSO dialogueSO, QuestSO questStartSO, QuestSO questEndSO)
     {
         if(dialogueSO == null)
         {
@@ -159,15 +171,23 @@ public class DialogueManager : MonoBehaviour
             {
                 InventoryManager.Instance.AddInventoryItem(dialogueSO.giveItems, dialogueSO.giveItems.slot );
             }
-            if (questSO != null)
+            if (questStartSO != null)
             {
-                Debug.Log("quest sent");
+               // Debug.Log("quest sent");
                 
-                QuestEvents.OnQuestOfferRequested?.Invoke(questSO);
-                Debug.Log("quest given");
+                QuestEvents.OnQuestOfferRequested?.Invoke(questStartSO);
+                //Debug.Log("quest given");
            
             }
-            
+            if (questEndSO != null)
+            {
+                //Debug.Log("quest sent");
+
+                QuestEvents.OnQuestEnd?.Invoke(questEndSO);
+               // Debug.Log("quest given");
+
+            }
+
             ClearChoices();
             isButtonActive = false;
 

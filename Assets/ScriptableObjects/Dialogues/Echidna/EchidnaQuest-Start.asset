@@ -20,7 +20,7 @@ MonoBehaviour:
     animName: 
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
     text: Thank you!
-    logInteraction: 1
+    logInteraction: 0
     changeAnim: 0
     animName: 
   - speaker: {fileID: 11400000, guid: ed72d438ead68334ba9ed15f898400d9, type: 2}
@@ -37,6 +37,7 @@ MonoBehaviour:
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}

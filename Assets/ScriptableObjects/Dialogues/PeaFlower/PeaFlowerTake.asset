@@ -21,12 +21,15 @@ MonoBehaviour:
   options:
   - optionText: '*take*'
     nextDialogue: {fileID: 11400000, guid: bf183dc18099572459630eb1ef9fda6c, type: 2}
+    questToGive: {fileID: 0}
+    questToEnd: {fileID: 0}
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}
   currentAnimName: 
-  removeAfterPlay: 1
+  removeAfterPlay: 0
   removeTheseOnPlay: []

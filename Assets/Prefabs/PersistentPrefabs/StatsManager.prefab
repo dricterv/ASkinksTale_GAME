@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181a9f8c39e5a404aac0b9811bc1fb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedItemOne: 0
-  equippedItemTwo: 0
+  equippedItemOne: {fileID: 0}
+  equippedItemTwo: {fileID: 0}
   healthText: {fileID: 0}
   facing: {x: 0, y: 0}
   lockFacing: {x: 0, y: 0}
@@ -78,4 +78,6 @@ MonoBehaviour:
   - key: eGate3
     value: 0
   - key: gameStart
+    value: 0
+  - key: wbGateDialogue
     value: 0

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 555dca2286ebef349b654eff4aa1dd5c, type: 3}
-  m_Name: StartingQuest
+  m_Name: WheatFields1
   m_EditorClassIdentifier: 
-  questName: Head to the Wheat Fields
-  questDescirption: wheat fields to da east.
+  questName: Wheat Fields
+  questDescirption: To get to the pipe I need to head east, into the wheat fields.
   objectives:
-  - description: go there
-    target: {fileID: 11400000, guid: 16883896b69cae840b8ef597d213a6d4, type: 2}
+  - description: Head East.
+    target: {fileID: 11400000, guid: 71987967c3abf2c479bf895db0adbfe2, type: 2}
     targetFlag: 
     requiredAmount: 1

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555dca2286ebef349b654eff4aa1dd5c, type: 3}
+  m_Name: Quills3
+  m_EditorClassIdentifier: 
+  questName: Spiney Situation
+  questDescirption: "I need to find something to use as ammo for a ranged weapon.
+    Think echidna spines would work? \nI should return to the Echidna."
+  objectives:
+  - description: Obtained Antidote.
+    target: {fileID: 11400000, guid: 6a70f87501343624d925b8e1b6496854, type: 2}
+    targetFlag: 
+    requiredAmount: 1

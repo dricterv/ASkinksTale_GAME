@@ -165,9 +165,9 @@ public class InventoryManager : MonoBehaviour
         {
            // Debug.Log("loop");
 
-            if (slot.thisItem == itemSO && slot.thisItem.numberHeld > 0)
+            if (slot.thisItem == itemSO)
             {
-                Debug.Log("w");
+                //Debug.Log("w");
                 return true;
 
             }

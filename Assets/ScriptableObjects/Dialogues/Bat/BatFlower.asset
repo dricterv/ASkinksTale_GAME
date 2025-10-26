@@ -20,7 +20,7 @@ MonoBehaviour:
     animName: 
   - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
     text: .........
-    logInteraction: 0
+    logInteraction: 1
     changeAnim: 0
     animName: 
   - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
@@ -31,10 +31,13 @@ MonoBehaviour:
   options:
   - optionText: '*take antidote*'
     nextDialogue: {fileID: 11400000, guid: 4e66955ec446d2144956502c8cef642d, type: 2}
+    questToGive: {fileID: 11400000, guid: f9611bc48ec17774094eb61fcd978482, type: 2}
+    questToEnd: {fileID: 11400000, guid: 62733e390bf846e40b93b3e20fe03a37, type: 2}
   requiredNPCs: []
   requiredLocations: []
   requiredItems:
   - {fileID: 11400000, guid: 51304a70e9eece647ba111b42fa67cef, type: 2}
+  requiredQuests: []
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}

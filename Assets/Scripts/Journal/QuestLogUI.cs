@@ -21,10 +21,13 @@ public class QuestLogUI : MonoBehaviour
     private void OnEnable()
     {
         QuestEvents.OnQuestOfferRequested += AddQuest;
+        QuestEvents.OnQuestEnd += RemoveQuest;
+
     }
     private void OnDisable()
     {
         QuestEvents.OnQuestOfferRequested -= AddQuest;
+        QuestEvents.OnQuestEnd -= RemoveQuest;
     }
     
 
@@ -39,7 +42,7 @@ public class QuestLogUI : MonoBehaviour
 
         foreach (var objective in questSO.objectives)
         {
-            Debug.Log($"Objective: {objective.description} => {questManager.GetProgressText(questSO, objective)}");
+            //Debug.Log($"Objective: {objective.description} => {questManager.GetProgressText(questSO, objective)}");
         }
     }
 
@@ -47,12 +50,18 @@ public class QuestLogUI : MonoBehaviour
 
     public void AddQuest(QuestSO questSO)
     {
-        Debug.Log("quest Received");
-        Debug.Log("name: " + this.gameObject.name);
+        //Debug.Log("quest Received");
+        //Debug.Log("name: " + this.gameObject.name);
         questManager.AcceptQuest(questSO);
-        Debug.Log("quest a");
+        //Debug.Log("quest a");
         RefreshQuestList();
-        Debug.Log("quest w");
+       // Debug.Log("quest w");
+    }
+
+    public void RemoveQuest(QuestSO questSO)
+    {
+        questManager.FinishQuest(questSO);
+        RefreshQuestList();
     }
     public void RefreshQuestList()
     {
