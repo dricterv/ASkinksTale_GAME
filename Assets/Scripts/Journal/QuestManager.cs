@@ -45,6 +45,11 @@ public class QuestManager : MonoBehaviour
     {
         questProgress.Remove(questSO);
     }
+    public void ClearQuestList()
+    {
+        questProgress.Clear();
+
+    }
     public void UpdateObjectiveProgress(QuestSO questSO, QuestObjective objective)
     {
          

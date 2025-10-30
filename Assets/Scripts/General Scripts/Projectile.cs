@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-        }
+        }    
         if (spinning == true)
         {
             // transform.rotation.z = transform.rotation.z * spinSpeed * Time.deltaTime;

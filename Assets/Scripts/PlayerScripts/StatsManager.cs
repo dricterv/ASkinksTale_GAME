@@ -115,6 +115,14 @@ public class StatsManager : MonoBehaviour
         // Debug.Log("Equiped Item 2: " + equippedItemTwo);
 
     }
+
+    public void ResetFlags()
+    {
+        foreach (FlagDictionary entry in flagList)
+        {           
+            flags[entry.key] = entry.value;
+        }
+    }
 }
 
 [System.Serializable]

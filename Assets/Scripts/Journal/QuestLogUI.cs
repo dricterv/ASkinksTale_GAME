@@ -57,6 +57,11 @@ public class QuestLogUI : MonoBehaviour
         RefreshQuestList();
        // Debug.Log("quest w");
     }
+    public void ResetQuestList()
+    {
+        questManager.ClearQuestList();
+        RefreshQuestList();
+    }
 
     public void RemoveQuest(QuestSO questSO)
     {
