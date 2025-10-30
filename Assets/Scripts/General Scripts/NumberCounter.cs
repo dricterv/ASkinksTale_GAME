@@ -7,7 +7,10 @@ public class NumberCounter : MonoBehaviour
     public int goal;
     public bool disableObject;
     public bool setActive = true;
-    public bool gate = false;
+    public bool changeAnim = false;
+    public bool flag = false;
+    public string animationString;
+
     public Animator anim;
     public List<GameObject> interactedObjects = new List<GameObject>();
     public List<GameObject> animatedObject = new List<GameObject>();
@@ -52,14 +55,19 @@ public class NumberCounter : MonoBehaviour
                 }
             }
 
-            if (gate == true)
+            if (flag == true)
             {
-                anim.Play("Opening");
                 if (StatsManager.Instance.flags[boolString] == false)
                 {
                     StatsManager.Instance.flags[boolString] = true;
                 }
             }
+
+            if(changeAnim == true)
+            {
+                anim.Play(animationString);
+            }
+
         }
         else if (count < goal)
         {

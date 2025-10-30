@@ -81,3 +81,5 @@ MonoBehaviour:
     value: 0
   - key: wbGateDialogue
     value: 0
+  - key: weevilsCaught
+    value: 0

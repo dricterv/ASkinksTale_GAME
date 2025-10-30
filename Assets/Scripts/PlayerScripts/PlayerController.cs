@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     [Header("Other")]
     public bool blocking;
     private Animator anim;
-    private PlayerState playerState;
+    public PlayerState playerState;
     public Collider2D grabLeft;
     public Collider2D grabRight;
     public Collider2D grabUp;
@@ -883,4 +883,7 @@ public enum PlayerState
     Pulling,
     Torching,
     Shooting,
+    Pickup,
+    Carrying,
+    Putdown,
 }
