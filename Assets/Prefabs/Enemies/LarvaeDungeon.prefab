@@ -61,6 +61,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 151731207210095204, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: healthItem
+      value: 
+      objectReference: {fileID: 7387258264891408192, guid: c134f111691184f46905a0fcd3ead3f1, type: 3}
+    - target: {fileID: 151731207210095204, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
+      propertyPath: spawnHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 151731207210095204, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
       propertyPath: currentHealth
       value: 1
       objectReference: {fileID: 0}

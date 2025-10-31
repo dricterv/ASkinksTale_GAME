@@ -15,6 +15,7 @@ public class Flamable : MonoBehaviour
     public Color goalColor;
     
     public NumberCounter counter;
+    public NumberCounter counter2;
     public Flamable flame;
     public LayerMask flameLayer;
     public bool torchOn;
@@ -51,6 +52,10 @@ public class Flamable : MonoBehaviour
         {
             counter.AddToCount(1);
 
+        }
+        if (counter2 != null && isOnFire == false)
+        {
+            counter2.AddToCount(1);
         }
         isOnFire = true;
         anim.SetBool("isOnFire", true);

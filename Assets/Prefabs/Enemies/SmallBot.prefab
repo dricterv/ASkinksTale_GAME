@@ -68,7 +68,7 @@ Transform:
   m_Children:
   - {fileID: 3461260496787112916}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3461260497179045845
 SpriteRenderer:
@@ -162,6 +162,9 @@ MonoBehaviour:
   exit: []
   counter: {fileID: 0}
   destroyOnDeath: 0
+  deathAnim: 0
+  spawnHealth: 1
+  healthItem: {fileID: 7387258264891408192, guid: c134f111691184f46905a0fcd3ead3f1, type: 3}
 --- !u!114 &3461260497179045846
 MonoBehaviour:
   m_ObjectHideFlags: 0

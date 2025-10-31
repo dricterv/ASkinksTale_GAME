@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -13,9 +14,14 @@ public class EnemyHealth : MonoBehaviour
 
     public List<RoomTransition> exit = new List<RoomTransition>();
     public NumberCounter counter;
+    private Animator anim;
+    [Header("Death")]
     public bool destroyOnDeath = false;
     public bool deathAnim = false;
-    private Animator anim;
+    public bool spawnHealth;
+    public GameObject healthItem;
+
+
 
 
     private void Start()
@@ -50,6 +56,12 @@ public class EnemyHealth : MonoBehaviour
         }
         else if (currentHealth <= 0)
         {
+           Death();
+        }
+    }
+
+    public void Death()
+    {
             if (counter != null)
             {
                 counter.AddToCount(1);
@@ -77,6 +89,47 @@ public class EnemyHealth : MonoBehaviour
                     }
                 }
             }
+            if(spawnHealth == true)
+            {
+                if(StatsManager.Instance.currentHealth == 1)
+                {
+                    Debug.Log("hp0");
+                    Debug.Log(StatsManager.Instance.currentHealth);
+                    
+                    Instantiate(healthItem, this.transform.position, healthItem.transform.rotation);
+                        
+                }
+                else if(StatsManager.Instance.currentHealth < 5)
+                {
+                    Debug.Log("hp1");
+                    Debug.Log(StatsManager.Instance.currentHealth);
+                    int rnd = UnityEngine.Random.Range(1,100);
+                    if(rnd > 50)
+                    {
+                        Instantiate(healthItem, this.transform.position, healthItem.transform.rotation);
+                        
+                    }
+                }
+                else if(StatsManager.Instance.currentHealth < (StatsManager.Instance.maxHealth/2))
+                {
+                    Debug.Log("hp2");
+                    int rnd = UnityEngine.Random.Range(1,100);
+                    if(rnd > 75)
+                    {
+                        Instantiate(healthItem, this.transform.position, healthItem.transform.rotation);
+                        
+                    }
+                }
+                else if(StatsManager.Instance.currentHealth < StatsManager.Instance.maxHealth)
+                {
+                    Debug.Log("hp3");
+                    int rnd = UnityEngine.Random.Range(1,100);
+                    if(rnd > 90)
+                    {
+                        Instantiate(healthItem, this.transform.position, healthItem.transform.rotation);
+                    }
+                }
+            }
             if (destroyOnDeath == true)
             {
                 Destroy(gameObject);
@@ -93,7 +146,6 @@ public class EnemyHealth : MonoBehaviour
             {
                 gameObject.SetActive(false);
             }
-        }
     }
 
 }
