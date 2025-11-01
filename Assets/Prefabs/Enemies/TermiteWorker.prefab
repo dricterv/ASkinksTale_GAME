@@ -119,8 +119,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.079773545, y: -0.21937561}
-  m_Size: {x: 1.1595471, y: 2.4387512}
+  m_Offset: {x: -0.05329609, y: -0.21937561}
+  m_Size: {x: 2.4304657, y: 2.4387512}
   m_Direction: 0
 --- !u!50 &3191301761378838982
 Rigidbody2D:
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341d79a311d911a4c82356e17ae8c5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
+  damage: 2
   attackPoint: {fileID: 3191301762107102502}
   weaponRadius: 0
   playerLayer:
@@ -225,6 +225,7 @@ MonoBehaviour:
   maxHealth: 2
   spawn: {x: 0, y: 0}
   enemySpriteRenderer: {fileID: 5051410363809397585}
+  damageColour: 1
   entry:
   - {fileID: 0}
   exit:
@@ -275,7 +276,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1413633686, guid: 3ca67036ea08c174c913a032525913f5, type: 3}
+  m_Sprite: {fileID: 1649230519, guid: a944120039a478245a27b404b69e5bc6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -361,7 +362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3191301762533350599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 1.59, z: 0}
+  m_LocalPosition: {x: -0.06, y: 1.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -392,7 +393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5152941769663249920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.85, y: -0.5, z: 0}
+  m_LocalPosition: {x: -1.99, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

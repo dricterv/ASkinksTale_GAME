@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
             timer = invulnTimer;
             Debug.Log("dmg: " + amount);
             OnPlayerDamaged?.Invoke();
-            if (amount < 0)
+            if (amount < 0 && StatsManager.Instance.currentHealth > 0)
             {
                 StartCoroutine(DamageColour());
             }
@@ -56,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
             if(amount > 0)
             {
                 StatsManager.Instance.currentHealth += amount;
+                OnPlayerDamaged?.Invoke();
             }
             
         }
@@ -70,7 +71,9 @@ public class PlayerHealth : MonoBehaviour
         }
         else if (StatsManager.Instance.currentHealth <= 0)
         {
+            
             gameObject.SetActive(false);
+            GameManager.Instance.MainMenuLoad();
         }
 
         healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;

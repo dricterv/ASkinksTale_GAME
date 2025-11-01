@@ -138,10 +138,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c488815720c10ab47b22861f08019ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 2
-  maxHealth: 2
+  currentHealth: 3
+  maxHealth: 3
   spawn: {x: 0, y: 0}
   enemySpriteRenderer: {fileID: 0}
+  damageColour: 1
   entry:
   - {fileID: 0}
   exit:

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1806546460609900229, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
       propertyPath: playerDetectRange
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 151731207210095201, guid: 6ba7455eb14ada64989404abba64b5fa, type: 3}
       propertyPath: m_RootOrder

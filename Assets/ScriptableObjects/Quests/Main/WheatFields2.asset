@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Wheat Fields
   questDescirption: There is a gate blocking the way. If I had something to break
-    the box north of the gate, I could get throught. Maybe I should talk to the folks
+    the box north of the gate, I could get through. Maybe I should talk to the folks
     in town.
   objectives:
   - description: Head East.
     target: {fileID: 11400000, guid: 71987967c3abf2c479bf895db0adbfe2, type: 2}
     targetFlag: 
     requiredAmount: 1
-  - description: Get a ranged weapon.
+  - description: Ranged weapon.
     target: {fileID: 11400000, guid: 4a185e64edb38844b8b53958b8194786, type: 2}
     targetFlag: 
     requiredAmount: 1

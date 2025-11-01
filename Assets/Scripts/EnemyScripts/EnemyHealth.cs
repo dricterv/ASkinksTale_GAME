@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth;
     public Vector2 spawn;
     public SpriteRenderer enemySpriteRenderer;
+    public bool damageColour = true;
 
     public List<RoomTransition> entry = new List<RoomTransition>();
 
@@ -44,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         currentHealth += amount;
-        if(amount < 0)
+        if(amount < 0 && damageColour == true)
         {
             StartCoroutine(DamageColour());
 

@@ -108,11 +108,12 @@ MonoBehaviour:
   changeDirMinTime: 1
   changeDirMaxTime: 2
   waitDirTime: 1
-  patrolLimitMax: {x: 22.9, y: 165.4}
-  patrolLimitMin: {x: 2.3, y: 151.5}
+  patrolLimitMax: {x: 28.5, y: 165.4}
+  patrolLimitMin: {x: -4.5, y: 151.5}
   patrolLimitX: 0
   patrolLimitY: 0
   patrolSpeed: 2
+  chaseTime: 2
   patrolOrigin: {fileID: 0}
 --- !u!114 &151731207210095205
 MonoBehaviour:
@@ -126,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341d79a311d911a4c82356e17ae8c5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
+  damage: 1
   attackPoint: {fileID: 151731208172877001}
   weaponRadius: 1
   playerLayer:
@@ -154,9 +155,14 @@ MonoBehaviour:
   maxHealth: 1
   spawn: {x: 5, y: -22}
   enemySpriteRenderer: {fileID: 0}
-  entry: {fileID: 0}
-  exit: {fileID: 0}
+  damageColour: 1
+  entry: []
+  exit: []
   counter: {fileID: 0}
+  destroyOnDeath: 1
+  deathAnim: 0
+  spawnHealth: 0
+  healthItem: {fileID: 0}
 --- !u!95 &5361871273241565415
 Animator:
   serializedVersion: 4

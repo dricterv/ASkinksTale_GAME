@@ -15,6 +15,8 @@ public class NumberCounter : MonoBehaviour
     public List<GameObject> interactedObjects = new List<GameObject>();
     public List<GameObject> animatedObject = new List<GameObject>();
     public string boolString;
+    public QuestSO questStartSO;
+    public QuestSO questEndSO;
 
 
     // public GameObject interactedObject;
@@ -66,6 +68,23 @@ public class NumberCounter : MonoBehaviour
             if(changeAnim == true)
             {
                 anim.Play(animationString);
+            }
+
+            if (questStartSO != null)
+            {
+                // Debug.Log("quest sent");
+
+                QuestEvents.OnQuestOfferRequested?.Invoke(questStartSO);
+                //Debug.Log("quest given");
+
+            }
+            if (questEndSO != null)
+            {
+                //Debug.Log("quest sent");
+
+                QuestEvents.OnQuestEnd?.Invoke(questEndSO);
+                // Debug.Log("quest given");
+
             }
 
         }

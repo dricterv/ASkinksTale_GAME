@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b060f72d563c0014da5f1970e97247df
+guid: f667ad4bfd0ea8a44b7132d9bbdb4537
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -118,49 +118,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_0
+      name: queen_slash_0
       rect:
         serializedVersion: 2
         x: 0
         y: 1200
         width: 382
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.276178, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 828d64190d06cfb45ae377e469a38b25
-      internalID: 879673519
+      spriteID: 2ff4ad77150641246bdb53dff0ea24e4
+      internalID: 469343962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_1
+      name: queen_slash_1
       rect:
         serializedVersion: 2
         x: 382
         y: 1200
         width: 382
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.36387435, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 383fbcdbf1de4654396589e73551d061
-      internalID: -1137106404
+      spriteID: d5bb43533eca02f47ba5596ae6e8dbec
+      internalID: -748492657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_2
+      name: queen_slash_2
       rect:
         serializedVersion: 2
         x: 764
@@ -168,20 +168,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50c96a5215a51c24da83dd048ac27659
-      internalID: 1497221361
+      spriteID: f3235196ae5fe0342b26b49e3c8b3afe
+      internalID: -1078567672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_3
+      name: queen_slash_3
       rect:
         serializedVersion: 2
         x: 1146
@@ -189,20 +189,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3a4ed991f448e44fa70c918fd41a496
-      internalID: -735146086
+      spriteID: 70bdac2fde8e41e4eadca76fca5e431e
+      internalID: 954418300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_4
+      name: queen_slash_4
       rect:
         serializedVersion: 2
         x: 1528
@@ -210,20 +210,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34b3a8b8a14f0544085c61ea73b61528
-      internalID: -1568902990
+      spriteID: 9789bf178fd0cbc4084f37d122434711
+      internalID: -234287929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_5
+      name: queen_slash_5
       rect:
         serializedVersion: 2
         x: 0
@@ -231,62 +231,62 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15a3d84fc4361d242ad5cee81730c23a
-      internalID: 1844396610
+      spriteID: 41270f7b8b26e314fa696a6808198048
+      internalID: 110664647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_6
+      name: queen_slash_6
       rect:
         serializedVersion: 2
         x: 382
         y: 900
         width: 382
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58115184, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 277d30a206e53224395ede9fb4802b64
-      internalID: 1322835126
+      spriteID: 6cdad7656abf1c0449748ff8245b645e
+      internalID: 1737545262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_7
+      name: queen_slash_7
       rect:
         serializedVersion: 2
         x: 764
         y: 900
         width: 382
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.54188484, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b71786e9203a8664698a4339f0d7d492
-      internalID: -535399476
+      spriteID: bac2094c013b71c40a77396acf3dd6db
+      internalID: -657099125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_8
+      name: queen_slash_8
       rect:
         serializedVersion: 2
         x: 1146
@@ -294,20 +294,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5634d08ded6cfb649a4a87e0a9bfcc76
-      internalID: -1648950520
+      spriteID: 2b25030ac1c24104d8d0ccf512beb6d9
+      internalID: 1898290134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_9
+      name: queen_slash_9
       rect:
         serializedVersion: 2
         x: 1528
@@ -315,20 +315,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5719da225f08674e881f513588052ae
-      internalID: 1714101875
+      spriteID: 294db2893c57d0142b350b3e5ec8dd89
+      internalID: -369290210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_10
+      name: queen_slash_10
       rect:
         serializedVersion: 2
         x: 0
@@ -336,20 +336,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bbbe2c0c07c2f7438ae0fdd170c6109
-      internalID: 525894051
+      spriteID: 6acf14a005eea8c41b75993dd7e6bec1
+      internalID: 1266512982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_11
+      name: queen_slash_11
       rect:
         serializedVersion: 2
         x: 382
@@ -357,20 +357,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46001b961c6a4e64fbb9d8033a3d15a8
-      internalID: 1744919221
+      spriteID: b8643ee141e76f64dbc0d2602040adc2
+      internalID: 559858040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_12
+      name: queen_slash_12
       rect:
         serializedVersion: 2
         x: 764
@@ -378,20 +378,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8070da414abb9614bb24071348708323
-      internalID: -1224863809
+      spriteID: 6e9932adf2cf689438168d43be39d7f9
+      internalID: 1989535709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_13
+      name: queen_slash_13
       rect:
         serializedVersion: 2
         x: 1146
@@ -399,20 +399,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c09283a36e0534a44a5d29e57d1e85bd
-      internalID: -1164836791
+      spriteID: 3e723cfdf43a9444bb3f6f3935a9da58
+      internalID: 382245668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_14
+      name: queen_slash_14
       rect:
         serializedVersion: 2
         x: 1528
@@ -420,20 +420,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71210d9d6aba34e40bae90660fae6207
-      internalID: 852352949
+      spriteID: cf050fc9f54389149a02753db847c170
+      internalID: 1938644557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_15
+      name: queen_slash_15
       rect:
         serializedVersion: 2
         x: 0
@@ -441,62 +441,62 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61ada9bc34a77fb4ca605416b0a2d6b7
-      internalID: -975876838
+      spriteID: f5fdabba3ccb5a24dabad1ff8879d14f
+      internalID: 1667403217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_16
+      name: queen_slash_16
       rect:
         serializedVersion: 2
         x: 382
         y: 300
         width: 382
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.7246073, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 931dcefbcdac2a749a1651aa5e3a883e
-      internalID: -553630151
+      spriteID: b97826be0e8e70246acdcb290116c99d
+      internalID: 1516478209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_17
+      name: queen_slash_17
       rect:
         serializedVersion: 2
         x: 764
         y: 300
         width: 382
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.62827224, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 178858abe4ac9d040bc85edfd5b2330a
-      internalID: 280889958
+      spriteID: 4da1f329c19567944a5587a763421c05
+      internalID: -1347302758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_18
+      name: queen_slash_18
       rect:
         serializedVersion: 2
         x: 1146
@@ -504,20 +504,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75e5d1c48f306ac4fb1ff3ed9dee9d9f
-      internalID: -65847823
+      spriteID: 961de9bdb5a14ca44afb7f6fa50b9d00
+      internalID: -1182184400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_19
+      name: queen_slash_19
       rect:
         serializedVersion: 2
         x: 1528
@@ -525,20 +525,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d4276714f7f36346980c393b7dd2afd
-      internalID: 1271363935
+      spriteID: 64242cfda9ac04e4ea741e3fa0ac2b52
+      internalID: 518789544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_20
+      name: queen_slash_20
       rect:
         serializedVersion: 2
         x: 0
@@ -546,20 +546,20 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 127886dfe14ca5b478eb5319b3ce2e2f
-      internalID: -1865306517
+      spriteID: 309ddb32704fb2c43a2394b776aa9039
+      internalID: -1153927104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_21
+      name: queen_slash_21
       rect:
         serializedVersion: 2
         x: 382
@@ -567,56 +567,56 @@ TextureImporter:
         width: 382
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 398f39cc3f39c44479515eab43c5b9b3
-      internalID: -1125005325
+      spriteID: 399708267ac1ec84da5ac30411319657
+      internalID: 703862024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_22
+      name: queen_slash_22
       rect:
         serializedVersion: 2
         x: 764
         y: 0
         width: 382
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4450262, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a833fb5a018ca041bbd28c9f5243f8e
-      internalID: 725217748
+      spriteID: 328fae7716d02a8408bfd3f464f0ad16
+      internalID: 1343828944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: queen_cleanup 2-Sheet_23
+      name: queen_slash_23
       rect:
         serializedVersion: 2
         x: 1146
         y: 0
         width: 382
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45104712, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 288c2bac939cdad46bd08d0a8f452ea1
-      internalID: -540319547
+      spriteID: 0d9447d8599dfd542b34f667eea7dde6
+      internalID: 1101251257
       vertices: []
       indices: 
       edges: []
@@ -632,30 +632,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      queen_cleanup 2-Sheet_11: 1744919221
-      queen_cleanup 2-Sheet_9: 1714101875
-      queen_cleanup 2-Sheet_13: -1164836791
-      queen_cleanup 2-Sheet_14: 852352949
-      queen_cleanup 2-Sheet_23: -540319547
-      queen_cleanup 2-Sheet_22: 725217748
-      queen_cleanup 2-Sheet_17: 280889958
-      queen_cleanup 2-Sheet_0: 879673519
-      queen_cleanup 2-Sheet_1: -1137106404
-      queen_cleanup 2-Sheet_19: 1271363935
-      queen_cleanup 2-Sheet_12: -1224863809
-      queen_cleanup 2-Sheet_15: -975876838
-      queen_cleanup 2-Sheet_2: 1497221361
-      queen_cleanup 2-Sheet_7: -535399476
-      queen_cleanup 2-Sheet_18: -65847823
-      queen_cleanup 2-Sheet_6: 1322835126
-      queen_cleanup 2-Sheet_10: 525894051
-      queen_cleanup 2-Sheet_4: -1568902990
-      queen_cleanup 2-Sheet_20: -1865306517
-      queen_cleanup 2-Sheet_5: 1844396610
-      queen_cleanup 2-Sheet_3: -735146086
-      queen_cleanup 2-Sheet_16: -553630151
-      queen_cleanup 2-Sheet_21: -1125005325
-      queen_cleanup 2-Sheet_8: -1648950520
+      queen_slash_18: -1182184400
+      queen_slash_0: 469343962
+      queen_slash_5: 110664647
+      queen_slash_3: 954418300
+      queen_slash_10: 1266512982
+      queen_slash_11: 559858040
+      queen_slash_21: 703862024
+      queen_slash_6: 1737545262
+      queen_slash_12: 1989535709
+      queen_slash_2: -1078567672
+      queen_slash_20: -1153927104
+      queen_slash_4: -234287929
+      queen_slash_7: -657099125
+      queen_slash_13: 382245668
+      queen_slash_19: 518789544
+      queen_slash_14: 1938644557
+      queen_slash_1: -748492657
+      queen_slash_23: 1101251257
+      queen_slash_17: -1347302758
+      queen_slash_8: 1898290134
+      queen_slash_15: 1667403217
+      queen_slash_9: -369290210
+      queen_slash_16: 1516478209
+      queen_slash_22: 1343828944
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

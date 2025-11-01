@@ -21,6 +21,7 @@ public class StatsManager : MonoBehaviour
     public GameObject grabbedGO;
     [Header("Combat Stats")]
     public int damage;
+    public int rangeDamage;
     public float weaponRange;
     public float attackCD;
     public float knockBackForce;

@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.56666666
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -39,7 +39,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.75
+        time: 0.85
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -57,15 +57,23 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1348575916, guid: a424ba15a0461fd439f47440c20bf2eb, type: 3}
-    - time: 0.16666667
-      value: {fileID: 232735384, guid: a424ba15a0461fd439f47440c20bf2eb, type: 3}
-    - time: 0.5
-      value: {fileID: 517545344, guid: a424ba15a0461fd439f47440c20bf2eb, type: 3}
-    - time: 0.75
-      value: {fileID: -1348575916, guid: a424ba15a0461fd439f47440c20bf2eb, type: 3}
-    - time: 1
-      value: {fileID: -1348575916, guid: a424ba15a0461fd439f47440c20bf2eb, type: 3}
+      value: {fileID: 1516478209, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - time: 0.15
+      value: {fileID: -1347302758, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - time: 0.28333333
+      value: {fileID: -1182184400, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - time: 0.43333334
+      value: {fileID: 518789544, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - time: 0.56666666
+      value: {fileID: -1153927104, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - time: 0.85
+      value: {fileID: 703862024, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - time: 1.0333333
+      value: {fileID: 1343828944, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - time: 1.25
+      value: {fileID: 1101251257, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - time: 1.3666667
+      value: {fileID: 1101251257, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -94,17 +102,21 @@ AnimationClip:
       isPPtrCurve: 1
       isIntCurve: 0
     pptrCurveMapping:
-    - {fileID: -1348575916, guid: a424ba15a0461fd439f47440c20bf2eb, type: 3}
-    - {fileID: 232735384, guid: a424ba15a0461fd439f47440c20bf2eb, type: 3}
-    - {fileID: 517545344, guid: a424ba15a0461fd439f47440c20bf2eb, type: 3}
-    - {fileID: -1348575916, guid: a424ba15a0461fd439f47440c20bf2eb, type: 3}
-    - {fileID: -1348575916, guid: a424ba15a0461fd439f47440c20bf2eb, type: 3}
+    - {fileID: 1516478209, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - {fileID: -1347302758, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - {fileID: -1182184400, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - {fileID: 518789544, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - {fileID: -1153927104, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - {fileID: 703862024, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - {fileID: 1343828944, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - {fileID: 1101251257, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
+    - {fileID: 1101251257, guid: f667ad4bfd0ea8a44b7132d9bbdb4537, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0166667
+    m_StopTime: 1.3833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -133,7 +145,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.56666666
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -142,7 +154,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.75
+        time: 0.85
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -161,24 +173,24 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.5
+  - time: 0.56666666
     functionName: SlashAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
-  - time: 1
-    functionName: AttackEnd
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1
+  - time: 1.3666667
     functionName: SlashAnimationEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
+    messageOptions: 0
+  - time: 1.3666667
+    functionName: AttackEnd
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
     messageOptions: 0

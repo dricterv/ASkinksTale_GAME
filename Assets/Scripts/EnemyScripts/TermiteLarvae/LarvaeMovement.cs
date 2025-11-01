@@ -46,7 +46,8 @@ public class LarvaeMovement : MonoBehaviour
     public float patrolLimitX;
     public float patrolLimitY;
     public float patrolSpeed;
-
+    public float chaseTime;
+    private float chaseTimer;
 
     public Transform patrolOrigin;
 
@@ -62,11 +63,17 @@ public class LarvaeMovement : MonoBehaviour
         changeDirTimer = changeDirMaxTime;
         waitDirTimer = waitDirTime;
         ChangeDirection();
+        chaseTimer = chaseTime;
     }
     
     // Update is called once per frameif (isKnockedBack == false)
     void Update()
     {
+        
+        if (chaseTimer >= 0)
+        {
+            chaseTimer -= Time.deltaTime;
+        }
         if (enemyState != EnemyState.KnockedBack)
         {
             CheckForPlayer();
@@ -82,7 +89,7 @@ public class LarvaeMovement : MonoBehaviour
 
             if (enemyState == EnemyState.Chasing && enemyState != EnemyState.KnockedBack )
             {
-                if (transform.localPosition.x < patrolLimitMax.x && transform.localPosition.x > patrolLimitMin.x && transform.localPosition.y < patrolLimitMax.y && transform.localPosition.y > patrolLimitMin.y)
+                if (transform.localPosition.x < patrolLimitMax.x && transform.localPosition.x > patrolLimitMin.x && transform.localPosition.y < patrolLimitMax.y && transform.localPosition.y > patrolLimitMin.y && chaseTimer < 0)
                 {
                     Chase();
                 }
@@ -215,6 +222,10 @@ public class LarvaeMovement : MonoBehaviour
         {
              changeDirTimer = 0;
             
+        }
+        if(coll.gameObject.tag == "Player")
+        {
+            chaseTimer = chaseTime;
         }
 
         // Debug.Log("bump");

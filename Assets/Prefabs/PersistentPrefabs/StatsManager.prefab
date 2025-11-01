@@ -56,7 +56,8 @@ MonoBehaviour:
   isMoving: 0
   blocking: 0
   grabbedGO: {fileID: 0}
-  damage: 1
+  damage: 2
+  rangeDamage: 1
   weaponRange: 0.7
   attackCD: 0.4
   knockBackForce: 2
@@ -71,15 +72,23 @@ MonoBehaviour:
   currentHealth: 40
   maxHealth: 40
   flagList:
+  - key: gameStart
+    value: 0
+  - key: weevilsCaught
+    value: 0
+  - key: wbGateDialogue
+    value: 0
   - key: eGate1
     value: 0
   - key: eGate2
     value: 0
   - key: eGate3
     value: 0
-  - key: gameStart
+  - key: eGate4
     value: 0
-  - key: wbGateDialogue
+  - key: eGate5
     value: 0
-  - key: weevilsCaught
+  - key: enterDungeon
+    value: 0
+  - key: queenDefeated
     value: 0

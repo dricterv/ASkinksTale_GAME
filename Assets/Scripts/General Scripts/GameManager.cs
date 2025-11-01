@@ -91,5 +91,6 @@ public class GameManager : MonoBehaviour
     {
         uiManager.MainMenuOn();
         SceneManager.LoadScene("MainMenu");
+        player.GetComponent<PlayerHealth>().ChangeHealth(100);
     }
 }

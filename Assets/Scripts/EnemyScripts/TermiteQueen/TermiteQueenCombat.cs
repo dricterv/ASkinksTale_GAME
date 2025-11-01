@@ -141,7 +141,7 @@ public class TermiteQueenCombat : MonoBehaviour
                     Debug.DrawRay(detectionPoint.position, player.transform.position - detectionPoint.position, Color.red);
                     //rb.velocity = Vector2.zero;
                     // ChangeState(EnemyState.Idle);
-                    ChangeState(EnemyState.AttackingThree);
+                    //ChangeState(EnemyState.AttackingThree);
                 }
             }
             else

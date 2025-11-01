@@ -51,6 +51,7 @@ public class SceneChanger : MonoBehaviour
     {
         player = GameManager.Instance.player.transform;
         fadeAnim = GameManager.Instance.fadeAnim;
+        GameManager.Instance.player.SetActive(true);
         GameManager.Instance.player.GetComponent<PlayerHealth>().ChangeHealth(100);
         StatsManager.Instance.ResetFlags();
         InventoryManager.Instance.AddInventoryItem(emptyItem, 3);

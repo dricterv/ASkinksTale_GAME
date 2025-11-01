@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Antidote
   thisItem: 7
   itemDescription: Its an antidote.
-  itemImage: {fileID: 21300000, guid: b8b6a8b674004f24a94b2c6d23bcb4c4, type: 3}
+  itemImage: {fileID: 21300000, guid: be8186964c1ec644fac65695f45cf4d5, type: 3}
   numberHeld: 1
   isUsable: 0
   isUnique: 0

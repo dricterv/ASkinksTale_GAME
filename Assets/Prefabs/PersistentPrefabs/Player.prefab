@@ -439,6 +439,7 @@ MonoBehaviour:
   spriteGO: {fileID: 0}
   attackPoint: {fileID: 6627027439664170143}
   projectilePrefab: {fileID: 5906800403740078240, guid: bfc3ddcd1d5ad974c8be768f6e88723e, type: 3}
+  quill: {fileID: 0}
   isRolling: 0
   grabDist: 1.2
   pushableLayer:
@@ -449,6 +450,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   blocking: 0
+  playerState: 0
   grabLeft: {fileID: 0}
   grabRight: {fileID: 0}
   grabUp: {fileID: 0}
@@ -601,7 +603,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!61 &6538400801575918560
 BoxCollider2D:
   m_ObjectHideFlags: 0
