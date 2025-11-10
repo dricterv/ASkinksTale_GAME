@@ -180,6 +180,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: quoll_blacksmith-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9cf544e564ce947b89ce91dacbe038
+      internalID: -74053874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -191,6 +212,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      quoll_blacksmith-Sheet_3: -74053874
       quoll_blacksmith-Sheet_0: 1926983817
       quoll_blacksmith-Sheet_2: 1187193758
       quoll_blacksmith-Sheet_1: -1546013007

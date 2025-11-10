@@ -94,10 +94,12 @@ public class StatsManager : MonoBehaviour
         {
             equippedItemTwo = equippedItemOne;
             GameManager.Instance.uiManager.item2.sprite = equippedItemTwo.itemImage;
+            GameManager.Instance.uiManager.item2Inventory.sprite = equippedItemTwo.itemImage;
 
         }
         equippedItemOne = newItem;
         GameManager.Instance.uiManager.item1.sprite = equippedItemOne.itemImage;
+        GameManager.Instance.uiManager.item1Inventory.sprite = equippedItemOne.itemImage;
 
         // Debug.Log("Equiped Item 1: " + equippedItemOne);
         // Debug.Log("Equiped Item 2: " + equippedItemTwo);
@@ -108,9 +110,13 @@ public class StatsManager : MonoBehaviour
         {
             equippedItemOne = equippedItemTwo;
             GameManager.Instance.uiManager.item1.sprite = equippedItemOne.itemImage;
+            GameManager.Instance.uiManager.item1Inventory.sprite = equippedItemOne.itemImage;
+
         }
         equippedItemTwo = newItem;
         GameManager.Instance.uiManager.item2.sprite = newItem.itemImage;
+        GameManager.Instance.uiManager.item2Inventory.sprite = equippedItemTwo.itemImage;
+
 
         //Debug.Log("Equiped Item 1: " + equippedItemOne);
         // Debug.Log("Equiped Item 2: " + equippedItemTwo);

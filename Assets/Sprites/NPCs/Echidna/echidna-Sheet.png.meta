@@ -201,6 +201,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: echidna-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 93
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933b9db63a3d9264188b46c7b8f8da56
+      internalID: -1862092984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -212,6 +233,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      echidna-Sheet_4: -1862092984
       echidna-Sheet_2: 1899515988
       echidna-Sheet_0: 1326245454
       echidna-Sheet_1: -1063867385

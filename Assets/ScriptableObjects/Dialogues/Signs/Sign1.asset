@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fbcf4db2575ba46b70dcadfbf0c59d, type: 3}
+  m_Name: Sign1
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: {fileID: 11400000, guid: 1923793416c738b4791a3268428446b8, type: 2}
+    text: Forest North
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  options: []
+  requiredNPCs: []
+  requiredLocations: []
+  requiredItems: []
+  requiredQuests: []
+  requiredFlags: []
+  removeItems: []
+  giveItems: {fileID: 0}
+  currentAnimName: 
+  removeAfterPlay: 0
+  removeTheseOnPlay: []

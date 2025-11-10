@@ -92,7 +92,7 @@ public class EnemyHealth : MonoBehaviour
             }
             if(spawnHealth == true)
             {
-                if(StatsManager.Instance.currentHealth == 1)
+                if(StatsManager.Instance.currentHealth < 5)
                 {
                     Debug.Log("hp0");
                     Debug.Log(StatsManager.Instance.currentHealth);
@@ -100,22 +100,22 @@ public class EnemyHealth : MonoBehaviour
                     Instantiate(healthItem, this.transform.position, healthItem.transform.rotation);
                         
                 }
-                else if(StatsManager.Instance.currentHealth < 5)
+                else if(StatsManager.Instance.currentHealth < (StatsManager.Instance.maxHealth / 2))
                 {
                     Debug.Log("hp1");
                     Debug.Log(StatsManager.Instance.currentHealth);
                     int rnd = UnityEngine.Random.Range(1,100);
-                    if(rnd > 50)
+                    if(rnd > 33)
                     {
                         Instantiate(healthItem, this.transform.position, healthItem.transform.rotation);
                         
                     }
                 }
-                else if(StatsManager.Instance.currentHealth < (StatsManager.Instance.maxHealth/2))
+                else if(StatsManager.Instance.currentHealth < (StatsManager.Instance.maxHealth / 1.5))
                 {
                     Debug.Log("hp2");
                     int rnd = UnityEngine.Random.Range(1,100);
-                    if(rnd > 75)
+                    if(rnd > 66)
                     {
                         Instantiate(healthItem, this.transform.position, healthItem.transform.rotation);
                         

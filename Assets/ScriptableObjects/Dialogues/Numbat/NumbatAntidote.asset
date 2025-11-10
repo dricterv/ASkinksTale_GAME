@@ -27,7 +27,8 @@ MonoBehaviour:
   requiredLocations: []
   requiredItems:
   - {fileID: 11400000, guid: 6a70f87501343624d925b8e1b6496854, type: 2}
-  requiredQuests: []
+  requiredQuests:
+  - {fileID: 11400000, guid: f9988edc574aab1498590e433ce2a5a1, type: 2}
   requiredFlags: []
   removeItems: []
   giveItems: {fileID: 0}

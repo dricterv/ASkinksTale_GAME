@@ -201,6 +201,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Snake_Sprite-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ee48f2d89cc57049a102b212306230e
+      internalID: 1497330596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -214,6 +235,7 @@ TextureImporter:
     nameFileIdTable:
       Snake_Sprite-Sheet_2: 2105048548
       Snake_Sprite-Sheet_0: -1687776359
+      Snake_Sprite-Sheet_4: 1497330596
       Snake_Sprite-Sheet_1: 222492759
       Snake_Sprite-Sheet_3: -355003999
   spritePackingTag: 

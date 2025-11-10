@@ -43,5 +43,5 @@ MonoBehaviour:
   removeItems: []
   giveItems: {fileID: 0}
   currentAnimName: 
-  removeAfterPlay: 0
+  removeAfterPlay: 1
   removeTheseOnPlay: []
