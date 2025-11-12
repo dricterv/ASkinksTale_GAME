@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviour
     [Header("Grabbing")]
     public float grabDist = 1;
     public LayerMask pushableLayer;
+    public LayerMask pickupLayer;
     private RaycastHit2D grabHit;
+    private RaycastHit2D pickupHit;
     [Header("Interacting")]
     public float interactDist = 1;
     public LayerMask interactableLayer;
@@ -177,11 +179,18 @@ public class PlayerController : MonoBehaviour
             {
                 Collider2D interactHit = Physics2D.OverlapBox(this.transform.position, new Vector2(2,2), 0, interactableLayer);//Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, interactDist, interactableLayer);
                 grabHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
+                pickupHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, 2, pickupLayer);
                 /*if(interactHit != null)
                     Debug.Log(interactHit.gameObject.name);*/
 
-                //Debug.Log("w");
-                if (interactHit != null && playerState != PlayerState.Blocking && playerState != PlayerState.Rolling)
+                    //Debug.Log("w");
+                if (pickupHit.collider != null && playerState != PlayerState.Blocking && GameManager.Instance.DialogueManager.isDialogueActive != true)
+                {
+                    Debug.Log("pickuip");
+                    Pickup();
+
+                }
+                else if (interactHit != null && playerState != PlayerState.Blocking && playerState != PlayerState.Rolling)
                 {
                     if (GameManager.Instance.DialogueManager.isDialogueActive == true && GameManager.Instance.DialogueManager.isButtonActive == false)
                     {
@@ -518,6 +527,12 @@ public class PlayerController : MonoBehaviour
     public void Interact(GameObject interactGO)
     {
         interactGO.GetComponent<Interactable>().Interact();
+    }
+    public void Pickup()
+    {
+        Color tmp = pickupHit.collider.GetComponent<SpriteRenderer>().color;
+        tmp.a = 0f;
+        pickupHit.collider.GetComponent<SpriteRenderer>().color = tmp;
     }
     public void Grab()
     {
