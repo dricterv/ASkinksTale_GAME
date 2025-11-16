@@ -14,12 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
-    text: I heard you can get through the electric fences if you break the boxes
-      connected to them.
+    text: Hey there, I'm the town farmer.
     logInteraction: 0
     changeAnim: 0
     animName: 
-  options: []
+  - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
+    text: Sorry it is a bit hectic right now.
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
+    text: All the weevils have escaped the pen.
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
+    text: Do you think you could help me wrangle them back?
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  options:
+  - optionText: Sure!
+    nextDialogue: {fileID: 11400000, guid: f6df4dc3f99e23a47903b5f5d12e987d, type: 2}
+    questToGive: {fileID: 11400000, guid: ac67495560011944c95e04bff63c9f5f, type: 2}
+    questToEnd: {fileID: 0}
+    flagToFlag: weevilsStart
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
@@ -28,5 +47,6 @@ MonoBehaviour:
   removeItems: []
   giveItems: {fileID: 0}
   currentAnimName: 
+  isCutscene: 0
   removeAfterPlay: 0
   removeTheseOnPlay: []

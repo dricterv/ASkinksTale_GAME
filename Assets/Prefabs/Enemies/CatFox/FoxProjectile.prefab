@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5907918283205226261}
   - component: {fileID: 3396756895156075265}
   - component: {fileID: 1287426344541642757}
+  - component: {fileID: 437291507771258432}
   m_Layer: 0
   m_Name: FoxProjectile
   m_TagString: Untagged
@@ -103,7 +104,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   lifeSpan: 2
   initialTimer: 0.5
-  speed: 15
+  speed: 12
   damage: 1
   knockBackForce: 0
   stunTime: 0
@@ -116,7 +117,8 @@ MonoBehaviour:
   playerOwned: 0
   isExplosive: 0
   explosionRadius: 5
-  turnAngle: 0
+  turnAngle: -45
+  duration: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -172,3 +174,23 @@ PolygonCollider2D:
       - {x: -0.65266705, y: 0.044510365}
       - {x: 0.7552134, y: -0.06356263}
   m_UseDelaunayMesh: 0
+--- !u!95 &437291507771258432
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906800403740078240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 576a11d3265904c4ebcd23a4a63119ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

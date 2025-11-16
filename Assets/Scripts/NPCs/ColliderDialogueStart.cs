@@ -29,9 +29,13 @@ public class ColliderDialogueStart : MonoBehaviour
         if (collision.tag == "Player")
         {
             gameObject.SetActive(false);
-            if (StatsManager.Instance.flags[boolString] == false)
+            if (StatsManager.Instance.flags.ContainsKey(boolString) && StatsManager.Instance.flags[boolString] == false)
             {
                 StatsManager.Instance.flags[boolString] = true;
+            }
+            if(StatsManager.Instance.flags["gameEnd"] == true)
+            {
+                GameManager.Instance.MainMenuLoad();
             }
         }
     }

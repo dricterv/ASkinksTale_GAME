@@ -33,6 +33,7 @@ MonoBehaviour:
     nextDialogue: {fileID: 11400000, guid: 4e66955ec446d2144956502c8cef642d, type: 2}
     questToGive: {fileID: 11400000, guid: f9611bc48ec17774094eb61fcd978482, type: 2}
     questToEnd: {fileID: 11400000, guid: 62733e390bf846e40b93b3e20fe03a37, type: 2}
+    flagToFlag: 
   requiredNPCs: []
   requiredLocations: []
   requiredItems:
@@ -43,5 +44,6 @@ MonoBehaviour:
   removeItems: []
   giveItems: {fileID: 0}
   currentAnimName: 
+  isCutscene: 0
   removeAfterPlay: 0
   removeTheseOnPlay: []

@@ -91,6 +91,23 @@ public class UIManager : MonoBehaviour
                 LiveUIOn();
             }
         }
+        if (Input.GetButtonDown("Journal") && mainMenuCanvas.alpha != 1)
+        {
+            if (liveCanvas.alpha == 1 && GameManager.Instance.DialogueManager.isDialogueActive == false)
+            {
+                OpenJournalMenu();
+                inventoryOpen = true;
+                Time.timeScale = 0;
+                liveCanvas.alpha = 0;
+                liveCanvas.interactable = false;
+                liveCanvas.blocksRaycasts = false;
+                EventSystem.current.SetSelectedGameObject(jounalStartButton);
+            }
+            else if (liveCanvas.alpha == 0)
+            {
+                LiveUIOn();
+            }
+        }
     }
 
     public void ToggleInventory()

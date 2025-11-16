@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Numbat
   m_EditorClassIdentifier: 
   actorName: Numbat
-  portrait: {fileID: 105790144, guid: 7cf5c06b4952438408548d9ab9747a1c, type: 3}
+  portrait: {fileID: 1585839190, guid: 2434f2eec175e3a46855cd0d52dd1a84, type: 3}

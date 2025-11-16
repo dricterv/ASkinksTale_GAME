@@ -3,7 +3,7 @@ guid: e8127371cc4eb5640af1c9034beefb46
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -65,6 +65,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -118,7 +119,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cat_Dynamite_Attack_LEFT-Sheet_0
+      name: Cat_Dynamite_Attack_Left-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6be0f5a5465aea64b81d0397d43c73f2
+      internalID: 957492360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_Dynamite_Attack_Left-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b39cc85bddc7404fac36aa8f6143c87
+      internalID: -505829094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_Dynamite_Attack_Left-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc8809cb3dcd39c43bcd7988381e6ac4
+      internalID: -928284850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_Dynamite_Attack_Left-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7563101eebd6cad459fc06b34fe1c704
+      internalID: -1166095744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_Dynamite_Attack_Left-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc9962e18a4f054dbaa677083e381fc
+      internalID: -384268490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_Dynamite_Attack_Left-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b93f204a21ee03d47b65c9128454c1eb
+      internalID: -302534898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_Dynamite_Attack_Left-Sheet_6
       rect:
         serializedVersion: 2
         x: 0
@@ -132,14 +259,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e88e2e2f78d059449ad13de3c4d84079
-      internalID: 640464776
+      spriteID: e05c4af78ee57924caa10765e2df7a0b
+      internalID: 749377100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_Dynamite_Attack_LEFT-Sheet_1
+      name: Cat_Dynamite_Attack_Left-Sheet_7
       rect:
         serializedVersion: 2
         x: 256
@@ -153,14 +280,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93ebc15cc17595347bb87180f51b705b
-      internalID: -2023715915
+      spriteID: 2a5118d3586d2394da66b679108a6a4e
+      internalID: -571766521
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_Dynamite_Attack_LEFT-Sheet_2
+      name: Cat_Dynamite_Attack_Left-Sheet_8
       rect:
         serializedVersion: 2
         x: 512
@@ -174,134 +301,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e50f1094a5bbe949ac9e6362d2f8dc3
-      internalID: -237427581
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat_Dynamite_Attack_LEFT-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f58bc29fa3bb1cb4aac0464b1c97031d
-      internalID: 386339634
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat_Dynamite_Attack_LEFT-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4667f108d97f57f47924a66c5dae165f
-      internalID: -1526559569
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat_Dynamite_Attack_LEFT-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb9c0ec9827dcb7459ad82ef3dc26f01
-      internalID: -7830767
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat_Dynamite_Attack_LEFT-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdf2e280fb2da69489004759a8c6578f
-      internalID: -759021143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat_Dynamite_Attack_LEFT-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5d0d0eb8b3574545b02b910a8e97d2a
-      internalID: -673118047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat_Dynamite_Attack_LEFT-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 2048
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5d6072bba806694d892470cbe2b0da1
-      internalID: 819599614
+      spriteID: 67abea67d0a579542a968bc62bcb2a8c
+      internalID: 1741150403
       vertices: []
       indices: 
       edges: []
@@ -317,15 +318,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cat_Dynamite_Attack_LEFT-Sheet_2: -237427581
-      Cat_Dynamite_Attack_LEFT-Sheet_4: -1526559569
-      Cat_Dynamite_Attack_LEFT-Sheet_8: 819599614
-      Cat_Dynamite_Attack_LEFT-Sheet_7: -673118047
-      Cat_Dynamite_Attack_LEFT-Sheet_1: -2023715915
-      Cat_Dynamite_Attack_LEFT-Sheet_3: 386339634
-      Cat_Dynamite_Attack_LEFT-Sheet_5: -7830767
-      Cat_Dynamite_Attack_LEFT-Sheet_6: -759021143
-      Cat_Dynamite_Attack_LEFT-Sheet_0: 640464776
+      Cat_Dynamite_Attack_Left-Sheet_3: -1166095744
+      Cat_Dynamite_Attack_Left-Sheet_2: -928284850
+      Cat_Dynamite_Attack_Left-Sheet_8: 1741150403
+      Cat_Dynamite_Attack_Left-Sheet_0: 957492360
+      Cat_Dynamite_Attack_Left-Sheet_4: -384268490
+      Cat_Dynamite_Attack_Left-Sheet_6: 749377100
+      Cat_Dynamite_Attack_Left-Sheet_1: -505829094
+      Cat_Dynamite_Attack_Left-Sheet_7: -571766521
+      Cat_Dynamite_Attack_Left-Sheet_5: -302534898
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

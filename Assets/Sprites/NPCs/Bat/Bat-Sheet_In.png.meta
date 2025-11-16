@@ -3,7 +3,7 @@ guid: be8b6f4714b929b49976ef83e77c4cb3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -65,6 +65,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -264,6 +265,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Bat-Sheet_In_7
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c24b532ec2b44a4e92a966b07692df6
+      internalID: -1078243572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -281,6 +303,7 @@ TextureImporter:
       Bat-Sheet_In_6: 1545971970
       Bat-Sheet_In_2: -849214744
       Bat-Sheet_In_5: 300089997
+      Bat-Sheet_In_7: -1078243572
       Bat-Sheet_In_0: 1420357784
   spritePackingTag: 
   pSDRemoveMatte: 0

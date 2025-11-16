@@ -11,41 +11,32 @@ public class CatCombat : MonoBehaviour
     public Transform launchPointLeft;
     public Transform launchPointRight;
     public Vector2 facing;
-    private bool attackPlayer = false;
     [Header("Projectile")]
     public GameObject projectilePrefab;
+    private float timer;
+    private Animator anim;
+    private Vector2 direction;
+
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, playerDetectRange, playerLayer);
-        if (hits.Length > 0)
-        {
-            player = hits[0].transform;
-            if(attackPlayer == false)
-            {
-                RangedAttack();
-                attackPlayer = true;
-            }
-           
-        }
-
+       
     }
    
     public void RangedAttack()
     {
         Transform t = launchPointLeft;
        
-        Vector2 direction = (player.position - transform.position).normalized;
-        float hori = direction.x;
-        float vert = direction.y;
+        
+        
        
         if (facing == new Vector2(-1, 0))
         {
@@ -65,9 +56,32 @@ public class CatCombat : MonoBehaviour
         Shoot(direction, t);
     }
 
+
+    public void StartAttack()
+    {
+        direction = (GameManager.Instance.player.transform.position - transform.position).normalized;
+        float hori = direction.x;
+        if(hori >= 0)
+        {
+            facing = new Vector2(1, 0);
+            anim.Play("AttackLeft");
+        }
+        else if(hori < 0)
+        {
+            facing = new Vector2(-1, 0);
+            anim.Play("AttackRight");
+
+        }
+    }
+    public void EndAttack()
+    {
+        anim.Play("Idle");
+        
+    }
     public void Shoot(Vector2 direction, Transform t)
     {
-
+        //Debug.Log(direction);
+        
         Projectile projectile = Instantiate(projectilePrefab, t.position, Quaternion.identity).GetComponent<Projectile>();
         projectile.direction = direction.normalized;
         // shootTimer = shootCooldown;

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: QuollSO
   m_EditorClassIdentifier: 
   actorName: Quoll
-  portrait: {fileID: 1187193758, guid: fa34e961ec6782f48a586262049f8c1b, type: 3}
+  portrait: {fileID: -74053874, guid: fa34e961ec6782f48a586262049f8c1b, type: 3}

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fbcf4db2575ba46b70dcadfbf0c59d, type: 3}
+  m_Name: SnakeEndQuest
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
+    text: Is that all five of them?
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  options:
+  - optionText: Yes!
+    nextDialogue: {fileID: 11400000, guid: d7329292275634b44b9c659d69f42307, type: 2}
+    questToGive: {fileID: 0}
+    questToEnd: {fileID: 11400000, guid: ac67495560011944c95e04bff63c9f5f, type: 2}
+    flagToFlag: 
+  requiredNPCs: []
+  requiredLocations: []
+  requiredItems: []
+  requiredQuests:
+  - {fileID: 11400000, guid: ac67495560011944c95e04bff63c9f5f, type: 2}
+  requiredFlags:
+  - weevilsCaught
+  removeItems: []
+  giveItems: {fileID: 0}
+  currentAnimName: 
+  isCutscene: 0
+  removeAfterPlay: 0
+  removeTheseOnPlay: []

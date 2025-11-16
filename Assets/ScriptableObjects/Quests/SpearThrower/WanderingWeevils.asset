@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555dca2286ebef349b654eff4aa1dd5c, type: 3}
+  m_Name: WanderingWeevils
+  m_EditorClassIdentifier: 
+  questName: Wandering Weevils
+  questDescirption: 'There are 5 weevils on the loose.
+
+    Bring them all back to
+    the gate below the snake.'
+  objectives:
+  - description: Catch all 5.
+    target: {fileID: 0}
+    targetFlag: weevilsCaught
+    requiredAmount: 1

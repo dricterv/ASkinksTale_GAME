@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fbcf4db2575ba46b70dcadfbf0c59d, type: 3}
+  m_Name: CatFoxFightDialogue
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: {fileID: 11400000, guid: 8e9d84c08c6d7764d968ef2bf4ca1f77, type: 2}
+    text: Prepare for trouble!
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: a579f20170435de4f830481bd4c730c9, type: 2}
+    text: Make it double!
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  options:
+  - optionText: '!'
+    nextDialogue: {fileID: 11400000, guid: cf462cf079abf9248a51ba20da21e270, type: 2}
+    questToGive: {fileID: 0}
+    questToEnd: {fileID: 0}
+    flagToFlag: catFoxStart
+  requiredNPCs: []
+  requiredLocations: []
+  requiredItems: []
+  requiredQuests: []
+  requiredFlags: []
+  removeItems: []
+  giveItems: {fileID: 0}
+  currentAnimName: 
+  isCutscene: 0
+  removeAfterPlay: 0
+  removeTheseOnPlay: []

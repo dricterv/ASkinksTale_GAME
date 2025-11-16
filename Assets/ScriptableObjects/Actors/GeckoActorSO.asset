@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GeckoActorSO
   m_EditorClassIdentifier: 
   actorName: Geko
-  portrait: {fileID: -108782918, guid: 64fd30fb5bcdd81469261071e57ca8bd, type: 3}
+  portrait: {fileID: 21300000, guid: feae183e869d5294c84c35160cd1bf88, type: 3}

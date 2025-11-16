@@ -6,7 +6,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public Vector2 direction = Vector2.right;
+    public Vector2 direction;
     public float lifeSpan = 2;
     public float initialTimer;
     private float timer;
@@ -24,18 +24,24 @@ public class Projectile : MonoBehaviour
     public bool isExplosive = false;
     public float explosionRadius;
     public int turnAngle = 90;
+    public float duration;
+    private float timerTwo;
 
 
     public LayerMask playerLayer;
 
     void Start()
     {
+        
         timer = initialTimer;
         rb.velocity = direction * speed;
+
         RotateProjectile();
         Destroy(gameObject, lifeSpan);
 
     }
+
+   
     void Update()
     {
         if (timer > 0)
@@ -47,6 +53,7 @@ public class Projectile : MonoBehaviour
         {
             // transform.rotation.z = transform.rotation.z * spinSpeed * Time.deltaTime;
         }
+      
     }
 
     private void RotateProjectile()
@@ -63,7 +70,7 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }*/
-        if (coll.gameObject.tag == "Player" && playerOwned == false)
+        if (coll.gameObject.tag == "Player" && playerOwned == false && isExplosive == false)
         {
 
             Transform player = coll.transform;
@@ -108,7 +115,7 @@ public class Projectile : MonoBehaviour
         {
             coll.gameObject.GetComponent<EnemyHealth>().ChangeHealth(-damage);
         }
-        else if (timer <= 0)
+        else if (timer <= 0 && isExplosive == false)
         {
 
             if (preFab != null)
@@ -128,15 +135,44 @@ public class Projectile : MonoBehaviour
         //Destroy(gameObject);
     }
 
-    private void OnDestroy()
+    public void Land()
     {
-        if (isExplosive == true)
+        rb.velocity = Vector2.zero;
+    }
+    public void BlowUp()
+    {
+        
+        Collider2D coll = Physics2D.OverlapCircle(this.transform.position, explosionRadius, playerLayer);
+        if (coll != null)
         {
-            Collider2D coll = Physics2D.OverlapCircle(this.transform.position, explosionRadius, playerLayer);
-            if (coll != null)
+            
+            if (StatsManager.Instance.blocking == true)
             {
-                coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage); 
+                if (StatsManager.Instance.lockFacing == new Vector2(1, 0) && direction.x <= -StatsManager.Instance.blockAngle)
+                {
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
+                }
+                else if (StatsManager.Instance.lockFacing == new Vector2(-1, 0) && direction.x >= StatsManager.Instance.blockAngle)
+                {
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
+                }
+                else if (StatsManager.Instance.lockFacing == new Vector2(0, -1) && direction.y >= StatsManager.Instance.blockAngle)
+                {
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
+                }
+                else if (StatsManager.Instance.lockFacing == new Vector2(0, 1) && direction.y <= -StatsManager.Instance.blockAngle)
+                {
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(0);
+                }
+                else
+                {
+                    coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
+                }
             }
-        }    
+            else
+            {
+                coll.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
+            }
+        }
     }
 }

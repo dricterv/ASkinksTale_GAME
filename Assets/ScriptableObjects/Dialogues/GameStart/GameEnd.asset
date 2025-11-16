@@ -13,22 +13,67 @@ MonoBehaviour:
   m_Name: GameEnd
   m_EditorClassIdentifier: 
   lines:
-  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
-    text: This is the end of the current game.
+  - speaker: {fileID: 11400000, guid: 609a5bd022604594e9cc786c36fef147, type: 2}
+    text: 
     logInteraction: 0
     changeAnim: 0
     animName: 
-  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
-    text: Thank you for playing A Skinks Tale!
+  - speaker: {fileID: 11400000, guid: d25ccedb62c20424fa69bae811573cfb, type: 2}
+    text: 
     logInteraction: 0
     changeAnim: 0
     animName: 
-  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
-    text: We hope you enjoyed the game!
+  - speaker: {fileID: 11400000, guid: 50e2ae8553cd54945b8c050ad8cdcee8, type: 2}
+    text: 
     logInteraction: 0
     changeAnim: 0
     animName: 
-  options: []
+  - speaker: {fileID: 11400000, guid: 176b812267b50b34ea8cd4f3c356a4b9, type: 2}
+    text: 
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: efb92d7f28ea67b4e80946623c872433, type: 2}
+    text: 
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: 86526212d53884e41a7e3fce39ec2853, type: 2}
+    text: 
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: 87153e2334af6534493ad68ed9216abf, type: 2}
+    text: 
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: c6d6669a173a28340be13cce9011653b, type: 2}
+    text: 
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: e5b676bc94e27f747b73b2a167a01008, type: 2}
+    text: 
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: c77a00c203e621c42aa66cbbda0f2a8f, type: 2}
+    text: 
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: 5b4a672c870220d40b5332f131e14cb7, type: 2}
+    text: Thank you for playing!
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  options:
+  - optionText: '!'
+    nextDialogue: {fileID: 11400000, guid: 8a63fcac99db0204f89e832e2bc39f15, type: 2}
+    questToGive: {fileID: 0}
+    questToEnd: {fileID: 0}
+    flagToFlag: gameEnd
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
@@ -37,5 +82,6 @@ MonoBehaviour:
   removeItems: []
   giveItems: {fileID: 0}
   currentAnimName: 
+  isCutscene: 1
   removeAfterPlay: 0
   removeTheseOnPlay: []

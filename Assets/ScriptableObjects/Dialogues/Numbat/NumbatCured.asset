@@ -33,22 +33,22 @@ MonoBehaviour:
     logInteraction: 0
     changeAnim: 0
     animName: 
-  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+  - speaker: {fileID: 11400000, guid: cf2a73845ce95ea45a157ed8bf2db78e, type: 2}
     text: '!'
     logInteraction: 0
     changeAnim: 0
     animName: 
-  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+  - speaker: {fileID: 11400000, guid: cf2a73845ce95ea45a157ed8bf2db78e, type: 2}
     text: Thank you!
     logInteraction: 0
     changeAnim: 0
     animName: 
-  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+  - speaker: {fileID: 11400000, guid: cf2a73845ce95ea45a157ed8bf2db78e, type: 2}
     text: Whatever you gave me worked, my head is killing me!
     logInteraction: 0
     changeAnim: 0
     animName: 
-  - speaker: {fileID: 11400000, guid: caab2a635fc11e642a11b1b1308f8570, type: 2}
+  - speaker: {fileID: 11400000, guid: cf2a73845ce95ea45a157ed8bf2db78e, type: 2}
     text: I'll make my way back to town after I rest a bit.
     logInteraction: 0
     changeAnim: 1

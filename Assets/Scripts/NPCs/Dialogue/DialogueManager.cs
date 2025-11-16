@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
 {
     [Header("UI References")]
     public Image portrait;
+    public Image cutscene;
     public TMP_Text actorName;
     public TMP_Text dialogueText;
     public CanvasGroup canvasGroup;
@@ -83,10 +84,15 @@ public class DialogueManager : MonoBehaviour
                 GameManager.Instance.DialogueHistoryTracker.RecordNpc(line.speaker);
             }
 
-            if (portrait != null)
+            if(currentDialogue.isCutscene == true)
+            {
+                cutscene.sprite = line.speaker.portrait;
+            }
+            else if (line.speaker.portrait != null)
             {
                 portrait.sprite = line.speaker.portrait;
             }
+
 
             if (line.speaker.actorName == null)
             {
@@ -131,14 +137,14 @@ public class DialogueManager : MonoBehaviour
                     if(GameManager.Instance.questManager.IsQuestComplete(option.questToEnd) == true)
                     {
                         choiceButtons[i].gameObject.SetActive(true);
-                        choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue, option.questToGive, option.questToEnd));
+                        choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue, option.questToGive, option.questToEnd, option.flagToFlag));
                     }
                     
                 }
                 else
                 {
                     choiceButtons[i].gameObject.SetActive(true);
-                    choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue, option.questToGive, option.questToEnd));
+                    choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue, option.questToGive, option.questToEnd, option.flagToFlag));
                 }
                 
               
@@ -159,7 +165,7 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    private void ChooseOption(DialogueSO dialogueSO, QuestSO questStartSO, QuestSO questEndSO)
+    private void ChooseOption(DialogueSO dialogueSO, QuestSO questStartSO, QuestSO questEndSO, string flag)
     {
         if(dialogueSO == null)
         {
@@ -186,6 +192,10 @@ public class DialogueManager : MonoBehaviour
                 QuestEvents.OnQuestEnd?.Invoke(questEndSO);
                // Debug.Log("quest given");
 
+            }
+            if(flag != null)
+            {
+                StatsManager.Instance.flags[flag] = true;
             }
 
             ClearChoices();

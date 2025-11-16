@@ -38,11 +38,16 @@ public class SceneChanger : MonoBehaviour
         GameManager.Instance.mainCamera.maxPosition = maxPosition;
         GameManager.Instance.mainCamera.minPosition = minPosition;
         player.position = newPlayerPosition;
+        if (player.GetComponent<PlayerController>().playerState == PlayerState.Carrying || player.GetComponent<PlayerController>().playerState == PlayerState.CarryingIdle)
+        {
+            player.GetComponent<PlayerController>().PutDownEnd();
+        }
         GameManager.Instance.uiManager.LiveUIOn();
         if (player.gameObject.activeSelf == false)
         {
             GameManager.Instance.player.SetActive(true);
         }
+        GameManager.Instance.player.GetComponent<PlayerController>().PutDownEnd();
         SceneManager.LoadScene(sceneToLoad);
         
     }

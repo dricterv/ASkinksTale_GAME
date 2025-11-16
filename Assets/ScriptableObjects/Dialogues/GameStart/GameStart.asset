@@ -19,19 +19,27 @@ MonoBehaviour:
     changeAnim: 0
     animName: 
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
-    text: Use WASD to move, and space to dodge roll and interact with things.
+    text: Use WASD to move, and space to dodge roll/interact/talk/navigate UI.
     logInteraction: 0
     changeAnim: 0
     animName: 
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
-    text: 'You can hit J to use your first equiped item and K for the second, and
-      you can open your inventory with I. '
+    text: You can hit J to use your first equiped item and K for the second item.
     logInteraction: 0
     changeAnim: 0
     animName: 
   - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
-    text: You can go back to the main menu with Escape. (warning this resets any
-      progress)
+    text: Use I/E to open your inventory and Q/U to open your journal!
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: 'You can go back to the main menu with Escape. '
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: 3f71f6be431184445ba89503f11901e6, type: 2}
+    text: (warning this resets any progress)
     logInteraction: 0
     changeAnim: 0
     animName: 
@@ -40,6 +48,7 @@ MonoBehaviour:
     nextDialogue: {fileID: 11400000, guid: 8b14625f547918840a7c78c0d855f9b5, type: 2}
     questToGive: {fileID: 11400000, guid: 50ee8f69ce6c0884bacc2486db3b2909, type: 2}
     questToEnd: {fileID: 0}
+    flagToFlag: 
   requiredNPCs: []
   requiredLocations: []
   requiredItems: []
@@ -48,5 +57,6 @@ MonoBehaviour:
   removeItems: []
   giveItems: {fileID: 0}
   currentAnimName: 
+  isCutscene: 0
   removeAfterPlay: 1
   removeTheseOnPlay: []

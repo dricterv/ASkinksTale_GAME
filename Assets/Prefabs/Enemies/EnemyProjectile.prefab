@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6106827168066156958}
   - component: {fileID: 3154677309069076333}
   - component: {fileID: 8787241460046859700}
+  - component: {fileID: 2125895529677553341}
   m_Layer: 0
   m_Name: EnemyProjectile
   m_TagString: Untagged
@@ -157,3 +158,23 @@ CircleCollider2D:
   m_Offset: {x: 0.002547741, y: -0.103217095}
   serializedVersion: 2
   m_Radius: 0.20011854
+--- !u!95 &2125895529677553341
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3213713789893948792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e317f5cb1f300c742baf3a617eca747c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

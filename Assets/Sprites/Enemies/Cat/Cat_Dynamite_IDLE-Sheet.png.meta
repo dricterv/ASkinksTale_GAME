@@ -3,7 +3,7 @@ guid: 485e6504e245a8f408f034704b74cbea
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -65,6 +65,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -126,7 +127,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,7 +148,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,7 +169,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,6 +177,27 @@ TextureImporter:
       bones: []
       spriteID: 22060ca0b6fc0bd4cba8c972d86be956
       internalID: 40269856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_Dynamite_IDLE-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 57
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bce68c8d8420e64897c176b3b60a79d
+      internalID: -936164317
       vertices: []
       indices: 
       edges: []
@@ -192,6 +214,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Cat_Dynamite_IDLE-Sheet_0: 827662607
+      Cat_Dynamite_IDLE-Sheet_3: -936164317
       Cat_Dynamite_IDLE-Sheet_2: 40269856
       Cat_Dynamite_IDLE-Sheet_1: -1815938712
   spritePackingTag: 

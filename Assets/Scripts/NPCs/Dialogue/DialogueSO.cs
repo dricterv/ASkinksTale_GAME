@@ -21,10 +21,11 @@ public class DialogueSO : ScriptableObject
     public InventoryItem[] removeItems;
     public InventoryItem giveItems;
     public string currentAnimName;
-    
+
 
 
     [Header("Control Flags")]
+    public bool isCutscene = false;
     public bool removeAfterPlay;
     public List<DialogueSO> removeTheseOnPlay;
 
@@ -96,6 +97,7 @@ public class DialogueLine
     public bool logInteraction = false;
     public bool changeAnim = false;
     public string animName;
+
     
 }
 [System.Serializable]
@@ -105,4 +107,5 @@ public class DialogueOption
     public DialogueSO nextDialogue;
     public QuestSO questToGive;
     public QuestSO questToEnd;
+    public string flagToFlag;
 }

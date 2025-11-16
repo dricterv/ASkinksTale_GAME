@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -36,8 +37,10 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             MarkPersistentObjects();
         }
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        QualitySettings.vSyncCount = 0; 
+        Application.targetFrameRate = 60;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
     }
    
@@ -50,12 +53,12 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
             //QuitGame();
         }*/
-       /*
+       
         if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1) || Input.GetKey(KeyCode.Mouse2))
         {
             GameObject buttonGO = EventSystem.current.currentSelectedGameObject;
             EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
-        }*/
+        }
 
 
      

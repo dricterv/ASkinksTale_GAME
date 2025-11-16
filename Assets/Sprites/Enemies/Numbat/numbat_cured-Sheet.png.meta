@@ -3,7 +3,7 @@ guid: 55ae6c2cfed1e024aa8dce99da7c93dc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -65,6 +65,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -243,6 +244,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: numbat_cured-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 99
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76124eeb899a3eb4eb6a96fdbaff2a01
+      internalID: -422100850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -255,6 +277,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       numbat_cured-Sheet_5: 1835844625
+      numbat_cured-Sheet_6: -422100850
       numbat_cured-Sheet_0: 141444224
       numbat_cured-Sheet_4: -174345848
       numbat_cured-Sheet_3: -219939748

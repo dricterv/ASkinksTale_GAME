@@ -3,7 +3,7 @@ guid: f6d8756ef67511c4eb02e99851ed568b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -65,6 +65,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -122,7 +123,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 512
         width: 256
         height: 256
       alignment: 0
@@ -143,7 +144,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 0
+        y: 512
         width: 256
         height: 256
       alignment: 0
@@ -164,7 +165,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 0
+        y: 512
         width: 256
         height: 256
       alignment: 0
@@ -184,8 +185,8 @@ TextureImporter:
       name: Cat_Dynamite_Attack_Right-Sheet_3
       rect:
         serializedVersion: 2
-        x: 768
-        y: 0
+        x: 0
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -205,8 +206,8 @@ TextureImporter:
       name: Cat_Dynamite_Attack_Right-Sheet_4
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 0
+        x: 256
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -226,8 +227,8 @@ TextureImporter:
       name: Cat_Dynamite_Attack_Right-Sheet_5
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 0
+        x: 512
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -247,7 +248,7 @@ TextureImporter:
       name: Cat_Dynamite_Attack_Right-Sheet_6
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 0
         y: 0
         width: 256
         height: 256
@@ -268,7 +269,7 @@ TextureImporter:
       name: Cat_Dynamite_Attack_Right-Sheet_7
       rect:
         serializedVersion: 2
-        x: 1792
+        x: 256
         y: 0
         width: 256
         height: 256
@@ -285,6 +286,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Cat_Dynamite_Attack_Right-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb17bfaa8d6d154cab950d02af8ea56
+      internalID: -2006240802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -297,6 +319,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Cat_Dynamite_Attack_Right-Sheet_7: 1388383769
+      Cat_Dynamite_Attack_Right-Sheet_8: -2006240802
       Cat_Dynamite_Attack_Right-Sheet_5: -342943469
       Cat_Dynamite_Attack_Right-Sheet_1: -1278283125
       Cat_Dynamite_Attack_Right-Sheet_0: 1681619631

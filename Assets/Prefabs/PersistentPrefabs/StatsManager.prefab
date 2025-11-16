@@ -78,6 +78,8 @@ MonoBehaviour:
     value: 0
   - key: wbGateDialogue
     value: 0
+  - key: weevilsStart
+    value: 0
   - key: eGate1
     value: 0
   - key: eGate2
@@ -91,4 +93,10 @@ MonoBehaviour:
   - key: enterDungeon
     value: 0
   - key: queenDefeated
+    value: 0
+  - key: catFoxStart
+    value: 0
+  - key: catFoxFight
+    value: 0
+  - key: gameEnd
     value: 0

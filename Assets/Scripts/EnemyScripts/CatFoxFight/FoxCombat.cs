@@ -9,41 +9,120 @@ public class FoxCombat : MonoBehaviour
     public LayerMask playerLayer;
     public Transform launchPointLeft;
     public Transform launchPointRight;
-    
+    public Transform launchPointUp;
+    private Animator anim;
+
+    public GameObject leftBush;
+    public GameObject rightBush;
+    public GameObject bottomBush;
+
+
+
     public Vector2 facing;
-    private bool attackPlayer = false;
     [Header("Projectile")]
     public GameObject projectilePrefab;
+    private float timer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, playerDetectRange, playerLayer);
-        if (hits.Length > 0)
+        if(timer > 0)
         {
-            player = hits[0].transform;
-            if (attackPlayer == false)
+            timer -= Time.deltaTime;
+
+        }
+      
+        if (timer <= 0)
+        {
+            /*(Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, playerDetectRange, playerLayer);
+            if (hits.Length > 0)
             {
+                player = hits[0].transform;
+
                 RangedAttack();
-                attackPlayer = true;
-            }
+                timer = 2;
+
+
+            }*/
+            //ChangeBush;
+        }
+
+    }
+
+    public void ChangeBush()
+    {
+        int bush = Random.Range(1, 4);
+        if(bush == 1)
+        {
+            gameObject.transform.position = leftBush.transform.position;
+            gameObject.transform.position += new Vector3(2, 0, 0);
+            leftBush.GetComponent<Animator>().Play("BushTailWaggle");
+            anim.Play("isInvisible");
+            anim.SetFloat("xFacing", 1);
+            anim.SetFloat("yFacing", 0);
+            facing = new Vector2(1,0);
+
+
+        }
+        if (bush == 2)
+        {
+            gameObject.transform.position = rightBush.transform.position;
+            gameObject.transform.position += new Vector3(-2, 0, 0);
+            rightBush.GetComponent<Animator>().Play("BushTailWaggle");
+            anim.Play("isInvisible");
+
+            anim.SetFloat("xFacing", -1);
+            anim.SetFloat("yFacing", 0);
+            facing = new Vector2(-1, 0);
+
+
+        }
+        if (bush == 3)
+        {
+            gameObject.transform.position = bottomBush.transform.position;
+            gameObject.transform.position += new Vector3(0, 2, 0);
+            bottomBush.GetComponent<Animator>().Play("BushTailWaggle");
+            anim.Play("isInvisible");
+
+            anim.SetFloat("xFacing", 0);
+            anim.SetFloat("yFacing", 1);
+            facing = new Vector2(0, -1);
+
+
 
         }
 
     }
- 
+    public void StartAttack()
+    {
+        Debug.Log(facing);
+        anim.Play("isAttacking");
+        leftBush.GetComponent<Animator>().Play("BushIdle");
+        rightBush.GetComponent<Animator>().Play("BushIdle");
+        bottomBush.GetComponent<Animator>().Play("BushIdle");
+    }
+    public void StopAttack()
+    {
+        anim.Play("isIdle");
+        leftBush.GetComponent<Animator>().Play("BushIdle");
+        rightBush.GetComponent<Animator>().Play("BushIdle");
+        bottomBush.GetComponent<Animator>().Play("BushIdle");
+
+    }
+
     public void RangedAttack()
     {
-        Transform t = launchPointLeft;
+        
+        Transform t = transform;
 
-        Vector2 direction = (player.position - transform.position).normalized;
+        Vector2 direction = (GameManager.Instance.player.transform.position - transform.position).normalized;
         float hori = direction.x;
         float vert = direction.y;
 
@@ -56,9 +135,9 @@ public class FoxCombat : MonoBehaviour
         {
             t = launchPointRight;
         }
-        else if (facing == new Vector2(0, 0))
+        else if (facing == new Vector2(0, 1))
         {
-            t = launchPointRight;
+            t = launchPointUp;
         }
 
         // enemyCombat.HandleAiming(direction);

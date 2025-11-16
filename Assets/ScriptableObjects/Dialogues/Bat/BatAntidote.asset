@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
+    text: You should go talk with the Echidna again.
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: ac6e9ee8d07e9f44987518a0eeab6096, type: 2}
     text: Good luck!
     logInteraction: 0
     changeAnim: 0
@@ -27,6 +32,7 @@ MonoBehaviour:
   removeItems: []
   giveItems: {fileID: 11400000, guid: 6a70f87501343624d925b8e1b6496854, type: 2}
   currentAnimName: 
+  isCutscene: 0
   removeAfterPlay: 1
   removeTheseOnPlay:
   - {fileID: 11400000, guid: a5fc275062c65c5419b24c877b23d19e, type: 2}

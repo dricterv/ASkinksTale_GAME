@@ -34,20 +34,22 @@ MonoBehaviour:
     changeAnim: 0
     animName: 
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
-    text: You will have to find something to throw by yourself....
+    text: But I'm currently busy trying to wrangle these weevils back into the pen
+      for the snake.
     logInteraction: 0
     changeAnim: 0
     animName: 
   - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
-    text: Maybe the echidna can give you some quills?
+    text: If you could help with wrangling them I could then make you one!
     logInteraction: 0
     changeAnim: 0
     animName: 
-  options:
-  - optionText: '*take*'
-    nextDialogue: {fileID: 11400000, guid: 639c0445a92dcdb4faef35ea2aeab30f, type: 2}
-    questToGive: {fileID: 0}
-    questToEnd: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: 7ebf74119b71f0f43b05c9725b98056b, type: 2}
+    text: Just go talk to the snake first!
+    logInteraction: 1
+    changeAnim: 0
+    animName: 
+  options: []
   requiredNPCs: []
   requiredLocations:
   - {fileID: 11400000, guid: 71987967c3abf2c479bf895db0adbfe2, type: 2}
@@ -57,5 +59,6 @@ MonoBehaviour:
   removeItems: []
   giveItems: {fileID: 0}
   currentAnimName: 
+  isCutscene: 0
   removeAfterPlay: 0
   removeTheseOnPlay: []

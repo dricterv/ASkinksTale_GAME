@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask pickupLayer;
     private RaycastHit2D grabHit;
     private RaycastHit2D pickupHit;
+    private bool isCarrying;
     [Header("Interacting")]
     public float interactDist = 1;
     public LayerMask interactableLayer;
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
         StatsManager.Instance.canGrabMove = true;
         anim = GetComponent<Animator>();
         isRolling = false;
+        isCarrying = false;
         //isTorching = false;
         StatsManager.Instance.lockHori = false;
         StatsManager.Instance.lockVert = false;
@@ -77,10 +79,14 @@ public class PlayerController : MonoBehaviour
         
         Move();
         grabPoints.position = transform.position;
+        if (playerState == PlayerState.Carrying || playerState == PlayerState.CarryingIdle)
+        {
+            pickupHit.transform.position = new Vector2(this.transform.position.x + (StatsManager.Instance.facing.x * 1.3f) , this.transform.position.y + (StatsManager.Instance.facing.y * 1.5f) );
+        }
     }
     void Update()
     {
-        
+        //Debug.Log(playerState);
         
         if(Input.GetButtonDown("Item1") && GameManager.Instance.uiManager.inventoryOpen == false)
         {
@@ -175,16 +181,26 @@ public class PlayerController : MonoBehaviour
         
         if(Input.GetButtonDown("Global"))
         {   
-            if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching && playerState != PlayerState.Shooting && GameManager.Instance.uiManager.inventoryOpen == false)
+            if (playerState != PlayerState.Attacking && playerState != PlayerState.Torching && playerState != PlayerState.Shooting  && playerState != PlayerState.Pickup && playerState != PlayerState.Putdown && GameManager.Instance.uiManager.inventoryOpen == false)
             {
                 Collider2D interactHit = Physics2D.OverlapBox(this.transform.position, new Vector2(2,2), 0, interactableLayer);//Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, interactDist, interactableLayer);
                 grabHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, grabDist, pushableLayer);
-                pickupHit = Physics2D.Raycast(this.transform.position, StatsManager.Instance.facing, 2, pickupLayer);
+                if(playerState != PlayerState.Carrying && playerState != PlayerState.CarryingIdle && playerState != PlayerState.Putdown && playerState != PlayerState.Pickup)
+                {
+                    pickupHit = Physics2D.BoxCast(this.transform.position, new Vector2 (1,1), 0, StatsManager.Instance.facing, 1f, pickupLayer);
+
+                }
                 /*if(interactHit != null)
                     Debug.Log(interactHit.gameObject.name);*/
 
-                    //Debug.Log("w");
-                if (pickupHit.collider != null && playerState != PlayerState.Blocking && GameManager.Instance.DialogueManager.isDialogueActive != true)
+                //Debug.Log("w");
+                if (playerState == PlayerState.Carrying || playerState == PlayerState.CarryingIdle)
+                {
+                    Debug.Log("putdown");
+                    Putdown();
+
+                }
+                else if (pickupHit.collider != null && playerState != PlayerState.Blocking && GameManager.Instance.DialogueManager.isDialogueActive != true)
                 {
                     Debug.Log("pickuip");
                     Pickup();
@@ -205,7 +221,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                else if (grabHit.collider != null && playerState != PlayerState.Blocking && GameManager.Instance.DialogueManager.isDialogueActive != true)
+                else if (grabHit.collider != null && playerState != PlayerState.Blocking && GameManager.Instance.DialogueManager.isDialogueActive != true && isRolling == false)
                 {
                     Grab();
 
@@ -342,7 +358,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = StatsManager.Instance.facing * StatsManager.Instance.rollDist;
 
         }
-        else if (playerState == PlayerState.Attacking || playerState == PlayerState.Torching || playerState == PlayerState.Shooting)
+        else if (playerState == PlayerState.Attacking || playerState == PlayerState.Torching || playerState == PlayerState.Shooting || playerState == PlayerState.Pickup || playerState == PlayerState.Putdown)
         {
             rb.velocity = Vector2.zero;
         }
@@ -473,10 +489,16 @@ public class PlayerController : MonoBehaviour
         }
         else if (hori > 0 || vert > 0 || hori < 0 || vert < 0)
         {
+
             if (StatsManager.Instance.blocking == true)
             {
                 ChangeState(PlayerState.Blocking);
                 rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed * Time.fixedDeltaTime;
+            }
+            else if (isCarrying == true)
+            {
+                ChangeState(PlayerState.Carrying);
+                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.speed;
             }
             else
             {
@@ -491,6 +513,11 @@ public class PlayerController : MonoBehaviour
             {
                 ChangeState(PlayerState.Blocking);
                 rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.dragSpeed * Time.fixedDeltaTime;
+            }
+            else if (isCarrying == true)
+            {
+                ChangeState(PlayerState.CarryingIdle);
+                rb.velocity = new Vector2(hori, vert) * StatsManager.Instance.speed;
             }
             else
             {
@@ -530,9 +557,39 @@ public class PlayerController : MonoBehaviour
     }
     public void Pickup()
     {
+      
+        ChangeState(PlayerState.Pickup);
+    }
+    public void PickupMid()
+    {
         Color tmp = pickupHit.collider.GetComponent<SpriteRenderer>().color;
         tmp.a = 0f;
         pickupHit.collider.GetComponent<SpriteRenderer>().color = tmp;
+        pickupHit.collider.enabled = false;
+    }
+    public void PickupEnd()
+    {
+        isCarrying = true;
+        ChangeState(PlayerState.CarryingIdle);
+
+    }
+    public void Putdown()
+    {
+  
+        ChangeState(PlayerState.Putdown);
+
+    }
+    public void PutDownMid()
+    {
+        pickupHit.collider.enabled = true;
+        Color tmp = pickupHit.collider.GetComponent<SpriteRenderer>().color;
+        tmp.a = 1f;
+        pickupHit.collider.GetComponent<SpriteRenderer>().color = tmp;
+    }
+    public void PutDownEnd()
+    {
+        isCarrying = false;
+        ChangeState(PlayerState.Idle);
     }
     public void Grab()
     {
@@ -685,7 +742,8 @@ public class PlayerController : MonoBehaviour
 
 
         } */
-        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing )
+        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching && playerState != PlayerState.Shooting && playerState != PlayerState.Pulling
+            && playerState != PlayerState.Pushing && playerState != PlayerState.Pickup && playerState != PlayerState.Putdown && playerState != PlayerState.Carrying)
         {
 
            
@@ -701,7 +759,8 @@ public class PlayerController : MonoBehaviour
     }
     public void Attack()
     {
-        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching && playerState != PlayerState.Attacking && playerState != PlayerState.Shooting)
+        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching && playerState != PlayerState.Attacking && playerState != PlayerState.Shooting && playerState != PlayerState.Pulling
+            && playerState != PlayerState.Pushing && playerState != PlayerState.Pickup && playerState != PlayerState.Putdown && playerState != PlayerState.Carrying)
         {
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
             StatsManager.Instance.lockFace = true;
@@ -743,7 +802,8 @@ public class PlayerController : MonoBehaviour
 
     private void UseTorch()
     {
-       if(playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Attacking && playerState != PlayerState.Torching && playerState != PlayerState.Shooting)
+       if(playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Attacking && playerState != PlayerState.Torching && playerState != PlayerState.Shooting && playerState != PlayerState.Pulling
+            && playerState != PlayerState.Pushing && playerState != PlayerState.Pickup && playerState != PlayerState.Putdown && playerState != PlayerState.Carrying)
        {
         
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
@@ -767,7 +827,8 @@ public class PlayerController : MonoBehaviour
     }
     public void StartShoot()
     {
-        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching && playerState != PlayerState.Attacking && playerState != PlayerState.Shooting)
+        if (playerState != PlayerState.Rolling && playerState != PlayerState.Grabbing && playerState != PlayerState.Torching && playerState != PlayerState.Attacking && playerState != PlayerState.Shooting && playerState != PlayerState.Pulling
+            && playerState != PlayerState.Pushing && playerState != PlayerState.Pickup && playerState != PlayerState.Putdown && playerState != PlayerState.Carrying)
         {
             StatsManager.Instance.lockFacing = StatsManager.Instance.facing;
             StatsManager.Instance.lockFace = true;
@@ -834,6 +895,23 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isShooting", false);
         }
+        else if (playerState == PlayerState.CarryingIdle)
+        {
+            anim.SetBool("isCarryingIdle", false);
+        }
+        else if (playerState == PlayerState.Carrying)
+        {
+            anim.SetBool("isCarrying", false);
+        }
+        else if (playerState == PlayerState.Pickup)
+        {
+            anim.SetBool("isPickingup", false);
+        }
+        else if (playerState == PlayerState.Putdown)
+        {
+            anim.SetBool("isPuttingdown", false);
+        }
+
 
         //update current state
 
@@ -881,6 +959,22 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isShooting", true);
         }
+        else if (playerState == PlayerState.CarryingIdle)
+        {
+            anim.SetBool("isCarryingIdle", true);
+        }
+        else if (playerState == PlayerState.Carrying)
+        {
+            anim.SetBool("isCarrying", true);
+        }
+        else if (playerState == PlayerState.Pickup)
+        {
+            anim.SetBool("isPickingup", true);
+        }
+        else if (playerState == PlayerState.Putdown)
+        {
+            anim.SetBool("isPuttingdown", true);
+        }
 
     }
     
@@ -900,5 +994,6 @@ public enum PlayerState
     Shooting,
     Pickup,
     Carrying,
+    CarryingIdle,
     Putdown,
 }

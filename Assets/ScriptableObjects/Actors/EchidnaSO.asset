@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c8279dea1831d840830ce0849aefbc6, type: 3}
-  m_Name: Bat
+  m_Name: EchidnaSO
   m_EditorClassIdentifier: 
-  actorName: Bat
-  portrait: {fileID: 300089997, guid: be8b6f4714b929b49976ef83e77c4cb3, type: 3}
+  actorName: Echidna
+  portrait: {fileID: -1862092984, guid: 9f0e04bd34aed3749afb0a212fe79410, type: 3}

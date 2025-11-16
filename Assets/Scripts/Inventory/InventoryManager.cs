@@ -18,8 +18,11 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private GameObject useButtonOne;
     [SerializeField] private GameObject useButtonTwo;
+    [SerializeField] private GameObject equipedItemUIOne;
+    [SerializeField] private GameObject equipedItemUITwo;
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private Selectable selectedButton;
+
 
     public InventoryItem currentItem;
     [SerializeField] private InventoryItem startItem1;
@@ -45,11 +48,15 @@ public class InventoryManager : MonoBehaviour
         {
             useButtonOne.SetActive(true);
             useButtonTwo.SetActive(true);
+            
+
         }
         else
         {
             useButtonOne.SetActive(false);
             useButtonTwo.SetActive(false);
+           
+
         }
     }
 

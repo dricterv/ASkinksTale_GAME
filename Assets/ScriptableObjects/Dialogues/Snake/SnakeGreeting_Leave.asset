@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
-    text: ....
+    text: There is five of them.
     logInteraction: 0
     changeAnim: 0
     animName: 
   - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
-    text: cya!
+    text: Just pick them up and put them down in front of the pens gate.
+    logInteraction: 0
+    changeAnim: 0
+    animName: 
+  - speaker: {fileID: 11400000, guid: fe5f6d68d97909f48998059a1e0135e8, type: 2}
+    text: Thank you!
     logInteraction: 0
     changeAnim: 0
     animName: 
@@ -32,5 +37,6 @@ MonoBehaviour:
   removeItems: []
   giveItems: {fileID: 0}
   currentAnimName: 
+  isCutscene: 0
   removeAfterPlay: 0
   removeTheseOnPlay: []
